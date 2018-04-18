@@ -16,4 +16,5 @@
  require_once('funciones/usuario.' . $Extencion);
  //instaciamos User() para utilizarlo en el sitio
  $_usuario = User();
+ 
 ?>
