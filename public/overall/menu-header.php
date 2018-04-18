@@ -37,12 +37,18 @@
  
                 <p>
                   <?php echo $_usuario[$_SESSION['sesion_id']]['MUSU_NOMBRES']; ?> - Administrador
-                  <small>Miembro desde 24 de Abril del 2015</small>
+                  
+                  <?php
+                  $fecha = $_usuario[$_SESSION['sesion_id']]['MUSU_FECINI'];
+                  $time = strtotime($fecha);
+                  ?>
+                  <small>Miembro desde <?php echo date('d/m/y',$time); ?></small>
                 </p>
               </li>
                
               <!-- Menu Body -->
-              <li class="user-body">
+              <!--<li class="user-body">
+                
                 <div class="row">
                   <div class="col-xs-4 text-center">
                     <a target="_blank" href="https://twitter.com/blogueroec">Twitter</a>
@@ -54,8 +60,7 @@
                     <a target="_blank" href="https://www.facebook.com/blogueroec">Facebook</a>
                   </div>
                 </div>
-                <!-- /.row -->
-              </li>
+              </li> -->
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">

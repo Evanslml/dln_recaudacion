@@ -32,9 +32,13 @@ require_once 'public/overall/header.php';
           </div>
                   
           <script type="text/javascript">
+
               $(function () {
-                  $('#datetimepicker1').datetimepicker();
+                  $('#datetimepicker1').datetimepicker({
+                    format: "L"
+                  });
               });
+              
           </script>
 
         </div>
@@ -42,20 +46,6 @@ require_once 'public/overall/header.php';
          
         </div>
 
-<?php 
-class persona{
-
-    public $nombre;
-    public $apellido;
-    public $age;
-
-
-    public fullname($nombre,$apellido){
-      $this->$nombre=$nombre;
-    }
-}
-
-?>
 
 
 
