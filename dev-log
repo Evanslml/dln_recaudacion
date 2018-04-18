@@ -1,6 +1,23 @@
--- dev manual
+/*---------------------------------------------------------------------------------------------------*/
+--dev manual
+/*---------------------------------------------------------------------------------------------------*/
+
 Cambiar link PATH en 
 	->view/bootstrap-default/js/login.js
 	->core/core.php
 Database 	
 	->core/classConexion/conexion.php;
+
+/*---------------------------------------------------------------------------------------------------*/
+--MVC
+/*---------------------------------------------------------------------------------------------------*/
+
+1.- Index.php_____ obtiene el url y abre el controlador que tiene la variable view
+2.- Controller/indexController.php_____ redirecciona a la vista Public/index/index.php
+3.- Public/index/index.php_____ redireccion a Overall/nosesion.php
+4.- Public/Overall/nosesion.php_____ se ejecuta runScriptLogin del div del formulario llamando a view/bootstrap-default/js/login.js
+5.- view/bootstrap-default/js/login.js_____ envia los datos del formulario tipo POST a AJAX , muestra mensaje hasta que el servidro de la bd se conecte
+6.- AJAX_____ requiere de Public/user/login.php se realiza la validación y se guarda el id de la tabla usuario en $_SESSION['sesion_id']
+
+
+

@@ -29,7 +29,7 @@ $clave_crypt = crypt($pass, $salt);
               {//buscamos pass
                 //declaramos variables todo OK
                 $_SESSION['sesion_id'] = $ses['MUSU_ID'];
-                if($_POST['sesion']) { ini_set('session.cookie_lifetime', time() + (60*60*24)); }
+                if($_POST['sesion']) { ini_set('session.cookie_lifetime', time() + (60*60*24)); } //Segundos 
                 $message = 1;
               }//fin de buscar pass
               else
