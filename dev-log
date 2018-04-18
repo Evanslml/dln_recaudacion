@@ -1,0 +1,6 @@
+-- dev manual
+Cambiar link PATH en 
+	->view/bootstrap-default/js/login.js
+	->core/core.php
+Database 	
+	->core/classConexion/conexion.php;
