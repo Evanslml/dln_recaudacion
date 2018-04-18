@@ -18,6 +18,3 @@ Database
 4.- Public/Overall/nosesion.php_____ se ejecuta runScriptLogin del div del formulario llamando a view/bootstrap-default/js/login.js
 5.- view/bootstrap-default/js/login.js_____ envia los datos del formulario tipo POST a AJAX , muestra mensaje hasta que el servidro de la bd se conecte
 6.- AJAX_____ requiere de Public/user/login.php se realiza la validación y se guarda el id de la tabla usuario en $_SESSION['sesion_id']
-
-
-
