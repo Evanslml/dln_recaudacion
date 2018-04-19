@@ -19,4 +19,6 @@ Database
 5.- view/bootstrap-default/js/login.js_____ envia los datos del formulario tipo POST a AJAX , muestra mensaje hasta que el servidro de la bd se conecte
 6.- AJAX_____ requiere de Public/user/login.php se realiza la validación y se guarda el id de la tabla usuario en $_SESSION['sesion_id'] redirecciona index de la vista
 7.- Public/index/index.php_____ Hace la busqueda si esta logueado o no, en el core jala la funcion user() en la variable $_usuario
-8.- 
+
+
+19/04/2018
