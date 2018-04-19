@@ -18,23 +18,10 @@
     <!-- Sidebar Menu -->
     <ul class="sidebar-menu">
       <?php 
-      $demo= $_usuario[$_SESSION['sesion_id']]['MPERF_ID']; 
-
-
-      $salt="lu";
-      $pass="123456";
-
-      $clave_crypt = crypt($pass, $salt);
-      echo $clave_crypt;
-
-
+        var_dump($_permiso);
       ?>
       
-      <p style="color: #f1f1f1">
-      <?php
-            echo $demo;
-      ?>
-      </p>
+    
 
 
       <li class="header">MENU OPCIONES</li>

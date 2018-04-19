@@ -36,7 +36,11 @@
                 <img src="<?php echo URL_VIEW.'bootstrap-default/img/'.$_usuario[$_SESSION['sesion_id']]['MUSU_IMG']; ?>" class="img-circle" alt="User Image">
  
                 <p>
-                  <?php echo $_usuario[$_SESSION['sesion_id']]['MUSU_NOMBRES']; ?> - Administrador
+                  <?php 
+                  
+                  $MPERF=$_SESSION['sesion_id'];
+
+                  echo $_usuario[$_SESSION['sesion_id']]['MUSU_NOMBRES']; ?> </br> <?php  echo $_perfil[$MPERF]['MPERF_NOMBRE']; ?>
                   
                   <?php
                   $fecha = $_usuario[$_SESSION['sesion_id']]['MUSU_FECINI'];
@@ -64,7 +68,7 @@
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="#" class="btn btn-default btn-flat">Perfil</a>
+                  <a href="<?php echo URL_WEB; ?>perfil" class="btn btn-default btn-flat">Perfil</a>
                 </div>
                 <div class="pull-right">
                   <a href="<?php echo URL_WEB; ?>?view=logout&logout=desconectar" class="btn btn-default btn-flat">Desconectar</a>                </div>

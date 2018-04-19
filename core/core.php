@@ -14,7 +14,11 @@
  //Conexion a la bases de datos
  require_once('classConexion/conexion.' . $Extencion);
  require_once('funciones/usuario.' . $Extencion);
+ require_once('funciones/permiso.' . $Extencion);
+ require_once('funciones/perfil.' . $Extencion);
  //instaciamos User() para utilizarlo en el sitio
  $_usuario = User();
+ $_permiso = Permiso();
+ $_perfil = Perfil();
  
 ?>

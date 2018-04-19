@@ -43,7 +43,8 @@ require_once 'public/overall/header.php';
 
         </div>
         <div class="col-md-6">
-         
+            
+                          <h3 class="widget-user-username"><?php echo var_dump($_perfil[1]['MPERF_NOMBRE']); ?></h3>
         </div>
 
 
