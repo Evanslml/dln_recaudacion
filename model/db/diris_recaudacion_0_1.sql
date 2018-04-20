@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 12-04-2018 a las 21:57:42
+-- Tiempo de generación: 20-04-2018 a las 22:30:51
 -- Versión del servidor: 5.7.14
 -- Versión de PHP: 5.6.25
 
@@ -274,7 +274,8 @@ CREATE TABLE `mobjeto` (
   `MOBJ_ALIAS` varchar(50) DEFAULT NULL,
   `MOBJ_NOMBRE` varchar(50) DEFAULT NULL,
   `MOBJ_ENLACE` varchar(50) DEFAULT NULL,
-  `MOBJ_PADRE` int(11) DEFAULT NULL,
+  `MOBJ_ICON` varchar(50) DEFAULT NULL,
+  `MOBJ_PADRE` int(2) UNSIGNED ZEROFILL DEFAULT NULL,
   `MOBJ_ORDEN` int(11) DEFAULT NULL,
   `MOBJ_ESTADO` int(11) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
@@ -283,16 +284,16 @@ CREATE TABLE `mobjeto` (
 -- Volcado de datos para la tabla `mobjeto`
 --
 
-INSERT INTO `mobjeto` (`MOBJ_ID`, `MOBJ_ALIAS`, `MOBJ_NOMBRE`, `MOBJ_ENLACE`, `MOBJ_PADRE`, `MOBJ_ORDEN`, `MOBJ_ESTADO`) VALUES
-(01, 'Formato', 'Formatos', '', 0, 1, 1),
-(02, 'Rec_diaria', 'Recaudacion Diaria', 'recaudacion', 1, 1, 1),
-(03, 'Reportes', 'Reportes', '', 0, 2, 1),
-(04, 'Rep_general', 'Reporte General', 'rpt_gnral', 3, 1, 1),
-(05, 'Cons_reg', 'Consulta Registro', 'cons_rgtro', 3, 2, 1),
-(06, 'Mantenimiento', 'Mantenimiento', '', 0, 3, 1),
-(07, 'Dat_usu', 'Datos de Usuario', 'usuario', 6, 1, 1),
-(08, 'Perf', 'Perfiles', 'perfiles', 6, 2, 1),
-(09, 'Usuario', 'Usuario', 'usuario', 6, 3, 1);
+INSERT INTO `mobjeto` (`MOBJ_ID`, `MOBJ_ALIAS`, `MOBJ_NOMBRE`, `MOBJ_ENLACE`, `MOBJ_ICON`, `MOBJ_PADRE`, `MOBJ_ORDEN`, `MOBJ_ESTADO`) VALUES
+(01, 'Formato', 'Formatos', '', 'fa fa-angle-right', 00, 1, 1),
+(02, 'Rec_diaria', 'Recaudacion Diaria', 'formato', 'fa fa-edit', 01, 1, 1),
+(03, 'Reportes', 'Reportes', '', 'fa fa-angle-right', 00, 2, 1),
+(04, 'Rep_general', 'Reporte General', 'rpt_gnral', 'fa fa-table', 03, 1, 1),
+(05, 'Cons_reg', 'Consulta Registro', 'cons_rgtro', 'fa fa-neuter', 03, 2, 1),
+(06, 'Mantenimiento', 'Mantenimiento', '', 'fa fa-angle-right', 00, 3, 1),
+(07, 'Dat_usu', 'Datos de Usuario', 'usuario', 'fa fa-pencil', 06, 1, 1),
+(08, 'Perf', 'Perfiles', 'perfiles', 'fa fa-paperclip', 06, 2, 1),
+(09, 'Usuario', 'Usuario', 'usuario', 'fa fa-user', 06, 3, 1);
 
 -- --------------------------------------------------------
 
@@ -316,7 +317,8 @@ CREATE TABLE `mperfil` (
 --
 
 INSERT INTO `mperfil` (`MPERF_ID`, `MPERF_ROL`, `MPERF_NOMBRE`, `MPERF_DESCRIPCION`, `MPERF_FECIN`, `MPERF_HOST`, `MPERF_USERIN`, `MPERF_ESTADO`) VALUES
-(01, 'ADMINISTRADOR', 'ADMINISTRADOR DE SISTEMAS', 'ADMINISTRADOR CON ACCESO TOTAL DEL SISTEMA', '2018-04-06', '172.16.20.19', 'ADMIN', 1);
+(01, 'ADMINISTRADOR', 'ADMINISTRADOR DE SISTEMAS', 'ADMINISTRADOR CON ACCESO TOTAL DEL SISTEMA', '2018-04-06', '172.16.20.19', 'ADMIN', 1),
+(02, 'ADMINISTRADOR TESORERIA', 'ADMINISTRADOR DE TESORERIA', 'ADMINISTRADOR CON ACCESO PARCIAL DEL SISTEMA', '2018-04-18', '172.16.0.3', 'ADMIN', 1);
 
 -- --------------------------------------------------------
 
@@ -325,7 +327,7 @@ INSERT INTO `mperfil` (`MPERF_ID`, `MPERF_ROL`, `MPERF_NOMBRE`, `MPERF_DESCRIPCI
 --
 
 CREATE TABLE `mpermiso` (
-  `MPERM_ID` int(2) UNSIGNED ZEROFILL NOT NULL,
+  `MPERM_ID` int(4) UNSIGNED ZEROFILL NOT NULL,
   `MPERF_ID` int(2) UNSIGNED ZEROFILL DEFAULT NULL,
   `MOBJ_ID` int(2) UNSIGNED ZEROFILL DEFAULT NULL,
   `MPERM_TIP` varchar(50) DEFAULT NULL,
@@ -337,51 +339,61 @@ CREATE TABLE `mpermiso` (
 --
 
 INSERT INTO `mpermiso` (`MPERM_ID`, `MPERF_ID`, `MOBJ_ID`, `MPERM_TIP`, `MPERM_ESTADO`) VALUES
-(01, 01, 01, 'MENU', 1),
-(02, 01, 01, 'VER', 1),
-(03, 01, 01, 'CREAR', 1),
-(04, 01, 01, 'ACTUALIZAR', 1),
-(05, 01, 01, 'ELIMINAR', 1),
-(06, 01, 02, 'MENU', 1),
-(07, 01, 02, 'VER', 1),
-(08, 01, 02, 'CREAR', 1),
-(09, 01, 02, 'ACTUALIZAR', 1),
-(10, 01, 02, 'ELIMINAR', 1),
-(11, 01, 03, 'MENU', 1),
-(12, 01, 03, 'VER', 1),
-(13, 01, 03, 'CREAR', 1),
-(14, 01, 03, 'ACTUALIZAR', 1),
-(15, 01, 03, 'ELIMINAR', 1),
-(16, 01, 04, 'MENU', 1),
-(17, 01, 04, 'VER', 1),
-(18, 01, 04, 'CREAR', 1),
-(19, 01, 04, 'ACTUALIZAR', 1),
-(20, 01, 04, 'ELIMINAR', 1),
-(21, 01, 05, 'MENU', 1),
-(22, 01, 05, 'VER', 1),
-(23, 01, 05, 'CREAR', 1),
-(24, 01, 05, 'ACTUALIZAR', 1),
-(25, 01, 05, 'ELIMINAR', 1),
-(26, 01, 06, 'MENU', 1),
-(27, 01, 06, 'VER', 1),
-(28, 01, 06, 'CREAR', 1),
-(29, 01, 06, 'ACTUALIZAR', 1),
-(30, 01, 06, 'ELIMINAR', 1),
-(31, 01, 07, 'MENU', 1),
-(32, 01, 07, 'VER', 1),
-(33, 01, 07, 'CREAR', 1),
-(34, 01, 07, 'ACTUALIZAR', 1),
-(35, 01, 07, 'ELIMINAR', 1),
-(36, 01, 08, 'MENU', 1),
-(37, 01, 08, 'VER', 1),
-(38, 01, 08, 'CREAR', 1),
-(39, 01, 08, 'ACTUALIZAR', 1),
-(40, 01, 08, 'ELIMINAR', 1),
-(41, 01, 09, 'MENU', 1),
-(42, 01, 09, 'VER', 1),
-(43, 01, 09, 'CREAR', 1),
-(44, 01, 09, 'ACTUALIZAR', 1),
-(45, 01, 09, 'ELIMINAR', 1);
+(0001, 01, 01, 'MENU', 1),
+(0002, 01, 01, 'VER', 1),
+(0003, 01, 01, 'CREAR', 1),
+(0004, 01, 01, 'ACTUALIZAR', 1),
+(0005, 01, 01, 'ELIMINAR', 1),
+(0006, 01, 02, 'MENU', 1),
+(0007, 01, 02, 'VER', 1),
+(0008, 01, 02, 'CREAR', 1),
+(0009, 01, 02, 'ACTUALIZAR', 1),
+(0010, 01, 02, 'ELIMINAR', 1),
+(0011, 01, 03, 'MENU', 1),
+(0012, 01, 03, 'VER', 1),
+(0013, 01, 03, 'CREAR', 1),
+(0014, 01, 03, 'ACTUALIZAR', 1),
+(0015, 01, 03, 'ELIMINAR', 1),
+(0016, 01, 04, 'MENU', 1),
+(0017, 01, 04, 'VER', 1),
+(0018, 01, 04, 'CREAR', 1),
+(0019, 01, 04, 'ACTUALIZAR', 1),
+(0020, 01, 04, 'ELIMINAR', 1),
+(0021, 01, 05, 'MENU', 1),
+(0022, 01, 05, 'VER', 1),
+(0023, 01, 05, 'CREAR', 1),
+(0024, 01, 05, 'ACTUALIZAR', 1),
+(0025, 01, 05, 'ELIMINAR', 1),
+(0026, 01, 06, 'MENU', 1),
+(0027, 01, 06, 'VER', 1),
+(0028, 01, 06, 'CREAR', 1),
+(0029, 01, 06, 'ACTUALIZAR', 1),
+(0030, 01, 06, 'ELIMINAR', 1),
+(0031, 01, 07, 'MENU', 1),
+(0032, 01, 07, 'VER', 1),
+(0033, 01, 07, 'CREAR', 1),
+(0034, 01, 07, 'ACTUALIZAR', 1),
+(0035, 01, 07, 'ELIMINAR', 1),
+(0036, 01, 08, 'MENU', 1),
+(0037, 01, 08, 'VER', 1),
+(0038, 01, 08, 'CREAR', 1),
+(0039, 01, 08, 'ACTUALIZAR', 1),
+(0040, 01, 08, 'ELIMINAR', 1),
+(0041, 01, 09, 'MENU', 1),
+(0042, 01, 09, 'VER', 1),
+(0043, 01, 09, 'CREAR', 1),
+(0044, 01, 09, 'ACTUALIZAR', 1),
+(0045, 01, 09, 'ELIMINAR', 1),
+(0046, 02, 01, 'MENU', 1),
+(0047, 02, 01, 'VER', 1),
+(0048, 02, 01, 'CREAR', 1),
+(0049, 02, 01, 'ACTUALIZAR', 1),
+(0050, 02, 01, 'ELIMINAR', 1),
+(0051, 02, 02, 'MENU', 1),
+(0052, 02, 02, 'VER', 1),
+(0053, 02, 02, 'CREAR', 1),
+(0054, 02, 02, 'ACTUALIZAR', 1),
+(0055, 02, 02, 'ELIMINAR', 1);
 
 -- --------------------------------------------------------
 
@@ -412,7 +424,8 @@ CREATE TABLE `musuario` (
 --
 
 INSERT INTO `musuario` (`MUSU_ID`, `MUSU_LOGIN`, `MUSU_PASSWORD`, `MUSU_NOMBRES`, `MUSU_FECINI`, `MUSU_FECVEN`, `MUSU_TELEFONO`, `MUSU_CORREO`, `MUSU_USERIN`, `MUSU_IMG`, `MUSU_FECIN`, `MUSU_HOST`, `MUSU_ESTADO`, `MPERF_ID`, `NESTA_RENAES`) VALUES
-(1, 'admin@gmail.com', 'adrla7IBSfTZQ', 'IVAN JORGE CRUZ PEÑA', '2018-04-06', '2018-12-06', '964153832', 'jivancplmlm@gmail.com', NULL, 'user_man.png', '2018-04-06', '172.16.0.3', 1, 01, 77777);
+(1, 'admin@gmail.com', 'adrla7IBSfTZQ', 'IVAN JORGE CRUZ PEÑA', '2018-04-06', '2018-12-06', '964153832', 'jivancplmlm@gmail.com', NULL, 'user_man.png', '2018-04-06', '172.16.0.3', 1, 01, 77777),
+(2, 'luisbasurto@gmail.com', 'luDEzCixD28UM', 'JOSE LUIS BASURTO', '2018-04-16', '2018-12-12', '964153822', NULL, NULL, 'user_woman.png', '2018-04-16', '172.16.0.3', 1, 02, 77777);
 
 -- --------------------------------------------------------
 
@@ -2855,7 +2868,7 @@ ALTER TABLE `lmes`
 -- AUTO_INCREMENT de la tabla `mpermiso`
 --
 ALTER TABLE `mpermiso`
-  MODIFY `MPERM_ID` int(2) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `MPERM_ID` int(4) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
