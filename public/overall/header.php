@@ -19,10 +19,11 @@
   <link rel="stylesheet" href="<?php echo URL_VIEW; ?>bootstrap-default/css/icheck/square/green.css">
   <!--Estilo -->
   <link rel="stylesheet" href="<?php echo URL_VIEW; ?>bootstrap-default/css/skin-blue-light.css">
-  <!--custom-->
-  <script src="<?php echo URL_VIEW; ?>bootstrap-default/js/custom.js"></script>
   <!-- jQuery 2.2.3 -->
   <script src="<?php echo URL_VIEW; ?>bootstrap-default/js/jquery-2.2.3.min.js"></script>
+  <!--custom-->
+  <script src="<?php echo URL_VIEW; ?>bootstrap-default/js/custom.js"></script>
+  
   <!--[if lt IE 9]>
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>

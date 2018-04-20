@@ -115,7 +115,7 @@
 }
 
 .skin-blue-light .sidebar a {
-    color: #444
+    color: #f1f1f1;
 }
 
 .skin-blue-light .sidebar a:hover {
@@ -179,4 +179,11 @@
     .skin-blue-light.sidebar-mini.sidebar-collapse .sidebar-menu>li>.treeview-menu {
         border-left: 1px solid #d2d6de
     }
+}
+
+/*
+
+*/
+.skin-blue-light .sidebar-menu ul.child_menu{
+    display: none;
 }

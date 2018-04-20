@@ -563,14 +563,19 @@ a:focus {
     padding: 0
 }
 
-.sidebar-menu>li>a {
+.sidebar-menu>li>a,
+.sidebar-menu>li>ul>li>a {
     padding: 12px 5px 12px 15px;
     display: block
 }
 
 .sidebar-menu>li>a>.fa,
 .sidebar-menu>li>a>.glyphicon,
-.sidebar-menu>li>a>.ion {
+.sidebar-menu>li>a>.ion,
+.sidebar-menu>li>ul>li>a>.fa,
+.sidebar-menu>li>ul>li>a>.glyphicon,
+.sidebar-menu>li>ul>li>a>.ion
+{
     width: 20px
 }
 
@@ -683,19 +688,23 @@ a:focus {
         border-bottom-right-radius: 4px
     }
     .sidebar-mini.sidebar-collapse .sidebar-menu>li:hover>a>span:not(.pull-right),
+    .sidebar-mini.sidebar-collapse .sidebar-menu>li>ul>li:hover>a>span:not(.pull-right),
     .sidebar-mini.sidebar-collapse .sidebar-menu>li:hover>.treeview-menu {
         display: block !important;
         position: absolute;
         width: 180px;
         left: 50px
     }
-    .sidebar-mini.sidebar-collapse .sidebar-menu>li:hover>a>span {
+    .sidebar-mini.sidebar-collapse .sidebar-menu>li:hover>a>span,
+    .sidebar-mini.sidebar-collapse .sidebar-menu>li>ul>li:hover>a>span {
         top: 0;
         margin-left: -3px;
         padding: 12px 5px 12px 20px;
         background-color: inherit
     }
-    .sidebar-mini.sidebar-collapse .sidebar-menu>li:hover>a>.pull-right-container {
+    .sidebar-mini.sidebar-collapse .sidebar-menu>li:hover>a>.pull-right-container 
+    .sidebar-mini.sidebar-collapse .sidebar-menu>li>ul>li:hover>a>.pull-right-container 
+    {
         position: relative!important;
         float: right;
         width: auto!important;
@@ -713,6 +722,7 @@ a:focus {
     .sidebar-mini.sidebar-collapse .main-sidebar .user-panel>.info,
     .sidebar-mini.sidebar-collapse .sidebar-form,
     .sidebar-mini.sidebar-collapse .sidebar-menu>li>a>span,
+    .sidebar-mini.sidebar-collapse .sidebar-menu>li>ul>li>a>span,
     .sidebar-mini.sidebar-collapse .sidebar-menu>li>.treeview-menu,
     .sidebar-mini.sidebar-collapse .sidebar-menu>li>a>.pull-right,
     .sidebar-mini.sidebar-collapse .sidebar-menu li.header {

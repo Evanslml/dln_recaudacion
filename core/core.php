@@ -18,7 +18,11 @@
  require_once('funciones/perfil.' . $Extencion);
  //instaciamos User() para utilizarlo en el sitio
  $_usuario = User();
- $_permiso = Permiso();
  $_perfil = Perfil();
+
+ if (isset($_SESSION['sesion_id'])){ //Si esta logeado y  variable SESSION esta definida
+	 $MPERF_ID = $_usuario[$_SESSION['sesion_id']]['MPERF_ID'];
+	 $_permiso = Permiso($MPERF_ID);
+ }
  
 ?>

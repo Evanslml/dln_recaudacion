@@ -58,7 +58,7 @@ require_once 'public/overall/header.php';
 
         <div class="col-md-4">
           <div class="box box-primary">
-            
+            <?php echo var_dump($_permiso);?>
           </div>
         </div>
 
