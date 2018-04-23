@@ -4,6 +4,5 @@
 <script src="<?php echo URL_VIEW; ?>bootstrap-default/js/app.min.js"></script>
 <!-- iCheck -->
 <script src="<?php echo URL_VIEW; ?>bootstrap-default/css/icheck/icheck.min.js"></script>
-
 </body>
 </html>

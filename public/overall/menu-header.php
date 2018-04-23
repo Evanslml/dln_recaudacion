@@ -38,9 +38,7 @@
                 <p>
                   <?php 
                   
-                  $MPERF=$_SESSION['sesion_id'];
-
-                  echo $_usuario[$_SESSION['sesion_id']]['MUSU_NOMBRES']; ?> </br> <?php  echo $_perfil[$MPERF]['MPERF_NOMBRE']; ?>
+                  echo $_usuario[$_SESSION['sesion_id']]['MUSU_NOMBRES']; ?> </br> <?php  echo $_ListaUsuario[$_SESSION['sesion_id']]['MPERF_NOMBRE']; ?>
                   
                   <?php
                   $fecha = $_usuario[$_SESSION['sesion_id']]['MUSU_FECINI'];
@@ -71,7 +69,8 @@
                   <a href="<?php echo URL_WEB; ?>perfil" class="btn btn-default btn-flat">Perfil</a>
                 </div>
                 <div class="pull-right">
-                  <a href="<?php echo URL_WEB; ?>?view=logout&logout=desconectar" class="btn btn-default btn-flat">Desconectar</a>                </div>
+                  <a href="<?php echo URL_WEB; ?>?view=logout&logout=desconectar" class="btn btn-default btn-flat">Desconectar</a>
+                </div>
               </li>
             </ul>
           </li>

@@ -14,37 +14,27 @@
 
 <?php 
 
-if(isset($_GET['view']) == 'formato1'){
-  $view=$_GET['view'];
-  echo $view;
-?>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.js"></script>
-  <script src="https://cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/e8bddc60e73c1ec2475f827be36e1957af72e2ea/src/js/bootstrap-datetimepicker.js"></script>
-  <link rel="stylesheet" href="https://cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/e8bddc60e73c1ec2475f827be36e1957af72e2ea/build/css/bootstrap-datetimepicker.css">
+    if(isset($_GET['view'])) {
+      $vista = $_GET['view'];
 
-<?php
-}
+      //var_dump($vista);
+      switch ($vista) {
+        case 'formato':
+            echo '<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.js"></script>';
+            echo '<script src="https://cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/e8bddc60e73c1ec2475f827be36e1957af72e2ea/src/js/bootstrap-datetimepicker.js"></script>';
+            echo '<link rel="stylesheet" href="https://cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/e8bddc60e73c1ec2475f827be36e1957af72e2ea/build/css/bootstrap-datetimepicker.css">';
+          break;
+        
+        default:
+          # code...
+          break;
+      }
+    }/*else{
 
+}*/
 
-
-?>
-
-
-
-<?php } 
+} 
 else{
-?>
-
-<?php
-/*
-    echo'
-    <div class="row">
-        <nav class="navbar navbar-default">
-          <div class="navbar-header">
-            <a class="navbar-brand"><strong>Usuario:</strong> admin@gmail.com | <strong>Password:</strong> 123456</a>
-         </div>
-         </nav>
-    </div>';
-*/
+  //header('location: index.php?view=error');
 }
 ?>

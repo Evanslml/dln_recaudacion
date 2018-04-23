@@ -5758,3 +5758,23 @@ table.text-center th {
         white-space: normal !important
     }
 }
+
+
+.fl{
+    float: left;
+}
+.fr{
+    float: right;
+}
+.btn-accion{
+    padding: 4px 8px;
+    margin-right: 5px;
+    color: #efefef;
+    background: #3c8dbc;
+    cursor: pointer;
+}
+.btn-accion:hover{
+    background: #777777;
+    transition: all 0.3s ease-in-out;
+    color: #fff;
+}

@@ -15,10 +15,12 @@
  require_once('classConexion/conexion.' . $Extencion);
  require_once('funciones/usuario.' . $Extencion);
  require_once('funciones/permiso.' . $Extencion);
- require_once('funciones/perfil.' . $Extencion);
  //instaciamos User() para utilizarlo en el sitio
- $_usuario = User();
- $_perfil = Perfil();
+ 
+ $_usuario = Acceso::User();
+ $_ListaUsuario = Acceso::ListaUsuarioPerfil();
+ $_ListaPerfil = Acceso::ListaPerfil();
+
 
  if (isset($_SESSION['sesion_id'])){ //Si esta logeado y  variable SESSION esta definida
 	 $MPERF_ID = $_usuario[$_SESSION['sesion_id']]['MPERF_ID'];
