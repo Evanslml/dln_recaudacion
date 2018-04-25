@@ -20,6 +20,7 @@
  $_usuario = Acceso::User();
  $_ListaUsuario = Acceso::ListaUsuarioPerfil();
  $_ListaPerfil = Acceso::ListaPerfil();
+ $_ListaEstablecimientos = Acceso::ListaEstablecimientos();
 
 
  if (isset($_SESSION['sesion_id'])){ //Si esta logeado y  variable SESSION esta definida

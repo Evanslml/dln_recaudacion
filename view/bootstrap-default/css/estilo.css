@@ -5778,3 +5778,9 @@ table.text-center th {
     transition: all 0.3s ease-in-out;
     color: #fff;
 }
+
+@media(min-width: 767px){
+    .overflow-min{
+        overflow: hidden;;
+    }
+}

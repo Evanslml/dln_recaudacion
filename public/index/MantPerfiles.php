@@ -52,7 +52,7 @@ require_once 'public/overall/header.php';
 
 									echo '<input type="hidden" value="',$id,'" id="id',$id,'"/>';
 									echo '<input type="hidden" value="',$usuario,'" id="usuario',$id,'"/>';
-									echo '<input type="hidden" value="',$perfilId,'" id="perfilid',$id,'"/>';
+									echo '<input type="hidden" value="',$perfil,'" id="perfil',$id,'"/>';
 									echo '<input type="hidden" value="',$nombres,'" id="nombres',$id,'"/>';
 									echo '<input type="hidden" value="',$establecimiento,'" id="establecimiento',$id,'"/>';
 

@@ -22,6 +22,9 @@
         return mysqli_fetch_array($y);
       }
      
+      public function rows($y){
+        return mysqli_num_rows($y);
+      }
   }
   
 ?>

@@ -38,4 +38,19 @@ $SIDEBAR_MENU = $('#sidebar-menu'),
         }
     });
 
+
+//MESSAGE RESULT
+
+    $Result=$('#result').width();
+    //console.log($Result);
+
+    $('#resultMessage').width($Result);
+
+    var delayInMilliseconds = 2000; 
+    setTimeout(function() {
+    $('#result').animate({width:'toggle'},350);
+    }, delayInMilliseconds);
+
+
+
 });
