@@ -4,9 +4,10 @@ require_once 'public/overall/header.php';
     include('public/overall/nosesion.php');
    }
  else { ?>
+
 <?php include 'public/overall/menu-header.php'; ?>
 <?php include 'public/overall/menu-aside.php'; ?>
-<?php include 'public/modal/modal_usuarios.php'; ?>
+<?php include 'public/modal/modal_perfiles.php'; ?>
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -21,51 +22,46 @@ require_once 'public/overall/header.php';
         </div>
  
         <div class="col-md-12">
+
+        <div class="row">
+        	<div class="col-xs-12">
+        		<button data-toggle="modal" title="Crear Perfil" onclick="" data-target="#crear_Perfil"  class="btn btn-primary"><i class="fa fa-user"></i> Agregar Perfil</button>
+        	</div>
+        </div>
           <div class="box box-primary">
             <div class="row">
             <div class="col-md-12 col-sm-12 col-xs-12 content">
-              <?php //var_dump($_ListaUsuario);?>
+              <?php //var_dump($_ListaPerfil);?>
 				
 				<div class="table-responsive">
   					<table class="table table-striped ">
 						<thead>
 							<tr>
 								<th>#</th>
-								<th>Usuario</th>
 								<th>Perfil</th>
-								<th>Nombres</th>
-								<th>Establecimiento</th>
+								<th>Descripción</th>
 								<th>Accion</th>
 							</tr>
 						</thead>
 						<tbody>
-
+	
 							<?php
-								foreach ($_ListaUsuario as $key => $value) {
+								foreach ($_ListaPerfil as $key => $value) {
 
 									$id= $key;
-									$usuario= $value[1];
-									$perfilId= $value[5];
-									$perfil= $value[6];
-									$nombres= $value[3];
-									$establecimiento= $value[7];
+									$perfil= $value[1];
+									$descripcion= $value[3];
 
 									echo '<input type="hidden" value="',$id,'" id="id',$id,'"/>';
-									echo '<input type="hidden" value="',$usuario,'" id="usuario',$id,'"/>';
 									echo '<input type="hidden" value="',$perfil,'" id="perfil',$id,'"/>';
-									echo '<input type="hidden" value="',$nombres,'" id="nombres',$id,'"/>';
-									echo '<input type="hidden" value="',$establecimiento,'" id="establecimiento',$id,'"/>';
+									echo '<input type="hidden" value="',$descripcion,'" id="descripcion',$id,'"/>';
 
 									echo '<tr>';
 									echo '<td>',$id,'</td>';
-									echo '<td>',$usuario,'</td>';
 									echo '<td>',$perfil,'</td>';
-									echo '<td>',$nombres,'</td>';
-									echo '<td>',$establecimiento,'</td>';
+									echo '<td>',$descripcion,'</td>';
 									echo '<td>';
-									echo '<a data-toggle="modal" onclick="obtener_datos(',$id,')" data-target="#Lista_Usuario" class="btn-accion"><i class="fa fa-pencil"></i></a></form>';
-									echo '<a data-toggle="modal" onclick="eliminar_datos(',$id,')" data-target="#Deshabilitar_Usuario" class="btn-accion"><i class="fa fa-undo"></i></a>';
-									echo '</td>';
+									echo '<a data-toggle="modal" onclick="obtener_datos(',$id,')" data-target="#crear_Perfil" class="btn-accion"><i class="fa fa-pencil"></i></a>';
 									echo '</tr>';
 								}
 							?>		

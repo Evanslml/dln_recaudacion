@@ -15,12 +15,15 @@
  require_once('classConexion/conexion.' . $Extencion);
  require_once('funciones/usuario.' . $Extencion);
  require_once('funciones/permiso.' . $Extencion);
+ require_once('funciones/clasificador.' . $Extencion);
  //instaciamos User() para utilizarlo en el sitio
  
  $_usuario = Acceso::User();
  $_ListaUsuario = Acceso::ListaUsuarioPerfil();
  $_ListaPerfil = Acceso::ListaPerfil();
  $_ListaEstablecimientos = Acceso::ListaEstablecimientos();
+ $_ListaClasificador = Clasificador::ListaClasificador();
+
 
 
  if (isset($_SESSION['sesion_id'])){ //Si esta logeado y  variable SESSION esta definida

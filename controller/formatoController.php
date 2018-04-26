@@ -1,3 +1,3 @@
 <?php
-include('public/index/formato01.php');
+include('public/index/FormRecDiaria.php');
 ?>
