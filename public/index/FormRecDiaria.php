@@ -130,12 +130,14 @@ require_once 'public/overall/header.php';
         <div class="col-md-12">
           <div class="box box-primary">  
             <div class="row">
-              <div class="col-md-1">
-                
-              </div>
-              <div class="col-md-11">
-                <h4>Boletas</h4>
-              </div>
+              <table>
+                <thead>
+                  
+                </thead>
+                <tbody>
+                  
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
