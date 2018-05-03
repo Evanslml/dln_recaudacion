@@ -5779,17 +5779,109 @@ table.text-center th {
     color: #fff;
 }
 
+
+/*********************************/
+/* TABLE RECAUDACION             */
+/*********************************/
+
+.panel-head {
+    margin: 10px;    
+}
+.panel-head>.panel-heading{
+    min-height: 55px;
+    height: 55px;
+    padding: 0px 15px;
+}
+.panel-head>.panel-heading>h3{
+    line-height: 55px;
+    display: inline-block;
+}
+.panel-head>.panel-heading>.panel-tools{
+    float: right;
+    display: inline-block;
+    height: 56px;
+    margin: -1px;
+    padding: 0;
+}
+.panel-head>.panel-heading>.panel-tools>.button{
+    height: 56px;
+    line-height: 56px;
+    position: relative;
+    width: 60px;
+    display: inline-block;
+    margin-right: -3px;
+    transition: all 0.2s ease-in-out;
+}
+.panel-head>.panel-heading>.panel-tools>.button:hover{
+    width: 180px;
+}
+.panel-head>.panel-heading>.panel-tools>.button:nth-child(1){
+    background: #27ae60;
+}
+.panel-head>.panel-heading>.panel-tools>.button:nth-child(1):hover{
+    background: #44c37a;
+}
+.panel-head>.panel-heading>.panel-tools>.button:nth-child(2){
+    background: #9b59b6;
+}
+.panel-head>.panel-heading>.panel-tools>.button:nth-child(2):hover{
+    background: #c28bd8;
+}
+.panel-head>.panel-heading>.panel-tools>.button:nth-child(3){
+    background: #a94442;
+}
+.panel-head>.panel-heading>.panel-tools>.button:nth-child(3):hover{
+    background: #b77473;
+}
+
+.panel-head>.panel-heading>.panel-tools>.button>a{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+.panel-head>.panel-heading>.panel-tools>.button>a>i{
+    font-size: 25px;
+    display: inline-block;
+    margin-left: 20px;
+    line-height: 56px;
+    color: #fff;
+}
+.panel-head>.panel-heading>.panel-tools>.button>a>span{
+    display: none;
+    color: #fff;
+    margin-left: 15px;
+    font-size: 17px;
+}
+.panel-head>.panel-heading>.panel-tools>.button:hover>a>span{
+    display: inline-block;
+}
+
 #table_recaudacion>tbody>tr>td{
     padding: 2px 8px !important;
     vertical-align: middle;
 }
-input.form-control{
+#table_recaudacion>tbody>tr>td>input.form-control{
     height: 25px;
     width: 100%;
     padding: 0px 6px;text-align: center
 }
 
+/*********************************/
+/*  TABLE RECAUDACION  PANEL UNO */
+/*********************************/
+
+.panel-body .panel-uno .col-md-4 .addal:after{
+    content: 'al';
+    position: absolute;
+    top: 7px;
+    right: -5px;
+}
+
+
 @media(min-width: 767px){
+    .panel-body .panel-uno label{
+    padding: 7px; text-align: right;
+    }
     .overflow-min{
         overflow: hidden;;
     }
@@ -5800,10 +5892,13 @@ input.form-control{
     #table_recaudacion thead tr th:nth-child(2){width: 10% !important;}
     #table_recaudacion thead tr th:nth-child(3){width: 65% !important;}
     #table_recaudacion thead tr th:nth-child(4){width: 10% !important;}
-    #table_recaudacion thead tr th:nth-child(4){width: 10% !important;}
+    #table_recaudacion thead tr th:nth-child(5){width: 10% !important;}
 }
 
 @media(max-width: 767px){
+     .panel-head>.panel-heading>h3{
+        display: none;
+    }
     .table-responsive>.table>tbody>tr>td, .table-responsive>.table>tbody>tr>th, .table-responsive>.table>tfoot>tr>td, .table-responsive>.table>tfoot>tr>th, .table-responsive>.table>thead>tr>td, .table-responsive>.table>thead>tr>th{
         white-space: normal !important;
     }
@@ -5814,8 +5909,35 @@ input.form-control{
     #table_recaudacion thead tr th:nth-child(2){width: 95px !important;}
     #table_recaudacion thead tr th:nth-child(3){width: 450px !important;}
     #table_recaudacion thead tr th:nth-child(4){width: 100px !important;}
-    #table_recaudacion thead tr th:nth-child(4){width: 100px !important;}
+    #table_recaudacion thead tr th:nth-child(5){width: 100px !important;}
 }
 
 .disable-1-css{background: #ffffa8 !important;}
 .disable-2-css{background: #ffd6a1 !important;}
+
+
+
+
+.filterable {
+    margin-top: 15px;
+}
+.filterable .panel-heading .pull-right {
+    margin-top: -20px;
+}
+.filterable .filters input[disabled] {
+    background-color: transparent;
+    border: none;
+    cursor: auto;
+    box-shadow: none;
+    padding: 0;
+    height: auto;
+}
+.filterable .filters input[disabled]::-webkit-input-placeholder {
+    color: #333;
+}
+.filterable .filters input[disabled]::-moz-placeholder {
+    color: #333;
+}
+.filterable .filters input[disabled]:-ms-input-placeholder {
+    color: #333;
+}

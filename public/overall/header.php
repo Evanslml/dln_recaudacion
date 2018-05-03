@@ -23,6 +23,25 @@
   <script src="<?php echo URL_VIEW; ?>bootstrap-default/js/jquery-2.2.3.min.js"></script>
   <!--custom-->
   <script src="<?php echo URL_VIEW; ?>bootstrap-default/js/custom.js"></script>
+
+  <?php
+
+    if(isset($_GET['view'])) {
+      $vista = $_GET['view'];
+
+      //var_dump($vista);
+      switch ($vista) {
+        case 'formato':
+            echo '<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.css" rel="stylesheet" type="text/css" />';
+          break;
+        
+        default:
+          # code...
+          break;
+      }
+    }
+
+  ?>
   
   <!--[if lt IE 9]>
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
