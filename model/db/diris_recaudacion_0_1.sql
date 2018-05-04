@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 02-05-2018 a las 22:01:13
+-- Tiempo de generación: 04-05-2018 a las 23:08:53
 -- Versión del servidor: 5.7.14
 -- Versión de PHP: 5.6.25
 
@@ -173,7 +173,7 @@ INSERT INTO `link` (`link_id`, `link_nombre`, `link_url`, `link_estado`) VALUES
 --
 
 CREATE TABLE `lmes` (
-  `LMES_ID` int(11) NOT NULL,
+  `LMES_ID` int(2) UNSIGNED ZEROFILL NOT NULL,
   `LMES_NOMBRE` varchar(50) DEFAULT NULL,
   `LMES_ESTADO` int(11) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
@@ -183,15 +183,15 @@ CREATE TABLE `lmes` (
 --
 
 INSERT INTO `lmes` (`LMES_ID`, `LMES_NOMBRE`, `LMES_ESTADO`) VALUES
-(1, 'ENERO', 1),
-(2, 'FEBRERO', 1),
-(3, 'MARZO', 1),
-(4, 'ABRIL', 1),
-(5, 'MAYO', 1),
-(6, 'JUNIO', 1),
-(7, 'JULIO', 1),
-(8, 'AGOSTO', 1),
-(9, 'SETIEMBRE', 1),
+(01, 'ENERO', 1),
+(02, 'FEBRERO', 1),
+(03, 'MARZO', 1),
+(04, 'ABRIL', 1),
+(05, 'MAYO', 1),
+(06, 'JUNIO', 1),
+(07, 'JULIO', 1),
+(08, 'AGOSTO', 1),
+(09, 'SETIEMBRE', 1),
 (10, 'OCTUBRE', 1),
 (11, 'NOVIEMBRE', 1),
 (12, 'DICIEMBRE', 1);
@@ -203,14 +203,15 @@ INSERT INTO `lmes` (`LMES_ID`, `LMES_NOMBRE`, `LMES_ESTADO`) VALUES
 --
 
 CREATE TABLE `lrecaudacion` (
-  `LRECAU_ID` int(11) NOT NULL,
+  `LRECAU_ID` varchar(15) NOT NULL,
   `NESTA_RENAES` int(11) DEFAULT NULL,
   `LANIO_ID` int(11) DEFAULT NULL,
-  `LMES_ID` int(11) DEFAULT NULL,
+  `LMES_ID` int(2) UNSIGNED ZEROFILL DEFAULT NULL,
   `LRECAU_FECREC` date DEFAULT NULL,
   `LCOMP_ID` int(2) UNSIGNED ZEROFILL DEFAULT NULL,
   `LRECTIP_ID` int(2) UNSIGNED ZEROFILL DEFAULT NULL,
-  `LRECAU_BOLETA` varchar(50) DEFAULT NULL,
+  `LRECAU_INIBOL` varchar(20) DEFAULT NULL,
+  `LRECAU_FINBOL` varchar(20) DEFAULT NULL,
   `LRECAU_IMPORTE` double(11,2) DEFAULT NULL,
   `LRECAU_FECDEP` date DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
@@ -431,7 +432,7 @@ INSERT INTO `musuario` (`MUSU_ID`, `MUSU_LOGIN`, `MUSU_PASSWORD`, `MUSU_NOMBRES`
 (3, 'addemo@gmail.com', 'adrla7IBSfTZQ', 'CARLOS QUISPE ORE', '2018-04-23', NULL, '958690239', NULL, NULL, NULL, NULL, NULL, 1, 03, 05794),
 (4, 'jivancplml@gmail.com', 'jiwKbeoxGk8Y6', 'IVAN JORGE CRUZ PEÑA', NULL, NULL, '', NULL, NULL, NULL, NULL, NULL, 1, 03, 00000),
 (5, '23132@gsafsd.dsfsd', '235QkRJTXcpFI', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 01, 05791),
-(6, 'sdfsd@sfsd.fsdfsdf', 'sdk14yVH5qAf2', 'SFSDFD', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 01, 05791),
+(6, 'sdfsd@sfsd.fsdfsdf', '', 'SFSDFD', NULL, NULL, '9959565', NULL, NULL, NULL, '2018-05-03', NULL, 1, 03, 05791),
 (7, '1235@dsadas.asdas', '12S9Nimssyhng', 'JUAN DE LA CRUZ DEL POZO', NULL, NULL, '97654879', NULL, NULL, NULL, NULL, NULL, 0, 03, 05769),
 (8, 'HUIJ@GMAAIL.COM', 'HUFmtzzZcx5To', 'EDMUNDO FLORES', NULL, NULL, '123456789', 'HUIJ@GMAAIL.COM', NULL, 'user_man.png', NULL, NULL, 0, 02, 05772),
 (9, 'IJIJIJ@hotmail.com', 'IJ27diVF8dmbc', 'JUAN ', NULL, NULL, '123', 'IJIJIJ@hotmail.com', NULL, 'user_man.png', NULL, NULL, 1, 03, 07138);
@@ -2876,7 +2877,7 @@ ALTER TABLE `link`
 -- AUTO_INCREMENT de la tabla `lmes`
 --
 ALTER TABLE `lmes`
-  MODIFY `LMES_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `LMES_ID` int(2) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT de la tabla `mperfil`
 --
