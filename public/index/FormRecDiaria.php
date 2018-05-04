@@ -16,7 +16,8 @@ require_once 'public/overall/header.php';
     <!-- Content Header (Page header) -->
 
     <section class="content">
- 
+      
+      <div id="resultados"></div>
       <div class="row">
 
         <div class="panel panel-primary panel-head"> 
