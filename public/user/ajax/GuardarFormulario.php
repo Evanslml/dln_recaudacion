@@ -1,23 +1,41 @@
 <?php
 
- require_once('../../../core/core.php');
+require_once('../../../core/core.php');
+
 
 if(strtolower($_SERVER['REQUEST_METHOD']) != 'post'){
     estado_servidor('Error! Metodo de ingreso invalido!');
 }
+	if (empty($_POST['id_establecimiento']) || $_POST['id_establecimiento']=='00000' || $_POST['id_establecimiento']=='00001'
+		|| $_POST['id_establecimiento']=='00002' || $_POST['id_establecimiento']=='00003') {
+		$errors[] = "Debe registrar con una cuenta de un establecimiento";
+	}else if (empty($_POST['bolinirdr'])) {
+           	$errors[] = "Debe ingresar el número de boleta RDR";
+           	?> <script>$("#bolinirdr").focus();</script> <?php
+        } else if(empty($_POST['bolfinrdr'])){
+           	$errors[] = "Debe ingresar el número de boleta RDR";
+           	?> <script>$("#bolfinrdr").focus();</script> <?php
+        } else if(empty($_POST['bolinisismed'])){
+           	$errors[] = "Debe ingresar el número de boleta SISMED";
+           	?> <script>$("#bolinisismed").focus();</script> <?php
+        } else if(empty($_POST['bolfinsismed'])){
+           	$errors[] = "Debe ingresar el número de boleta SISMED";
+           	?> <script>$("#bolfinsismed").focus();</script> <?php
+        } else if($_POST['bolinirdr'] > $_POST['bolfinrdr']){
+        	$errors[] = "El orden de número de Boleta RDR es de menor a mayor";
+        } else if($_POST['bolinisismed'] > $_POST['bolfinsismed']){
+        	$errors[] = "El orden de número de Boleta SISMED es de menor a mayor";
+        }
 
-
-	if (empty($_POST['bolinirdr'])) {
-
-           $errors[] = "Boleta Vacia";
-
-        } else {
+        else {
         	$a = $_POST['bolinirdr'];
         	$b = $_POST['bolfinrdr'];
         	$c = $_POST['bolinisismed'];
         	$d = $_POST['bolfinsismed'];
         	$e = date($_POST['date']);
         	$f = date("Y-m-d", strtotime($e));
+        	$now = new DateTime();
+	 		$h=$now->format('Y-m-d H:i:s');
 
 			$c1=intval($_POST['c1']);$c2=intval($_POST['c2']);$c3=intval($_POST['c3']);$c4=intval($_POST['c4']);$c5=intval($_POST['c5']);$c6=intval($_POST['c6']);$c7=intval($_POST['c7']);$c8=intval($_POST['c8']);$c9=intval($_POST['c9']);$c10=intval($_POST['c10']);
 			$c11=intval($_POST['c11']);$c12=intval($_POST['c12']);$c13=intval($_POST['c13']);$c14=intval($_POST['c14']);$c15=intval($_POST['c15']);$c16=intval($_POST['c16']);$c17=intval($_POST['c17']);$c18=intval($_POST['c18']);$c19=intval($_POST['c19']);$c20=intval($_POST['c20']);
@@ -35,21 +53,72 @@ if(strtolower($_SERVER['REQUEST_METHOD']) != 'post'){
             $m51=number_format(intval($_POST['m51'])/100, 2, '.', '');$m52=number_format(intval($_POST['m52'])/100, 2, '.', '');$m53=number_format(intval($_POST['m53'])/100, 2, '.', '');$m54=number_format(intval($_POST['m54'])/100, 2, '.', '');$m55=number_format(intval($_POST['m55'])/100, 2, '.', '');$m56=number_format(intval($_POST['m56'])/100, 2, '.', '');$m57=number_format(intval($_POST['m57'])/100, 2, '.', '');$m58=number_format(intval($_POST['m58'])/100, 2, '.', '');$m59=number_format(intval($_POST['m59'])/100, 2, '.', '');$m60=number_format(intval($_POST['m60'])/100, 2, '.', '');
             $m61=number_format(intval($_POST['m61'])/100, 2, '.', '');$m62=number_format(intval($_POST['m62'])/100, 2, '.', '');$m63=number_format(intval($_POST['m63'])/100, 2, '.', '');
 
-
-        	//$messages[] = $a.''.$b.''.$c.''.$d.''.var_dump($e).'///'.$c1.''. $c2.''. $c3.''. $c4.''. $c5.''. $c6.''. $c7.''. $c8.''. $c9.''. $c10.''. $c11.''. $c12.''. $c13.''. $c14.''. $c15.''. $c16.''. $c17.''. $c18.''. $c19.''. $c20.''. $c21.''. $c22.''. $c23.''. $c24.''. $c25.''. $c26.''. $c27.''. $c28.''. $c29.''. $c30.''. $c31.''. $c32.''. $c33.''. $c34.''. $c35.''. $c36.''. $c37.''. $c38.''. $c39.''. $c40.''. $c41.''. $c42.''. $c43.''. $c44.''. $c45.''. $c46.''. $c47.''. $c48.''. $c49.''. $c50.''. $c51.''. $c52.''. $c53.''. $c54.''. $c55.''. $c56.''. $c57.''. $c58.''. $c59.''. $c60.''. $c61.''. $c62.''. $c63.'///'.$m1.''. $m2.''. $m3.''. $m4.''. $m5.''. $m6.''. $m7.''. $m8.''. $m9.''. $m10.''. $m11.''. $m12.''. $m13.''. $m14.''. $m15.''. $m16.''. $m17.''. $m18.''. $m19.''. $m20.''. $m21.''. $m22.''. $m23.''. $m24.''. $m25.''. $m26.''. $m27.''. $m28.''. $m29.''. $m30.''. $m31.''. $m32.''. $m33.''. $m34.''. $m35.''. $m36.''. $m37.''. $m38.''. $m39.''. $m40.''. $m41.''. $m42.''. $m43.''. $m44.''. $m45.''. $m46.''. $m47.''. $m48.''. $m49.''. $m50.''. $m51.''. $m52.''. $m53.''. $m54.''. $m55.''. $m56.''. $m57.''. $m58.''. $m59.''. $m60.''. $m61.''. $m62.''. $m63;
-
-        	$ida= substr($f,0,4);
+            $fo = '01';
+        	$ida= substr($f,2,2);
         	$idm= substr($f,5,2);
         	$idd= substr($f,8,2);
-        	$ide= '05757';
-        	$id1='0101'.$ida.$idm.$idd.$ide;
-        	$imprdr = $m3+$m5+$m21+$m62;
+        	$t1='01';
+        	$t2='02';
+        	$ide= $_POST['id_establecimiento'];
+        	$id1= $fo.$ida.$idm.$idd.$ide;
+        	$imprdr = $m3 + $m5 + $m21 +$m62;
+        	$cantrdr = $c3 + $c5 + $c21 +$c62;
+        	$impsismed = $m1;
+        	$cantsismed = $c1;
+	 
+        	//$messages[] = 'Id '. $id1.'estab '.$ide.'año '.$ida.'mes '.$idm.'fecha '.$f.'boleta ini '.$a.'Boleta fin '.$b.'importe '.$imprdr.'fecha actual'.$h;
 
-        	$messages[] = 'Id'. $id1.'estab'.$ide.'año'.$ida.'mes'.$idm.'fecha'.$e.'boleta ini'.$a.'Boleta fin'.$b.'importe'.$imprdr.'/2018-05-04/';
-        	$messages[] = 'Bien hecho, se realizó el guardado satisfactoriamente';
+        	$z = array(
+        		'0' => $id1,
+        		'1' => $ide,
+        		'2' => $ida,
+        		'3' => $idm,
+        		'4' => $f,
+        		'5' => $fo,
+        		'6' => $c,
+        		'7' => $d,
+        		'8' => $cantrdr,
+        		'9' => $imprdr,
+        		'10' => $a,
+        		'11' => $b,
+        		'12' => $cantsismed,
+        		'13' => $impsismed,
+        		'14' => $h,
+        		'15' => 0
+        	);
 
-        	$NuevoFormulario = new Recaudacion($id1,$ide,$ida,$idm,$f,'01','01',$a,$b,'3.65','2018-05-04');
-	        $NuevoFormulario ->IngresarRecaudacion();
+        	//var_dump($z);
+
+        	$NuevoFormulario = new Recaudacion($z[0],$z[1],$z[2],$z[3],$z[4],$z[5],$z[6],$z[7],$z[8],$z[9],$z[10],$z[11],$z[12],$z[13],$z[14],$z[15]);
+        	$existe = $NuevoFormulario ->BuscarRecaudacion ();
+        	
+			if($existe == 0 ){
+				
+				$NuevoFormulario ->IngresarRecaudacion();
+
+		        for ($i=1; $i <= 2; $i++) { 
+		        	$cantidad= ${'c' . $i};
+		        	$monto= ${'m' . $i};
+		        	$new= 'NuevoRecauDetalle' . $i;
+		        	$new = new RecaudacionDetalle($id1,$t1,$i,$cantidad,$monto,'');
+		        	$new ->IngresoDetalleRecaudacion();
+		        }
+		        for ($i=3; $i <= 63; $i++) { 
+		        	$cantidad= ${'c' . $i};
+		        	$monto= ${'m' . $i};
+		        	$new= 'NuevoRecauDetalle' . $i;
+		        	$new = new RecaudacionDetalle($id1,$t2,$i,$cantidad,$monto,'');
+		        	$new ->IngresoDetalleRecaudacion();
+		        }
+		        
+		        $messages[] ='Se ha guardado correctamente los datos';
+
+			} else{
+				$errors[]= 'No se ha podido realizar el ingreso, El Formulario ya existe';
+			}     	
+
+        	/*
+	        */
 
        }
 

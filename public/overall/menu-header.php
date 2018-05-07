@@ -20,7 +20,8 @@
       <!-- Navbar Right Menu -->
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
- 
+
+          <?php //var_dump($_ListaUsuario[$_SESSION['sesion_id']]['NEST_NOMBRE']);?>
           <!-- User Account Menu -->
           <li class="dropdown user user-menu">
             <!-- Menu Toggle Button -->
@@ -36,9 +37,9 @@
                 <img src="<?php echo URL_VIEW.'bootstrap-default/img/'.$_usuario[$_SESSION['sesion_id']]['MUSU_IMG']; ?>" class="img-circle" alt="User Image">
  
                 <p>
-                  <?php 
-                  
-                  echo $_usuario[$_SESSION['sesion_id']]['MUSU_NOMBRES']; ?> </br> <?php  echo $_ListaUsuario[$_SESSION['sesion_id']]['MPERF_NOMBRE']; ?>
+                  <?php echo $_usuario[$_SESSION['sesion_id']]['MUSU_NOMBRES']; ?> </br> <?php  echo $_ListaUsuario[$_SESSION['sesion_id']]['MPERF_NOMBRE']; ?> </br>
+                  <small><b><?php echo $_ListaUsuario[$_SESSION['sesion_id']]['NEST_NOMBRE']?></b></small>
+                  <input type="hidden" id="id_establecimiento" value="<?php echo $_ListaUsuario[$_SESSION['sesion_id']]['NESTA_RENAES']?>">
                   
                   <?php
                   $fecha = $_usuario[$_SESSION['sesion_id']]['MUSU_FECINI'];

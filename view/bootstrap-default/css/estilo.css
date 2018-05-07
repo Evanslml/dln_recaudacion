@@ -5779,6 +5779,9 @@ table.text-center th {
     color: #fff;
 }
 
+.table>tbody>tr>td{
+    vertical-align: middle;
+}
 
 /*********************************/
 /* TABLE RECAUDACION             */
@@ -5920,6 +5923,9 @@ table.text-center th {
 
 .filterable {
     margin-top: 15px;
+}
+.filterable .panel-body{
+    overflow-x: auto;
 }
 .filterable .panel-heading .pull-right {
     margin-top: -20px;

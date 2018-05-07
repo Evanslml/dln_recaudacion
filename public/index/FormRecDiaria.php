@@ -1,7 +1,7 @@
 <?php
 require_once 'public/overall/header.php'; 
 ?>
-<script src="view/jquery-price-format/jquery.priceformat.min.js"></script>
+
 <?php
    if (!isset($_SESSION['sesion_id'])){
     include('public/overall/nosesion.php');

@@ -31,8 +31,12 @@
 
       //var_dump($vista);
       switch ($vista) {
+        case 'todosformatos':
         case 'formato':
-            echo '<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.css" rel="stylesheet" type="text/css" />';
+        ?>
+        <link rel="stylesheet" href="<?php echo URL_VIEW; ?>bootstrap-datepicker/1.3.0/css/datepicker.css">
+        <script src="view/jquery-price-format/jquery.priceformat.min.js"></script>
+        <?php
           break;
         
         default:

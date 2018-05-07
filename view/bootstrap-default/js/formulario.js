@@ -252,6 +252,7 @@
           var bolinisismed = $('#bolinisismed').val();
           var bolfinsismed = $('#bolfinsismed').val();
           var date = $('#datepicker input').val();
+          var id_establecimiento = $('#id_establecimiento').val();
 
           var c1 = $('#cantidad-1').val();
           var c2 = $('#cantidad-2').val();
@@ -383,7 +384,7 @@
                  
           var parametros = 
           'bolinirdr='+bolinirdr+'&bolfinrdr='+bolfinrdr+'&bolinisismed='+bolinisismed+'&bolfinsismed='+bolfinsismed+
-          '&date='+date+
+          '&date='+date+'&id_establecimiento='+id_establecimiento+
           '&c1='+c1+'&c2='+c2+'&c3='+c3+'&c4='+c4+'&c5='+c5+'&c6='+c6+'&c7='+c7+'&c8='+c8+'&c9='+c9+'&c10='+c10+
           '&c11='+c11+'&c12='+c12+'&c13='+c13+'&c14='+c14+'&c15='+c15+'&c16='+c16+'&c17='+c17+'&c18='+c18+'&c19='+c19+'&c20='+c20+
           '&c21='+c21+'&c22='+c22+'&c23='+c23+'&c24='+c24+'&c25='+c25+'&c26='+c26+'&c27='+c27+'&c28='+c28+'&c29='+c29+'&c30='+c30+

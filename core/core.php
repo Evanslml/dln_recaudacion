@@ -17,6 +17,7 @@
  require_once('funciones/permiso.' . $Extencion);
  require_once('funciones/clasificador.' . $Extencion);
  require_once('funciones/recaudacion.' . $Extencion);
+ require_once('funciones/pagination.' . $Extencion);
  //instaciamos User() para utilizarlo en el sitio
  
  $_usuario = Acceso::User();
