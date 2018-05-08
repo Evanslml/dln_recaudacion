@@ -4,6 +4,71 @@ require_once('../../../core/core.php');
     
     $action = (isset($_REQUEST['action'])&& $_REQUEST['action'] !=NULL)?$_REQUEST['action']:'';    
 
+    //SAVE VOUCHER
+    if($action == 'json'){
+
+        //header('Content-Type: text/plain');
+        /*
+        if (isset($_REQUEST['myData'])){
+            $param = json_decode($_REQUEST['myData']);    
+        }else{
+            $param ="Variable no definida";
+        }*/
+
+        //$decoded = json_decode($_GET['myData'],true);
+        
+        //echo "json";
+        //var_dump($decoded);
+/*
+         foreach($param  as $val){
+            echo "<br> - valor: ".$val;
+        }
+*/
+        $data = json_decode($_POST['data1']);
+        $vouchers = array();
+        $fechas = array();
+        $montos = array();
+
+        foreach($data  as $key=>$val){
+
+            if($key ==0){
+                $id = $val;
+
+            } else if($key ==1){
+                $nFilas = $val;
+
+            } else if(($key+1) %3 == 0){
+                $vouchers[] = $val;
+
+            }else if(($key +3) %3 == 0){
+                $fechas[] = $val;
+
+            }else if(($key+2) %3 == 0){
+                $montos[] = $val;
+
+            } /*else{
+                echo "<br> - valor: ".$val;
+            }*/
+        }
+        
+        //echo $vouchers[1];
+
+        $now = new DateTime();
+        $h=$now->format('Y-m-d H:i:s');
+        
+        for ($i=1; $i<=$nFilas; $i++) {
+            $n= $i-1; 
+            $e = date($fechas[$n]);
+            $f = date("Y-m-d", strtotime($e));
+            $new= 'IngresoVoucher' . $n;
+            $new = new RecaudacionVoucher($id,$vouchers[$n],$f,$montos[$n],1,$h);
+            $new->IngresoVocuherRecaudacion();
+        }
+
+    }
+
+
+    //PAGINATION
     if($action == 'ajax'){
 
          if(empty($_REQUEST['fecha_inicio'])){
@@ -68,6 +133,10 @@ require_once('../../../core/core.php');
 
                     <?php
                     foreach ($query as $key => $value) {
+                        $m1 =number_format((float)$value[7], 2, '.', '');
+                        $m2 =number_format((float)$value[11], 2, '.', '');
+                        $monto = number_format((float)($m1+$m2), 2, '.', '');
+
                         if($value[12]=='1'){
                         echo '<tr style="background:#dff0d8">';
                         } else{
@@ -79,14 +148,14 @@ require_once('../../../core/core.php');
                         echo '<td>del ',$value[4],' al ',$value[5],'</td>'; //
                         echo '<td>del ',$value[8],' al ',$value[9],'</td>'; //
                         echo '<td>',$value[6] + $value[10],'</td>'; //
-                        echo '<td> S/. ',$value[7] + $value[11],'</td>'; //
+                        echo '<td> S/. ',$monto,'</td>'; //
                         echo '<td>';
-                        if($_ListaUsuario[$_SESSION['sesion_id']][5] == '01' || $_ListaUsuario[$_SESSION['sesion_id']][5] == '02' ) {//si es administrador
+                        if($value[12]=='0') {//si es administrador
                         echo '<a href="#" class="btn btn-default btn-accion" title="Editar formulario" onclick="editar(',$value[0],');"><i class="fa fa-pencil"></i></a>'; //
                         }
-                        if($value[12]=='0' || $_ListaUsuario[$_SESSION['sesion_id']][5] == '01' || $_ListaUsuario[$_SESSION['sesion_id']][5] == '02'){
+                        if($value[12]=='0'){
                         echo '<a data-toggle="modal" data-target="#Ingreso_Voucher" class="btn btn-default btn-accion" title="Agregar Voucher" 
-                        onclick="agregar(',$key,');"><i class="fa fa-credit-card"></i></a>'; //
+                        onclick="agregar(',$key,',',$monto,');"><i class="fa fa-credit-card"></i></a>'; //
                         }
                         echo '</td>'; //
                         echo  '</tr>';

@@ -35,12 +35,13 @@
           var yyyy = date.getFullYear(); 
 
 //Format price
+//--------------------------------------------------------------------------
           
-
-
           formatprice();
           formatdate();
 
+//Add row Table          
+//--------------------------------------------------------------------------
             $("#btnAdd").bind("click", function () {
                 var div = $("<tr />");
                 div.html(GetDynamicTextBox('Ingrese N° Voucher',yyyy+'-'+mm+'-'+dd,'000'));
@@ -50,16 +51,109 @@
                 $(this).closest("tr").remove();
             });
 
-          $("#btn_submit").click(function(){
+//BTN save modal
+//--------------------------------------------------------------------------
+          $("#btn_submit").click(function(event){
             event.preventDefault();
             
-
+            var id = $("#mod_idForm").val();
+            var montototal = $("#mod_monto").val();
             var nFilas = $("#TextBoxContainer tr").length;
-            /*
-            for (var i = 0; i <= nFilas; i++) {
-              Things[i]
-            }*/
+            var array = new Array();
+            
+            array.push(id,nFilas);
+            
+            for (var i = 1; i <= nFilas; i++) {
+              
+                  var vouchers = 'voucher'.concat(i);
+                  var fechas = 'fecha'.concat(i);
+                  var montos = 'monto'.concat(i);
 
+                  var vouchers = $("#TextBoxContainer tr:nth-child("+i+") td input#voucher").val();
+                  if(vouchers.length == 0){
+                    $("#mensaje").html('<div class="alert alert-danger" role="alert">\
+                      <button type="button" class="close" data-dismiss="alert">&times;</button>\
+                      <strong>Error!</strong> \
+                      Debe Ingresar el número de operación del voucher en la fila'+ i +'</div>');
+                    return false;
+                  }
+                  var fechas = $("#TextBoxContainer tr:nth-child("+i+") td input#fecha").val();
+                  if(fechas.length == 0){
+                    $("#mensaje").html('<div class="alert alert-danger" role="alert">\
+                      <button type="button" class="close" data-dismiss="alert">&times;</button>\
+                      <strong>Error!</strong> \
+                      Debe Ingresar la fecha del depósito del voucher en la fila '+ i +'</div>');
+                    return false;
+                  }
+                  var montos = (Number($("#TextBoxContainer tr:nth-child("+i+") td input#price").unmask())/100).toFixed(2);
+                  if(montos == '0.00'){
+                    $("#mensaje").html('<div class="alert alert-danger" role="alert">\
+                      <button type="button" class="close" data-dismiss="alert">&times;</button>\
+                      <strong>Error!</strong> \
+                      Debe Ingresar un monto en la fila '+ i +'</div>');
+                    return false;
+                  }
+                  
+                  array.push(vouchers,fechas,montos);
+              //console.log(array[i]);
+            }
+
+            var montoingresado = new Array();
+            array.forEach( function(valor, indice, array) {
+                //console.log("En el índice " + indice + " hay este valor: " + valor);
+                if(indice ==0 && valor=='0.00'){
+                    alert("Error : Intente nuevamente");
+                    return false;
+                } else if(indice ==1 && valor=='000000000000000'){
+                    alert("Error : Intente nuevamente");
+                    return false;
+                } else if(indice > 1 && (indice+2) %3 ==0 ){
+                    montoingresado.push(valor*100);
+                }
+            });
+
+            //Calculando suma monto
+            //console.log(montoingresado);
+            sumamontoingresado = 0;
+            montoingresado.forEach( function(valor, indice, array){
+              sumamontoingresado += parseInt(valor);
+            });
+
+            sumamontoingresado = ((sumamontoingresado)/100).toFixed(2);
+            console.log(sumamontoingresado);
+
+            if(sumamontoingresado != montototal){
+              $("#mensaje").html('<div class="alert alert-danger" role="alert">\
+                      <button type="button" class="close" data-dismiss="alert">&times;</button>\
+                      <strong>Error!</strong> \
+                      El monto total debe de ser '+ montototal +'</div>');
+              return false;
+            } else{
+              $("#mensaje").html('<div class="alert alert-success" role="alert">\
+                      <button type="button" class="close" data-dismiss="alert">&times;</button>\
+                      <strong>Bien!</strong> \
+                      Se guardo satisfactoriamente los datos</div>');
+             //console.log(array);
+              $.ajax({
+                      type: 'POST',
+                      url: './public/user/ajax/AllFormularios.php?action=json',
+                      data: { 'data1':JSON.stringify(array) } ,
+                      success: function (response) {
+
+                          setTimeout(function(){
+                                //$('#Ingreso_Voucher').modal('hide');
+                                location.reload();
+                          },1500); 
+                          console.log(response);
+                      },
+                      error: function () {
+                          alert("error");
+                      }
+                  }); 
+
+            }
+
+ /*         
             var voucher1 = $("#TextBoxContainer tr:nth-child(1) td input#voucher").val();
             var fecha1 = $("#TextBoxContainer tr:nth-child(1) td input#fecha").val();
             var monto1 = $("#TextBoxContainer tr:nth-child(1) td input#price").unmask();            
@@ -72,12 +166,12 @@
 
             console.log("N°: "+ nFilas + " V: " + voucher1 + " F: " + fecha1 + " m: " +monto1);
             console.log("N°: "+ nFilas + " V: " + voucher2 + " F: " + fecha2 + " m: " +monto2);
-            
+   */         
           });
+//---------------------------------------------------------
 
 
-
-      }); //
+      }); // -Ready Function
 
       function GetDynamicTextBox(a,b,c) {
         
@@ -116,9 +210,15 @@
     }   
 
 
-    function agregar(parametro){
-      var a = zeroFill(parametro,13);
-      $("#mod_idForm").val(a);
+    function agregar(a,b){
+      $("#mensaje").html("");
+      $('#TextBoxContainer tr td:nth-child(1) input').val('');
+      $('#TextBoxContainer tr td:nth-child(2) input').val('');
+      $('#TextBoxContainer tr td:nth-child(3) input').val('S/ 0.00');
+      var id = zeroFill(a,13);
+      var monto = b.toFixed(2) ;
+      $("#mod_idForm").val(id);
+      $("#mod_monto").val(monto);
     }
 
     function zeroFill( number, width )

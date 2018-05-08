@@ -44,7 +44,7 @@ require_once 'public/overall/header.php';
 							</tr>
 						</thead>
 						<tbody>
-	
+						
 							<?php
 								foreach ($_ListaPerfil as $key => $value) {
 
@@ -61,7 +61,7 @@ require_once 'public/overall/header.php';
 									echo '<td>',$perfil,'</td>';
 									echo '<td>',$descripcion,'</td>';
 									echo '<td>';
-									echo '<a data-toggle="modal" onclick="obtener_datos(',$id,')" data-target="#crear_Perfil" class="btn-accion"><i class="fa fa-pencil"></i></a>';
+									echo '<a data-toggle="modal" onclick="obtener_datos(',$id,')" data-target="#editar_Perfil" class="btn-accion"><i class="fa fa-pencil"></i></a>';
 									echo '</tr>';
 								}
 							?>		
@@ -80,6 +80,6 @@ require_once 'public/overall/header.php';
 <?php 
  }
 ?>
-<script src="<?php echo URL_VIEW; ?>bootstrap-default/js/modalUsuario.js"></script>
+<script src="<?php echo URL_VIEW; ?>bootstrap-default/js/modalPerfiles.js"></script>
 <?php require_once 'public/overall/footer-index.php'; ?>
 <?php require_once 'public/overall/footer.php'; ?>

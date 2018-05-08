@@ -153,14 +153,50 @@ class RecaudacionDetalle extends Recaudacion
       '$this->cantidad',
       '$this->monto',
       '$this->celda'
-    );");
+      );");
       $db->close();
 
   }
 
 
+}
 
 
+/**
+* 
+*/
+class RecaudacionVoucher extends Recaudacion
+{
+  protected $lrecau_voucher;
+  protected $lrecau_fecha;
+  protected $lrecau_monto;
+  protected $lrecau_estado;
+  protected $fecha_deposito;
+
+  function __construct($a,$b,$c,$d,$e,$f)
+  {
+    $this->lrcau_id =$a;
+    $this->lrecau_voucher =$b;
+    $this->lrecau_fecha =$c;
+    $this->lrecau_monto =$d;
+    $this->lrecau_estado =$e;
+    $this->fecha_deposito =$f;
+  }
+
+  public function IngresoVocuherRecaudacion (){
+    $db = new Conexion();
+    $sql = $db->query("INSERT INTO lrecaudacion_deposito (LRECAU_ID,LRECAU_VOUCHER,LRECAU_FECHA,LRECAU_MONTO,LRECAU_ESTADO,FECHA_DEPOSITO)
+      VALUES(
+      '$this->lrcau_id',
+      '$this->lrecau_voucher',
+      '$this->lrecau_fecha',
+      '$this->lrecau_monto',
+      '$this->lrecau_estado',
+      '$this->fecha_deposito'
+      );");
+    $sql1 = $db->query("UPDATE lrecaudacion SET LRECAU_ESTADO='1' WHERE LRECAU_ID= '$this->lrcau_id' ;");
+      $db->close();
+  }
 
 
 }

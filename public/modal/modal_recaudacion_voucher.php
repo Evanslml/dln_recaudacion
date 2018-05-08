@@ -13,14 +13,15 @@
 	        </button>
 	      </div>
 	      <div class="modal-body">
-
+			<div id="mensaje"></div>
 	      	<form id="guardar_voucher" method="post">
 	       		<input type="hidden" name="mod_idForm" id="mod_idForm">
+	       		<input type="hidden" name="mod_monto" id="mod_monto">
 	       		<div class="table table-responsive">
 			    <table class="table table-responsive table-striped table-bordered">
 			    <thead>
 			        <tr>
-			            <td>N° Voucher</td>
+			            <td>N° Operacion</td>
 			            <td>Fecha Deposito</td>
 			            <td>Monto</td>
 			            <td></td>
