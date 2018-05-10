@@ -3,18 +3,17 @@
 		var a=zeroFill(id,2)
 		$("#mod_id").val(a);
 
-//		var parametros = 'data='+a;
-//				$.ajax({
-//		              type: 'POST',
-//		              url: './public/modal/modal_perfiles.php?action=json',
-//		              data: { 'data': parametros } ,
-//		              success: function (response) {
-//		                  console.log(response);
-//		              },
-//		              error: function () {
-//		                  alert("error");
-//		              }
-//          		}); 
+			$.ajax({
+	              type: 'POST',
+	              url: './public/user/ajax/Perfiles.php?action=json',
+	              data: { 'data': a } ,
+	              success: function (response) {
+	                  console.log(response);
+	              },
+	              error: function () {
+	                  alert("error");
+	              }
+      		}); 
 	}
 
 	function zeroFill( number, width )

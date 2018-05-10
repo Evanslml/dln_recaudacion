@@ -148,7 +148,7 @@ require_once('../../../core/core.php');
                         echo '<td>del ',$value[4],' al ',$value[5],'</td>'; //
                         echo '<td>del ',$value[8],' al ',$value[9],'</td>'; //
                         echo '<td>',$value[6] + $value[10],'</td>'; //
-                        echo '<td> S/. ',$monto,'</td>'; //
+                        echo '<td style="padding: 8px 15px;"> S/. <span class="pull-right">',$monto,'</span></td>'; //
                         echo '<td>';
                         if($value[12]=='0') {//si es administrador
                         echo '<a href="#" class="btn btn-default btn-accion" title="Editar formulario" onclick="editar(',$value[0],');"><i class="fa fa-pencil"></i></a>'; //

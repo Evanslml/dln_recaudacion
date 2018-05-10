@@ -10,7 +10,7 @@ $email = $db->real_escape_string($_POST['user']);
 $pass = strip_tags($_POST['pass']);
  
 //creamos una consulta para saber si el usuario existe en la db
-$b_user = "SELECT * FROM MUSUARIO WHERE MUSU_LOGIN='$email'";
+$b_user = "SELECT * FROM MUSUARIO WHERE MUSU_LOGIN='$email' AND MUSU_ESTADO='1'";
 $result = $db->query($b_user);
 $ses = $result->fetch_array();
 //comparamos password
@@ -39,7 +39,7 @@ $clave_crypt = crypt($pass, $salt);
           }//fin de buscar email
           else
           {
-              $message ='<div class="alert alert-form alert-danger text-xs-center">Email no existe en nuestro sistema.</div>';
+              $message ='<div class="alert alert-form alert-danger text-xs-center">Email deshabilitado o no existe en nuestro sistema.</div>';
           }
         }//fin validar mail
         else

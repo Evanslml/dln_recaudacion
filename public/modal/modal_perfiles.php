@@ -2,6 +2,7 @@
 	
 	if (isset($_SESSION['sesion_id'])){
 
+	$action = (isset($_REQUEST['action'])&& $_REQUEST['action'] !=NULL)?$_REQUEST['action']:'';   
 ?>
 
 	
@@ -16,9 +17,17 @@
 	      </div>
 	      <div class="modal-body">
 			
+			<?php
+
+			 if($action == 'json'){
+
+			 	echo 'hola';
+			 }
+
+			 ?>
 	      		<?php 
-	      		$permioso = Permiso('02');
-	      		var_dump($permioso);
+	      		//$permioso = Permiso('02');
+	      		//var_dump($permioso);
 	      		?>
 	       		<form action="" method="POST">
 	       			<p class="text-danger"><i class="fa fa-exclamation-circle"></i> Está seguro de deshabilitar el Usuario</p>
