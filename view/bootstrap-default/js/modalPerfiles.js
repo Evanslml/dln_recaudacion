@@ -1,4 +1,37 @@
 	
+
+	function myPerfil(){
+
+		var perfil = $("#new_perfil").val();
+		var descripcion = $("#new_descripcion").val();
+		var nFilas = $(".nlistas li").length;
+		var array = new Array();
+		
+		if(perfil ==''){
+			alert("Debe ingresar el nombre del perfil");
+			 return false;
+		}else if(descripcion ==''){
+			alert("Debe ingresar una descripción para el perfil");
+			 return false;
+		}
+
+		array.push(perfil,descripcion);
+
+		for (var i = 1; i <= nFilas; i++) {
+			var j = zeroFill(i,2)
+			var x = 'x'.concat(j);
+			var MyCheck = 'MyCheck'.concat(j);
+
+			var x = document.getElementById(MyCheck).checked;
+			if (x ==true){
+				array.push(j);
+			}
+		}
+		
+		alert(array);
+
+	}
+
 	function obtener_datos(id){
 		var a=zeroFill(id,2)
 		$("#mod_id").val(a);
@@ -25,20 +58,3 @@
       }
       return number + ""; // siempre devuelve tipo cadena
     }
-/*
-	function deshabilitar_datos(id){
-			var id_delete = $("#id"+id).val();
-			$("#mod_idDelete").val(id_delete);
-	}
-
-	function habilitar_datos(id){
-			var id_add = $("#id"+id).val();
-			$("#mod_idAdd").val(id_add);
-	}
-
-	function datos_default(){
-			var new_perfilId='03';
-			$("#new_perfilId").val(new_perfilId);
-	}
-
-*/

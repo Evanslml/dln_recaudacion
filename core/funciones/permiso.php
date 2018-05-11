@@ -2,6 +2,7 @@
 
 class Perfil 
 {
+  protected $MPERF_ID;
   protected $MPERF_ROL;
   protected $MPERF_NOMBRE;
   protected $MPERF_DESCRIPCION;
@@ -10,28 +11,58 @@ class Perfil
   protected $MPERF_USERIN;
   protected $MPERF_ESTADO;
   
-  function __construct($a,$b,$c,$d,$e,$f,$g)
+  function __construct($a,$b,$c,$d,$e,$f,$g,$h)
   {
-      $this->MPERF_ROL=$a;
-      $this->MPERF_NOMBRE=$b;
-      $this->MPERF_DESCRIPCION=$c;
-      $this->MPERF_FECIN=$d;
-      $this->MPERF_HOST=$e;
-      $this->MPERF_USERIN=$f;
-      $this->MPERF_ESTADO=$g;
+      $this->MPERF_ID=$a;
+      $this->MPERF_ROL=$b;
+      $this->MPERF_NOMBRE=$c;
+      $this->MPERF_DESCRIPCION=$d;
+      $this->MPERF_FECIN=$e;
+      $this->MPERF_HOST=$f;
+      $this->MPERF_USERIN=$g;
+      $this->MPERF_ESTADO=$h;
   }
 
   public function NuevoPerfil(){
     $db = new Conexion();
-    $sql = $db->query("INSERT INTO mperfil (MPERF_ROL,MPERF_NOMBRE,MPERF_DESCRIPCION,MPERF_FECIN,MPERF_HOST,MPERF_USERIN,MPERF_ESTADO)
-    VALUES ()
+    $sql = $db->query("INSERT INTO mperfil ( 
+      MPERF_ID,MPERF_ROL,MPERF_NOMBRE,MPERF_DESCRIPCION,MPERF_FECIN,MPERF_HOST,MPERF_USERIN,MPERF_ESTADO
+      )
+      VALUES (
+      default,
+      '$this->MPERF_ROL',
+      '$this->MPERF_NOMBRE',
+      '$this->MPERF_DESCRIPCION',
+      '$this->MPERF_FECIN',
+      '$this->MPERF_HOST',
+      '$this->MPERF_USERIN',
+      '$this->MPERF_ESTADO'
+      )
     ");
-
-
     $db->close();
   }
 
-}
+  public function EditarPerfil(){
+    $db = new Conexion();
+    $sql = $db->query("UPDATE mperfil SET
+      MPERF_ROL= '$this->MPERF_ROL',
+      MPERF_NOMBRE= '$this->MPERF_NOMBRE',
+      MPERF_DESCRIPCION= '$this->MPERF_DESCRIPCION',
+      MPERF_FECIN= '$this->MPERF_FECIN',
+      MPERF_HOST= '$this->MPERF_HOST',
+      MPERF_USERIN= '$this->MPERF_USERIN',
+      MPERF_ESTADO= '$this->MPERF_ESTADO'
+      WHERE 
+      MPERF_ID='$this->MPERF_ID'
+    ");
+    $db->close();
+  }
+
+
+
+} //PERFIL
+
+
 
 
 function Permiso($id) {

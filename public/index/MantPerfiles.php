@@ -25,7 +25,7 @@ require_once 'public/overall/header.php';
 
         <div class="row">
         	<div class="col-xs-12">
-        		<button data-toggle="modal" title="Crear Perfil" onclick="" data-target="#crear_Perfil"  class="btn btn-primary"><i class="fa fa-user"></i> Agregar Perfil</button>
+        		<button data-toggle="modal" title="Crear Perfil" onclick="" data-target="#nuevo_Perfil"  class="btn btn-primary"><i class="fa fa-user"></i> Agregar Perfil</button>
         	</div>
         </div>
           <div class="box box-primary">
