@@ -252,7 +252,14 @@
           var bolinisismed = $('#bolinisismed').val();
           var bolfinsismed = $('#bolfinsismed').val();
           var date = $('#datepicker input').val();
-          var id_establecimiento = $('#id_establecimiento').val();
+          var temporal1 = $('#id_establecimiento').val();
+
+          if(temporal1 =='00000'){
+            var temporal2 = $('#mod_Establecimiento').val();
+            var id_establecimiento = temporal2;
+          }else{
+            var id_establecimiento = temporal1;
+          }
 
           var c1 = $('#cantidad-1').val();
           var c2 = $('#cantidad-2').val();

@@ -42,6 +42,21 @@ class Perfil
     $db->close();
   }
 
+  public static function getLastId(){
+    $db = new Conexion();
+    $sql = $db->query("SELECT MPERF_ID FROM mperfil  ORDER BY MPERF_ID DESC LIMIT 1");
+    if($sql->num_rows > 0) {
+      while($d = $sql->fetch_array()) {
+        $dato = $d['MPERF_ID'];
+      }
+      } else {
+        $dato = '0';
+      }
+      $sql->free();
+      $db->close();
+      return $dato;
+  }
+
   public function EditarPerfil(){
     $db = new Conexion();
     $sql = $db->query("UPDATE mperfil SET
@@ -64,26 +79,77 @@ class Perfil
 
 
 
+/**
+* PERMISO*/
 
-function Permiso($id) {
-  $db = new Conexion();
-  $sql = $db->query("SELECT MPERF_ID,A.MOBJ_ID,MOBJ_ALIAS,MOBJ_NOMBRE,MOBJ_ENLACE,MOBJ_PADRE,MOBJ_ORDEN,MOBJ_ESTADO,MOBJ_ICON FROM mobjeto A
-INNER JOIN mpermiso B ON 
-A.MOBJ_ID=B.MOBJ_ID 
-WHERE MPERM_ESTADO='1' AND MPERF_ID='$id'
-GROUP BY MPERF_ID,A.MOBJ_ID,MOBJ_ALIAS,MOBJ_NOMBRE,MOBJ_ENLACE,MOBJ_PADRE,MOBJ_ORDEN,MOBJ_ESTADO,MOBJ_ICON
-ORDER BY MOBJ_ID,MOBJ_ORDEN
-");
-  if($sql->num_rows > 0) {
-    while($d = $sql->fetch_array()) {
-      $permiso[$d['MOBJ_ID']] = $d;
-    }
-  } else {
-    $permiso = false;
+class Permisos extends Perfil
+{
+  
+  protected $MPERM_ID;
+  protected $MOBJ_ID;
+  protected $MPERM_TIP;
+  protected $MPERM_ESTADO;
+
+
+  function __construct($a,$b,$c,$d,$e)
+  {
+      $this->MPERM_ID=$a;
+      $this->MPERF_ID=$b;
+      $this->MOBJ_ID=$c;
+      $this->MPERM_TIP=$d;
+      $this->MPERM_ESTADO=$e;
   }
-  $sql->free();
-  $db->close();
-  return $permiso;
+
+  public function NuevosPermisos(){
+    $db = new Conexion();
+    $sql = $db->query("
+      INSERT INTO mpermiso ( 
+      MPERM_ID,MPERF_ID,MOBJ_ID,MPERM_TIP,MPERM_ESTADO
+      )
+      VALUES (
+      default,
+      '$this->MPERF_ID',
+      '$this->MOBJ_ID',
+      '$this->MPERM_TIP',
+      '$this->MPERM_ESTADO'
+      )
+    ");
+    $db->close();
+  }
+
+  public function EliminarPermisos(){
+    $db = new Conexion();
+    $sql1 = $db->query("DELETE FROM mpermiso WHERE MPERF_ID='$this->MPERF_ID'; "); 
+    $db->close();
+  }
+
+
+  public static function PermisoSegunId($id) {
+    $db = new Conexion();
+    $sql = $db->query("SELECT MPERF_ID,A.MOBJ_ID,MOBJ_ALIAS,MOBJ_NOMBRE,MOBJ_ENLACE,MOBJ_PADRE,MOBJ_ORDEN,MOBJ_ESTADO,MOBJ_ICON FROM mobjeto A
+    INNER JOIN mpermiso B ON 
+    A.MOBJ_ID=B.MOBJ_ID 
+    WHERE MPERM_ESTADO='1' AND MPERF_ID='$id'
+    GROUP BY MPERF_ID,A.MOBJ_ID,MOBJ_ALIAS,MOBJ_NOMBRE,MOBJ_ENLACE,MOBJ_PADRE,MOBJ_ORDEN,MOBJ_ESTADO,MOBJ_ICON
+    ORDER BY MOBJ_ID,MOBJ_ORDEN
+    ");
+      if($sql->num_rows > 0) {
+        while($d = $sql->fetch_array()) {
+          $permiso[$d['MOBJ_ID']] = $d;
+        }
+      } else {
+        $permiso = false;
+      }
+      $sql->free();
+      $db->close();
+      return $permiso;
+  }
+
+
+
 }
+
+
+
  
 ?>

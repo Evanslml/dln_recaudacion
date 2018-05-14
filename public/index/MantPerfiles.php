@@ -5,6 +5,16 @@ require_once 'public/overall/header.php';
    }
  else { ?>
 
+<?php
+
+	$editid = (isset($_REQUEST['editid'])&& $_REQUEST['editid'] !=NULL)?$_REQUEST['editid']:''; 
+	//var_dump($editid);
+	if(!empty($editid)){
+		echo "<script> var $ = jQuery.noConflict(); $(document).ready(function(){ $('#editar_Perfil').modal('show'); }); </script>";
+	}
+
+?>
+
 <?php include 'public/overall/menu-header.php'; ?>
 <?php include 'public/overall/menu-aside.php'; ?>
 <?php include 'public/modal/modal_perfiles.php'; ?>
@@ -23,6 +33,8 @@ require_once 'public/overall/header.php';
  
         <div class="col-md-12">
 
+
+
         <div class="row">
         	<div class="col-xs-12">
         		<button data-toggle="modal" title="Crear Perfil" onclick="" data-target="#nuevo_Perfil"  class="btn btn-primary"><i class="fa fa-user"></i> Agregar Perfil</button>
@@ -31,7 +43,6 @@ require_once 'public/overall/header.php';
           <div class="box box-primary">
             <div class="row">
             <div class="col-md-12 col-sm-12 col-xs-12 content">
-              <?php //var_dump($_ListaPerfil);?>
 				
 				<div class="table-responsive">
   					<table class="table table-striped ">
@@ -62,6 +73,7 @@ require_once 'public/overall/header.php';
 									echo '<td>',$descripcion,'</td>';
 									echo '<td>';
 									echo '<a data-toggle="modal" onclick="obtener_datos(',$id,')" data-target="#editar_Perfil" class="btn-accion"><i class="fa fa-pencil"></i></a>';
+									echo '</td>';
 									echo '</tr>';
 								}
 							?>		

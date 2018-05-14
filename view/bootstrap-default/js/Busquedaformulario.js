@@ -178,7 +178,7 @@
         return '<td><input id="voucher" name = "voucher" type="text" placeholder = "' + a + '" class="form-control" /></td>' + 
         '<td><script> formatdate(); </script><input id="fecha" name="fecha" type="text" placeholder= "' + b + '" class="form-control inputdate" /></td>' +
         '<td><script> formatprice(); </script><input id="price" type="text" name="type-price" class="type-price form-control" value="'+ c +'" /></td>' + 
-        '<td><button type="button" class="btn btn-danger remove"><i class="glyphicon glyphicon-remove-sign"></i></button></td>'
+        '<td><button type="button" class="btn btn-danger remove"><i class="glyphicon glyphicon-remove-sign"></i></button></td>';
     }
 
 
@@ -188,8 +188,17 @@
       //var e = $("#id_establecimiento").val();
       var fecha_inicio = document.getElementById("fecha_inicio").value;
       var fecha_final = document.getElementById("fecha_final").value;
-      var e = document.getElementById("id_establecimiento").value;
+      var c = document.getElementById("id_establecimiento").value;
       
+      if(c=='00000'){
+        var d = document.getElementById("mod_Establecimiento").value;
+        var e = d;
+      }else{
+        var e = c;
+      }
+
+      //alert(e);
+
       $("#loader").fadeIn('slow');
       $.ajax({
         //url:'./public/user/ajax/AllFormularios.php?action=ajax&page='+page+'&fi='+fi+'&ff='+ff+'&e='+e,
@@ -202,7 +211,9 @@
           $('#loader').html('');
         }
       })
-    }
+
+
+    } //LOAD
 
     function editar(parametro){
       var a= parametro;

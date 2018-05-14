@@ -27,7 +27,7 @@ require_once 'public/overall/header.php';
             <div class="panel-tools">
               <div class="button btn-save"><a href="#"><i class="fa fa-floppy-o"></i><span>Guardar</span></a></div>
               <div class="button btn-cancel"><a href="#"><i class="fa fa-pencil"></i><span>Editar</span></a></div>
-              <div class="button btn-cancel"><a href="#"><i class="fa fa-times"></i><span>Cancelar</span></a></div>
+              <div class="button btn-cancel"><a href="./todosformatos"><i class="fa fa-times"></i><span>Cancelar</span></a></div>
             </div>
 
           </div>
@@ -89,6 +89,29 @@ require_once 'public/overall/header.php';
                   </div>
                 </div>
               </div>
+
+              <?php  
+
+            if($_ListaUsuario[$_SESSION['sesion_id']]['NESTA_RENAES'] == '00000'){ ?>
+
+              <div class="col-md-4" style="margin: 10px 0;">
+                <div class="row">
+                  <div class="form-group">
+                      <label for="mod_nombre" class="col-sm-3 col-xs-12 control-label">Renipres:</label>
+                      <div class="col-md-9 col-xs-12">
+                          <select class="form-control" id="mod_Establecimiento" name="mod_Establecimiento">
+                            <option value="00000">SELECCIONE ESTABLECIMIENTO</option>
+                            <?php foreach ($_ListaEstablecimientos as $key => $value) {
+                            echo '<option value=',$value[3],'>',$value[5],' - ', $value[3] ,' </option>';
+                            }
+                            ?>
+                          </select>                       
+                      </div>
+                  </div>
+                </div>
+              </div>
+            <?php } ?>
+
             </div> <!--panel-uno-->
           </div> <!--panel-body-->
         </div> <!--panel-primary-->

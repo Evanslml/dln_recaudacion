@@ -29,7 +29,7 @@ require_once 'public/overall/header.php';
           <div class="panel-body">
 
             <div class="panel-uno">
-              <div class="col-md-4">
+              <div class="col-md-3">
                 <div class="row">
                   <div class="form-group">
                       <label for="mod_nombre" class="col-sm-3 col-xs-12 control-label">Fecha:</label>
@@ -42,7 +42,7 @@ require_once 'public/overall/header.php';
                   </div>
                 </div>
               </div>
-              <div class="col-md-4">
+              <div class="col-md-3">
                 <div class="row">
                   <div class="form-group">
                       <label for="mod_nombre" class="col-sm-3 col-xs-12 control-label">Fecha:</label>
@@ -55,7 +55,35 @@ require_once 'public/overall/header.php';
                   </div>
                 </div>
               </div>
-              <div class="col-md-4">
+
+            <?php 
+
+            //var_dump($_ListaUsuario[$_SESSION['sesion_id']]['NESTA_RENAES']);
+
+            if($_ListaUsuario[$_SESSION['sesion_id']]['NESTA_RENAES'] == '00000'){ ?>
+
+              <div class="col-md-5">
+                <div class="row">
+                  <div class="form-group">
+                      <label for="mod_nombre" class="col-sm-3 col-xs-12 control-label">Establecimiento:</label>
+                      <div class="col-md-9 col-xs-12">
+                          <select class="form-control" id="mod_Establecimiento" name="mod_Establecimiento">
+                            <option value="00000">SELECCIONE ESTABLECIMIENTO</option>
+                            <?php foreach ($_ListaEstablecimientos as $key => $value) {
+                            echo '<option value=',$value[3],'>',$value[5],' - ', $value[3] ,' </option>';
+                            }
+                            ?>
+                          </select>                       
+                      </div>
+                  </div>
+                </div>
+              </div>
+            <?php } ?>
+
+
+
+
+              <div class="col-md-1">
                 <div class="row">
                   <div class="form-group">
                       <input id="calcular_lista" class="btn btn-primary" type="button" value="buscar">

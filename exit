@@ -1,0 +1,143 @@
+[33mcommit 76412ca8a0309e8a9a218ad732fa4b00a83847df[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: Ivan Jorge Cruz Peña <icruz@redtupacamaru.gob.pe>
+Date:   Fri May 11 12:25:51 2018 -0500
+
+    modal perfiles
+
+[33mcommit b233eb6f804234cf50735a0ce25420e2cc2c1bec[m
+Author: Ivan Jorge Cruz Peña <icruz@redtupacamaru.gob.pe>
+Date:   Thu May 10 17:48:30 2018 -0500
+
+    DB
+
+[33mcommit 74dca21469ee3b6f5f33fbfbaf47ddaac91b0289[m
+Author: Ivan Jorge Cruz Peña <icruz@redtupacamaru.gob.pe>
+Date:   Thu May 10 17:45:13 2018 -0500
+
+    Cambios
+
+[33mcommit a88ef80ca097c852352ed796f8708bb9fb3ace78[m
+Author: Ivan Jorge Cruz Peña <icruz@redtupacamaru.gob.pe>
+Date:   Tue May 8 17:51:51 2018 -0500
+
+    Modulo voucher
+
+[33mcommit fdef135d6ad0016ad303a6752302ec17f385e612[m
+Author: Ivan Jorge Cruz Peña <icruz@redtupacamaru.gob.pe>
+Date:   Mon May 7 17:21:19 2018 -0500
+
+    Avance modulo pago voucher
+
+[33mcommit 047c02518c024c3a15473a4995512f150ad7db6e[m
+Author: Ivan Jorge Cruz Peña <icruz@redtupacamaru.gob.pe>
+Date:   Fri May 4 18:11:26 2018 -0500
+
+    Add BD
+
+[33mcommit 7a5172d287756938b563875c5937ddd010e6f85a[m
+Author: Ivan Jorge Cruz Peña <icruz@redtupacamaru.gob.pe>
+Date:   Fri May 4 17:07:29 2018 -0500
+
+    formulario recudacion avance
+
+[33mcommit ec8c4e816f96f07a415d62ed2882f029ac30716c[m
+Author: Ivan Jorge Cruz Peña <icruz@redtupacamaru.gob.pe>
+Date:   Thu May 3 17:43:53 2018 -0500
+
+    Formulario avance
+
+[33mcommit 3fcb7160722dc2420b09c25618f5f21d37425565[m
+Author: Ivan Jorge Cruz Peña <icruz@redtupacamaru.gob.pe>
+Date:   Wed May 2 17:01:48 2018 -0500
+
+    BD
+
+[33mcommit 96abff2a9f2f0447a98b306e8e3b47f26cb96ad0[m
+Author: Ivan Jorge Cruz Peña <icruz@redtupacamaru.gob.pe>
+Date:   Wed May 2 16:59:45 2018 -0500
+
+    Formulario recaudacion diaria
+
+[33mcommit d1587c7143fb11e81113ffd570aac1f206b71452[m
+Author: Ivan Jorge Cruz Peña <icruz@redtupacamaru.gob.pe>
+Date:   Wed May 2 16:59:18 2018 -0500
+
+    Formulario recaudacion diaria
+
+[33mcommit 24d7088123259d3625bfe6835d822a116e533ebf[m
+Author: Ivan Jorge Cruz Peña <icruz@redtupacamaru.gob.pe>
+Date:   Thu Apr 26 17:08:34 2018 -0500
+
+    Inicio de formato recaudacion
+
+[33mcommit 4de263b22a7ebb3cceac947a1fa288d2e18352d3[m
+Author: Ivan Jorge Cruz Peña <icruz@redtupacamaru.gob.pe>
+Date:   Wed Apr 25 17:02:40 2018 -0500
+
+    Desarrollo modulo usuario
+
+[33mcommit f0c6cf49b973ca6299a88653a44741a62dfaa8fd[m
+Author: Ivan Jorge Cruz Peña <icruz@redtupacamaru.gob.pe>
+Date:   Mon Apr 23 17:29:54 2018 -0500
+
+    modal user
+
+[33mcommit ab50d3a4913e0717b963d8b91da3f5e2e43bfcdb[m
+Author: Ivan Jorge Cruz Peña <icruz@redtupacamaru.gob.pe>
+Date:   Fri Apr 20 17:31:43 2018 -0500
+
+    db actualizacion
+
+[33mcommit 249eb367402251fefde9f29497c94b14cf321e80[m
+Author: Ivan Jorge Cruz Peña <icruz@redtupacamaru.gob.pe>
+Date:   Fri Apr 20 17:28:37 2018 -0500
+
+    conexion con base de datos con inner join
+
+[33mcommit 1b5555bf8d01a3d886250c60bf4f889cac657ea5[m
+Author: Ivan Jorge Cruz Peña <icruz@redtupacamaru.gob.pe>
+Date:   Thu Apr 19 16:41:09 2018 -0500
+
+    cambios
+
+[33mcommit 9dc81e67b8a662998ad17dc8bb1e75bbb3732dc0[m
+Author: Ivan Jorge Cruz Peña <icruz@redtupacamaru.gob.pe>
+Date:   Thu Apr 19 16:39:41 2018 -0500
+
+    conexion con BD
+
+[33mcommit 8ceb282a38ea90c2dea2b6b0c3665efd8784a819[m
+Author: Ivan Jorge Cruz Peña <icruz@redtupacamaru.gob.pe>
+Date:   Wed Apr 18 18:23:34 2018 -0500
+
+    dev log
+
+[33mcommit 2940fd58d402192bfa098489d2baf87834165499[m
+Author: Ivan Jorge Cruz Peña <icruz@redtupacamaru.gob.pe>
+Date:   Wed Apr 18 16:44:46 2018 -0500
+
+    modificaciones en log
+
+[33mcommit 3dca6176370328c9a47975d7e559669d21381353[m
+Author: Ivan Jorge Cruz Peña <icruz@redtupacamaru.gob.pe>
+Date:   Wed Apr 18 15:46:12 2018 -0500
+
+    espacios
+
+[33mcommit 3ab5d2879590de72e01cad8960bd912d53652149[m
+Author: Ivan Jorge Cruz Peña <icruz@redtupacamaru.gob.pe>
+Date:   Wed Apr 18 15:42:49 2018 -0500
+
+    modified
+
+[33mcommit 3fdab42bb2d2a493f534190044edf45376010a7d[m
+Author: Ivan Jorge Cruz Peña <icruz@redtupacamaru.gob.pe>
+Date:   Wed Apr 18 10:25:26 2018 -0500
+
+    directory moved
+
+[33mcommit ff143c7d0d6b5ce022fdff38592deb28f4eced07[m
+Author: Ivan Jorge Cruz Peña <icruz@redtupacamaru.gob.pe>
+Date:   Wed Apr 18 10:23:35 2018 -0500
+
+    recaudacion demo

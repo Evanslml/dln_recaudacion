@@ -13,6 +13,7 @@
  $Extencion = substr(strrchr(__FILE__, '.'), 1);
  //Conexion a la bases de datos
  require_once('classConexion/conexion.' . $Extencion);
+ require_once('funciones/helpers.' . $Extencion);
  require_once('funciones/usuario.' . $Extencion);
  require_once('funciones/permiso.' . $Extencion);
  require_once('funciones/clasificador.' . $Extencion);
@@ -25,12 +26,13 @@
  $_ListaPerfil = Acceso::ListaPerfil();
  $_ListaEstablecimientos = Acceso::ListaEstablecimientos();
  $_ListaClasificador = Clasificador::ListaClasificador();
+ $_GetIdPerfil = Perfil::getLastId();
 
 
 
  if (isset($_SESSION['sesion_id'])){ //Si esta logeado y  variable SESSION esta definida
 	 $MPERF_ID = $_usuario[$_SESSION['sesion_id']]['MPERF_ID'];
-	 $_permiso = Permiso($MPERF_ID);
+	 $_permiso = Permisos::PermisoSegunId($MPERF_ID);
  }
  
 ?>

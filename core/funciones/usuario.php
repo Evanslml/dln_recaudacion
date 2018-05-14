@@ -142,10 +142,25 @@ class Acceso
     return $establecimiento;
   }
 
+  public static function ListaEstablecimientos(){
+    $db = new Conexion();
+    $sql = $db->query("SELECT * FROM nestablecimiento ORDER BY nest_orden;");
+    if($sql->num_rows > 0) {
+      while($d = $sql->fetch_array()) {
+        $establecimiento[$d['NESTA_RENAES']] = $d;
+      }
+    } else {
+      $establecimiento = false;
+    }
+    $sql->free();
+    $db->close();
+    return $establecimiento;
+  }
 
 
 
-}
+
+} // cLASS 
 
 
 
