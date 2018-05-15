@@ -9,7 +9,7 @@ require_once 'public/overall/header.php';
  else { ?>
 <?php include 'public/overall/menu-header.php'; ?>
 <?php include 'public/overall/menu-aside.php'; ?>
-<script src="view/bootstrap-default/js/formulario.js"></script>
+
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">

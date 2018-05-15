@@ -141,7 +141,7 @@ class Acceso
     $db->close();
     return $establecimiento;
   }
-
+/*
   public static function ListaEstablecimientos(){
     $db = new Conexion();
     $sql = $db->query("SELECT * FROM nestablecimiento ORDER BY nest_orden;");
@@ -156,7 +156,7 @@ class Acceso
     $db->close();
     return $establecimiento;
   }
-
+*/
 
 
 

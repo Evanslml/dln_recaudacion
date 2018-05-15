@@ -102,9 +102,11 @@ require_once('../../../core/core.php');
         $offset = ($page - 1) * $per_page;
         //Count the total number of row in your table*/
 
-        $numrows = Recaudacion::CantidadTotlaRecaudacionFecha($e,$fecha_inicio,$fecha_final);
+        $numrows = Recaudacion::CantidadTotalRecaudacionFecha($e,$fecha_inicio,$fecha_final);
+
         //var_dump($numrows);
         $total_pages = ceil($numrows/$per_page);
+
         $reload = './public/index/AllFormat.php';
         $query = Recaudacion::BuscarRecaudacionFecha($e,$fecha_inicio,$fecha_final,$offset,$per_page);
         //var_dump($query);
@@ -121,8 +123,9 @@ require_once('../../../core/core.php');
                         <td> <span><b>ID Formulario</b></span> </td> 
                         <td> <span><b>Establecimiento</b></span> </td> 
                         <td> <span><b>Fecha</b></span> </td> 
-                        <td> <span><b>Boleta RDR</b></span> </td> 
-                        <td> <span><b>Boleta SISMED</b></span> </td> 
+                        <td> <span><b>Tipo</b></span> </td> 
+                        <td> <span><b>Boleta INICIO</b></span> </td> 
+                        <td> <span><b>Boleta FIN</b></span> </td> 
                         <td> <span><b>Cantidad Total</b></span> </td> 
                         <td> <span><b>Monto Total</b></span> </td> 
                         <td> <span><b>Acción</b></span> </td> 
@@ -133,37 +136,40 @@ require_once('../../../core/core.php');
 
                     <?php
                     foreach ($query as $key => $value) {
-                        $m1 =number_format((float)$value[7], 2, '.', '');
-                        $m2 =number_format((float)$value[11], 2, '.', '');
-                        $monto = number_format((float)($m1+$m2), 2, '.', '');
 
-                        if($value[12]=='1'){
+                        if($value[9]=='1'){
                         echo '<tr style="background:#dff0d8">';
                         } else{
                         echo '<tr>';   
                         }
                         echo '<td>',$value[0],'</td>'; //ID
-                        echo '<td>',$value[13],'</td>'; //
+                        echo '<td>',$value[10],'</td>'; //
                         echo '<td>',$value[3],'</td>'; //Fecha
-                        echo '<td>del ',$value[4],' al ',$value[5],'</td>'; //
-                        echo '<td>del ',$value[8],' al ',$value[9],'</td>'; //
-                        echo '<td>',$value[6] + $value[10],'</td>'; //
-                        echo '<td style="padding: 8px 15px;"> S/. <span class="pull-right">',$monto,'</span></td>'; //
+                        
+                        if($value[4]=='01'){
+                        echo '<td>RDR</td>'; //Fecha
+                        }else{
+                        echo '<td>SISMED</td>'; //Fecha
+                        }
+                        echo '<td>',$value[5],'</td>'; //
+                        echo '<td>',$value[6],'</td>'; //
+                        echo '<td>',$value[7],'</td>'; 
+                        echo '<td style="padding: 8px 15px;"> S/. <span class="pull-right">',$value[8],'</span></td>'; 
                         echo '<td>';
-                        if($value[12]=='0') {//si es administrador
+                        if($value[9]=='0') {//si es administrador
                         echo '<a href="#" class="btn btn-default btn-accion" title="Editar formulario" onclick="editar(',$value[0],');"><i class="fa fa-pencil"></i></a>'; //
                         }
-                        if($value[12]=='0'){
+                        if($value[9]=='0'){
                         echo '<a data-toggle="modal" data-target="#Ingreso_Voucher" class="btn btn-default btn-accion" title="Agregar Voucher" 
-                        onclick="agregar(',$key,',',$monto,');"><i class="fa fa-credit-card"></i></a>'; //
+                        onclick="agregar(',$value[0],',',$value[8],');"><i class="fa fa-credit-card"></i></a>'; //
                         }
-                        echo '</td>'; //
+                        echo '</td>'; 
                         echo  '</tr>';
                     }
                     ?>
 
                 <tr>
-                    <td colspan=8>
+                    <td colspan=9>
                         <span class="pull-right">
                             <?php echo paginate($reload, $page, $total_pages, $adjacents); ?>
                         <span>

@@ -1,4 +1,6 @@
 
+<!--Sweet-Alert-->
+<script src="<?php echo URL_VIEW; ?>sweet-alert/sweetalert.min.js"></script>
 <!-- Bootstrap 3.3.6 -->
 <script src="<?php echo URL_VIEW; ?>bootstrap-default/bootstrap/js/bootstrap.min.js"></script>
 <script src="<?php echo URL_VIEW; ?>bootstrap-default/js/app.min.js"></script>

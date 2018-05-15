@@ -60,7 +60,8 @@ if(strtolower($_SERVER['REQUEST_METHOD']) != 'post'){
         	$t1='01';
         	$t2='02';
         	$ide= $_POST['id_establecimiento'];
-        	$id1= $fo.$ida.$idm.$idd.$ide;
+            $id1= $fo.$t1.$ida.$idm.$idd.$ide;
+        	$id2= $fo.$t2.$ida.$idm.$idd.$ide;
         	$imprdr = $m3 + $m5 + $m21 +$m62;
         	$cantrdr = $c3 + $c5 + $c21 +$c62;
         	$impsismed = $m1;
@@ -68,33 +69,25 @@ if(strtolower($_SERVER['REQUEST_METHOD']) != 'post'){
 	 
         	//$messages[] = 'Id '. $id1.'estab '.$ide.'año '.$ida.'mes '.$idm.'fecha '.$f.'boleta ini '.$a.'Boleta fin '.$b.'importe '.$imprdr.'fecha actual'.$h;
 
-        	$z = array(
-        		'0' => $id1,
-        		'1' => $ide,
-        		'2' => $ida,
-        		'3' => $idm,
-        		'4' => $f,
-        		'5' => $fo,
-        		'6' => $c,
-        		'7' => $d,
-        		'8' => $cantrdr,
-        		'9' => $imprdr,
-        		'10' => $a,
-        		'11' => $b,
-        		'12' => $cantsismed,
-        		'13' => $impsismed,
-        		'14' => $h,
-        		'15' => 0
-        	);
+        	$z = array('0' => $id1, '1' => $ide, '2' => $ida, '3' => $idm, '4' => $f, '5' => $fo, '6' => $t1, '7' => $c, '8' => $d, '9' => $cantsismed, '10' => $impsismed, '11' => $h, '12' => 0 );
+            $y = array('0' => $id2, '1' => $ide, '2' => $ida, '3' => $idm, '4' => $f, '5' => $fo, '6' => $t2, '7' => $a, '8' => $b, '9' => $cantrdr, '10' => $imprdr, '11' => $h, '12' => 0);
 
         	//var_dump($z);
 
-        	$NuevoFormulario = new Recaudacion($z[0],$z[1],$z[2],$z[3],$z[4],$z[5],$z[6],$z[7],$z[8],$z[9],$z[10],$z[11],$z[12],$z[13],$z[14],$z[15]);
-        	$existe = $NuevoFormulario ->BuscarRecaudacion ();
+            $NuevoFormulario01 = new Recaudacion($z[0],$z[1],$z[2],$z[3],$z[4],$z[5],$z[6],$z[7],$z[8],$z[9],$z[10],$z[11],$z[12]);
+        	$NuevoFormulario02 = new Recaudacion($y[0],$y[1],$y[2],$y[3],$y[4],$y[5],$y[6],$y[7],$y[8],$y[9],$y[10],$y[11],$y[12]);
+
+            $existe01 = $NuevoFormulario01 ->BuscarRecaudacion ();
+        	$existe02 = $NuevoFormulario02 ->BuscarRecaudacion ();
         	
-			if($existe == 0 ){
+			if(($existe01 == 0) && ($existe02 == 0)) {
 				
-				$NuevoFormulario ->IngresarRecaudacion();
+                $NuevoFormulario01 ->IngresarRecaudacion();
+				$NuevoFormulario02 ->IngresarRecaudacion();
+
+                //var_dump($NuevoFormulario01);
+                $messages[] ='Se ha guardado correctamente los datos';
+
 
 		        for ($i=1; $i <= 2; $i++) { 
 		        	$cantidad= ${'c' . $i};
@@ -107,11 +100,12 @@ if(strtolower($_SERVER['REQUEST_METHOD']) != 'post'){
 		        	$cantidad= ${'c' . $i};
 		        	$monto= ${'m' . $i};
 		        	$new= 'NuevoRecauDetalle' . $i;
-		        	$new = new RecaudacionDetalle($id1,$t2,$i,$cantidad,$monto,'');
+		        	$new = new RecaudacionDetalle($id2,$t2,$i,$cantidad,$monto,'');
 		        	$new ->IngresoDetalleRecaudacion();
 		        }
 		        
 		        $messages[] ='Se ha guardado correctamente los datos';
+
 
 			} else{
 				$errors[]= 'No se ha podido realizar el ingreso, El Formulario ya existe';

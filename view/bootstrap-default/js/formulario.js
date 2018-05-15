@@ -408,6 +408,27 @@
           '&m61='+m61+'&m62='+m62+'&m63='+m63
           ;
 
+          $importe = m1 + m3 + m5 + m21 + m62;
+          $cantidad = c1 +c3 + c5 + c21 + c62;
+
+/*
+            swal({
+              title: "Atención!!!",
+              text: "El cantidad total es:",
+              type: "warning",
+              showCancelButton: true,
+              confirmButtonColor: '#DD6B55',
+              confirmButtonText: 'Yes, delete it!',
+              closeOnConfirm: false,
+              //closeOnCancel: false
+            },
+
+            function(){
+              swal("Deleted!", "Your imaginary file has been deleted!", "success");
+            });
+*/
+
+/*            
           $.ajax({
                 type: "POST",
                 url: "public/user/ajax/GuardarFormulario.php",
@@ -425,6 +446,9 @@
             });
 
           event.preventDefault();
+
+*/
+
 /*
 
            }  //Fin else

@@ -23,6 +23,8 @@
   <script src="<?php echo URL_VIEW; ?>bootstrap-default/js/jquery-2.2.3.min.js"></script>
   <!--custom-->
   <script src="<?php echo URL_VIEW; ?>bootstrap-default/js/custom.js"></script>
+  <!--Sweet-Alert-->
+  <script src="<?php echo URL_VIEW; ?>sweet-alert/sweetalert.css"></script>
 
   <?php
 
@@ -36,6 +38,7 @@
         ?>
         <link rel="stylesheet" href="<?php echo URL_VIEW; ?>bootstrap-datepicker/1.3.0/css/datepicker.css">
         <script src="view/jquery-price-format/jquery.priceformat.min.js"></script>
+        <script src="<?php echo URL_VIEW; ?>bootstrap-default/js/formulario.js"></script>
         <?php
         break;
         
@@ -43,7 +46,7 @@
         ?>
         <script src="<?php echo URL_VIEW; ?>bootstrap-default/js/Rpt_General.js"></script>
         <?php
-        break;
+        break;        
 
         default:
           # code...

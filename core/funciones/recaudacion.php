@@ -9,36 +9,29 @@ class Recaudacion
     protected $lmes_id;
     protected $lrecau_fecrec;
     protected $lcomp_id;
-    protected $lbol_rdrini;
-    protected $lbol_rdrfin;
-    protected $lcant_rdr;
-    protected $limp_rdr;
-    protected $lbol_sismedini;
-    protected $lbol_sismedfin;
-    protected $lcant_sismed;
-    protected $limp_sismed;
+    protected $lrectip_id;
+    protected $lbol_ini;
+    protected $lbol_fin;
+    protected $lcant;
+    protected $limp;
     protected $fecha_ingreso;
     protected $lrecau_estado;
 
-
-    function __construct($a,$b,$c,$d,$e,$f,$g,$h,$i,$j,$k,$l,$m,$n,$o,$p)
+    function __construct($a,$b,$c,$d,$e,$f,$g,$h,$i,$j,$k,$l,$m)
     {
-      $this->lrcau_id =$a;
-      $this->nesta_renaes =$b;
-      $this->lanio_id =$c;
-      $this->lmes_id =$d;
-      $this->lrecau_fecrec =$e;
-      $this->lcomp_id =$f;
-      $this->lbol_rdrini =$g;
-      $this->lbol_rdrfin =$h;
-      $this->lcant_rdr =$i;
-      $this->limp_rdr =$j;
-      $this->lbol_sismedini =$k;
-      $this->lbol_sismedfin =$l;
-      $this->lcant_sismed =$m;
-      $this->limp_sismed =$n;
-      $this->fecha_ingreso =$o;
-      $this->lrecau_estado =$p;
+      $this->lrcau_id = $a;
+      $this->nesta_renaes = $b;
+      $this->lanio_id = $c;
+      $this->lmes_id = $d;
+      $this->lrecau_fecrec = $e;
+      $this->lcomp_id = $f;
+      $this->lrectip_id = $g;
+      $this->lbol_ini = $h;
+      $this->lbol_fin = $i;
+      $this->lcant = $j;
+      $this->limp = $k;
+      $this->fecha_ingreso = $l;
+      $this->lrecau_estado = $m;
     }
 
     public function BuscarRecaudacion(){
@@ -50,51 +43,64 @@ class Recaudacion
           $existe=0;
         }
         return $existe;
-
       $db->close();      
     }
 
     public function IngresarRecaudacion (){
       $db = new Conexion();
-      $sql = $db->query("INSERT INTO lrecaudacion (LRECAU_ID,NESTA_RENAES,LANIO_ID,LMES_ID,LRECAU_FECREC,
-      LCOMP_ID,LBOL_RDRINI,LBOL_RDRFIN,LCANT_RDR,LIMP_RDR,LBOL_SISMEDINI,LBOL_SISMEDFIN,LCANT_SISMED,LIMP_SISMED,FECHA_INGRESO,LRECAU_ESTADO) 
+      $sql = $db->query("
+      INSERT INTO lrecaudacion (LRECAU_ID,NESTA_RENAES,LANIO_ID,LMES_ID,LRECAU_FECREC,
+        LCOMP_ID,LRECTIP_ID,LBOL_INI,LBOL_FIN,LCANT,LIMP,
+        FECHA_INGRESO,LRECAU_ESTADO) 
       VALUES(
-      '$this->lrcau_id',
-      '$this->nesta_renaes',
-      '$this->lanio_id',
-      '$this->lmes_id',
-      '$this->lrecau_fecrec',
-      '$this->lcomp_id',
-      '$this->lbol_rdrini',
-      '$this->lbol_rdrfin',
-      '$this->lcant_rdr',
-      '$this->limp_rdr',
-      '$this->lbol_sismedini',
-      '$this->lbol_sismedfin',
-      '$this->lcant_sismed',
-      '$this->limp_sismed',
-      '$this->fecha_ingreso',
-      '$this->lrecau_estado'
+        '$this->lrcau_id',
+        '$this->nesta_renaes',
+        '$this->lanio_id',
+        '$this->lmes_id',
+        '$this->lrecau_fecrec',
+        '$this->lcomp_id',
+        '$this->lrectip_id',
+        '$this->lbol_ini',
+        '$this->lbol_fin',
+        '$this->lcant',
+        '$this->limp',
+        '$this->fecha_ingreso',
+        '$this->lrecau_estado'
       );");
       $db->close();
     } 
 
+/*
     public static function BuscarRecaudacionFecha ($e,$fi,$ff,$offset,$per_page){
       $db = new Conexion();
       $sql = $db->query("SELECT 
-      A.LRECAU_ID,A.NESTA_RENAES,A.LANIO_ID,A.LRECAU_FECREC,
-      A.LBOL_RDRINI,A.LBOL_RDRFIN,A.LCANT_RDR,A.LIMP_RDR,
-      A.LBOL_SISMEDINI,A.LBOL_SISMEDFIN,A.LCANT_SISMED,A.LIMP_SISMED,
-      A.LRECAU_ESTADO, B.NEST_NOMBRE
-      FROM lrecaudacion A INNER JOIN nestablecimiento B on A.NESTA_RENAES=B.NESTA_RENAES
-      WHERE SUBSTRING(A.LRECAU_ID,9,5)= '$e' 
-      AND (A.LRECAU_FECREC BETWEEN '$fi' AND '$ff')
-      order by A.LRECAU_FECREC desc
+      A.LRECAU_ID,A.NESTA_RENAES,A.LANIO_ID,A.LRECAU_FECREC,A.LRECTIP_ID,A.BOLETA_INI,A.BOLETA_FIN,A.CANTIDAD,A.IMPORTE,
+      A.LRECAU_ESTADO,B.NEST_NOMBRE
+      FROM (
+      SELECT LRECAU_ID,NESTA_RENAES,LANIO_ID,LRECAU_FECREC,'01' AS 'LRECTIP_ID',LBOL_RDRINI 'BOLETA_INI',
+      A.LBOL_RDRFIN 'BOLETA_FIN',LCANT_RDR 'CANTIDAD',LIMP_RDR 'IMPORTE', LRECAU_ESTADO
+      FROM lrecaudacion A
+      WHERE SUBSTRING(A.LRECAU_ID,9,5)= '$e'
+
+      UNION ALL
+
+      SELECT LRECAU_ID,NESTA_RENAES,LANIO_ID,LRECAU_FECREC,'02',LBOL_SISMEDINI,
+      LBOL_SISMEDFIN,LCANT_SISMED,LIMP_SISMED,LRECAU_ESTADO
+      FROM lrecaudacion A
+      WHERE SUBSTRING(A.LRECAU_ID,9,5)= '$e'
+      )A
+      INNER JOIN 
+      NESTABLECIMIENTO B
+      ON A.NESTA_RENAES=B.NESTA_RENAES
+      WHERE
+      (A.LRECAU_FECREC BETWEEN '$fi' AND '$ff')
+      ORDER BY A.LRECAU_ID,A.LRECTIP_ID
       LIMIT $offset,$per_page
       ;");
+
       if($sql->num_rows > 0) {
       while($d = $sql->fetch_array()) {
-        $dato[$d['LRECAU_ID']] = $d;
+        $dato[] = $d; //ALL
       }
       } else {
         $dato = false;
@@ -105,19 +111,26 @@ class Recaudacion
       
     }     
 
-    public static function CantidadTotlaRecaudacionFecha ($e,$fi,$ff){
+    public static function CantidadTotalRecaudacionFecha ($e,$fi,$ff){
       $db = new Conexion();
-      $sql = $db->query("SELECT * FROM lrecaudacion A
+      $sql = $db->query("
+      SELECT * FROM lrecaudacion A
       WHERE SUBSTRING(A.LRECAU_ID,9,5)= '$e' 
       AND (A.LRECAU_FECREC BETWEEN '$fi' AND '$ff')
-      order by LRECAU_FECREC desc
+      
+      UNION ALL
+
+      SELECT * FROM lrecaudacion A
+      WHERE SUBSTRING(A.LRECAU_ID,9,5)= '$e' 
+      AND (A.LRECAU_FECREC BETWEEN '$fi' AND '$ff')
+
       ;");
       $count= $db->rows($sql);
       return $count;
       
     } 
 
-
+*/
 
 }
 
