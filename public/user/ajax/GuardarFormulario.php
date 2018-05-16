@@ -86,7 +86,6 @@ if(strtolower($_SERVER['REQUEST_METHOD']) != 'post'){
 				$NuevoFormulario02 ->IngresarRecaudacion();
 
                 //var_dump($NuevoFormulario01);
-                $messages[] ='Se ha guardado correctamente los datos';
 
 
 		        for ($i=1; $i <= 2; $i++) { 

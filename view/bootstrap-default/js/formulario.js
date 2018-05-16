@@ -247,6 +247,8 @@
 
         function save_recaudacion(){
 
+          event.preventDefault();
+          $(".loading img").show();
           var bolinirdr = $('#bolinirdr').val();
           var bolfinrdr = $('#bolfinrdr').val();
           var bolinisismed = $('#bolinisismed').val();
@@ -261,69 +263,69 @@
             var id_establecimiento = temporal1;
           }
 
-          var c1 = $('#cantidad-1').val();
-          var c2 = $('#cantidad-2').val();
-          var c3 = $('#cantidad-3').val();
-          var c4 = $('#cantidad-4').val();
-          var c5 = $('#cantidad-5').val();
-          var c6 = $('#cantidad-6').val();
-          var c7 = $('#cantidad-7').val();
-          var c8 = $('#cantidad-8').val();
-          var c9 = $('#cantidad-9').val();
-          var c10 = $('#cantidad-10').val();
-          var c11 = $('#cantidad-11').val();
-          var c12 = $('#cantidad-12').val();
-          var c13 = $('#cantidad-13').val();
-          var c14 = $('#cantidad-14').val();
-          var c15 = $('#cantidad-15').val();
-          var c16 = $('#cantidad-16').val();
-          var c17 = $('#cantidad-17').val();
-          var c18 = $('#cantidad-18').val();
-          var c19 = $('#cantidad-19').val();
-          var c20 = $('#cantidad-20').val();
-          var c21 = $('#cantidad-21').val();
-          var c22 = $('#cantidad-22').val();
-          var c23 = $('#cantidad-23').val();
-          var c24 = $('#cantidad-24').val();
-          var c25 = $('#cantidad-25').val();
-          var c26 = $('#cantidad-26').val();
-          var c27 = $('#cantidad-27').val();
-          var c28 = $('#cantidad-28').val();
-          var c29 = $('#cantidad-29').val();
-          var c30 = $('#cantidad-30').val();
-          var c31 = $('#cantidad-31').val();
-          var c32 = $('#cantidad-32').val();
-          var c33 = $('#cantidad-33').val();
-          var c34 = $('#cantidad-34').val();
-          var c35 = $('#cantidad-35').val();
-          var c36 = $('#cantidad-36').val();
-          var c37 = $('#cantidad-37').val();
-          var c38 = $('#cantidad-38').val();
-          var c39 = $('#cantidad-39').val();
-          var c40 = $('#cantidad-40').val();
-          var c41 = $('#cantidad-41').val();
-          var c42 = $('#cantidad-42').val();
-          var c43 = $('#cantidad-43').val();
-          var c44 = $('#cantidad-44').val();
-          var c45 = $('#cantidad-45').val();
-          var c46 = $('#cantidad-46').val();
-          var c47 = $('#cantidad-47').val();
-          var c48 = $('#cantidad-48').val();
-          var c49 = $('#cantidad-49').val();
-          var c50 = $('#cantidad-50').val();
-          var c51 = $('#cantidad-51').val();
-          var c52 = $('#cantidad-52').val();
-          var c53 = $('#cantidad-53').val();
-          var c54 = $('#cantidad-54').val();
-          var c55 = $('#cantidad-55').val();
-          var c56 = $('#cantidad-56').val();
-          var c57 = $('#cantidad-57').val();
-          var c58 = $('#cantidad-58').val();
-          var c59 = $('#cantidad-59').val();
-          var c60 = $('#cantidad-60').val();
-          var c61 = $('#cantidad-61').val();
-          var c62 = $('#cantidad-62').val();
-          var c63 = $('#cantidad-63').val();
+          if(!$('#cantidad-1').val()){var c1=0}else{var c1 = $('#cantidad-1').val();}          
+          if(!$('#cantidad-2').val()){var c2=0}else{var c2 = $('#cantidad-2').val();}
+          if(!$('#cantidad-3').val()){var c3=0}else{var c3 = $('#cantidad-3').val();}
+          if(!$('#cantidad-4').val()){var c4=0}else{var c4 = $('#cantidad-4').val();}
+          if(!$('#cantidad-5').val()){var c5=0}else{var c5 = $('#cantidad-5').val();}
+          if(!$('#cantidad-6').val()){var c6=0}else{var c6 = $('#cantidad-6').val();}
+          if(!$('#cantidad-7').val()){var c7=0}else{var c7 = $('#cantidad-7').val();}
+          if(!$('#cantidad-8').val()){var c8=0}else{var c8 = $('#cantidad-8').val();}
+          if(!$('#cantidad-9').val()){var c9=0}else{var c9 = $('#cantidad-9').val();}
+          if(!$('#cantidad-10').val()){var c10=0}else{var c10 = $('#cantidad-10').val();}
+          if(!$('#cantidad-11').val()){var c11=0}else{var c11 = $('#cantidad-11').val();}
+          if(!$('#cantidad-12').val()){var c12=0}else{var c12 = $('#cantidad-12').val();}
+          if(!$('#cantidad-13').val()){var c13=0}else{var c13 = $('#cantidad-13').val();}
+          if(!$('#cantidad-14').val()){var c14=0}else{var c14 = $('#cantidad-14').val();}
+          if(!$('#cantidad-15').val()){var c15=0}else{var c15 = $('#cantidad-15').val();}
+          if(!$('#cantidad-16').val()){var c16=0}else{var c16 = $('#cantidad-16').val();}
+          if(!$('#cantidad-17').val()){var c17=0}else{var c17 = $('#cantidad-17').val();}
+          if(!$('#cantidad-18').val()){var c18=0}else{var c18 = $('#cantidad-18').val();}
+          if(!$('#cantidad-19').val()){var c19=0}else{var c19 = $('#cantidad-19').val();}
+          if(!$('#cantidad-20').val()){var c20=0}else{var c20 = $('#cantidad-20').val();}
+          if(!$('#cantidad-21').val()){var c21=0}else{var c21 = $('#cantidad-21').val();}
+          if(!$('#cantidad-22').val()){var c22=0}else{var c22 = $('#cantidad-22').val();}
+          if(!$('#cantidad-23').val()){var c23=0}else{var c23 = $('#cantidad-23').val();}
+          if(!$('#cantidad-24').val()){var c24=0}else{var c24 = $('#cantidad-24').val();}
+          if(!$('#cantidad-25').val()){var c25=0}else{var c25 = $('#cantidad-25').val();}
+          if(!$('#cantidad-26').val()){var c26=0}else{var c26 = $('#cantidad-26').val();}
+          if(!$('#cantidad-27').val()){var c27=0}else{var c27 = $('#cantidad-27').val();}
+          if(!$('#cantidad-28').val()){var c28=0}else{var c28 = $('#cantidad-28').val();}
+          if(!$('#cantidad-29').val()){var c29=0}else{var c29 = $('#cantidad-29').val();}
+          if(!$('#cantidad-30').val()){var c30=0}else{var c30 = $('#cantidad-30').val();}
+          if(!$('#cantidad-31').val()){var c31=0}else{var c31 = $('#cantidad-31').val();}
+          if(!$('#cantidad-32').val()){var c32=0}else{var c32 = $('#cantidad-32').val();}
+          if(!$('#cantidad-33').val()){var c33=0}else{var c33 = $('#cantidad-33').val();}
+          if(!$('#cantidad-34').val()){var c34=0}else{var c34 = $('#cantidad-34').val();}
+          if(!$('#cantidad-35').val()){var c35=0}else{var c35 = $('#cantidad-35').val();}
+          if(!$('#cantidad-36').val()){var c36=0}else{var c36 = $('#cantidad-36').val();}
+          if(!$('#cantidad-37').val()){var c37=0}else{var c37 = $('#cantidad-37').val();}
+          if(!$('#cantidad-38').val()){var c38=0}else{var c38 = $('#cantidad-38').val();}
+          if(!$('#cantidad-39').val()){var c39=0}else{var c39 = $('#cantidad-39').val();}
+          if(!$('#cantidad-40').val()){var c40=0}else{var c40 = $('#cantidad-40').val();}
+          if(!$('#cantidad-41').val()){var c41=0}else{var c41 = $('#cantidad-41').val();}
+          if(!$('#cantidad-42').val()){var c42=0}else{var c42 = $('#cantidad-42').val();}
+          if(!$('#cantidad-43').val()){var c43=0}else{var c43 = $('#cantidad-43').val();}
+          if(!$('#cantidad-44').val()){var c44=0}else{var c44 = $('#cantidad-44').val();}
+          if(!$('#cantidad-45').val()){var c45=0}else{var c45 = $('#cantidad-45').val();}
+          if(!$('#cantidad-46').val()){var c46=0}else{var c46 = $('#cantidad-46').val();}
+          if(!$('#cantidad-47').val()){var c47=0}else{var c47 = $('#cantidad-47').val();}
+          if(!$('#cantidad-48').val()){var c48=0}else{var c48 = $('#cantidad-48').val();}
+          if(!$('#cantidad-49').val()){var c49=0}else{var c49 = $('#cantidad-49').val();}
+          if(!$('#cantidad-50').val()){var c50=0}else{var c50 = $('#cantidad-50').val();}
+          if(!$('#cantidad-51').val()){var c51=0}else{var c51 = $('#cantidad-51').val();}
+          if(!$('#cantidad-52').val()){var c52=0}else{var c52 = $('#cantidad-52').val();}
+          if(!$('#cantidad-53').val()){var c53=0}else{var c53 = $('#cantidad-53').val();}
+          if(!$('#cantidad-54').val()){var c54=0}else{var c54 = $('#cantidad-54').val();}
+          if(!$('#cantidad-55').val()){var c55=0}else{var c55 = $('#cantidad-55').val();}
+          if(!$('#cantidad-56').val()){var c56=0}else{var c56 = $('#cantidad-56').val();}
+          if(!$('#cantidad-57').val()){var c57=0}else{var c57 = $('#cantidad-57').val();}
+          if(!$('#cantidad-58').val()){var c58=0}else{var c58 = $('#cantidad-58').val();}
+          if(!$('#cantidad-59').val()){var c59=0}else{var c59 = $('#cantidad-59').val();}
+          if(!$('#cantidad-60').val()){var c60=0}else{var c60 = $('#cantidad-60').val();}
+          if(!$('#cantidad-61').val()){var c61=0}else{var c61 = $('#cantidad-61').val();}
+          if(!$('#cantidad-62').val()){var c62=0}else{var c62 = $('#cantidad-62').val();}
+          if(!$('#cantidad-63').val()){var c63=0}else{var c63 = $('#cantidad-63').val();}
           
           var m1 = $('#monto-1').unmask();
           var m2 = $('#monto-2').unmask();
@@ -408,51 +410,79 @@
           '&m61='+m61+'&m62='+m62+'&m63='+m63
           ;
 
-          $importe = m1 + m3 + m5 + m21 + m62;
-          $cantidad = c1 +c3 + c5 + c21 + c62;
+          importe = parseInt(m1) + parseInt(m3) + parseInt(m5) + parseInt(m21) + parseInt(m62);
+          importe = (importe/100).toFixed(2);
+          cantidad = parseInt(c1) + parseInt(c3) + parseInt(c5) + parseInt(c21) + parseInt(c62);
+
 
 /*
             swal({
               title: "Atención!!!",
-              text: "El cantidad total es:",
+              text: "El cantidad total es: "+ cantidad +" y el monto total es: S/. "+ importe,
               type: "warning",
               showCancelButton: true,
-              confirmButtonColor: '#DD6B55',
-              confirmButtonText: 'Yes, delete it!',
+              confirmButtonColor: '#27ae60',
+              confirmButtonText: 'Sí, guardar!',
               closeOnConfirm: false,
-              //closeOnCancel: false
+              closeOnCancel: false
             },
 
             function(){
-              swal("Deleted!", "Your imaginary file has been deleted!", "success");
+
+              alert("confirm");
+
             });
 */
 
-/*            
-          $.ajax({
-                type: "POST",
-                url: "public/user/ajax/GuardarFormulario.php",
-                data: parametros,
-                 beforeSend: function(objeto){
-                  $('#btn-save a').attr("disabled", true);
-                  $("#resultados").html("Mensaje: Cargando...");
-                  },
-                success: function(datos){
-                  $('#btn-save a').attr("disabled", false);
-                  $("#resultados").html(datos);
-                  //$('#datos_caja')[0].reset();
-                  console.log(datos);
-                    }
+
+            swal({
+              title: "Atención!!!",
+              text: "El cantidad total es: "+ cantidad +" y el monto total es: S/. "+ importe,
+              type: "warning",
+              showCancelButton: true,
+              confirmButtonColor: "#27ae60",
+              confirmButtonText: "Sí, guardar!",
+              cancelButtonText: "Cancelar",
+              closeOnConfirm: false,
+              closeOnCancel: false
+            },
+            function(inputValue){
+              //Use the "Strict Equality Comparison" to accept the user's input "false" as string)
+              if (inputValue===false) {
+                swal.close();
+                $(".loading img").hide();
+              } else {
+                $.ajax({
+                    type: "POST",
+                    url: "./public/user/ajax/GuardarFormulario.php",
+                    data: parametros,
+                     beforeSend: function(objeto){
+                      $('#btn-save a').attr("disabled", true);
+                      $("#resultados").html("Mensaje: Cargando...");
+                      },
+                    success: function(datos){
+                      $('#btn-save a').attr("disabled", false);
+                      $("#resultados").html(datos);
+                      //$('#datos_caja')[0].reset();
+                      console.log(datos);
+                      $(".loading img").hide();
+                      swal.close();
+                      }
+                });
+                
+              }
             });
 
-          event.preventDefault();
 
+              //swal("Guardado!", "Se guardo exitosamente el formulario!", "success");
+
+/*              
+                
 */
 
-/*
 
-           }  //Fin else
-*/
+
+
 
         } //<!--save_recaudacion-->
 

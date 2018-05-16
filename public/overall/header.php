@@ -24,7 +24,7 @@
   <!--custom-->
   <script src="<?php echo URL_VIEW; ?>bootstrap-default/js/custom.js"></script>
   <!--Sweet-Alert-->
-  <script src="<?php echo URL_VIEW; ?>sweet-alert/sweetalert.css"></script>
+  <link rel="stylesheet" href="<?php echo URL_VIEW; ?>sweet-alert/sweetalert.css">
 
   <?php
 

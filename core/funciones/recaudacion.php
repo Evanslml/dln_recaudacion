@@ -70,31 +70,17 @@ class Recaudacion
       $db->close();
     } 
 
-/*
+
     public static function BuscarRecaudacionFecha ($e,$fi,$ff,$offset,$per_page){
       $db = new Conexion();
-      $sql = $db->query("SELECT 
-      A.LRECAU_ID,A.NESTA_RENAES,A.LANIO_ID,A.LRECAU_FECREC,A.LRECTIP_ID,A.BOLETA_INI,A.BOLETA_FIN,A.CANTIDAD,A.IMPORTE,
-      A.LRECAU_ESTADO,B.NEST_NOMBRE
-      FROM (
-      SELECT LRECAU_ID,NESTA_RENAES,LANIO_ID,LRECAU_FECREC,'01' AS 'LRECTIP_ID',LBOL_RDRINI 'BOLETA_INI',
-      A.LBOL_RDRFIN 'BOLETA_FIN',LCANT_RDR 'CANTIDAD',LIMP_RDR 'IMPORTE', LRECAU_ESTADO
+      $sql = $db->query("
+      SELECT 
+      A.LRECAU_ID,A.NESTA_RENAES,A.LANIO_ID,A.LRECAU_FECREC,A.LRECTIP_ID,A.LBOL_INI,A.LBOL_FIN,A.LCANT,A.LIMP,A.LRECAU_ESTADO,B.NEST_NOMBRE
       FROM lrecaudacion A
-      WHERE SUBSTRING(A.LRECAU_ID,9,5)= '$e'
-
-      UNION ALL
-
-      SELECT LRECAU_ID,NESTA_RENAES,LANIO_ID,LRECAU_FECREC,'02',LBOL_SISMEDINI,
-      LBOL_SISMEDFIN,LCANT_SISMED,LIMP_SISMED,LRECAU_ESTADO
-      FROM lrecaudacion A
-      WHERE SUBSTRING(A.LRECAU_ID,9,5)= '$e'
-      )A
-      INNER JOIN 
-      NESTABLECIMIENTO B
-      ON A.NESTA_RENAES=B.NESTA_RENAES
-      WHERE
-      (A.LRECAU_FECREC BETWEEN '$fi' AND '$ff')
-      ORDER BY A.LRECAU_ID,A.LRECTIP_ID
+      INNER JOIN nestablecimiento B
+      ON A.NESTA_RENAES = B.NESTA_RENAES
+      WHERE A.NESTA_RENAES='$e'
+      AND (A.LRECAU_FECREC BETWEEN '$fi' AND '$ff')
       LIMIT $offset,$per_page
       ;");
 
@@ -115,22 +101,15 @@ class Recaudacion
       $db = new Conexion();
       $sql = $db->query("
       SELECT * FROM lrecaudacion A
-      WHERE SUBSTRING(A.LRECAU_ID,9,5)= '$e' 
+      WHERE NESTA_RENAES = '$e' 
       AND (A.LRECAU_FECREC BETWEEN '$fi' AND '$ff')
-      
-      UNION ALL
-
-      SELECT * FROM lrecaudacion A
-      WHERE SUBSTRING(A.LRECAU_ID,9,5)= '$e' 
-      AND (A.LRECAU_FECREC BETWEEN '$fi' AND '$ff')
-
       ;");
       $count= $db->rows($sql);
       return $count;
       
     } 
 
-*/
+
 
 }
 

@@ -1,6 +1,11 @@
 <?php if(isset($_SESSION['sesion_id']))
 {
 ?>
+
+<div class="loading">
+  <img src="<?php echo URL_VIEW; ?>bootstrap-default/img/loading.gif" alt="" style="display: none;">
+</div>
+
   <!-- Main Footer -->
   <footer class="main-footer">
     <!-- To the right -->
