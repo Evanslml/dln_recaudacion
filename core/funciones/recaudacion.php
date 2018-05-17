@@ -81,6 +81,7 @@ class Recaudacion
       ON A.NESTA_RENAES = B.NESTA_RENAES
       WHERE A.NESTA_RENAES='$e'
       AND (A.LRECAU_FECREC BETWEEN '$fi' AND '$ff')
+      ORDER BY A.LRECAU_FECREC DESC,A.LRECTIP_ID 
       LIMIT $offset,$per_page
       ;");
 
@@ -106,7 +107,6 @@ class Recaudacion
       ;");
       $count= $db->rows($sql);
       return $count;
-      
     } 
 
 
@@ -177,7 +177,7 @@ class RecaudacionVoucher extends Recaudacion
 
   public function IngresoVocuherRecaudacion (){
     $db = new Conexion();
-    $sql = $db->query("INSERT INTO lrecaudacion_deposito (LRECAU_ID,LRECAU_VOUCHER,LRECAU_FECHA,LRECAU_MONTO,LRECAU_ESTADO,FECHA_DEPOSITO)
+    $sql1 = $db->query("INSERT INTO lrecaudacion_deposito (LRECAU_ID,LRECAU_VOUCHER,LRECAU_FECHA,LRECAU_MONTO,LRECAU_ESTADO,FECHA_DEPOSITO)
       VALUES(
       '$this->lrcau_id',
       '$this->lrecau_voucher',
@@ -186,8 +186,10 @@ class RecaudacionVoucher extends Recaudacion
       '$this->lrecau_estado',
       '$this->fecha_deposito'
       );");
-    $sql1 = $db->query("UPDATE lrecaudacion SET LRECAU_ESTADO='1' WHERE LRECAU_ID= '$this->lrcau_id' ;");
-      $db->close();
+
+    $sql2 = $db->query("UPDATE lrecaudacion SET LRECAU_ESTADO='1' WHERE LRECAU_ID= '$this->lrcau_id' ;");
+    
+    $db->close();
   }
 
 

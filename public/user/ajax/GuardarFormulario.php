@@ -25,6 +25,8 @@ if(strtolower($_SERVER['REQUEST_METHOD']) != 'post'){
         	$errors[] = "El orden de número de Boleta RDR es de menor a mayor";
         } else if($_POST['bolinisismed'] > $_POST['bolfinsismed']){
         	$errors[] = "El orden de número de Boleta SISMED es de menor a mayor";
+        } else if (($_POST['importe'] == '0')  || ($_POST['cantidad'] == '0') ){
+        	$errors[] = "Debe ingresar un monto en la Recaudación diaria";
         }
 
         else {

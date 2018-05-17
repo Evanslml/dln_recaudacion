@@ -126,7 +126,7 @@
               $("#mensaje").html('<div class="alert alert-danger" role="alert">\
                       <button type="button" class="close" data-dismiss="alert">&times;</button>\
                       <strong>Error!</strong> \
-                      El monto total debe de ser '+ montototal +'</div>');
+                      El monto total debe de ser S/. '+ montototal +'</div>');
               return false;
             } else{
               $("#mensaje").html('<div class="alert alert-success" role="alert">\
@@ -140,10 +140,13 @@
                       data: { 'data1':JSON.stringify(array) } ,
                       success: function (response) {
 
+/*
                           setTimeout(function(){
                                 //$('#Ingreso_Voucher').modal('hide');
                                 location.reload();
                           },1500); 
+*/
+
                           console.log(response);
                       },
                       error: function () {

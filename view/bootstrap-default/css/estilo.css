@@ -6025,6 +6025,7 @@ table.text-center th {
     z-index: 9999;
     width: 80px;
     height: 80px;
+    display: none;
 }
 .loading img{
     width: 80px

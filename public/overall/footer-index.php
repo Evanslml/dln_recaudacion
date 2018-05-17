@@ -3,7 +3,7 @@
 ?>
 
 <div class="loading">
-  <img src="<?php echo URL_VIEW; ?>bootstrap-default/img/loading.gif" alt="" style="display: none;">
+  <img src="<?php echo URL_VIEW; ?>bootstrap-default/img/loading.gif" alt="">
 </div>
 
   <!-- Main Footer -->

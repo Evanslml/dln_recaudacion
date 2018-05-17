@@ -248,7 +248,7 @@
         function save_recaudacion(){
 
           event.preventDefault();
-          $(".loading img").show();
+          $(".loading").show();
           var bolinirdr = $('#bolinirdr').val();
           var bolfinrdr = $('#bolfinrdr').val();
           var bolinisismed = $('#bolinisismed').val();
@@ -390,7 +390,11 @@
           var m61 = $('#monto-61').unmask();
           var m62 = $('#monto-62').unmask();
           var m63 = $('#monto-63').unmask();
-                 
+          
+          importe = parseInt(m1) + parseInt(m3) + parseInt(m5) + parseInt(m21) + parseInt(m62);
+          importe = (importe/100).toFixed(2);
+          cantidad = parseInt(c1) + parseInt(c3) + parseInt(c5) + parseInt(c21) + parseInt(c62);
+
           var parametros = 
           'bolinirdr='+bolinirdr+'&bolfinrdr='+bolfinrdr+'&bolinisismed='+bolinisismed+'&bolfinsismed='+bolfinsismed+
           '&date='+date+'&id_establecimiento='+id_establecimiento+
@@ -407,33 +411,8 @@
           '&m31='+m31+'&m32='+m32+'&m33='+m33+'&m34='+m34+'&m35='+m35+'&m36='+m36+'&m37='+m37+'&m38='+m38+'&m39='+m39+'&m40='+m40+
           '&m41='+m41+'&m42='+m42+'&m43='+m43+'&m44='+m44+'&m45='+m45+'&m46='+m46+'&m47='+m47+'&m48='+m48+'&m49='+m49+'&m50='+m50+
           '&m51='+m51+'&m52='+m52+'&m53='+m53+'&m54='+m54+'&m55='+m55+'&m56='+m56+'&m57='+m57+'&m58='+m58+'&m59='+m59+'&m60='+m60+
-          '&m61='+m61+'&m62='+m62+'&m63='+m63
+          '&m61='+m61+'&m62='+m62+'&m63='+m63+'&importe='+importe+'&cantidad='+cantidad
           ;
-
-          importe = parseInt(m1) + parseInt(m3) + parseInt(m5) + parseInt(m21) + parseInt(m62);
-          importe = (importe/100).toFixed(2);
-          cantidad = parseInt(c1) + parseInt(c3) + parseInt(c5) + parseInt(c21) + parseInt(c62);
-
-
-/*
-            swal({
-              title: "Atención!!!",
-              text: "El cantidad total es: "+ cantidad +" y el monto total es: S/. "+ importe,
-              type: "warning",
-              showCancelButton: true,
-              confirmButtonColor: '#27ae60',
-              confirmButtonText: 'Sí, guardar!',
-              closeOnConfirm: false,
-              closeOnCancel: false
-            },
-
-            function(){
-
-              alert("confirm");
-
-            });
-*/
-
 
             swal({
               title: "Atención!!!",
@@ -465,24 +444,13 @@
                       $("#resultados").html(datos);
                       //$('#datos_caja')[0].reset();
                       console.log(datos);
-                      $(".loading img").hide();
+                      $(".loading").hide();
                       swal.close();
                       }
                 });
                 
               }
             });
-
-
-              //swal("Guardado!", "Se guardo exitosamente el formulario!", "success");
-
-/*              
-                
-*/
-
-
-
-
 
         } //<!--save_recaudacion-->
 

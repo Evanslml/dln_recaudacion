@@ -65,6 +65,9 @@ require_once('../../../core/core.php');
             $new->IngresoVocuherRecaudacion();
         }
 
+        var_dump($new);
+        
+
     }
 
 
