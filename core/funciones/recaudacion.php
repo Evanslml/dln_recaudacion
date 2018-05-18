@@ -109,6 +109,48 @@ class Recaudacion
       return $count;
     } 
 
+    public static function VerListaFormulario ($a){
+      $db = new Conexion();
+      $sql = $db->query("
+      SELECT A.IDITEM,B.LCLAS_ALIAS,B.LCLAS_PADRE,B.LCLAS_NOMBRE,A.CANTIDAD,A.MONTO,B.LCLAS_ESTADO FROM lrecaudacion_detalle A
+      INNER JOIN lclasificador B
+      ON A.IDITEM=B.LCLAS_ID
+      WHERE lrecau_id LIKE '%$a'
+      AND B.LCLAS_ID<=63
+      ;");
+      if($sql->num_rows > 0) {
+      while($d = $sql->fetch_array()) {
+        $dato[] = $d; //ALL
+      }
+      } else {
+        $dato = false;
+      }
+      $sql->free();
+      $db->close();
+      return $dato;
+    }     
+
+    public static function VerListaFormularioRDR_SISMED ($a){
+      $db = new Conexion();
+      $sql = $db->query("
+      SELECT B.LRECTIP_NOMBRE,A.LRECTIP_ID,A.LBOL_INI,A.LBOL_FIN,A.LCANT,A.LIMP,A.LRECAU_FECREC
+      FROM lrecaudacion A 
+      INNER JOIN lrecaudacion_tipo B
+      ON A.LRECTIP_ID=B.LRECTIP_ID
+      where A.LRECAU_ID like '%18051705791' ORDER BY A.LRECTIP_ID LIMIT 2
+      ;");
+      if($sql->num_rows > 0) {
+      while($d = $sql->fetch_array()) {
+        $dato[] = $d; //ALL
+      }
+      } else {
+        $dato = false;
+      }
+      $sql->free();
+      $db->close();
+      return $dato;
+    } 
+
 
 
 }

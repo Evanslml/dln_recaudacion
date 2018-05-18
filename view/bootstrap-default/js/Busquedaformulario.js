@@ -140,12 +140,12 @@
                       data: { 'data1':JSON.stringify(array) } ,
                       success: function (response) {
 
-/*
+
                           setTimeout(function(){
                                 //$('#Ingreso_Voucher').modal('hide');
                                 location.reload();
                           },1500); 
-*/
+
 
                           console.log(response);
                       },
@@ -186,9 +186,6 @@
 
 
     function load(page){
-      //var fi= $("#datepicker1 input").val();
-      //var ff= $("#datepicker2 input").val();
-      //var e = $("#id_establecimiento").val();
       var fecha_inicio = document.getElementById("fecha_inicio").value;
       var fecha_final = document.getElementById("fecha_final").value;
       var c = document.getElementById("id_establecimiento").value;
@@ -213,15 +210,36 @@
           $(".outer_div").html(data).fadeIn('slow');
           $('#loader').html('');
         }
-      })
+      });
 
 
     } //LOAD
 
     function editar(parametro){
-      var a= parametro;
-      alert(a);
+
+      var a = zeroFill(parametro,15);
+      //alert(a);
+
+      location.href ="./formato?id="+a;
+
     }   
+
+    function imprimir(parametro){
+
+      var id_formulario = zeroFill(parametro,15);
+      //alert(a);
+      VentanaCentrada('./core/pdf/documentos/ver_formulario.php?id_formulario='+id_formulario,'Formulario','','1024','768','true');
+    }   
+
+    function VentanaCentrada(theURL,winName,features, myWidth, myHeight, isCenter) { //v3.0
+      if(window.screen)if(isCenter)if(isCenter=="true"){
+        var myLeft = (screen.width-myWidth)/2;
+        var myTop = (screen.height-myHeight)/2;
+        features+=(features!='')?',':'';
+        features+=',left='+myLeft+',top='+myTop;
+      }
+      window.open(theURL,winName,features+((features!='')?',':'')+'width='+myWidth+',height='+myHeight);
+    }
 
 
     function agregar(a,b){
@@ -229,7 +247,7 @@
       $('#TextBoxContainer tr td:nth-child(1) input').val('');
       $('#TextBoxContainer tr td:nth-child(2) input').val('');
       $('#TextBoxContainer tr td:nth-child(3) input').val('S/ 0.00');
-      var id = zeroFill(a,13);
+      var id = zeroFill(a,15);
       var monto = b.toFixed(2) ;
       $("#mod_idForm").val(id);
       $("#mod_monto").val(monto);

@@ -116,6 +116,9 @@ require_once('../../../core/core.php');
         //var_dump($_ListaUsuario[$_SESSION['sesion_id']][5]);
 
         //loop through fetched data
+
+        $perf_id =$_usuario[$_SESSION['sesion_id']]['MPERF_ID'];
+
         if ($numrows>0){
             ?>
 
@@ -159,8 +162,9 @@ require_once('../../../core/core.php');
                         echo '<td>',$value[7],'</td>'; 
                         echo '<td style="padding: 8px 15px;"> S/. <span class="pull-right">',$value[8],'</span></td>'; 
                         echo '<td>';
-                        if($value[9]=='0') {//si es administrador
-                        echo '<a href="#" class="btn btn-default btn-accion" title="Editar formulario" onclick="editar(',$value[0],');"><i class="fa fa-pencil"></i></a>'; //
+                        echo '<a href="#" class="btn btn-default btn-accion" title="Imprimir formulario" onclick="imprimir(',$value[0],');"><i class="fa fa-print"></i></a>'; //
+                        if(($value[9]=='0') /*OR ($perf_id=='01') OR ($perf_id=='02')*/ ) {
+                        echo '<a href="#" class="btn btn-default btn-accion" title="Editar formulario" onclick="editar(',$value[0],');"><i class="fa fa-pencil"></i></a>'; 
                         }
                         if($value[9]=='0'){
                         echo '<a data-toggle="modal" data-target="#Ingreso_Voucher" class="btn btn-default btn-accion" title="Agregar Voucher" 
