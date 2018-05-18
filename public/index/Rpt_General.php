@@ -24,9 +24,9 @@ require_once 'public/overall/header.php';
             <h3 class="panel-title">Reporte General del Registro de Recaudación Diaria</h3> 
 
             <div class="panel-tools">
-              <div class="button btn-save"><a href="#"><i class="fa fa-floppy-o"></i><span>Guardar</span></a></div>
-              <div class="button btn-cancel"><a href="#"><i class="fa fa-pencil"></i><span>Editar</span></a></div>
-              <div class="button btn-cancel"><a href="./index.php"><i class="fa fa-times"></i><span>Cancelar</span></a></div>
+              <div class="button exportar_excel"><a href="#"><i class="fa fa-file-excel-o"></i><span>Excel</span></a></div>
+              <div class="button "><a href="#"><i class="fa fa-file-pdf-o"></i><span>PDF</span></a></div>
+              <div class="button "><a href="./index.php"><i class="fa fa-times"></i><span>Cancelar</span></a></div>
             </div>
 
           </div>
@@ -34,18 +34,39 @@ require_once 'public/overall/header.php';
           <div class="panel-body">
 
             <div class="panel-uno">
-
+<?php 
+//var_dump($_ListaTipoRec);
+?>
               <form class="form-horizontal form-label-left">
           
 		          <div class="form-group">
 		            <label class="control-label col-md-3 col-sm-3 col-xs-12">Tipo de Reporte</label>
 		            <div class="col-md-6 col-sm-6 col-xs-12">
 		              <select class="form-control" name="cbx_tipo_reporte" id="cbx_tipo_reporte" required="">
-		                  <option value="0">Seleccionar Estrategia</option>
-			              <option value="01">FORMATO DE RECAUDACION DIARIA</option>
+		                <option value="0">Seleccionar Estrategia</option>
+                    <?php
+                      foreach ($_ListaReportes as $key => $value) {
+                          echo '<option value=',$value[0],'>',$value[1],'</option>';
+                      }  
+                    ?>
 			          </select>
 		            </div>
 		          </div>
+
+              <div class="form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12">Tipo de Recaudación</label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                  <select class="form-control" name="cbx_tipo_recaudacion" id="cbx_tipo_recaudacion" required="">
+                    <option value="00">TODOS</option>
+                    <?php
+                     foreach ($_ListaTipoRec as $key => $value) {
+                          echo '<option value=',$value[0],'>',$value[1],'</option>';
+                      }  
+                    ?>
+                  </select>
+                </div>
+              </div>
+
 
 		          <div class="form-group">
 		            <label class="control-label col-md-3 col-sm-3 col-xs-12">Nivel de Reporte</label>
@@ -59,111 +80,103 @@ require_once 'public/overall/header.php';
 		            </div>
 		          </div>
 
-		          <div class="form-group" id="form-distrito">
-		            <label class="control-label col-md-3 col-sm-3 col-xs-12">Distrito</label>
+              <div class="form-group" id="form-distrito">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12">Distrito</label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                  <select class="form-control" name="cbx_nivel_distrito" id="cbx_nivel_distrito" required="">
+                    <option value="0">Seleccionar Distrito</option>
+                         <?php
+                            foreach ($_ListaDistritos as $key => $value) {
+                                echo '<option value=',$value[0],'>',$value[1],'</option>';
+                            }  
+                          ?>
+                    </select>
+                </div>
+              </div>
+
+              <div class="form-group" id="form-establecimientos">
+		            <label class="control-label col-md-3 col-sm-3 col-xs-12">Establecimientos</label>
 		            <div class="col-md-6 col-sm-6 col-xs-12">
-		              <select class="form-control" name="cbx_nivel_distrito" id="cbx_nivel_distrito" required="">
-		                <option value="0">Seleccionar Red</option>
-                        <option value="01">Carabayllo</option>
-                      </select>
+		              <select class="form-control" name="cbx_establecimiento" id="cbx_establecimiento" required="">
+		                <option value="0">Seleccionar Establecimiento</option>
+                         <?php
+                            foreach ($_ListaEstablecimientos as $key => $value) {
+                                echo '<option value=',$value[3],'>',$value[5],' - ',$value[3],'</option>';
+                            }  
+                          ?>
+                    </select>
 		            </div>
 		          </div>
 
-          <div class="form-group" id="form-microred" style="display: block;">
-            <label class="control-label col-md-3 col-sm-3 col-xs-12">Microred</label>
-            <div class="col-md-6 col-sm-6 col-xs-12">
-              <select class="form-control" name="cbx_microred" id="cbx_microred" required=""><option value="0">Seleccionar MicroRed</option><option value="03">COLLIQUE III ZONA</option></select>
-            </div>
-          </div>
+<!--
+              <div class="form-group" id="form-anual">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12">Año</label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                  <select class="form-control" name="cbx_anual" id="cbx_anual" required="">
+                    <option value="0">Seleccionar Año</option>
+                         <?php
+                            foreach ($_ListaAnio as $key => $value) {
+                                echo '<option value=',$value[0],'>',$value[1],'</option>';
+                            }  
+                          ?>
+                  </select>
+                </div>
+              </div>
+-->            
 
-          <div class="form-group" id="form-establecimiento" style="display: block;">
-            <label class="control-label col-md-3 col-sm-3 col-xs-12">Establecimiento</label>
-            <div class="col-md-6 col-sm-6 col-xs-12">
-              <select class="form-control" name="cbx_establecimiento" id="cbx_establecimiento" required=""><option value="0">Seleccionar Establecimiento</option><option value="010">P.S. LOS GERANIOS</option></select>
-            </div>
-          </div>
+              <div class="form-group" id="form-anual">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12">Fecha Inicio</label>
+                  <div class="col-md-2">
+                      <div class="form-group">
+                          <div class="col-md-12 col-xs-12">
+                            <div id="datepicker1" class="input-group date" data-date-format="mm-dd-yyyy">
+                                <input id="fecha_inicio" class="form-control" type="text" readonly />
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                            </div>                        
+                          </div>
+                      </div>
+                  </div>
 
-          <div class="form-group">
-            <label class="control-label col-md-3 col-sm-3 col-xs-12">Tipo</label>
-            <div class="col-md-6 col-sm-6 col-xs-12">
-              <select class="form-control" name="cbx_tipo" id="cbx_tipo" required="">
-                <option value="0">Seleccionar tipo</option>
-                <option value="01">Reporte Mensual</option>
-                <option value="02">Reporte Trimestral</option>
-                <option value="03">Reporte Semestral</option>
-                <option value="04">Reporte Anual</option>
-              </select>
-            </div>
-          </div>
-
-          <div class="form-group" id="form-mes" style="display: none">
-            <label class="control-label col-md-3 col-sm-3 col-xs-12">Mensual</label>
-            <div class="col-md-6 col-sm-6 col-xs-12">
-              <select class="form-control" name="cbx_mes" id="cbx_mes">
-                <option value="0">Seleccionar mes</option>
-                                    <option value="01">Enero</option>
-                                        <option value="02">Febrero</option>
-                                        <option value="03">Marzo</option>
-                                        <option value="04">Abril</option>
-                                        <option value="05">Mayo</option>
-                                        <option value="06">Junio</option>
-                                        <option value="07">Julio</option>
-                                        <option value="08">Agosto</option>
-                                        <option value="09">Setiembre</option>
-                                        <option value="10">Octubre</option>
-                                        <option value="11">Noviembre</option>
-                                        <option value="12">Diciembre</option>
-                                  </select>
-            </div>
-          </div> 
-
-          <div class="form-group" id="form-trimestre" style="display: none">
-            <label class="control-label col-md-3 col-sm-3 col-xs-12">Trimeste</label>
-            <div class="col-md-6 col-sm-6 col-xs-12">
-              <select class="form-control" name="cbx_trimestre" id="cbx_trimestre">
-                <option value="0">Seleccionar trimestre</option>
-                <option value="01">Primer trimestre</option>
-                <option value="02">Segundo trimestre</option>
-                <option value="03">Tercer trimestre</option>
-                <option value="04">Cuarto trimestre</option>
-                
-              </select>
-            </div>
-          </div>
-
-          <div class="form-group" id="form-semestre" style="display: none">
-            <label class="control-label col-md-3 col-sm-3 col-xs-12">Semestre</label>
-            <div class="col-md-6 col-sm-6 col-xs-12">
-              <select class="form-control" name="cbx_semestre" id="cbx_semestre">
-                <option value="0">Seleccionar Semestre</option>
-                <option value="01">Primer Semestre</option>
-                <option value="02">Segundo Semestre</option>                          
-              </select>
-            </div>
-
-          </div>
-
-          <div class="form-group" id="form-anual">
-            <label class="control-label col-md-3 col-sm-3 col-xs-12">Año</label>
-            <div class="col-md-6 col-sm-6 col-xs-12">
-              <select class="form-control" name="cbx_anual" id="cbx_anual" required="">
-                <option value="0">Seleccionar Año</option>
-                                    <option value="01">2017</option>
-                                        <option value="02">2018</option>
-                                  </select>
-            </div>
-          </div>
+              <label class="control-label col-md-2 col-sm-3 col-xs-12">Fecha Fin</label>
+                  <div class="col-md-2">
+                      <div class="form-group">
+                          <div class="col-md-12 col-xs-12">
+                            <div id="datepicker2" class="input-group date" data-date-format="mm-dd-yyyy">
+                                <input id="fecha_inicio" class="form-control" type="text" readonly />
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                            </div>                        
+                          </div>
+                      </div>
+                  </div>
 
 
+
+<!--
+
+                  <div class="col-md-3">
+                    <div class="row">
+                      <div class="form-group">
+                          <label for="mod_nombre" class="col-sm-3 col-xs-12 control-label">Fecha Final:</label>
+                          <div class="col-md-9 col-xs-12">
+                            <div id="datepicker2" class="input-group date" data-date-format="mm-dd-yyyy">
+                                <input id="fecha_final" class="form-control" type="text" readonly />
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                            </div>                        
+                          </div>
+                      </div>
+                    </div>
+                  </div>-->
+            </div>  
+
+
+<!--
           <div class="ln_solid"></div>
           <div class="form-group">
             <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-              <!--<button id="reporte16" type="submit" class="btn btn-success">Consultar</button>-->
               <button id="exportar_excel" class="btn btn-success">Exportar</button>
-              <!--<button class="btn btn-primary" type="reset">Reset</button>-->
             </div>
           </div>
-
+-->
         </form>
 
             </div> <!--panel-uno-->

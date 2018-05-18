@@ -116,7 +116,7 @@ class Recaudacion
       INNER JOIN lclasificador B
       ON A.IDITEM=B.LCLAS_ID
       WHERE lrecau_id LIKE '%$a'
-      AND B.LCLAS_ID<=63
+      AND B.LCLAS_ID<=66
       ;");
       if($sql->num_rows > 0) {
       while($d = $sql->fetch_array()) {
@@ -137,7 +137,7 @@ class Recaudacion
       FROM lrecaudacion A 
       INNER JOIN lrecaudacion_tipo B
       ON A.LRECTIP_ID=B.LRECTIP_ID
-      where A.LRECAU_ID like '%18051705791' ORDER BY A.LRECTIP_ID LIMIT 2
+      where A.LRECAU_ID like '%$a' ORDER BY A.LRECTIP_ID LIMIT 2
       ;");
       if($sql->num_rows > 0) {
       while($d = $sql->fetch_array()) {

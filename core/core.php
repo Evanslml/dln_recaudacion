@@ -3,9 +3,9 @@
  date_default_timezone_set('America/Lima');
   
  //definimos ruta y titulo del sitio
- define('URL_VIEW','http://192.168.0.150:8080/dln_recaudacion/view/');
+ define('URL_VIEW','http://172.16.20.19:8080/dln_recaudacion/view/');
  define('TITLE_WEB','RECAUDACION DIRIS');
- define('URL_WEB','http://192.168.0.150:8080/dln_recaudacion/');
+ define('URL_WEB','http://172.16.20.19:8080/dln_recaudacion/');
  define('NOMBRE_WEB','RECAUDACION');
  
  define('WWW','http://dirislimanorte.gob.pe/');
@@ -19,6 +19,7 @@
  require_once('funciones/clasificador.' . $Extencion);
  require_once('funciones/recaudacion.' . $Extencion);
  require_once('funciones/pagination.' . $Extencion);
+ require_once('funciones/reportes.' . $Extencion);
  //instaciamos User() para utilizarlo en el sitio
  
  $_usuario = Acceso::User();
@@ -27,6 +28,10 @@
  $_ListaEstablecimientos = Acceso::ListaEstablecimientos();
  $_ListaClasificador = Clasificador::ListaClasificador();
  $_GetIdPerfil = Perfil::getLastId();
+ $_ListaReportes = Reportes::listaReportes();
+ $_ListaDistritos = Reportes::listaDistritos();
+ $_ListaTipoRec = Reportes::listaRecaudacionTipo();
+ $_ListaAnio = Reportes::listaRecaudacionAnio();
 
 
 
