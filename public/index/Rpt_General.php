@@ -25,7 +25,7 @@ require_once 'public/overall/header.php';
 
             <div class="panel-tools">
               <div class="button exportar_excel"><a href="#"><i class="fa fa-file-excel-o"></i><span>Excel</span></a></div>
-              <div class="button "><a href="#"><i class="fa fa-file-pdf-o"></i><span>PDF</span></a></div>
+              <div class="button exportar_pdf"><a href="#"><i class="fa fa-file-pdf-o"></i><span>PDF</span></a></div>
               <div class="button "><a href="./index.php"><i class="fa fa-times"></i><span>Cancelar</span></a></div>
             </div>
 
@@ -40,7 +40,7 @@ require_once 'public/overall/header.php';
               <form class="form-horizontal form-label-left">
           
 		          <div class="form-group">
-		            <label class="control-label col-md-3 col-sm-3 col-xs-12">Tipo de Reporte</label>
+		            <label class="control-label col-md-3 col-sm-3 col-xs-12 lbl_tipo_reporte">Tipo de Reporte</label>
 		            <div class="col-md-6 col-sm-6 col-xs-12">
 		              <select class="form-control" name="cbx_tipo_reporte" id="cbx_tipo_reporte" required="">
 		                <option value="0">Seleccionar Estrategia</option>
@@ -69,7 +69,7 @@ require_once 'public/overall/header.php';
 
 
 		          <div class="form-group">
-		            <label class="control-label col-md-3 col-sm-3 col-xs-12">Nivel de Reporte</label>
+		            <label class="control-label col-md-3 col-sm-3 col-xs-12 lbl_tipo_nivel">Nivel de Reporte</label>
 		            <div class="col-md-6 col-sm-6 col-xs-12">
 		              <select class="form-control" name="cbx_tipo_nivel" id="cbx_tipo_nivel" required="">
 		                <option value="0">Seleccione el tipo</option>
@@ -81,7 +81,7 @@ require_once 'public/overall/header.php';
 		          </div>
 
               <div class="form-group" id="form-distrito">
-                <label class="control-label col-md-3 col-sm-3 col-xs-12">Distrito</label>
+                <label class="control-label col-md-3 col-sm-3 col-xs-12 lbl_nivel_distrito">Distrito</label>
                 <div class="col-md-6 col-sm-6 col-xs-12">
                   <select class="form-control" name="cbx_nivel_distrito" id="cbx_nivel_distrito" required="">
                     <option value="0">Seleccionar Distrito</option>
@@ -95,7 +95,7 @@ require_once 'public/overall/header.php';
               </div>
 
               <div class="form-group" id="form-establecimientos">
-		            <label class="control-label col-md-3 col-sm-3 col-xs-12">Establecimientos</label>
+		            <label class="control-label col-md-3 col-sm-3 col-xs-12 lbl_establecimiento">Establecimientos</label>
 		            <div class="col-md-6 col-sm-6 col-xs-12">
 		              <select class="form-control" name="cbx_establecimiento" id="cbx_establecimiento" required="">
 		                <option value="0">Seleccionar Establecimiento</option>
@@ -150,7 +150,15 @@ require_once 'public/overall/header.php';
                   </div>
 
 
+<?php
 
+/*$arrayName = array('3','dsd','dsad' );*/
+/**/
+/*foreach ($arrayName as $key => $value) {*/
+/*  echo $key;*/
+/*}*/
+
+?>
 <!--
 
                   <div class="col-md-3">

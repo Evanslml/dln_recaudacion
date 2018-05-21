@@ -231,6 +231,7 @@
       VentanaCentrada('./core/pdf/documentos/ver_formulario.php?id_formulario='+id_formulario,'Formulario','','1024','768','true');
     }   
 
+/*
     function VentanaCentrada(theURL,winName,features, myWidth, myHeight, isCenter) { //v3.0
       if(window.screen)if(isCenter)if(isCenter=="true"){
         var myLeft = (screen.width-myWidth)/2;
@@ -241,7 +242,7 @@
       window.open(theURL,winName,features+((features!='')?',':'')+'width='+myWidth+',height='+myHeight);
     }
 
-
+*/
     function agregar(a,b){
       $("#mensaje").html("");
       $('#TextBoxContainer tr td:nth-child(1) input').val('');

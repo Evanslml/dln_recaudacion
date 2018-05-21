@@ -326,6 +326,9 @@
           if(!$('#cantidad-61').val()){var c61=0}else{var c61 = $('#cantidad-61').val();}
           if(!$('#cantidad-62').val()){var c62=0}else{var c62 = $('#cantidad-62').val();}
           if(!$('#cantidad-63').val()){var c63=0}else{var c63 = $('#cantidad-63').val();}
+          if(!$('#cantidad-64').val()){var c64=0}else{var c64 = $('#cantidad-64').val();}
+          if(!$('#cantidad-65').val()){var c65=0}else{var c65 = $('#cantidad-65').val();}
+          if(!$('#cantidad-66').val()){var c66=0}else{var c66 = $('#cantidad-66').val();}
           
           var m1 = $('#monto-1').unmask();
           var m2 = $('#monto-2').unmask();
@@ -390,6 +393,9 @@
           var m61 = $('#monto-61').unmask();
           var m62 = $('#monto-62').unmask();
           var m63 = $('#monto-63').unmask();
+          var m64 = $('#monto-64').unmask();
+          var m65 = $('#monto-65').unmask();
+          var m66 = $('#monto-66').unmask();
           
           importe = parseInt(m1) + parseInt(m3) + parseInt(m5) + parseInt(m21) + parseInt(m62);
           importe = (importe/100).toFixed(2);
@@ -404,14 +410,14 @@
           '&c31='+c31+'&c32='+c32+'&c33='+c33+'&c34='+c34+'&c35='+c35+'&c36='+c36+'&c37='+c37+'&c38='+c38+'&c39='+c39+'&c40='+c40+
           '&c41='+c41+'&c42='+c42+'&c43='+c43+'&c44='+c44+'&c45='+c45+'&c46='+c46+'&c47='+c47+'&c48='+c48+'&c49='+c49+'&c50='+c50+
           '&c51='+c51+'&c52='+c52+'&c53='+c53+'&c54='+c54+'&c55='+c55+'&c56='+c56+'&c57='+c57+'&c58='+c58+'&c59='+c59+'&c60='+c60+
-          '&c61='+c61+'&c62='+c62+'&c63='+c63+
+          '&c61='+c61+'&c62='+c62+'&c63='+c63+'&c64='+c64+'&c65='+c65+'&c66='+c66+
           '&m1='+m1+'&m2='+m2+'&m3='+m3+'&m4='+m4+'&m5='+m5+'&m6='+m6+'&m7='+m7+'&m8='+m8+'&m9='+m9+'&m10='+m10+
           '&m11='+m11+'&m12='+m12+'&m13='+m13+'&m14='+m14+'&m15='+m15+'&m16='+m16+'&m17='+m17+'&m18='+m18+'&m19='+m19+'&m20='+m20+
           '&m21='+m21+'&m22='+m22+'&m23='+m23+'&m24='+m24+'&m25='+m25+'&m26='+m26+'&m27='+m27+'&m28='+m28+'&m29='+m29+'&m30='+m30+
           '&m31='+m31+'&m32='+m32+'&m33='+m33+'&m34='+m34+'&m35='+m35+'&m36='+m36+'&m37='+m37+'&m38='+m38+'&m39='+m39+'&m40='+m40+
           '&m41='+m41+'&m42='+m42+'&m43='+m43+'&m44='+m44+'&m45='+m45+'&m46='+m46+'&m47='+m47+'&m48='+m48+'&m49='+m49+'&m50='+m50+
           '&m51='+m51+'&m52='+m52+'&m53='+m53+'&m54='+m54+'&m55='+m55+'&m56='+m56+'&m57='+m57+'&m58='+m58+'&m59='+m59+'&m60='+m60+
-          '&m61='+m61+'&m62='+m62+'&m63='+m63+'&importe='+importe+'&cantidad='+cantidad
+          '&m61='+m61+'&m62='+m62+'&m63='+m63+'&m64='+m64+'&m65='+m65+'&m66='+m66+'&importe='+importe+'&cantidad='+cantidad
           ;
 
             swal({

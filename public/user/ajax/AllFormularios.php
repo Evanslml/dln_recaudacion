@@ -153,9 +153,9 @@ require_once('../../../core/core.php');
                         echo '<td>',$value[3],'</td>'; //Fecha
                         
                         if($value[4]=='01'){
-                        echo '<td>RDR</td>'; //Fecha
-                        }else{
                         echo '<td>SISMED</td>'; //Fecha
+                        }else{
+                        echo '<td>R.D.R</td>'; //Fecha
                         }
                         echo '<td>',$value[5],'</td>'; //
                         echo '<td>',$value[6],'</td>'; //

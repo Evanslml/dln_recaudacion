@@ -9,9 +9,9 @@
   <!-- Main Footer -->
   <footer class="main-footer">
     <!-- To the right -->
-    <div class="pull-right hidden-xs">
+    <!--<div class="pull-right hidden-xs">
       Visitanos en nuestras redes sociales.
-    </div>
+    </div>-->
     <!-- Default to the left -->
     <strong>Copyright © <?php echo date("Y");?> <a href="#">DIRIS Lima Norte</a>.</strong> derechos reservados.
   </footer>

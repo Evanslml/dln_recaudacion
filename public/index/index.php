@@ -29,9 +29,10 @@ require_once 'public/overall/header.php';
           <!-- Widget: user widget style 1 -->
           <div class="box box-widget widget-user">
             <!-- Add the bg color to the header using any of the bg-* classes -->
-            <div class="widget-user-header bg-black" style="background: url('<?php /*url_view esta constatnte la definimos en el core*/ echo URL_VIEW; ?>bootstrap-default/img/bg_user.jpg') center center;">
+            <div class="widget-user-header bg-black" style="background: url('<?php /*url_view esta constatnte la definimos en el core*/ echo URL_VIEW; ?>bootstrap-default/img/slider/diris.png') center center;background-size: 100%;">
               <h3 class="widget-user-username"><?php echo $_usuario[$_SESSION['sesion_id']]['MUSU_NOMBRES']; ?></h3>
-              <h5 class="widget-user-desc">Programador Web</h5>
+              <h5 class="widget-user-desc"><?php echo $_ListaUsuario[$_SESSION['sesion_id']]['MPERF_NOMBRE'];?></h5>
+              <small><?php echo $_ListaUsuario[$_SESSION['sesion_id']]['NEST_NOMBRE']?></small>
             </div>
             <div class="widget-user-image">
               <img class="img-circle" src="<?php echo URL_VIEW; ?>bootstrap-default/img/<?php echo $_usuario[$_SESSION['sesion_id']]['MUSU_IMG']; ?>" alt="User Avatar">
@@ -40,22 +41,22 @@ require_once 'public/overall/header.php';
               <div class="row">
                 <div class="col-sm-4 border-right">
                   <div class="description-block">
-                    <h5 class="description-header">30</h5>
-                    <span class="description-text">SEGUIDORES</span>
+                    <!--<h5 class="description-header">30</h5>
+                    <span class="description-text">SEGUIDORES</span>-->
                   </div>
                 </div>
  
                 <div class="col-sm-4 border-right">
                   <div class="description-block">
-                    <h5 class="description-header">115</h5>
-                    <span class="description-text">Me Gusta</span>
+                    <!--<h5 class="description-header">115</h5>
+                    <span class="description-text">Me Gusta</span>-->
                   </div>
                 </div>
  
                 <div class="col-sm-4 border-right">
                   <div class="description-block">
-                    <h5 class="description-header">12</h5>
-                    <span class="description-text">Publicaciones</span>
+                    <!--<h5 class="description-header">12</h5>
+                    <span class="description-text">Publicaciones</span>-->
                   </div>
                 </div>
  
@@ -72,7 +73,7 @@ require_once 'public/overall/header.php';
  
  
       <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-6">
           <!-- About Me Box -->
           <div class="box box-primary">
             <div class="box-header with-border">
@@ -80,21 +81,13 @@ require_once 'public/overall/header.php';
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-              <strong><i class="fa fa-book margin-r-5"></i> Educación</strong>
- 
-              <p class="text-muted">
-                Universidad Estatal de Guayaquil.
-              </p>
- 
+              <strong><i class="fa fa-dollar margin-r-5"></i> CUENTA BANCO NACION R.D.R</strong>
+              <p class="text-muted"> 798-324324-24323425 </p>
               <hr>
- 
-              <strong><i class="fa fa-map-marker margin-r-5"></i> Location</strong>
- 
-              <p class="text-muted">Guayaquil,Ecuador</p>
- 
+              <strong><i class="fa fa-dollar margin-r-5"></i> CUENTA BANCO NACION SISMED</strong>
+              <p class="text-muted"> 798-324324-24323425</p> 
               <hr>
- 
-              <strong><i class="fa fa-pencil margin-r-5"></i> Habilidades</strong>
+              <!--<strong><i class="fa fa-pencil margin-r-5"></i> Habilidades</strong>
  
               <p>
                 <span class="label label-success">Php</span>
@@ -111,11 +104,11 @@ require_once 'public/overall/header.php';
                 <span class="label label-info">Programación</span>
               </p>
  
-              <hr>
+              <hr>-->
  
-              <strong><i class="fa fa-file-text-o margin-r-5"></i> Notes</strong>
- 
-              <p>Amante a la programación web ,dedicado al backend</p>
+              <strong><i class="fa fa-file-text-o margin-r-5"></i> Notas</strong>
+              <p>La aplicación se debe registrar diariamente</p>
+              <p>Si tiene problemas con la plataforma llamar al (01)234-98734 o al correo programacion@dirislimanorte.gob.pe</p>
             </div>
             <!-- /.box-body -->
           </div>
@@ -123,42 +116,6 @@ require_once 'public/overall/header.php';
  
         </div>
  
-        <div class="col-md-4">
-          <div class="box box-primary">
-            
-          </div>
-        </div>
-         
-        <div class="col-md-4">
-                  <!-- About Me Box -->
-          <div class="box box-primary">
-            <div class="box-header with-border">
-              <h3 class="box-title">Redes Sociales:</h3>
-            </div>
-            <!-- /.box-header -->
-            <div class="box-body">
-              <div class="input-group">
-                <span class="input-group-addon"><i class="fa fa-twitter"></i></span>
-                <input type="text" class="form-control" value="@blogueroec" disabled>
-              </div>
-              <br>
- 
-              <div class="input-group">
-                <span class="input-group-addon"><i class="fa fa-facebook"></i></span>
-                <input type="text" class="form-control" value="blogueroec" disabled>
-              </div>
-              <br>
- 
-              <div class="input-group">
-                <span class="input-group-addon"><i class="fa fa-google-plus"></i></span>
-                <input type="text" class="form-control" value="+BlogueroEcuador" disabled="disabled">
-              </div>
-              <br>
-            </div>
-            <!-- /.box-body -->
-          </div>
-          <!-- /.box -->
-        </div><!--col-->
       </div><!--row-->
     </section>
   </div><!--content wrapper-->

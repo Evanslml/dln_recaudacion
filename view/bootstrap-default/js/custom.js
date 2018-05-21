@@ -3,6 +3,15 @@ function __(id) {
   return document.getElementById(id);
 }
 
+function VentanaCentrada(theURL,winName,features, myWidth, myHeight, isCenter) { //v3.0
+  if(window.screen)if(isCenter)if(isCenter=="true"){
+    var myLeft = (screen.width-myWidth)/2;
+    var myTop = (screen.height-myHeight)/2;
+    features+=(features!='')?',':'';
+    features+=',left='+myLeft+',top='+myTop;
+  }
+  window.open(theURL,winName,features+((features!='')?',':'')+'width='+myWidth+',height='+myHeight);
+}
 
 
 $( document ).ready(function() {
@@ -22,14 +31,14 @@ $SIDEBAR_MENU = $('#sidebar-menu'),
             if (!$li.parent().is('.child_menu')) {
                 $SIDEBAR_MENU.find('li').removeClass('active active-sm');
                 $SIDEBAR_MENU.find('li ul').slideUp();
-            }else
+            }/*else
             {
 				if ( $BODY.is( ".nav-sm" ) )
 				{
 					$SIDEBAR_MENU.find( "li" ).removeClass( "active active-sm" );
 					$SIDEBAR_MENU.find( "li ul" ).slideUp();
 				}
-			}
+			}*/
             $li.addClass('active');
 
             $('ul:first', $li).slideDown(function() {

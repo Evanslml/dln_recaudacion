@@ -9,12 +9,17 @@
 
     $id_formulario= $_GET['id_formulario'];
     $id_formulario= substr($id_formulario, 4,11);
+
+    $id_formulario01 = '0101'.$id_formulario;
+    $id_formulario02 = '0102'.$id_formulario;
+
     $query01 = Recaudacion::VerListaFormulario($id_formulario);
-    $query02 = Recaudacion::VerListaFormularioRDR_SISMED($id_formulario);
+    //$query02 = Recaudacion::VerListaFormularioRDR_SISMED($id_formulario);
+    $query03 = Recaudacion::VerListaFormulariodetalles($id_formulario01,$id_formulario02);
 
 	require_once(dirname(__FILE__).'/../html2pdf.class.php');
 
-	//var_dump($query);
+	//var_dump($query03);
 
     // get the HTML
      ob_start();

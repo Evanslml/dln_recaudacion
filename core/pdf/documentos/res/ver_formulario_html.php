@@ -20,7 +20,6 @@ td    { vertical-align: top; }
 }
 .border-top{
 	border-top: solid 1px #bdc3c7;
-	
 }
 .border-left{
 	border-left: solid 1px #bdc3c7;
@@ -33,8 +32,10 @@ td    { vertical-align: top; }
 }
 table.page_footer {width: 100%; border: none; background-color: white; padding: 2mm;border-collapse:collapse; border: none;}
 }
-.tbl_total td {border-bottom: 1px solid #000; border-right: 1px solid #000; }
-.tbl_total {border-top: 1px solid #000; border-left: 1px solid #000; }
+.tbl_total td, .tbl_detalle td {border-bottom: 1px solid #000; border-right: 1px solid #000; }
+.tbl_total, .tbl_detalle {border-top: 1px solid #000; border-left: 1px solid #000; }
+
+.tbl_detalle td, .tbl_total td{padding: 2px;}
 </style>
 
 <page backtop="15mm" backbottom="15mm" backleft="15mm" backright="15mm" style="font-size: 12pt; font-family: arial" >
@@ -56,14 +57,34 @@ table.page_footer {width: 100%; border: none; background-color: white; padding: 
     
 
 	
-    <table cellspacing="0" style="width: 100%; text-align: left; font-size: 11pt;">
-
+    <table class="tbl_detalle" cellspacing="0" style="width: 100%; text-align: left; font-size: 12pt;">
+		
+		<tr>
+			<td style="height: 25px"></td>
+			<td style="height: 25px" colspan="2">NOMBRE DE ESTABLECIMIENTO <h5 style="margin:0; text-align: center"><?php echo $query03[0][1]?></h5></td>
+			<td style="height: 25px">MES <h5 style="margin:0; text-align: center"><?php echo $query03[0][4]?></h5></td>
+			<td style="height: 25px">DIA <h5 style="margin:0; text-align: center"><?php echo $query03[0][5]?></h5></td>
+		</tr>
         <tr>
-           <td style="width:4%;" class='midnight-blue'>ID</td>
-		   <td style="width:10%;" class='midnight-blue'>CLAS.</td>
-		   <td style="width:70%;" class='midnight-blue'>DESCRIPCION</td>
-		   <td style="width:8%;" class='midnight-blue'>CANT.</td>
-		   <td style="width:8%;" class='midnight-blue'>MONTO</td>
+           <td style="width:4%;text-align: center;padding-top: 15px" rowspan="5">F<br>I<br>L<br>A</td>
+		   <td style="width:10%;text-align: center;padding-top: 10px" rowspan="5"><b>MEF</b><br>MAESTRO CLASIFICADOR DE INGRESO </td>
+		   <td style="width:70%;">FILA 1 (VENTA DE PRODUCTOS DE SALUD) ES LA SUMA DEL 2</td>
+		   <td style="width:8%;text-align: center;padding-top: 15px" rowspan="4">CANT.</td>
+		   <td style="width:8%;text-align: center;padding-top: 15px" rowspan="4">MONTO</td>
+        </tr>
+        <tr>
+        	<td style="width:70%;">FILA 3 (OTROS) ES LA SUMA DEL 4</td>
+        </tr> 
+        <tr>
+        	<td style="width:70%;">FILA 5 (TASAS) ES LA SUMA DEL 6+7+8+9+10+11+12+13+14</td>
+        </tr> 
+        <tr>
+        	<td style="width:70%;">FILA 15 (SERVICIOS DE SALUD ES LA SUMA DEL 16 AL 41)</td>
+        </tr> 
+        <tr>
+        	<td style="width:70%;">TOTAL GENERAL DEL DIA (1+3+5+15+42)</td>
+        	<td style="width:8%;"><?php echo $query03[0][14]?></td>
+		    <td style="width:8%; text-align: right"><?php echo 'S/. '.$query03[0][15]?></td>
         </tr>
 	
 			<?php 
@@ -72,7 +93,7 @@ table.page_footer {width: 100%; border: none; background-color: white; padding: 
 			$mont_total=0.00;
 			foreach ($query01 as $key => $value) {
 
-                          $id= $value[0];
+                          $id= $key + 1;
                           $clasificador= $value[1];
                           $class_padre= $value[2];
                           $descripcion= $value[3];
@@ -89,8 +110,8 @@ table.page_footer {width: 100%; border: none; background-color: white; padding: 
                               echo '<td style="width: 4%; text-align: left"><b>',$id,'</b></td>';
                               echo '<td style="width: 10%; text-align: left"><b>',$clasificador,'</b></td>';
                               echo '<td style="width: 70%; text-align: left"><b>',$descripcion,'</b></td>';
-                              echo '<td style="width: 5%; text-align: left">',$cantidad,'</td>';
-                              echo '<td style="width: 8%; text-align: right"> S/. ',$monto,'</td>';
+                              echo '<td style="width: 5%; text-align: left"><b>',$cantidad,'</b></td>';
+                              echo '<td style="width: 8%; text-align: right"><b> S/. ',$monto,'</b></td>';
                             break;
 
                             default:
@@ -119,39 +140,34 @@ table.page_footer {width: 100%; border: none; background-color: white; padding: 
     
        <br>
 		<table class="tbl_total" cellspacing="0" style="width: 100%; text-align: left; font-size: 11pt">
-		<tr>
-           <td style="width:20%;">DESCRIPCION</td>
-		   <td style="width:8%;">BOL. INICIO</td>
-		   <td style="width:8%;">BOL. FIN</td>
-		   <td style="width:8%;">CANTIDAD</td>
-		   <td style="width:8%;">IMPORTE</td>
-        </tr>
+			<tr>
+				<td style="width: 14%">SERIE</td>
+				<td style="width: 36%" colspan="2">RESUMEN DE LAS FACTURAS/ BOLETAS /RECIBOS</td>
+				<td style="width: 8%">CANTIDAD</td>
+				<td style="width: 8%">MONTO</td>
+				<td style="width: 34%"></td>
+			</tr>
+			<tr>
+				<td style="padding-top: 10px">MEDICAMENTOS</td>
+				<td style="padding-top: 10px">DEL Nº <?php echo $query03[0][6];?></td>
+				<td style="padding-top: 10px">AL Nº <?php echo $query03[0][7];?></td>
+				<td style="padding-top: 10px"><?php echo $query03[0][8];?></td>
+				<td style="padding-top: 10px"><?php echo 'S/. '.$query03[0][9];?></td>
+				<td style="height: 45px;text-align: center;" rowspan="2"><br><br><hr>RESPONSABLE DE CAJA</td>
+			</tr>
+			<tr>
+				<td style="padding-top: 10px">R.D.R</td>
+				<td style="padding-top: 10px">DEL Nº <?php echo $query03[0][10];?></td>
+				<td style="padding-top: 10px">AL Nº <?php echo $query03[0][11];?></td>
+				<td style="padding-top: 10px"><?php echo $query03[0][12];?></td>
+				<td style="padding-top: 10px"><?php echo 'S/. '.$query03[0][13];?></td>
+			</tr>
+			<tr>
+				<td colspan="5"></td>
+				<td style="height: 45px;text-align: center;"><br><br><hr>RESPONSABLE DEL ESTABLECIMIENTO</td>
+			</tr>
+		</table>
 
-		<?php
-		foreach ($query02 as $key => $value) {
-			 echo '<tr>';
-			 echo '<td>', $value[0],'</td>';
-			 echo '<td>', $value[2],'</td>';
-			 echo '<td>', $value[3],'</td>';
-			 echo '<td>', $value[4],'</td>';
-			 echo '<td> S/.  ', $value[5],'</td>';
-			 echo '</tr>';
-			 $fecha = $value[6];
-		}?>
-   		<tr>
-   			<td>TOTALES</td>
-   			<td colspan="2"></td>
-   			<td> <?php echo $cant_total;?> </td>
-   			<td> <?php echo 'S/.  ',number_format($mont_total, 2, '.', ' ');?> </td>
-   		</tr>
-    </table>
-
-	<br><small style="font-size: 11px;font-style: italic">Recudado la fecha <?php echo $fecha; ?></small>
-
-	
-	
-	
-	  
 
 </page>
 
