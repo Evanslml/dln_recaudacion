@@ -82,10 +82,10 @@ require_once 'public/overall/header.php';
             <!-- /.box-header -->
             <div class="box-body">
               <strong><i class="fa fa-dollar margin-r-5"></i> CUENTA BANCO NACION R.D.R</strong>
-              <p class="text-muted"> 798-324324-24323425 </p>
+              <p class="text-muted"> 00-068-371767 </p>
               <hr>
               <strong><i class="fa fa-dollar margin-r-5"></i> CUENTA BANCO NACION SISMED</strong>
-              <p class="text-muted"> 798-324324-24323425</p> 
+              <p class="text-muted"> 00-068-371872 </p> 
               <hr>
               <!--<strong><i class="fa fa-pencil margin-r-5"></i> Habilidades</strong>
  

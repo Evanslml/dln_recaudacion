@@ -10,7 +10,7 @@ $email = $db->real_escape_string($_POST['user']);
 $pass = strip_tags($_POST['pass']);
  
 //creamos una consulta para saber si el usuario existe en la db
-$b_user = "SELECT * FROM MUSUARIO WHERE MUSU_LOGIN='$email' AND MUSU_ESTADO='1'";
+$b_user = "SELECT * FROM musuario WHERE MUSU_LOGIN='$email' AND MUSU_ESTADO='1'";
 $result = $db->query($b_user);
 $ses = $result->fetch_array();
 //comparamos password
