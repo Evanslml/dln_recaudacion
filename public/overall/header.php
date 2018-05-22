@@ -47,6 +47,13 @@
         <link rel="stylesheet" href="<?php echo URL_VIEW; ?>bootstrap-datepicker/1.3.0/css/datepicker.css">
         <script src="<?php echo URL_VIEW; ?>bootstrap-default/js/Rpt_General.js"></script>
         <?php
+        break;          
+
+        case 'estadisticas':
+        ?>
+        <link rel="stylesheet" href="<?php echo URL_VIEW; ?>bootstrap-datepicker/1.3.0/css/datepicker.css">
+        <script src="<?php echo URL_VIEW; ?>bootstrap-default/js/Rpt_Estadisticas.js"></script>
+        <?php
         break;        
 
         default:

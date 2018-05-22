@@ -119,10 +119,10 @@
               sumamontoingresado += parseInt(valor);
             });
 
-            sumamontoingresado = ((sumamontoingresado)/100).toFixed(2);
+            sumamontoingresado = ((sumamontoingresado)/100).toFixed(3);
             console.log(sumamontoingresado);
 
-            if(sumamontoingresado != montototal){
+            if(sumamontoingresado !== montototal){
               $("#mensaje").html('<div class="alert alert-danger" role="alert">\
                       <button type="button" class="close" data-dismiss="alert">&times;</button>\
                       <strong>Error!</strong> \

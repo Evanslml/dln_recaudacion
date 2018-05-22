@@ -32,6 +32,8 @@
 
         <?php  
           break;
+        case 'estadisticas':
+        case 'consultaRegistros':
         case 'reporteGeneral':
         ?>
           <script src="<?php echo URL_VIEW; ?>bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>

@@ -5869,6 +5869,17 @@ table.text-center th {
     padding: 0px 6px;text-align: center
 }
 
+
+tr.selected_tr{
+    background: #3e79b6 !important;
+    color: #fff !important;
+}
+tr.selected_tr input{
+    border: none;
+}
+tr{
+    transition: all 0.2s ease-in-out;
+}
 /*********************************/
 /*  TABLE RECAUDACION  PANEL UNO */
 /*********************************/

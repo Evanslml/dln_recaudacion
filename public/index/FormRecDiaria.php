@@ -9,6 +9,7 @@ require_once 'public/overall/header.php';
  else { ?>
 <?php include 'public/overall/menu-header.php'; ?>
 <?php include 'public/overall/menu-aside.php'; ?>
+<?php include 'view/bootstrap-default/js/calculos.php'; ?>
 
 
   <!-- Content Wrapper. Contains page content -->
@@ -116,7 +117,6 @@ require_once 'public/overall/header.php';
           </div> <!--panel-body-->
         </div> <!--panel-primary-->
 
-
         <div class="panel panel-primary panel-head filterable"> 
           <div class="panel-heading"> 
             <h3 class="panel-title">Liquidación diaria de Recaudación</h3> 
@@ -138,6 +138,9 @@ require_once 'public/overall/header.php';
                   </thead>
                   <tbody>
                       <?php
+
+                      //var_dump($_ListaClasificador);
+
                         foreach ($_ListaClasificador as $key => $value) {
 
                           $id= $key;
@@ -166,8 +169,8 @@ require_once 'public/overall/header.php';
                               }else{
                                   echo '<td>',$clasificador,'</td>';
                                   echo '<td>',$descripcion,'</td>';
-                                  echo '<td style="width: 60px; padding: 5px 2px;"><input id="cantidad-',$id,'" type="text" class="form-control" placeholder="0"/></td>';
-                                  echo '<td style="width: 60px; padding: 5px 2px;"><input id="monto-',$id,'" type="text" value="000" name="type-price" class="type-price form-control" /></td>';
+                                  echo '<td style="width: 60px; padding: 5px 2px;"><input onKeyUp="Suma_Cant_Padre',$class_padre,'()" id="cantidad-',$id,'" type="text" class="form-control" placeholder="0"/></td>';
+                                  echo '<td style="width: 60px; padding: 5px 2px;"><input onKeyUp="Suma_Monto_Padre',$class_padre,'()" id="monto-',$id,'" type="text" value="000" name="type-price" class="type-price form-control" /></td>';
                               }
                             break;
 

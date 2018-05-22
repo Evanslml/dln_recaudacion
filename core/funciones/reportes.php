@@ -21,8 +21,8 @@ class Reportes
 	Public static function listaDistritos(){
 		$db = new Conexion();
 	    $sql = $db->query("
-	    	SELECT B.NDIST_ID,B.NDIST_NOMBRE FROM NESTABLECIMIENTO A
-			INNER JOIN NDISTRITO B
+	    	SELECT B.NDIST_ID,B.NDIST_NOMBRE FROM nestablecimiento A
+			INNER JOIN ndistrito B
 			ON A.NDIST_ID=B.NDIST_ID
 			GROUP BY NDIST_ID,NDIST_NOMBRE;
 		");
@@ -57,7 +57,7 @@ class Reportes
 
 	Public static function listaRecaudacionAnio(){
 		$db = new Conexion();
-	    $sql = $db->query("SELECT * from LANIO WHERE LANIO_ESTADO='1';");
+	    $sql = $db->query("SELECT * from lanio WHERE LANIO_ESTADO='1';");
 	    if($sql->num_rows > 0) {
 	      while($d = $sql->fetch_array()) {
 	        $data[$d['LANIO_ID']] = $d;
