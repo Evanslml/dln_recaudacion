@@ -3,9 +3,9 @@
  date_default_timezone_set('America/Lima');
   
  //definimos ruta y titulo del sitio
- define('URL_VIEW','http://192.168.43.150:8080/dln_recaudacion/view/');
+ define('URL_VIEW','http://app1.dirislimanorte.gob.pe/recaudacion/view/');
  define('TITLE_WEB','RECAUDACION DIRIS');
- define('URL_WEB','http://192.168.43.150:8080/dln_recaudacion/');
+ define('URL_WEB','http://app1.dirislimanorte.gob.pe/recaudacion/');
  define('NOMBRE_WEB','RECAUDACION');
  
  define('WWW','http://dirislimanorte.gob.pe/');

@@ -108,19 +108,22 @@
                     alert("Error : Intente nuevamente");
                     return false;
                 } else if(indice > 1 && (indice+2) %3 ==0 ){
-                    montoingresado.push(valor*100);
+                    montoingresado.push(valor);
                 }
             });
 
             //Calculando suma monto
-            //console.log(montoingresado);
+            console.log(montoingresado);
             sumamontoingresado = 0;
             montoingresado.forEach( function(valor, indice, array){
-              sumamontoingresado += parseInt(valor);
+              sumamontoingresado += parseFloat(valor);
             });
 
-            sumamontoingresado = ((sumamontoingresado)/100).toFixed(3);
-            console.log(sumamontoingresado);
+              montototal = parseFloat(montototal);
+            //console.log(sumamontoingresado);
+            //console.log(parseFloat(montototal));
+            //sumamontoingresado = ((sumamontoingresado)/100).toFixed(2);
+            //console.log(sumamontoingresado);
 
             if(sumamontoingresado !== montototal){
               $("#mensaje").html('<div class="alert alert-danger" role="alert">\
@@ -142,7 +145,6 @@
 
 
                           setTimeout(function(){
-                                //$('#Ingreso_Voucher').modal('hide');
                                 location.reload();
                           },1500); 
 

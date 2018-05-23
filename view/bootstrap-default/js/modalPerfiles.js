@@ -37,7 +37,7 @@
 						array.push(j);
 					}
 				}
-				
+				console.log(array)
 				//alert(array);
 				 $("#mensaje").html('<div class="alert alert-success" role="alert">\
                       <button type="button" class="close" data-dismiss="alert">&times;</button>\
@@ -51,7 +51,6 @@
 		          success: function (response) {
 
 		              setTimeout(function(){
-		                    //$('#nuevo_Perfil').modal('hide');
 		                    location.reload();
 		              },1500);
 		              console.log(response);

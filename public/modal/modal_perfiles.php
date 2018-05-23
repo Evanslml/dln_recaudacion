@@ -1,9 +1,8 @@
 <?php
 	
 	if (isset($_SESSION['sesion_id'])){
- 
 
- 	
+	//include 'view/bootstrap-default/js/modalPerfiles.php';
 ?>
 
 	<div class="modal fade" id="nuevo_Perfil" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

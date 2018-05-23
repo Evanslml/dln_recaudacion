@@ -29,7 +29,7 @@
 			    </thead>
 			    <tbody id="TextBoxContainer">
 			    	<td><input type="text" id="voucher" name="voucher" class="form-control" placeholder="Ingrese N° Voucher"></td>
-			      	<td><input type="text" id="fecha" name="fecha" class="form-control inputdate" placeholder="YYYY-mm-dd"></td>
+			      	<td><input type="text" id="fecha" name="fecha" class="form-control inputdate" placeholder="dd-mm-YYYY"></td>
 			      	<td><input type="text" id="price" name="type-price" class="type-price form-control" placeholder="Ingrese el monto" value="000"></td>
 			    </tbody>
 			    <tfoot>
