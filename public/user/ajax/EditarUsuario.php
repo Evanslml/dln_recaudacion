@@ -24,7 +24,7 @@ switch($mode){
       if(isset($_POST['mod_idDelete'])){
           
           if(!empty($_POST['mod_idDelete']) ){
-                  $Deleteuser = new Acceso('','','','',$_POST['mod_idDelete'],'','');
+                  $Deleteuser = new Acceso('','','','',$_POST['mod_idDelete'],'','','');
                   $Deleteuser ->DeshabilitarUsuario();
                   $arrayMensaje = array(
                     'mensaje' => 'Se ha deshabilitado el usuario correctamente',
@@ -55,7 +55,7 @@ switch($mode){
       if(isset($_POST['mod_idAdd'])){
           
           if(!empty($_POST['mod_idAdd']) ){
-                  $Adduser = new Acceso('','','','',$_POST['mod_idAdd'],'','');
+                  $Adduser = new Acceso('','','','',$_POST['mod_idAdd'],'','','');
                   $Adduser ->HabilitarUsuario();
                   $arrayMensaje = array(
                     'mensaje' => 'Se ha habilitado el usuario correctamente',
@@ -87,7 +87,7 @@ switch($mode){
       if(isset($_POST['mod_id'])){
           
           if(!empty($_POST['mod_nombres']) and !empty($_POST['mod_perfilId']) and !empty($_POST['mod_IdEstablecimiento']) ){
-                  $ModifyUser = new Acceso(strtoupper($_POST['mod_nombres']),'','',$_POST['mod_perfilId'],$_POST['mod_id'],$_POST['mod_telefono'],$_POST['mod_IdEstablecimiento']);
+                  $ModifyUser = new Acceso(strtoupper($_POST['mod_nombres']),'','',$_POST['mod_perfilId'],$_POST['mod_id'],$_POST['mod_telefono'],$_POST['mod_IdEstablecimiento'],$_POST['mod_dni']);
                   $ModifyUser ->ModificarUsuario();
                   $arrayMensaje = array(
                     'mensaje' => 'Se ha modificado los datos del usuario correctamente',
@@ -118,12 +118,9 @@ switch($mode){
 
   case 'agregar':
       if(isset($_POST['new_id'])){
-
             if(!empty($_POST['new_password'])) {
-            
                 if(!empty($_POST['new_usuario']) and !empty($_POST['new_nombres']) and !empty($_POST['new_perfilId']) and !empty($_POST['new_IdEstablecimiento']) ){
-                        
-                        $AddUser = new Acceso(strtoupper($_POST['new_nombres']),$_POST['new_password'],$_POST['new_usuario'],$_POST['new_perfilId'],'',$_POST['new_telefono'],$_POST['new_IdEstablecimiento']);
+                        $AddUser = new Acceso(strtoupper($_POST['new_nombres']),$_POST['new_password'],$_POST['new_usuario'],$_POST['new_perfilId'],'',$_POST['new_telefono'],$_POST['new_IdEstablecimiento'],$_POST['new_dni']);
                         $AddUser ->AgregarUsuario();
                         /*$arrayMensaje = array(
                           'mensaje' => 'Se ha modificado los datos del usuario correctamente',
@@ -139,7 +136,6 @@ switch($mode){
                   $_SESSION['arrayMensaje'] = $arrayMensaje;
                   header('location: ./usuario');
                 }
-
           }else{
               $arrayMensaje = array(
               'mensaje' => 'Debe ingresar una contraseña',
@@ -148,8 +144,6 @@ switch($mode){
               $_SESSION['arrayMensaje'] = $arrayMensaje;
               header('location: ./usuario');
           }
-
-
       }else{
           $arrayMensaje = array(
               'mensaje' => 'Error interno',
@@ -158,7 +152,6 @@ switch($mode){
           $_SESSION['arrayMensaje'] = $arrayMensaje;
           header('location: ./usuario');
       }
-
   break;
 
   case 'load':

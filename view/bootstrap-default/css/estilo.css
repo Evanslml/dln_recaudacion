@@ -766,7 +766,8 @@ a:focus {
 }
 
 .sidebar-menu li>a {
-    position: relative
+    position: relative;
+    cursor: pointer;
 }
 
 .sidebar-menu li>a>.pull-right-container {
@@ -5965,10 +5966,10 @@ tr{
 .container_checkbox {
     display: block;
     position: relative;
-    padding-left: 35px;
-    margin-bottom: 12px;
+    padding-left: 25px;
+    margin-bottom: 5px;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: lighter;
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -5988,8 +5989,8 @@ tr{
     position: absolute;
     top: 0;
     left: 0;
-    height: 25px;
-    width: 25px;
+    height: 20px;
+    width: 20px;
     background-color: #eee;
 }
 

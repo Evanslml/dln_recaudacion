@@ -29,7 +29,6 @@ require_once 'public/overall/header.php';
 	 			$arrayMensaje=$_SESSION['arrayMensaje'];
 	 			echo '<div class="col-md-6" id="result"><div id="resultMessage" class="alert alert-',$arrayMensaje['class'],'" >',$arrayMensaje['mensaje'],'</div></div>';	
  			}
- 			
  		}
  		?>
         <div class="col-md-12">
@@ -60,7 +59,6 @@ require_once 'public/overall/header.php';
 
 							<?php
 								foreach ($_ListaUsuario as $key => $value) {
-
 									$id= $key;
 									$usuario= $value[1];
 									$perfilId= $value[5];
@@ -69,11 +67,13 @@ require_once 'public/overall/header.php';
 									$establecimiento= $value[7];
 									$IdEstablecimiento= $value[8];
 									$telefono= $value[4];
+									$dni= $value[10];
 
 									echo '<input type="hidden" value="',$id,'" id="id',$id,'"/>';
 									echo '<input type="hidden" value="',$usuario,'" id="usuario',$id,'"/>';
 									echo '<input type="hidden" value="',$perfilId,'" id="perfilId',$id,'"/>';
 									echo '<input type="hidden" value="',$nombres,'" id="nombres',$id,'"/>';
+									echo '<input type="hidden" value="',$dni,'" id="dni',$id,'"/>';
 									echo '<input type="hidden" value="',$establecimiento,'" id="establecimiento',$id,'"/>';
 									echo '<input type="hidden" value="',$IdEstablecimiento,'" id="IdEstablecimiento',$id,'"/>';
 									echo '<input type="hidden" value="',$telefono,'" id="telefono',$id,'"/>';
@@ -91,7 +91,6 @@ require_once 'public/overall/header.php';
 									echo '<td>',$establecimiento,'</td>';
 									echo '<td>';
 									echo '<a data-toggle="modal" title="editar" onclick="obtener_datos(',$id,')" data-target="#Lista_Usuario" class="btn-accion"><i class="fa fa-pencil"></i></a>';
-
 									if($value[9] =='0'){
 									echo '<a data-toggle="modal" title="Habilitar" onclick="habilitar_datos(',$id,')" data-target="#Habilitar_Usuario" class="btn-accion"><i class="fa fa-reply"></i></a>';
 									}else{

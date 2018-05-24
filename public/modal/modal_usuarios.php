@@ -13,7 +13,6 @@
 	        </button>
 	      </div>
 	      <div class="modal-body">
-	        	
 	        <form action="<?php echo  URL_WEB,'usuario&mode=modificar'?>" class="form-horizontal" method="post">
 				<!--<div id="resultados_ajax2"></div>-->
 				  <div class="form-group">
@@ -24,12 +23,17 @@
 					</div>
 				  </div>
 				  <div class="form-group">
-					<label for="mod_nombre" class="col-sm-3 control-label">Usuario</label>
+					<label for="mod_nombre" class="col-sm-3 control-label">Correo</label>
 					<div class="col-sm-8">
 					  <input type="text" class="form-control" id="mod_usuario" name="mod_usuario" readonly>
 					</div>
 				  </div>
-
+				  <div class="form-group">
+					<label for="mod_nombre" class="col-sm-3 control-label">DNI</label>
+					<div class="col-sm-8">
+					  <input type="text" class="form-control" id="mod_dni" name="mod_dni" oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');">
+					</div>
+				  </div>
 				  <div class="form-group">
 					<label for="mod_nombre" class="col-sm-3 control-label">Teléfono</label>
 					<div class="col-sm-8">
@@ -80,7 +84,6 @@
 	  </div>
 	</div>    <!-- Modal -->
 
-
 	<div class="modal fade" id="Deshabilitar_Usuario" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	  <div class="modal-dialog" role="document">
 	    <div class="modal-content">
@@ -103,7 +106,6 @@
 	    </div>
 	  </div>
 	</div>
-
 
 	<div class="modal fade" id="Habilitar_Usuario" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	  <div class="modal-dialog" role="document">
@@ -128,9 +130,6 @@
 	  </div>
 	</div>
 
-
-	
-	<!-- Modal -->
 	<div class="modal fade" id="crear_Usuario" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	  <div class="modal-dialog" role="document">
 	    <div class="modal-content">
@@ -152,26 +151,29 @@
 					</div>
 				  </div>
 				  <div class="form-group">
-					<label for="mod_nombre" class="col-sm-3 control-label">Usuario</label>
+					<label for="mod_nombre" class="col-sm-3 control-label">Correo</label>
 					<div class="col-sm-8">
 					  <input type="email" class="form-control" id="new_usuario" name="new_usuario">
 					</div>
 				  </div>
-
+				  <div class="form-group">
+					<label for="mod_nombre" class="col-sm-3 control-label">DNI</label>
+					<div class="col-sm-8">
+					  <input type="text" class="form-control" id="new_dni" name="new_dni" oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');">
+					</div>
+				  </div>
 				  <div class="form-group">
 					<label for="mod_nombre" class="col-sm-3 control-label">Contraseña</label>
 					<div class="col-sm-8">
 					  <input type="password" class="form-control" id="new_password" name="new_password">
 					</div>
 				  </div>
-
 				  <div class="form-group">
 					<label for="mod_nombre" class="col-sm-3 control-label">Teléfono</label>
 					<div class="col-sm-8">
 					  <input type="text" class="form-control" id="new_telefono" name="new_telefono">
 					</div>
 				  </div>
-
 				  <div class="form-group">
 					<label for="mod_nombre" class="col-sm-3 control-label">Perfil</label>
 					<div class="col-sm-8">

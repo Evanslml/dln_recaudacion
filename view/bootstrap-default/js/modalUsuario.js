@@ -4,6 +4,7 @@
 			var usuario = $("#usuario"+id).val();
 			var perfilId = $("#perfilId"+id).val();
 			var nombres = $("#nombres"+id).val();
+			var dni = $("#dni"+id).val();
 			var establecimiento = $("#establecimiento"+id).val();
 			var IdEstablecimiento = $("#IdEstablecimiento"+id).val();
 			var telefono = $("#telefono"+id).val();
@@ -12,6 +13,7 @@
 			$("#mod_usuario").val(usuario);
 			$("#mod_perfilId").val(perfilId);
 			$("#mod_nombres").val(nombres);
+			$("#mod_dni").val(dni);
 			$("#mod_IdEstablecimiento").val(IdEstablecimiento);
 			$("#mod_telefono").val(telefono);
 		}
