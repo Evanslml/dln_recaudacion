@@ -123,6 +123,22 @@ class Permisos extends Perfil
     $db->close();
   }
 
+  public static function ListarObjetos(){
+    $db = new Conexion();
+    $sql = $db->query("SELECT * FROM mobjeto WHERE MOBJ_ESTADO='1' ORDER BY MOBJ_ID"); 
+    if($sql->num_rows > 0) {
+      while($d = $sql->fetch_array()) {
+        $Objeto[$d['MOBJ_ID']] = $d;
+      }
+    } else {
+      $Objeto = false;
+    }
+    $sql->free();
+    $db->close();
+   
+    return $Objeto;
+  }
+
 
   public static function PermisoSegunId($id) {
     $db = new Conexion();

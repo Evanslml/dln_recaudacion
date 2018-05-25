@@ -5784,6 +5784,14 @@ table.text-center th {
     vertical-align: middle;
 }
 
+
+.table_hover_select>table>tbody tr:hover{
+    background: #3e79b6 !important;
+    color: #fff !important;
+}
+.table_hover_select>table>tbody tr{
+    transition: all 0.2s ease-in-out;
+}
 /*********************************/
 /* TABLE RECAUDACION             */
 /*********************************/

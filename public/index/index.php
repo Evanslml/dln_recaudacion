@@ -81,11 +81,14 @@ require_once 'public/overall/header.php';
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-              <strong><i class="fa fa-dollar margin-r-5"></i> CUENTA BANCO NACION R.D.R</strong>
+              <strong>S/. CUENTA EN SOLES - BANCO DE LA NACION (R.D.R)</strong>
               <p class="text-muted"> 00-068-371767 </p>
               <hr>
-              <strong><i class="fa fa-dollar margin-r-5"></i> CUENTA BANCO NACION SISMED</strong>
+              <strong>S/. CUENTA EN SOLES - BANCO DE LA NACION (SISMED)</strong>
               <p class="text-muted"> 00-068-371872 </p> 
+              <hr>
+              <strong><i class="fa fa-caret-square-o-right"></i> Manual de usuario</strong>
+              <p>Puedes descargar el manual de Usurio haciendo <a href="#"> click Aquí </a></p>
               <hr>
               <!--<strong><i class="fa fa-pencil margin-r-5"></i> Habilidades</strong>
  
@@ -108,7 +111,8 @@ require_once 'public/overall/header.php';
  
               <strong><i class="fa fa-file-text-o margin-r-5"></i> Notas</strong>
               <p>La aplicación se debe registrar diariamente</p>
-              <p>Si tiene problemas con la plataforma llamar al (01)234-98734 o al correo programacion@dirislimanorte.gob.pe</p>
+              <p>Si Ud. encuentra dificultades en la plataforma sirvase a llamar al <b><i class="fa fa-phone"></i> (01) 201-1340 Anexo 152</b> (OFICINA GENERAL DE TECNOLOGIA Y LA INFORMACION) o al correo ivan.cruz@dirislimanorte.gob.pe</p>
+              <hr>
             </div>
             <!-- /.box-body -->
           </div>

@@ -13,7 +13,7 @@
       Visitanos en nuestras redes sociales.
     </div>-->
     <!-- Default to the left -->
-    <strong>Copyright © <?php echo date("Y");?> <a href="#">DIRIS Lima Norte</a>.</strong> derechos reservados.
+    <strong>Copyright © <?php echo date("Y");?> <a href="<?php echo WWW;?>" target="blank">DIRIS Lima Norte</a>.</strong> derechos reservados.
   </footer>
 </div>
 

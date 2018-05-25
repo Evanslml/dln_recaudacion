@@ -35,7 +35,7 @@ require_once 'public/overall/header.php';
 
         <div class="row">
         	<div class="col-xs-12">
-        		<button data-toggle="modal" title="Agregar Usuario" onclick="datos_default()" data-target="#crear_Usuario"  class="btn btn-primary"><i class="fa fa-user"></i> Agregar Usuario</button>
+        		<button data-toggle="modal" title="Agregar Usuario" onclick="datos_default()" data-target="#crear_Usuario"  class="btn btn-primary"><i class="fa fa-user"></i>Agregar Usuario</button>
         	</div>
         </div>
           <div class="box box-primary">
@@ -43,22 +43,25 @@ require_once 'public/overall/header.php';
             <div class="col-md-12 col-sm-12 col-xs-12 content">
               <?php //var_dump($_ListaUsuario);?>
 				
-				<div class="table-responsive">
+				<div class="table-responsive table_hover_select">
   					<table class="table table-striped overflow-min">
 						<thead>
 							<tr>
 								<th>#</th>
-								<th>Usuario</th>
-								<th>Perfil</th>
-								<th>Nombres</th>
-								<th>Establecimiento</th>
-								<th>Accion</th>
+								<th>CORREO</th>
+								<th>PERFIL</th>
+								<th>DNI</th>
+								<th>NOMBRES COMPLETOS</th>
+								<th>ESTABLECIMIENTO</th>
+								<th>ACCIÓN</th>
 							</tr>
 						</thead>
 						<tbody>
 
 							<?php
+							$n=0;
 								foreach ($_ListaUsuario as $key => $value) {
+									$n++;
 									$id= $key;
 									$usuario= $value[1];
 									$perfilId= $value[5];
@@ -84,9 +87,10 @@ require_once 'public/overall/header.php';
 									echo '<tr>';
 									}
 									//echo '<tr>';
-									echo '<td>',$id,'</td>';
+									echo '<td>',$n,'</td>';
 									echo '<td>',$usuario,'</td>';
 									echo '<td>',$perfil,'</td>';
+									echo '<td>',$dni,'</td>';
 									echo '<td>',$nombres,'</td>';
 									echo '<td>',$establecimiento,'</td>';
 									echo '<td>';

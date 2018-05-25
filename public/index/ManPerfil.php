@@ -37,7 +37,13 @@ require_once 'public/overall/header.php';
                   </div>
                 </div>
                 <div class="form-group">
-                  <label class="col-md-3 control-label">Usuario:</label>
+                  <label class="col-lg-3 control-label">DNI:</label>
+                  <div class="col-lg-8">
+                    <input class="form-control" type="text" name="p_dni" id="p_dni" value="<?php echo $_usuario[$_SESSION['sesion_id']]['MUSU_DNI'];?>">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-md-3 control-label">Correo:</label>
                   <div class="col-md-8">
                     <input class="form-control" type="text" name="p_usuario" id="p_usuario" value="<?php echo $_usuario[$_SESSION['sesion_id']]['MUSU_LOGIN'];?>" disabled="true">
                     <input type="hidden" name="email" id="email" value="<?php echo $_usuario[$_SESSION['sesion_id']]['MUSU_LOGIN'];?>">
