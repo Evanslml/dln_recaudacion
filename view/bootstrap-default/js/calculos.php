@@ -36,6 +36,39 @@
     }   
 
   function Suma_Monto_Padre5() {
+      b  = (Number($('#monto-6').unmask())/100).toFixed(2);
+       try{
+           $("#monto-5").val('S/. '+ b); 
+       }
+       catch(e) {}
+    }   
+
+  function Suma_Cant_Padre5() {
+      a  = Number($("#cantidad-6").val());
+       try{
+           $("#cantidad-5").val(a);
+       }
+       catch(e) {}
+    }   
+
+  function Suma_Monto_Padre7() {
+
+
+    try{
+        suma=0;
+        for (var i = 8; i <= 25; i++) {
+          x = '#monto-'+i;
+          y = 'var'+i;
+          y = Number($(i).unmask());
+          suma =+y;
+        }
+
+      final= ((suma)/100).toFixed(2);
+      $("#monto-7").val('S/. '+ final); 
+       }
+    catch(e) {}
+
+/*
       b  = Number($('#monto-6').unmask());
       d  = Number($('#monto-7').unmask());
       f  = Number($('#monto-8').unmask());
@@ -56,9 +89,14 @@
            $("#monto-5").val('S/. '+ suma2); 
        }
        catch(e) {}
+*/
+
+
+
     } 
 
-  function Suma_Cant_Padre5() {
+/*
+  function Suma_Cant_Padre7() {
       a  = Number($("#cantidad-6").val());
       c  = Number($("#cantidad-7").val());
       e  = Number($("#cantidad-8").val());
@@ -80,7 +118,9 @@
        }
        catch(e) {}
     }    
+*/
 
+/*
   function Suma_Monto_Padre21() {
           b  = Number($('#monto-22').unmask());          
           d  = Number($('#monto-23').unmask());          
@@ -192,4 +232,6 @@
        }
        catch(e) {}
     }  
+
+  */
 </script>

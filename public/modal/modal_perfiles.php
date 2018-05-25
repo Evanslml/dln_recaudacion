@@ -9,7 +9,6 @@
 	    <div class="modal-content">
 	      <div class="modal-header">
 	        <h3 class="modal-title fl">Nuevo Perfil</h3>
-	        <?php //var_dump($_ListaObjetos);?>
 	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 	          <span aria-hidden="true">&times;</span>
 	        </button>
@@ -69,9 +68,6 @@
 	  </div>
 	</div>
 
-
-
-
 	<div class="modal fade" id="editar_Perfil" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	  <div class="modal-dialog" role="document">
 	    <div class="modal-content">
@@ -85,6 +81,7 @@
 	      	<div id="mod_mensaje"></div>
 	      	<form class="form-horizontal">
 			<?php 
+			//var_dump($_ListaObjetos); 
 			//var_dump($editid); 
 			$permisos = Permisos::PermisoSegunId($editid);
 	        $cantidad = count($permisos);
@@ -118,21 +115,21 @@
 					<label for="mod_nombre" class="col-sm-3 control-label">Permisos</label>
 					<div class="col-sm-8 mod_nlistas">
 
-						<?php foreach ($_permiso as $key => $value) {
+						<?php foreach ($_ListaObjetos as $key => $value) {
 
 				            if($value[5]=='0'){
 
-				              if (in_array($value[1], $array)){$class="checked='checked'"; }else{$class=""; }
+				              if (in_array($value[0], $array)){$class="checked='checked'"; }else{$class=""; }
 
 				              echo "<li style=\"display: block;\">";
-				                  echo "<label class=\"container_checkbox\"> ".$value[3]."<input type=\"checkbox\" id=\"mod_MyCheck".$key."\" ". $class ." ><span class=\"checkmark\"></span></label>";
-				                  $id=$value[1]; //MOBJ_ID
+				                  echo "<label class=\"container_checkbox\"> ".$value[2]."<input type=\"checkbox\" id=\"mod_MyCheck".$key."\" ". $class ." ><span class=\"checkmark\"></span></label>";
+				                  $id=$value[0]; //MOBJ_ID
 				                  echo "<ul class=\"nav child_menu\" style=\"padding-left: 35px;\">";
-				                  foreach ($_permiso as $key1 => $value1) {
+				                  foreach ($_ListaObjetos as $key1 => $value1) {
 				                     if($value1[5]==$id){//SI OBJ_PADRE ES IGUAL AL ID
-				                     if (in_array($value1[1], $array)){$class="checked='checked'"; }else{$class=""; }
+				                     if (in_array($value1[0], $array)){$class="checked='checked'"; }else{$class=""; }
 				                      echo "<li>";
-				                      echo "<label class=\"container_checkbox\"> ".$value1[3]."<input type=\"checkbox\" id=\"mod_MyCheck".$key1."\" ". $class ." ><span class=\"checkmark\"></span>";
+				                      echo "<label class=\"container_checkbox\"> ".$value1[2]."<input type=\"checkbox\" id=\"mod_MyCheck".$key1."\" ". $class ." ><span class=\"checkmark\"></span>";
 				                      echo "</li>";
 				                      }
 				                  }

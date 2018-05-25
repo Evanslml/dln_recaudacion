@@ -5134,7 +5134,8 @@ table.text-center th {
 .alert-error,
 .label-danger,
 .modal-danger .modal-body {
-    background-color: #dd4b39 !important
+    /*background-color: #dd4b39 !important*/
+    background: linear-gradient(#dd4b39, #dc4035) !important;
 }
 
 .bg-yellow,
@@ -5786,11 +5787,13 @@ table.text-center th {
 
 
 .table_hover_select>table>tbody tr:hover{
-    background: #3e79b6 !important;
+    /*background: #3e79b6 !important;*/
+    background: linear-gradient(#3e79b6, #2a3f54);
     color: #fff !important;
 }
 .table_hover_select>table>tbody tr{
     transition: all 0.2s ease-in-out;
+    font-size: 12px;
 }
 /*********************************/
 /* TABLE RECAUDACION             */

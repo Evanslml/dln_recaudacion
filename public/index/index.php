@@ -111,7 +111,7 @@ require_once 'public/overall/header.php';
  
               <strong><i class="fa fa-file-text-o margin-r-5"></i> Notas</strong>
               <p>La aplicación se debe registrar diariamente</p>
-              <p>Si Ud. encuentra dificultades en la plataforma sirvase a llamar al <b><i class="fa fa-phone"></i> (01) 201-1340 Anexo 152</b> (OFICINA GENERAL DE TECNOLOGIA Y LA INFORMACION) o al correo ivan.cruz@dirislimanorte.gob.pe</p>
+              <p>Si Ud. encuentra dificultades en la plataforma sirvase a llamar al <b><i class="fa fa-phone"></i> (01) 201-1340 Anexo 152</b> (OFICINA GENERAL DE TECNOLOGIA Y LA INFORMACION) o al correo desarrollo.ti@dirislimanorte.gob.pe</p>
               <hr>
             </div>
             <!-- /.box-body -->
