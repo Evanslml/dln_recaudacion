@@ -1,4 +1,23 @@
 	
+	var $ = jQuery.noConflict();
+    $(document).ready(function(){
+      load(1);
+    });
+      
+    function load(page){
+      $("#loader").fadeIn('slow');
+      $.ajax({
+        url:'./public/user/ajax/Usuarios?action=ajax&page='+page,
+         beforeSend: function(objeto){
+         $('#loader').html('<img src="./view/bootstrap-default/img/ajax-loader.gif"> Cargando...');
+        },
+        success:function(data){
+          $(".outer_div").html(data).fadeIn('slow');
+          $('#loader').html('');
+        }
+      });
+    } //LOAD
+	
 	function obtener_datos(id){
 			var id = $("#id"+id).val();
 			var usuario = $("#usuario"+id).val();

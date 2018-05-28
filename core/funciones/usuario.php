@@ -104,7 +104,41 @@ class Acceso
     $db->close();
    
     return $UserPerfil;
+  }  
+
+
+  public static function ListaUsuarioPerfilpagination($offset,$per_page){
+    $db = new conexion();
+    $sql = $db->query("SELECT MUSU_ID,MUSU_LOGIN,MUSU_PASSWORD,MUSU_NOMBRES,MUSU_TELEFONO,A.MPERF_ID,MPERF_NOMBRE,NEST_NOMBRE,C.NESTA_RENAES,MUSU_ESTADO,MUSU_DNI FROM musuario A 
+    INNER JOIN mperfil B ON A.MPERF_ID=B.MPERF_ID 
+    INNER JOIN nestablecimiento C ON A.NESTA_RENAES=C.NESTA_RENAES
+    WHERE B.MPERF_ESTADO='1' 
+    ORDER BY A.MUSU_ID
+    LIMIT $offset,$per_page
+    ;");
+    if($sql->num_rows > 0) {
+      while($d = $sql->fetch_array()) {
+        $UserPerfil[$d['MUSU_ID']] = $d;
+      }
+    } else {
+      $UserPerfil = false;
+    }
+    $sql->free();
+    $db->close();
+   
+    return $UserPerfil;
   }
+
+
+  public static function ListaUsuarioPerfilpaginationTotal (){
+    $db = new Conexion();
+    $sql = $db->query("
+    SELECT * FROM musuario
+    ;");
+    $count= $db->rows($sql);
+    return $count;
+  } 
+
 
   public static function ListaPerfil(){
     $db = new Conexion();

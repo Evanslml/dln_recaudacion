@@ -5938,8 +5938,9 @@ tr{
     #table_recaudacion thead tr th:nth-child(5){width: 100px !important;}
 }
 
-.disable-1-css{background: #ffffa8 !important;}
-.disable-2-css{background: #ffd6a1 !important;}
+.disable-1-css{background: #ffffa8 !important; color: #000 !important}
+.disable-2-css{background: #ffd6a1 !important; color: #000 !important}
+.disable-3-css{background: #53af60 !important; color: #fff !important}
 
 
 .filterable {

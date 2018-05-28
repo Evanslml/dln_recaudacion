@@ -28,7 +28,7 @@ require_once 'public/overall/header.php';
             <div class="panel-tools">
               <div class="button btn-save"><a href="#"><i class="fa fa-floppy-o"></i><span>Guardar</span></a></div>
               <div class="button btn-cancel"><a href="#"><i class="fa fa-pencil"></i><span>Editar</span></a></div>
-              <div class="button btn-cancel"><a href="./todosformatos"><i class="fa fa-times"></i><span>Cancelar</span></a></div>
+              <div class="button btn-cancel"><a href="./"><i class="fa fa-times"></i><span>Cancelar</span></a></div>
             </div>
 
           </div>
@@ -41,16 +41,6 @@ require_once 'public/overall/header.php';
                   <div class="form-group">
                       <label for="mod_nombre" class="col-sm-3 col-xs-12 control-label">Fecha:</label>
                       <div class="col-md-9 col-xs-12">
-
-<!--
-                          <div class='input-group date' id='datetimepicker1'>
-                              <input type='text' id="date" name="date" class="form-control" readonly/>
-                              <span class="input-group-addon">
-                                  <span class="glyphicon glyphicon-calendar"></span>
-                              </span>
-                          </div>
--->
-        
 
                         <div id="datepicker" class="input-group date" data-date-format="mm-dd-yyyy">
                             <input class="form-control" type="text" readonly />
@@ -125,7 +115,7 @@ require_once 'public/overall/header.php';
             </div>
           </div>
 
-           <div class="panel-body">
+           <div class="panel-body table_hover_select">
               <table id="table_recaudacion" class="table table-striped table-bordered table-hover">
                  <thead>
                       <tr class="filters">
@@ -137,6 +127,27 @@ require_once 'public/overall/header.php';
                       </tr>
                   </thead>
                   <tbody>
+                    <tr class="disable-3-css">
+                      <td>FILA</td>
+                      <td>MEF</td>
+                      <td>TOTAL GENERAL DEL DIA (1+3+5+7+26+71+73)</td>
+                      <td><input id="cantidad-total" type="text" class="celdas_disable-3 form-control" value="0" style="border:none"/></td>
+                      <td><input id="monto-total" type="text" value="000" name="type-price" class="celdas_disable-3 type-price form-control" style="border:none"/></td>
+                    </tr>
+                    <tr class="disable-3-css">
+                      <td>FILA</td>
+                      <td>MEF</td>
+                      <td>TOTAL GENERAL DEL DIA R.D.R (1+5+7+26+71+73)</td>
+                      <td><input id="cantidad-RDR" type="text" class="celdas_disable-3 form-control" value="0" style="border:none"/></td>
+                      <td><input id="monto-RDR" type="text" value="000" name="type-price" class="celdas_disable-3 type-price form-control" style="border:none"/></td>
+                    </tr>
+                    <tr class="disable-3-css">
+                      <td>FILA</td>
+                      <td>MEF</td>
+                      <td>TOTAL GENERAL DEL DIA SISMED(3)</td>
+                      <td><input id="cantidad-SISMED" type="text" class="celdas_disable-3 form-control" value="0" style="border:none"/></td>
+                      <td><input id="monto-SISMED" type="text" value="000" name="type-price" class="celdas_disable-3 type-price form-control" style="border:none"/></td>
+                    </tr>
                       <?php
 
                       //var_dump($_ListaClasificador);
@@ -149,34 +160,43 @@ require_once 'public/overall/header.php';
                           $class_padre= $value[3];
                           $estado= $value[6];
 
-                          echo '<tr>';
-                          echo '<td>',$id,'</td>';
+                          /*echo '<tr>';*/
+/*                          echo '<td>',$id,'</td>';*/
 
                           switch ($class_padre) {
                             case '0':
-                              echo '<td class="disable-1-css"><b>',$clasificador,'</b></td>';
-                              echo '<td class="disable-1-css"><b>',$descripcion,'</b></td>';
-                              echo '<td style="width: 60px; padding: 5px 2px;"><input id="cantidad-',$id,'" type="text" class="celdas_disable form-control" placeholder="0"/></td>';
-                              echo '<td style="width: 60px; padding: 5px 2px;"><input id="monto-',$id,'" type="text" value="000" name="type-price" class="celdas_disable type-price form-control" /></td>';
+                              echo '<tr class="disable-1-css" style="color:#000 !important;">';
+                              echo '<td>',$id,'</td>';
+                              echo '<td><b>',$clasificador,'</b></td>';
+                              echo '<td><b>',$descripcion,'</b></td>';
+                              echo '<td style="width: 60px; padding: 5px 2px;"><input id="cantidad-',$id,'" type="text" class="celdas_disable form-control" placeholder="0" style="border:none"/></td>';
+                              echo '<td style="width: 60px; padding: 5px 2px;"><input id="monto-',$id,'" type="text" value="000" name="type-price" class="celdas_disable type-price form-control" style="border:none"/></td>';
+                              echo '</tr>';
                             break;
 
                             default:
                               if($estado =='0'){
-                                  echo '<td class="disable-2-css">',$clasificador,'</td>';
-                                  echo '<td class="disable-2-css">',$descripcion,'</td>';
-                                  echo '<td style="width: 60px; padding: 5px 2px;"><input id="cantidad-',$id,'" type="text" class="celdas_disable-2 form-control" placeholder="0"/></td>';
-                                  echo '<td style="width: 60px; padding: 5px 2px;"><input id="monto-',$id,'" type="text" value="000" name="type-price" class="celdas_disable-2 type-price form-control" /></td>';
-                              }else{
+                                  echo '<tr class="disable-2-css">';
+                                  echo '<td>',$id,'</td>';
                                   echo '<td>',$clasificador,'</td>';
                                   echo '<td>',$descripcion,'</td>';
-                                  echo '<td style="width: 60px; padding: 5px 2px;"><input onKeyUp="Suma_Cant_Padre',$class_padre,'()" id="cantidad-',$id,'" type="text" class="form-control" placeholder="0"/></td>';
-                                  echo '<td style="width: 60px; padding: 5px 2px;"><input onKeyUp="Suma_Monto_Padre',$class_padre,'()" id="monto-',$id,'" type="text" value="000" name="type-price" class="type-price form-control" /></td>';
+                                  echo '<td style="width: 60px; padding: 5px 2px;"><input id="cantidad-',$id,'" type="text" class="celdas_disable-2 form-control" placeholder="0"/></td>';
+                                  echo '<td style="width: 60px; padding: 5px 2px;"><input id="monto-',$id,'" type="text" value="000" name="type-price" class="celdas_disable-2 type-price form-control" /></td>';
+                                  echo '</tr>';
+                              }else{
+                                  echo '<tr>';
+                                  echo '<td>',$id,'</td>';
+                                  echo '<td>',$clasificador,'</td>';
+                                  echo '<td>',$descripcion,'</td>';
+                                  echo '<td style="width: 60px; padding: 5px 2px;"><input onKeyUp="Suma_Cant_Padre',$class_padre,'();Suma_Cant_Total()" id="cantidad-',$id,'" type="text" class="form-control" placeholder="0"/></td>';
+                                  echo '<td style="width: 60px; padding: 5px 2px;"><input onKeyUp="Suma_Monto_Padre',$class_padre,'();Suma_Monto_Total()" id="monto-',$id,'" type="text" value="000" name="type-price" class="type-price form-control" /></td>';
+                                  echo '</tr>';
                               }
                             break;
 
                           }
 
-                          echo '</tr>';
+                          //echo '</tr>';
                         }
                       ?>  
                   </tbody>
