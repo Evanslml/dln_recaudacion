@@ -1,7 +1,7 @@
 <style type="text/css">
 
 table { vertical-align: top; }
-tr    { vertical-align: top; font-size: 9px}
+tr    { vertical-align: top; font-size: 6.5px}
 td    { vertical-align: top; }
 .midnight-blue{
 	background:#2c3e50;
@@ -38,7 +38,7 @@ table.page_footer {width: 100%; border: none; background-color: white; padding: 
 .tbl_detalle td, .tbl_total td{padding: 2px;}
 </style>
 
-<page backtop="2mm" backbottom="5mm" backleft="15mm" backright="15mm" style="font-size: 12pt; font-family: arial" >
+<page backtop="1mm" backbottom="1mm" backleft="15mm" backright="15mm" style="font-size: 10pt; font-family: arial" >
         <page_footer>
         <table class="page_footer">
             <tr>
@@ -46,25 +46,34 @@ table.page_footer {width: 100%; border: none; background-color: white; padding: 
                 <td style="width: 50%; text-align: left">
                     P&aacute;gina [[page_cu]]/[[page_nb]]
                 </td>
-                <td style="width: 50%; text-align: right">
+                <!--<td style="width: 50%; text-align: right">
                     &copy; <?php echo "DirisLimaNorte "; echo  $anio=date('Y'); ?>
-                </td>
+                </td>-->
             </tr>
         </table>
     </page_footer>
 	<?php include("encabezado.php");?>
-    <br>
-    
-
-	
-    <table class="tbl_detalle" cellspacing="0" style="width: 100%; text-align: left; font-size: 12pt;">
+   
+    <table class="tbl_detalle" cellspacing="0" style="width: 100%; text-align: left;margin-top: 5px;">
 		
 		<tr>
-			<td style="height: 25px"></td>
-			<td style="height: 25px" colspan="2">NOMBRE DE ESTABLECIMIENTO <h5 style="margin:0; text-align: center"><?php echo $nombre_establecimiento; ?></h5></td>
-			<td style="height: 25px">MES <h5 style="margin:0; text-align: center"><?php echo $mes;?></h5></td>
-			<td style="height: 25px">DIA <h5 style="margin:0; text-align: center"><?php echo $dia;?></h5></td>
+			<td style="height: 10px" rowspan="2"></td>
+			<td style="height: 10px" colspan="2" rowspan="2">NOMBRE DE ESTABLECIMIENTO <h6 style="margin:0; text-align: center;padding: 0"><?php echo $nombre_establecimiento; ?></h6></td>
+			<td style="height: 10px">MES <h6 style="margin:0; text-align: center;padding: 0"><?php echo $mes;?></h6></td>
+			<td style="height: 10px">DIA <h6 style="margin:0; text-align: center;padding: 0"><?php echo $dia;?></h6></td>
 		</tr>
+		<tr>
+			<td>CANT.</td>
+			<td>MONTO</td>
+		</tr>
+		<tr>
+			<td style="width: 4%">FILA</td>
+			<td style="width: 10%">MEF</td>
+			<td style="width: 70%">TOTAL GENERAL (1+3+5+7+26+71+73)</td>
+			<td style="width: 8%"><?php echo $cantidad_total;?></td>
+			<td style="width: 8%"><?php echo 'S/. '. $monto_total;?></td>
+		</tr>
+<!--
         <tr>
            <td style="width:4%;text-align: center;padding-top: 15px" rowspan="8">F<br>I<br>L<br>A</td>
 		   <td style="width:10%;text-align: center;padding-top: 10px" rowspan="8"><b>MEF</b><br>MAESTRO CLASIFICADOR DE INGRESO </td>
@@ -95,7 +104,7 @@ table.page_footer {width: 100%; border: none; background-color: white; padding: 
         	<td style="width:8%;"><?php echo $cantidad_total;?></td>
 		    <td style="width:8%; text-align: right"><?php echo 'S/. '. $monto_total;?></td>
         </tr>
-	
+-->
 			<?php 
 
 			$cant_total=0;
@@ -154,8 +163,8 @@ table.page_footer {width: 100%; border: none; background-color: white; padding: 
         
     </table>
     
-       <br>
-		<table class="tbl_total" cellspacing="0" style="width: 100%; text-align: left; font-size: 11pt">
+       
+		<table class="tbl_total" cellspacing="0" style="width: 100%; text-align: left;margin-top: 5px">
 			<tr>
 				<td style="width: 14%; text-align: center;">SERIE</td>
 				<td style="width: 20%; text-align: center">BOLETAS/RECIBOS</td>
@@ -165,23 +174,23 @@ table.page_footer {width: 100%; border: none; background-color: white; padding: 
 				<td style="width: 34%"></td>
 			</tr>
 			<tr>
-				<td style="padding-top: 10px">MEDICAMENTOS</td>
-				<td style="padding-top: 10px;padding-left: 5px"><?php echo $SISMED_BOLINI.' '.$SISMED_BOLFIN;?></td>
-				<td style="padding-top: 10px;padding-left: 5px"><?php echo $voucher_sismed?></td>
-				<td style="padding-top: 10px;padding-left: 5px"><?php echo $SISMED_CANT;?></td>
-				<td style="padding-top: 10px;padding-left: 5px"><?php echo $SISMED_MONTO;?></td>
-				<td style="height: 45px;text-align: center;" rowspan="2"><br><br><hr>RESPONSABLE DE CAJA</td>
+				<td style="padding-top: 2px">MEDICAMENTOS</td>
+				<td style="padding-top: 2px;padding-left: 5px"><?php echo $SISMED_BOLINI.' '.$SISMED_BOLFIN;?></td>
+				<td style="padding-top: 2px;padding-left: 5px"><?php echo $voucher_sismed?></td>
+				<td style="padding-top: 2px;padding-left: 5px"><?php echo $SISMED_CANT;?></td>
+				<td style="padding-top: 2px;padding-left: 5px"><?php echo $SISMED_MONTO;?></td>
+				<td style="height: 15px;text-align: center;" rowspan="2"><br><hr>RESPONSABLE DE CAJA</td>
 			</tr>
 			<tr>
-				<td style="padding-top: 10px;padding-left: 5px">R.D.R</td>
-				<td style="padding-top: 10px;padding-left: 5px"><?php echo $RDR_BOLINI.' '.$RDR_BOLFIN;?></td>
-				<td style="padding-top: 10px;padding-left: 5px"><?php echo $voucher_rdr;?></td>
-				<td style="padding-top: 10px;padding-left: 5px"><?php echo $RDR_CANT;?></td>
-				<td style="padding-top: 10px;padding-left: 5px"><?php echo $RDR_MONTO;?></td>
+				<td style="padding-top: 2px;padding-left: 5px">R.D.R</td>
+				<td style="padding-top: 2px;padding-left: 5px"><?php echo $RDR_BOLINI.' '.$RDR_BOLFIN;?></td>
+				<td style="padding-top: 2px;padding-left: 5px"><?php echo $voucher_rdr;?></td>
+				<td style="padding-top: 2px;padding-left: 5px"><?php echo $RDR_CANT;?></td>
+				<td style="padding-top: 2px;padding-left: 5px"><?php echo $RDR_MONTO;?></td>
 			</tr>
 			<tr>
 				<td colspan="5"></td>
-				<td style="height: 45px;text-align: center;"><br><br><hr>RESPONSABLE DEL ESTABLECIMIENTO</td>
+				<td style="height: 15px;text-align: center;"><br><hr>RESPONSABLE DEL ESTABLECIMIENTO</td>
 			</tr>
 		</table>
 

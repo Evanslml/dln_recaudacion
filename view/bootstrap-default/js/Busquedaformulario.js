@@ -44,7 +44,7 @@
 //--------------------------------------------------------------------------
             $("#btnAdd").bind("click", function () {
                 var div = $("<tr />");
-                div.html(GetDynamicTextBox('Ingrese N° Voucher',yyyy+'-'+mm+'-'+dd,'000'));
+                div.html(GetDynamicTextBox('Ingrese N° Voucher',dd+'-'+mm+'-'+yyyy,'000'));
                 $("#TextBoxContainer").append(div);
             });
             $("body").on("click", ".remove", function () {
@@ -96,7 +96,7 @@
                   
                   array.push(vouchers,fechas,montos);
               //console.log(array[i]);
-            }
+            } //FOR end
 
             var montoingresado = new Array();
             array.forEach( function(valor, indice, array) {
@@ -113,16 +113,15 @@
             });
 
             //Calculando suma monto
-            console.log(montoingresado);
-            sumamontoingresado = 0;
-            montoingresado.forEach( function(valor, indice, array){
-              sumamontoingresado += parseFloat(valor);
-            });
+            //console.log(montototal);
+            //console.log(montoingresado);
 
-              montototal = parseFloat(montototal);
-            //console.log(sumamontoingresado);
-            //console.log(parseFloat(montototal));
-            //sumamontoingresado = ((sumamontoingresado)/100).toFixed(2);
+            sumamontoingresado = 0;
+            montoingresado.forEach(function(entry) {
+              sumamontoingresado += entry*100;
+              //console.log(parseFloat(entry));
+            });
+            sumamontoingresado = ((sumamontoingresado)/100).toFixed(2);
             //console.log(sumamontoingresado);
 
             if(sumamontoingresado !== montototal){
@@ -142,21 +141,20 @@
                       url: './public/user/ajax/AllFormularios.php?action=json',
                       data: { 'data1':JSON.stringify(array) } ,
                       success: function (response) {
-
-
                           setTimeout(function(){
                                 location.reload();
                           },1500); 
-
-
                           console.log(response);
                       },
                       error: function () {
                           alert("error");
                       }
                   }); 
+                  
 
             }
+
+            
 
  /*         
             var voucher1 = $("#TextBoxContainer tr:nth-child(1) td input#voucher").val();
@@ -246,14 +244,23 @@
 
 */
     function agregar(a,b){
+
+      var date = new Date(); 
+      var d = date.getDate(); 
+      var dd = zeroFill(d,2); 
+      var m = date.getMonth()+1; 
+      var mm = zeroFill(m,2); 
+      var yyyy = date.getFullYear(); 
+
       $("#mensaje").html("");
       $('#TextBoxContainer tr td:nth-child(1) input').val('');
-      $('#TextBoxContainer tr td:nth-child(2) input').val('');
+      $('#TextBoxContainer tr td:nth-child(2) input').val(dd+'-'+mm+'-'+yyyy);
       $('#TextBoxContainer tr td:nth-child(3) input').val('S/ 0.00');
       var id = zeroFill(a,15);
       var monto = b.toFixed(2) ;
       $("#mod_idForm").val(id);
       $("#mod_monto").val(monto);
+
     }
 
     function zeroFill( number, width )

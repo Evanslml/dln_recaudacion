@@ -27,7 +27,7 @@ require_once 'public/overall/header.php';
 
             <div class="panel-tools">
               <div class="button btn-save"><a href="#"><i class="fa fa-floppy-o"></i><span>Guardar</span></a></div>
-              <div class="button btn-cancel"><a href="#"><i class="fa fa-pencil"></i><span>Editar</span></a></div>
+              <div class="button btn-cancel"><a href="./todosformatos"><i class="fa fa-credit-card"></i><span>Depositar</span></a></div>
               <div class="button btn-cancel"><a href="./"><i class="fa fa-times"></i><span>Cancelar</span></a></div>
             </div>
 

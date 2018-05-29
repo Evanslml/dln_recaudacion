@@ -24,6 +24,7 @@
 
       //var_dump($vista);
       switch ($vista) {
+        case 'editarformato':
         case 'todosformatos':
         case 'formato':
         ?>
