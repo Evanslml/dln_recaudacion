@@ -5940,7 +5940,7 @@ tr{
 
 .disable-1-css{background: #ffffa8 !important; color: #000 !important}
 .disable-2-css{background: #ffd6a1 !important; color: #000 !important}
-.disable-3-css{background: #53af60 !important; color: #fff !important}
+.disable-3-css{background: linear-gradient(#52b560,#408c4b) !important; color: #fff !important}
 
 
 .filterable {

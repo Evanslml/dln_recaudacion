@@ -116,7 +116,6 @@ class Recaudacion
       INNER JOIN lclasificador B
       ON A.IDITEM=B.LCLAS_ID
       WHERE A.LRECAU_ID LIKE '%$a'
-      AND B.LCLAS_ID<=66
       AND B.LCLAS_ESTADO='1'
       ;");
       if($sql->num_rows > 0) {
@@ -131,26 +130,65 @@ class Recaudacion
       return $dato;
     }     
 
-/*    public static function VerListaFormularioRDR_SISMED ($a){*/
-/*      $db = new Conexion();*/
-/*      $sql = $db->query("*/
-/*      SELECT B.LRECTIP_NOMBRE,A.LRECTIP_ID,A.LBOL_INI,A.LBOL_FIN,A.LCANT,A.LIMP,A.LRECAU_FECREC*/
-/*      FROM lrecaudacion A */
-/*      INNER JOIN lrecaudacion_tipo B*/
-/*      ON A.LRECTIP_ID=B.LRECTIP_ID*/
-/*      where A.LRECAU_ID like '%$a' ORDER BY A.LRECTIP_ID LIMIT 2*/
-/*      ;");*/
-/*      if($sql->num_rows > 0) {*/
-/*      while($d = $sql->fetch_array()) {*/
-/*        $dato[] = $d; //ALL*/
-/*      }*/
-/*      } else {*/
-/*        $dato = false;*/
-/*      }*/
-/*      $sql->free();*/
-/*      $db->close();*/
-/*      return $dato;*/
-/*    } */
+    public static function ExisteFormulario ($a){
+      $db = new Conexion();
+      $sql = $db->query("
+      SELECT * FROM lrecaudacion WHERE LRECAU_ID = '$a'
+      ;");
+      $count= $db->rows($sql);
+      return $count;
+    }     
+
+    public static function ExisteFormulario_Deposito ($a){
+      $db = new Conexion();
+      $sql = $db->query("
+      SELECT * FROM lrecaudacion_deposito WHERE LRECAU_ID = '$a'
+      ;");
+      $count= $db->rows($sql);
+      return $count;
+    } 
+    
+    public static function VerFormulario_Deposito ($a){
+      $db = new Conexion();
+      $sql = $db->query("
+      SELECT LRECAU_VOUCHER FROM lrecaudacion_deposito WHERE LRECAU_ID ='$a'
+      ;");
+      if($sql->num_rows > 0) {
+      while($d = $sql->fetch_array()) {
+        $dato[] = $d; //ALL
+      }
+      } else {
+        $dato = false;
+      }
+      $sql->free();
+      $db->close();
+      return $dato;
+    }     
+
+
+    public static function VerListaFormulariodetalles_Uno ($a){
+      $db = new Conexion();
+      $sql = $db->query("
+      SELECT A.NESTA_RENAES,C.NEST_NOMBRE,A.LRECAU_FECREC,
+      SUBSTRING(A.LRECAU_FECREC,1,4) AÑO,SUBSTRING(A.LRECAU_FECREC,6,2) MES,SUBSTRING(A.LRECAU_FECREC,9,2) DIA,
+      A.LBOL_INI,A.LBOL_FIN,A.LCANT,A.LIMP
+      FROM
+      (SELECT * FROM lrecaudacion WHERE LRECAU_ID = '$a') A
+      INNER JOIN
+      (SELECT * FROM nestablecimiento) C
+      ON A.NESTA_RENAES = C.NESTA_RENAES
+      ;");
+      if($sql->num_rows > 0) {
+      while($d = $sql->fetch_array()) {
+        $dato[] = $d; //ALL
+      }
+      } else {
+        $dato = false;
+      }
+      $sql->free();
+      $db->close();
+      return $dato;
+    } 
 
     public static function VerListaFormulariodetalles ($a,$b){
       $db = new Conexion();

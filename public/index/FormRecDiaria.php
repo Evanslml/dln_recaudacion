@@ -93,7 +93,7 @@ require_once 'public/overall/header.php';
                           <select class="form-control" id="mod_Establecimiento" name="mod_Establecimiento">
                             <option value="00000">SELECCIONE ESTABLECIMIENTO</option>
                             <?php foreach ($_ListaEstablecimientos as $key => $value) {
-                            echo '<option value=',$value[3],'>',$value[5],' - ', $value[3] ,' </option>';
+                            echo '<option value=',$value[3],' >',$value[5],' - ', $value[3] ,' </option>';
                             }
                             ?>
                           </select>                       

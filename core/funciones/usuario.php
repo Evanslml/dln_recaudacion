@@ -43,7 +43,11 @@ class Acceso
     $db = new Conexion();
     $salt = substr ($this->email, 0, 2);
     $clave_crypt = crypt($this->passw, $salt);
-    $sql = $db->query("UPDATE musuario SET MUSU_NOMBRES='$this->nombre',MUSU_PASSWORD='$clave_crypt' WHERE MUSU_LOGIN='$this->email';");
+    $sql = $db->query("UPDATE musuario SET 
+      MUSU_NOMBRES='$this->nombre',
+      MUSU_PASSWORD='$clave_crypt',
+      MUSU_DNI='$this->dni' 
+      WHERE MUSU_LOGIN='$this->email';");
   } 
 
   public function DeshabilitarUsuario(){
