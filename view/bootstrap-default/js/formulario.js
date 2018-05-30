@@ -139,8 +139,16 @@
               $("#resultados").html('<div class="alert alert-danger" role="alert"><button type="button" class="close" data-dismiss="alert">&times;</button><strong>Error!</strong>\
               Debe ingresar algún monto para realizar la Recaudación Diaria </div>');
               $(".loading img").hide(); return false;
+          }else if((bolinisismed =='' || bolfinsismed=='') && (cantidad_SISMED!=='0' || monto_SISMED!=='0.00')) {
+              $("#resultados").html('<div class="alert alert-danger" role="alert"><button type="button" class="close" data-dismiss="alert">&times;</button><strong>Error!</strong>\
+              Debe ingresar las boletas de SISMED </div>');
+              $(".loading img").hide(); 
+              return false;
+          }else if((bolinirdr =='' || bolfinrdr=='') && (cantidad_RDR!=='0' || monto_RDR!=='0.00')) {
+              $("#resultados").html('<div class="alert alert-danger" role="alert"><button type="button" class="close" data-dismiss="alert">&times;</button><strong>Error!</strong>\
+              Debe ingresar las boletas de RDR </div>');
+              $(".loading img").hide(); return false;
           }
-
           else{
 
                 var array = new Array();
@@ -158,7 +166,8 @@
                   array.push(y,b);
                 }
 
-                //console.log(array);
+                console.log(array);
+
 
                   swal({
                     html:true,
@@ -198,6 +207,8 @@
                       
                     }
                   });
+
+
 
               
           }

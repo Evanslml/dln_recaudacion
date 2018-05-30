@@ -46,6 +46,30 @@ class Recaudacion
       $db->close();      
     }
 
+    public static function ListarRecaudacion($a){
+      $db = new Conexion();
+      $sql = $db->query("SELECT A.LCLAS_ID,A.LCLAS_ALIAS,A.LCLAS_NOMBRE,A.LCLAS_PADRE,B.LCOMP_NOMBRE,C.LRECTIP_NOMBRE,A.LCLAS_ESTADO,D.CANTIDAD,D.MONTO from lclasificador A 
+      INNER JOIN lcomponente B
+      ON A.LCOMP_ID = B.LCOMP_ID
+      INNER JOIN lrecaudacion_tipo C
+      ON C.LRECTIP_ID = A.LRECTIP_ID
+      INNER JOIN lrecaudacion_detalle D
+      ON A.LCLAS_ID=D.IDITEM
+      AND A.LCOMP_ID='01'
+      AND D.LRECAU_ID LIKE '%$a'
+      ORDER BY LCLAS_ID
+      ");
+      if($sql->num_rows > 0) {
+      while($d = $sql->fetch_array()) {
+          $dato[] = $d; //ALL
+        }
+      } else {
+        $dato = false;
+      }
+      return $dato;
+      $db->close();      
+    }
+
     public function IngresarRecaudacion (){
       $db = new Conexion();
       $sql = $db->query("

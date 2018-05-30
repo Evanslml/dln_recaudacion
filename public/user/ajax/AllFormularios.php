@@ -122,8 +122,8 @@ require_once('../../../core/core.php');
         if ($numrows>0){
             ?>
 
-            <div class="table-responsive">
-              <table class="table table-striped ">
+            <div class="table-responsive table_hover_select">
+              <table class="table table-striped">
                 <thead>
                     <tr class="info"> 
                         <td> <span><b>ID Formulario</b></span> </td> 
@@ -144,7 +144,7 @@ require_once('../../../core/core.php');
                     foreach ($query as $key => $value) {
 
                         if($value[9]=='1'){
-                        echo '<tr style="background:#dff0d8">';
+                        echo '<tr style="background:#dff0d8;color:#000 !important">';
                         } else{
                         echo '<tr>';   
                         }
@@ -164,7 +164,11 @@ require_once('../../../core/core.php');
                         echo '<td>';
                         echo '<a href="#" class="btn btn-default btn-accion" title="Imprimir formulario" onclick="imprimir(',$value[0],');"><i class="fa fa-print"></i></a>'; //
                         if(($value[9]=='0') /*OR ($perf_id=='01') OR ($perf_id=='02')*/ ) {
-                        echo '<a href="#" class="btn btn-default btn-accion" title="Editar formulario" onclick="editar(',$value[0],');"><i class="fa fa-pencil"></i></a>'; 
+                        echo '<form id="EditarFormulario" action="./editarformato" method="post" style="display: inline-block;">
+                         <input type="hidden" name="Idformulario" value="',$value[0],'" />
+                         <button type="submit" class="btn btn-default btn-accion"><i class="fa fa-pencil"></i></button>
+                        </form>
+                        '; 
                         }
                         if($value[9]=='0'){
                         echo '<a data-toggle="modal" data-target="#Ingreso_Voucher" class="btn btn-default btn-accion" title="Agregar Voucher" 
@@ -175,7 +179,7 @@ require_once('../../../core/core.php');
                     }
                     ?>
 
-                <tr>
+                <tr style="background: #fff">
                     <td colspan=9>
                         <span class="pull-right">
                             <?php echo paginate($reload, $page, $total_pages, $adjacents); ?>

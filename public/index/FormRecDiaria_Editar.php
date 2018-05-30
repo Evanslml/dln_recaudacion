@@ -18,7 +18,11 @@ require_once 'public/overall/header.php';
 
     <section class="content">
       
-      <?php echo 'ddd';?>
+      <?php $Idformulario=substr($_POST['Idformulario'],4,11);
+      $ListarRecaudacion = Recaudacion::ListarRecaudacion($Idformulario);
+      //var_dump($ListarRecaudacion);
+      ?>
+
       <div id="resultados"></div>
       <div class="row">
 
@@ -151,15 +155,15 @@ require_once 'public/overall/header.php';
                     </tr>
                       <?php
 
-                      //var_dump($_ListaClasificador);
+                        foreach ($ListarRecaudacion as $key => $value) {
 
-                        foreach ($_ListaClasificador as $key => $value) {
-
-                          $id= $key;
+                          $id= $value[0];
                           $clasificador= $value[1];
                           $descripcion= $value[2];
                           $class_padre= $value[3];
                           $estado= $value[6];
+                          $cantidad= $value[7];
+                          $monto= $value[8];
 
                           /*echo '<tr>';*/
 /*                          echo '<td>',$id,'</td>';*/
@@ -170,8 +174,8 @@ require_once 'public/overall/header.php';
                               echo '<td>',$id,'</td>';
                               echo '<td><b>',$clasificador,'</b></td>';
                               echo '<td><b>',$descripcion,'</b></td>';
-                              echo '<td style="width: 60px; padding: 5px 2px;"><input id="cantidad-',$id,'" type="text" class="celdas_disable form-control" placeholder="0" style="border:none"/></td>';
-                              echo '<td style="width: 60px; padding: 5px 2px;"><input id="monto-',$id,'" type="text" value="000" name="type-price" class="celdas_disable type-price form-control" style="border:none"/></td>';
+                              echo '<td style="width: 60px; padding: 4px 2px;"><input id="cantidad-',$id,'" type="text" class="celdas_disable form-control" value="',$cantidad,'" style="border:none"/></td>';
+                              echo '<td style="width: 60px; padding: 5px 2px;"><input id="monto-',$id,'" type="text" value="',$monto,'" name="type-price" class="celdas_disable type-price form-control" style="border:none"/></td>';
                               echo '</tr>';
                             break;
 
@@ -181,16 +185,16 @@ require_once 'public/overall/header.php';
                                   echo '<td>',$id,'</td>';
                                   echo '<td>',$clasificador,'</td>';
                                   echo '<td>',$descripcion,'</td>';
-                                  echo '<td style="width: 60px; padding: 5px 2px;"><input id="cantidad-',$id,'" type="text" class="celdas_disable-2 form-control" placeholder="0"/></td>';
-                                  echo '<td style="width: 60px; padding: 5px 2px;"><input id="monto-',$id,'" type="text" value="000" name="type-price" class="celdas_disable-2 type-price form-control" /></td>';
+                                  echo '<td style="width: 60px; padding: 5px 2px;"><input id="cantidad-',$id,'" type="text" class="celdas_disable-2 form-control" value="',$cantidad,'"/></td>';
+                                  echo '<td style="width: 60px; padding: 5px 2px;"><input id="monto-',$id,'" type="text" value="',$monto,'" name="type-price" class="celdas_disable-2 type-price form-control" /></td>';
                                   echo '</tr>';
                               }else{
                                   echo '<tr>';
                                   echo '<td>',$id,'</td>';
                                   echo '<td>',$clasificador,'</td>';
                                   echo '<td>',$descripcion,'</td>';
-                                  echo '<td style="width: 60px; padding: 5px 2px;"><input onKeyUp="Suma_Cant_Padre',$class_padre,'();Suma_Cant_Total()" id="cantidad-',$id,'" type="text" class="form-control" placeholder="0"/></td>';
-                                  echo '<td style="width: 60px; padding: 5px 2px;"><input onKeyUp="Suma_Monto_Padre',$class_padre,'();Suma_Monto_Total()" id="monto-',$id,'" type="text" value="000" name="type-price" class="type-price form-control" /></td>';
+                                  echo '<td style="width: 60px; padding: 5px 2px;"><input onKeyUp="Suma_Cant_Padre',$class_padre,'();Suma_Cant_Total()" id="cantidad-',$id,'" type="text" class="form-control" value="',$cantidad,'" /></td>';
+                                  echo '<td style="width: 60px; padding: 5px 2px;"><input onKeyUp="Suma_Monto_Padre',$class_padre,'();Suma_Monto_Total()" id="monto-',$id,'" type="text" value="',$monto,'" name="type-price" class="type-price form-control" /></td>';
                                   echo '</tr>';
                               }
                             break;

@@ -215,14 +215,17 @@
 
     } //LOAD
 
+/*
     function editar(parametro){
 
       var a = zeroFill(parametro,15);
       //alert(a);
-
-      location.href ="./formato?id="+a;
+      location.href ="./editar?id="+a;
 
     }   
+*/
+
+
 
     function imprimir(parametro){
 
