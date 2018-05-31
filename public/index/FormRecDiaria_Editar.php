@@ -119,7 +119,7 @@ require_once 'public/overall/header.php';
             <h3 class="panel-title">Registro de Recaudación Diaria</h3> 
 
             <div class="panel-tools">
-              <div class="button btn-actualizar"><a href="#"><i class="fa fa-floppy-o"></i><span>Guardar</span></a></div>
+              <div class="button btn-actualizar"><a href="#"><i class="fa fa-floppy-o"></i><span>Actualizar</span></a></div>
               <div class="button"><a href="./todosformatos"><i class="fa fa-credit-card"></i><span>Depositar</span></a></div>
               <div class="button btn-cancel"><a href="./"><i class="fa fa-times"></i><span>Cancelar</span></a></div>
             </div>

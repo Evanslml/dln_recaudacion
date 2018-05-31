@@ -48,6 +48,13 @@ class Recaudacion
       $db->close();      
     }
 
+    public function EliminarRecaudacion (){
+      $db = new Conexion();
+      $sql1 = $db->query("DELETE FROM lrecaudacion WHERE LRECAU_ID='$this->lrcau_id';");
+      $sql2 = $db->query("DELETE FROM lrecaudacion_detalle WHERE LRECAU_ID='$this->lrcau_id';");
+      $db->close();
+    } 
+
     public function IngresarRecaudacion (){
       $db = new Conexion();
       $sql = $db->query("
@@ -145,6 +152,7 @@ class Recaudacion
       ON A.IDITEM=B.LCLAS_ID
       WHERE A.LRECAU_ID LIKE '%$a'
       AND B.LCLAS_ESTADO='1'
+      ORDER BY B.LCLAS_ID
       ;");
       if($sql->num_rows > 0) {
       while($d = $sql->fetch_array()) {

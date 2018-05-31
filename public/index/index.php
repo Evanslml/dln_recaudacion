@@ -23,7 +23,6 @@ require_once 'public/overall/header.php';
  
     <!-- Main content -->
     <section class="content">
- 
       <div class="row">
         <div class="col-md-12">
           <!-- Widget: user widget style 1 -->

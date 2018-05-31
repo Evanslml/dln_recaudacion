@@ -25,6 +25,7 @@ require_once('../../../core/core.php');
         }
 */
         $data = json_decode($_POST['data1']);
+        $id_usuario= $_ListaUsuario[$_SESSION['sesion_id']]['MUSU_ID'];
         $vouchers = array();
         $fechas = array();
         $montos = array();
@@ -61,7 +62,7 @@ require_once('../../../core/core.php');
             $e = date($fechas[$n]);
             $f = date("Y-m-d", strtotime($e));
             $new= 'IngresoVoucher' . $n;
-            $new = new RecaudacionVoucher($id,$vouchers[$n],$f,$montos[$n],1,$h);
+            $new = new RecaudacionVoucher($id,$vouchers[$n],$f,$montos[$n],1,$h,$id_usuario);
             $new->IngresoVocuherRecaudacion();
         }
 
@@ -163,7 +164,7 @@ require_once('../../../core/core.php');
                         echo '<td style="padding: 8px 15px;"> S/. <span class="pull-right">',$value[8],'</span></td>'; 
                         echo '<td>';
                         echo '<a href="#" class="btn btn-default btn-accion" title="Imprimir formulario" onclick="imprimir(',$value[0],');"><i class="fa fa-print"></i></a>'; //
-                        if(($value[9]=='0') /*OR ($perf_id=='01') OR ($perf_id=='02')*/ ) {
+                        if( (($value[9]=='0') && ($perf_id=='01')) || (($value[9]=='0') && ($perf_id=='02')) ) {
                         echo '<form id="EditarFormulario" action="./editarformato" method="post" style="display: inline-block;">
                          <input type="hidden" name="Idformulario" value="',$value[0],'" />
                          <button type="submit" class="btn btn-default btn-accion"><i class="fa fa-pencil"></i></button>

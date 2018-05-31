@@ -93,11 +93,16 @@ require_once 'public/overall/header.php';
                     </select>
                 </div>
               </div>
+<?php $perf_id =$_usuario[$_SESSION['sesion_id']]['MPERF_ID'];?>
+<?php //var_dump($perf_id);?>
 
               <div class="form-group" id="form-establecimientos">
 		            <label class="control-label col-md-3 col-sm-3 col-xs-12 lbl_establecimiento">Establecimientos</label>
 		            <div class="col-md-6 col-sm-6 col-xs-12">
-		              <select class="form-control" name="cbx_establecimiento" id="cbx_establecimiento" required="">
+
+                  <?php if($perf_id=='01' || $perf_id=='02') {?>
+
+		                <select class="form-control" name="cbx_establecimiento" id="cbx_establecimiento" required="">
 		                <option value="0">Seleccionar Establecimiento</option>
                          <?php
                             foreach ($_ListaEstablecimientos as $key => $value) {
@@ -105,6 +110,14 @@ require_once 'public/overall/header.php';
                             }  
                           ?>
                     </select>
+                  <?php } else{?>
+                     
+                     <select class="form-control" name="cbx_establecimiento" id="cbx_establecimiento" required="">
+                     <option value="0">Seleccionar Establecimiento</option>
+                     <option value="3">REPORTE DE RECIBO DE INGRESOS</option>
+                     </select>
+
+                  <?php }; ?>
 		            </div>
 		          </div>
 
