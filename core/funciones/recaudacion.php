@@ -16,8 +16,9 @@ class Recaudacion
     protected $limp;
     protected $fecha_ingreso;
     protected $lrecau_estado;
+    protected $musu_id;
 
-    function __construct($a,$b,$c,$d,$e,$f,$g,$h,$i,$j,$k,$l,$m)
+    function __construct($a,$b,$c,$d,$e,$f,$g,$h,$i,$j,$k,$l,$m,$n)
     {
       $this->lrcau_id = $a;
       $this->nesta_renaes = $b;
@@ -32,6 +33,7 @@ class Recaudacion
       $this->limp = $k;
       $this->fecha_ingreso = $l;
       $this->lrecau_estado = $m;
+      $this->musu_id = $n;
     }
 
     public function BuscarRecaudacion(){
@@ -46,6 +48,32 @@ class Recaudacion
       $db->close();      
     }
 
+    public function IngresarRecaudacion (){
+      $db = new Conexion();
+      $sql = $db->query("
+      INSERT INTO lrecaudacion (LRECAU_ID,NESTA_RENAES,LANIO_ID,LMES_ID,LRECAU_FECREC,
+        LCOMP_ID,LRECTIP_ID,LBOL_INI,LBOL_FIN,LCANT,LIMP,
+        FECHA_INGRESO,LRECAU_ESTADO,MUSU_ID) 
+      VALUES(
+        '$this->lrcau_id',
+        '$this->nesta_renaes',
+        '$this->lanio_id',
+        '$this->lmes_id',
+        '$this->lrecau_fecrec',
+        '$this->lcomp_id',
+        '$this->lrectip_id',
+        '$this->lbol_ini',
+        '$this->lbol_fin',
+        '$this->lcant',
+        '$this->limp',
+        '$this->fecha_ingreso',
+        '$this->lrecau_estado',
+        '$this->musu_id'
+      );");
+      $db->close();
+    } 
+
+/*
     public static function ListarRecaudacion($a){
       $db = new Conexion();
       $sql = $db->query("SELECT A.LCLAS_ID,A.LCLAS_ALIAS,A.LCLAS_NOMBRE,A.LCLAS_PADRE,B.LCOMP_NOMBRE,C.LRECTIP_NOMBRE,A.LCLAS_ESTADO,D.CANTIDAD,D.MONTO from lclasificador A 
@@ -69,31 +97,7 @@ class Recaudacion
       return $dato;
       $db->close();      
     }
-
-    public function IngresarRecaudacion (){
-      $db = new Conexion();
-      $sql = $db->query("
-      INSERT INTO lrecaudacion (LRECAU_ID,NESTA_RENAES,LANIO_ID,LMES_ID,LRECAU_FECREC,
-        LCOMP_ID,LRECTIP_ID,LBOL_INI,LBOL_FIN,LCANT,LIMP,
-        FECHA_INGRESO,LRECAU_ESTADO) 
-      VALUES(
-        '$this->lrcau_id',
-        '$this->nesta_renaes',
-        '$this->lanio_id',
-        '$this->lmes_id',
-        '$this->lrecau_fecrec',
-        '$this->lcomp_id',
-        '$this->lrectip_id',
-        '$this->lbol_ini',
-        '$this->lbol_fin',
-        '$this->lcant',
-        '$this->limp',
-        '$this->fecha_ingreso',
-        '$this->lrecau_estado'
-      );");
-      $db->close();
-    } 
-
+*/
 
     public static function BuscarRecaudacionFecha ($e,$fi,$ff,$offset,$per_page){
       $db = new Conexion();
@@ -299,7 +303,7 @@ class RecaudacionVoucher extends Recaudacion
   protected $lrecau_estado;
   protected $fecha_deposito;
 
-  function __construct($a,$b,$c,$d,$e,$f)
+  function __construct($a,$b,$c,$d,$e,$f,$g)
   {
     $this->lrcau_id =$a;
     $this->lrecau_voucher =$b;
@@ -307,18 +311,20 @@ class RecaudacionVoucher extends Recaudacion
     $this->lrecau_monto =$d;
     $this->lrecau_estado =$e;
     $this->fecha_deposito =$f;
+    $this->musu_id =$g;
   }
 
   public function IngresoVocuherRecaudacion (){
     $db = new Conexion();
-    $sql1 = $db->query("INSERT INTO lrecaudacion_deposito (LRECAU_ID,LRECAU_VOUCHER,LRECAU_FECHA,LRECAU_MONTO,LRECAU_ESTADO,FECHA_DEPOSITO)
+    $sql1 = $db->query("INSERT INTO lrecaudacion_deposito (LRECAU_ID,LRECAU_VOUCHER,LRECAU_FECHA,LRECAU_MONTO,LRECAU_ESTADO,FECHA_DEPOSITO,MUSU_ID)
       VALUES(
       '$this->lrcau_id',
       '$this->lrecau_voucher',
       '$this->lrecau_fecha',
       '$this->lrecau_monto',
       '$this->lrecau_estado',
-      '$this->fecha_deposito'
+      '$this->fecha_deposito',
+      '$this->musu_id'
       );");
 
     $sql2 = $db->query("UPDATE lrecaudacion SET LRECAU_ESTADO='1' WHERE LRECAU_ID= '$this->lrcau_id' ;");

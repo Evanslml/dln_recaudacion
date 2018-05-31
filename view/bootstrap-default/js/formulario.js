@@ -216,8 +216,128 @@
         } //<!--save_recaudacion-->
 
 
+        function update_recaudacion(){
+            event.preventDefault();
+            $(".loading").show();
+            var cantidad_total = $('#cantidad-total').val();
+            var monto_total = $('#monto-total').val();
+            var monto_total = monto_total.slice(4);
+            var cantidad_SISMED = $('#cantidad-SISMED').val();
+            var monto_SISMED = $('#monto-SISMED').val();
+            var monto_SISMED = monto_SISMED.slice(4);
+            var cantidad_RDR = $('#cantidad-RDR').val();
+            var monto_RDR = $('#monto-RDR').val();
+            var monto_RDR = monto_RDR.slice(4);
+            var bolinirdr = $('#bolinirdr').val();
+            var bolfinrdr = $('#bolfinrdr').val();
+            var bolinisismed = $('#bolinisismed').val();
+            var bolfinsismed = $('#bolfinsismed').val();
+            var date = $('#mod_fecha').val();
+            var id_establecimiento = $('#mod_Establecimiento').val();
+
+             if(bolinirdr =='' && bolfinrdr=='' && bolinisismed=='' && bolfinsismed==''){
+              $("#resultados").html('<div class="alert alert-danger" role="alert"><button type="button" class="close" data-dismiss="alert">&times;</button><strong>Error!</strong>\
+              Debe ingresar BOLETAS RDR O SISMED</div>');
+              $(".loading img").hide(); return false;
+            }else if((bolinirdr !=='' && bolfinrdr=='') || (bolinirdr =='' && bolfinrdr !== '')){
+                $("#resultados").html('<div class="alert alert-danger" role="alert"><button type="button" class="close" data-dismiss="alert">&times;</button><strong>Error!</strong>\
+                Debe completar las BOLETAS RDR </div>');
+                $(".loading img").hide(); return false;
+            }else if((bolinisismed !=='' && bolfinsismed=='') || (bolinisismed =='' && bolfinsismed !== '')){
+                $("#resultados").html('<div class="alert alert-danger" role="alert"><button type="button" class="close" data-dismiss="alert">&times;</button><strong>Error!</strong>\
+                Debe completar las BOLETAS SISMED </div>');
+                $(".loading img").hide(); return false;
+            }else if(parseInt(bolinirdr) >= parseInt(bolfinrdr)){
+                $("#resultados").html('<div class="alert alert-danger" role="alert"><button type="button" class="close" data-dismiss="alert">&times;</button><strong>Error!</strong>\
+                Debe ingresar las boletas RDR en forma Ascendente </div>');
+                $(".loading img").hide(); return false;
+            }else if(parseInt(bolinisismed) >= parseInt(bolfinsismed)){
+                $("#resultados").html('<div class="alert alert-danger" role="alert"><button type="button" class="close" data-dismiss="alert">&times;</button><strong>Error!</strong>\
+                Debe ingresar las boletas SISMED en forma Ascendente </div>');
+                $(".loading img").hide(); return false;
+            }else if(cantidad_total==0 || monto_total=='0.00'){
+                $("#resultados").html('<div class="alert alert-danger" role="alert"><button type="button" class="close" data-dismiss="alert">&times;</button><strong>Error!</strong>\
+                Debe ingresar algún monto para realizar la Recaudación Diaria </div>');
+                $(".loading img").hide(); return false;
+            }else if((bolinisismed =='' || bolfinsismed=='') && (cantidad_SISMED!=='0' || monto_SISMED!=='0.00')) {
+                $("#resultados").html('<div class="alert alert-danger" role="alert"><button type="button" class="close" data-dismiss="alert">&times;</button><strong>Error!</strong>\
+                Debe ingresar las boletas de SISMED </div>');
+                $(".loading img").hide(); 
+                return false;
+            }else if((bolinirdr =='' || bolfinrdr=='') && (cantidad_RDR!=='0' || monto_RDR!=='0.00')) {
+                $("#resultados").html('<div class="alert alert-danger" role="alert"><button type="button" class="close" data-dismiss="alert">&times;</button><strong>Error!</strong>\
+                Debe ingresar las boletas de RDR </div>');
+                $(".loading img").hide(); return false;
+            }
+            else{
+                  var array = new Array();
+                  array.push(bolinirdr,bolfinrdr,bolinisismed,bolfinsismed,date,id_establecimiento,cantidad_total,monto_total,cantidad_SISMED,monto_SISMED,cantidad_RDR,monto_RDR);
+
+                  for (var i = 1; i <= 75; i++) {
+                    x = '#cantidad-'+i;
+                    a = '#monto-'+i;
+                    y = 'c'+i;
+                    b = 'm'+i;
+                    //var m1 = $('#monto-1').unmask();
+                    //if(!$('#cantidad-2').val()){var c2=0}else{var c2 = $('#cantidad-2').val();}
+                    if(!$(x).val()){var y=0}else{var y = $(x).val();}
+                    var b = $(a).unmask();
+                    array.push(y,b);
+                  }
+
+                  console.log(array);
+
+                  swal({
+                    html:true,
+                    title: "<h4>Atención!!! <span>Se van a actualizar los datos</span></h4>",
+                    text: "<table class='table table-striped'><thead><tr><th><b>Descripción</b></th><th><b>Cantidad</b></th><th><b>Monto</b></th></tr></thead><tbody><tr><th>R.D.R</th><th>"+cantidad_RDR+"</th><th>S/. "+monto_RDR+"</th></tr><tr><th>SISMED</th><th>"+cantidad_SISMED+"</th><th>S/."+monto_SISMED+"</th></tr><tr><th>TOTAL</th><th>"+cantidad_total+"</th><th>S/. "+monto_total+"</th></tr></tbody></table>",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#27ae60",
+                    confirmButtonText: "Sí, actualizar!",
+                    cancelButtonText: "Cancelar",
+                    closeOnConfirm: false,
+                    closeOnCancel: false
+                  },
+                  function(inputValue){
+                    //Use the "Strict Equality Comparison" to accept the user's input "false" as string)
+                    if (inputValue===false) {
+                      swal.close();
+                      $(".loading img").hide();
+                    } else {
+                      $.ajax({
+                            type: 'POST',
+                            url: './public/user/ajax/ActualizarFormulario.php',
+                            data: { 'data1':JSON.stringify(array) } ,
+                           beforeSend: function(objeto){
+                            $('#btn-actualizar a').attr("disabled", true);
+                            $("#resultados").html("Mensaje: Cargando...");
+                            },
+                          success: function(datos){
+                            $('#btn-actualizar a').attr("disabled", false);
+                            $("#resultados").html(datos);
+                            //$('#datos_caja')[0].reset();
+                            console.log(datos);
+                            $(".loading").hide(); 
+                            swal.close();
+                            }
+                      });
+                      
+                    }
+                  });
+
+            } //ELSE
+
+          //alert("asd");
+        }
+
+
           $(".btn-save").click(function() {
               save_recaudacion();
+          });
+
+          $(".btn-actualizar").click(function() {
+              update_recaudacion();
           });
 
       });
