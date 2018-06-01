@@ -7,7 +7,7 @@
    }
    else { 
 
-   	$reporte_title = 'REPORTE DE BOLETAS DEPOSITADAS DIARIAS';
+   	$reporte_title = 'REPORTE DE REGISTRO DE RECAUDACIÓN';
     $desde = 'DESDE : ';
     $hasta = 'HASTA :';
     $tipo_recaudacion = $_GET['tipo_recaudacion'];
@@ -38,7 +38,7 @@
             break;
     }
 
-    $query03 = Reportes::ReporteRecIngresos($tipo_recaudacion,$tipo_nivel,$establecimiento,$distrito,$date1,$date2);
+    $query03 = Reportes::ReporteRegistroRec($tipo_recaudacion,$tipo_nivel,$establecimiento,$distrito,$date1,$date2);
     
 	require_once(dirname(__FILE__).'/../html2pdf.class.php');
 

@@ -129,20 +129,20 @@
           }
 
           var parametros = 'tipo_recaudacion='+tipo_recaudacion+'&tipo_nivel='+tipo_nivel+'&distrito='+distrito+'&establecimiento='+establecimiento+'&date1='+date1+'&date2='+date2+'&lbl_distrito='+lbl_distrito+'&lbl_establecimiento='+lbl_establecimiento;
-          var page01='./core/excel/report_01.php?'+parametros;
-          var page02='./core/excel/report_02.php?'+parametros;
-          var page03='./core/excel/report_03.php?'+parametros;
-          //var page04='./core/excel/report_04.php?'+parametros;
-          var page05='./core/pdf/documentos/reporte_01.php?'+parametros;
-          var page06='./core/pdf/documentos/reporte_02.php?'+parametros;
-          var page07='./core/pdf/documentos/reporte_03.php?'+parametros;
-          //var page08='./core/pdf/documentos/reporte_04.php?'+parametros;
+          var pageexc01='./core/excel/report_01.php?'+parametros;
+          var pageexc02='./core/excel/report_02.php?'+parametros;
+          var pageexc03='./core/excel/report_03.php?'+parametros;
+          //var pageexc04='./core/excel/report_04.php?'+parametros;
+          var pagepdf01='./core/pdf/documentos/reporte_01.php?'+parametros;
+          var pagepdf02='./core/pdf/documentos/reporte_02.php?'+parametros;
+          var pagepdf03='./core/pdf/documentos/reporte_03.php?'+parametros;
+          var pagepdf04='./core/pdf/documentos/reporte_04.php?'+parametros;
 
           if(in_data=='excel'){
             switch(tipo_reporte){
               case '01':
               $.ajax({
-                        url: page01,
+                        url: pageexc01,
                         beforeSend: function(datos){
                            $("#resultados").html('<div class="alert alert-warning" role="alert">\
                            <button type="button" class="close" data-dismiss="alert">&times;</button>\
@@ -151,7 +151,7 @@
                           $(".loading").show();
                           },
                         success: function(datos){
-                          window.location = page01;
+                          window.location = pageexc01;
                           }
                     }).done(function(){
                      $(".loading").hide();
@@ -164,7 +164,7 @@
 
               case '02':
               $.ajax({
-                        url: page02,
+                        url: pageexc02,
                         beforeSend: function(datos){
                            $("#resultados").html('<div class="alert alert-warning" role="alert">\
                            <button type="button" class="close" data-dismiss="alert">&times;</button>\
@@ -173,7 +173,7 @@
                           $(".loading").show();
                           },
                         success: function(datos){
-                          window.location = page02;
+                          window.location = pageexc02;
                           }
                     }).done(function(){
                      $(".loading").hide();
@@ -186,7 +186,7 @@
 
               case '03':
               $.ajax({
-                        url: page03,
+                        url: pageexc03,
                         beforeSend: function(datos){
                            $("#resultados").html('<div class="alert alert-warning" role="alert">\
                            <button type="button" class="close" data-dismiss="alert">&times;</button>\
@@ -195,7 +195,7 @@
                           $(".loading").show();
                           },
                         success: function(datos){
-                          window.location = page03;
+                          window.location = pageexc03;
                           }
                     }).done(function(){
                      $(".loading").hide();
@@ -213,16 +213,16 @@
           }else if(in_data=='pdf'){ //if PDF
             switch(tipo_reporte){
               case '01':
-              VentanaCentrada(page05,'Formulario','','1024','768','true');
+              VentanaCentrada(pagepdf01,'Formulario','','1024','768','true');
               break;
               case '02':
-              VentanaCentrada(page06,'Formulario','','1024','768','true');
+              VentanaCentrada(pagepdf02,'Formulario','','1024','768','true');
               break;
               case '03':
-              VentanaCentrada(page07,'Formulario','','1024','768','true');
+              VentanaCentrada(pagepdf03,'Formulario','','1024','768','true');
               break;
               case '04':
-              console.log("en proceso");
+              VentanaCentrada(pagepdf04,'Formulario','','1024','768','true');
               break;
             }
           } //else PDF

@@ -36,12 +36,15 @@ require_once 'public/overall/header.php';
             <div class="panel-uno">
 <?php 
 //var_dump($_ListaTipoRec);
+ $perf_id =$_usuario[$_SESSION['sesion_id']]['MPERF_ID'];
+ //var_dump($perf_id);
 ?>
               <form class="form-horizontal form-label-left">
           
 		          <div class="form-group">
 		            <label class="control-label col-md-3 col-sm-3 col-xs-12 lbl_tipo_reporte">Tipo de Reporte</label>
 		            <div class="col-md-6 col-sm-6 col-xs-12">
+                <?php if(($perf_id =='01') || ($perf_id=='02')) { ?>
 		              <select class="form-control" name="cbx_tipo_reporte" id="cbx_tipo_reporte" required="">
 		                <option value="0">Seleccionar Estrategia</option>
                     <?php
@@ -49,7 +52,14 @@ require_once 'public/overall/header.php';
                           echo '<option value=',$value[0],'>',$value[1],'</option>';
                       }  
                     ?>
-			          </select>
+                  </select>
+                <?php } else{ ?>
+                  <select class="form-control" name="cbx_tipo_reporte" id="cbx_tipo_reporte" required="">
+                    <option value="0">Seleccionar Estrategia</option>
+                    <option value="3">REPORTE DE REGISTRO DE RECAUDACIÓN</option>
+                  </select>
+                <?php  } ?>
+			          
 		            </div>
 		          </div>
 
@@ -93,15 +103,11 @@ require_once 'public/overall/header.php';
                     </select>
                 </div>
               </div>
-<?php $perf_id =$_usuario[$_SESSION['sesion_id']]['MPERF_ID'];?>
-<?php //var_dump($perf_id);?>
+
 
               <div class="form-group" id="form-establecimientos">
 		            <label class="control-label col-md-3 col-sm-3 col-xs-12 lbl_establecimiento">Establecimientos</label>
 		            <div class="col-md-6 col-sm-6 col-xs-12">
-
-                  <?php if($perf_id=='01' || $perf_id=='02') {?>
-
 		                <select class="form-control" name="cbx_establecimiento" id="cbx_establecimiento" required="">
 		                <option value="0">Seleccionar Establecimiento</option>
                          <?php
@@ -110,14 +116,6 @@ require_once 'public/overall/header.php';
                             }  
                           ?>
                     </select>
-                  <?php } else{?>
-                     
-                     <select class="form-control" name="cbx_establecimiento" id="cbx_establecimiento" required="">
-                     <option value="0">Seleccionar Establecimiento</option>
-                     <option value="3">REPORTE DE RECIBO DE INGRESOS</option>
-                     </select>
-
-                  <?php }; ?>
 		            </div>
 		          </div>
 

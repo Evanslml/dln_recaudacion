@@ -7,7 +7,7 @@
    }
    else { 
 
-   	$reporte_title = 'REPORTE DE BOLETAS DEPOSITADAS DIARIAS';
+   	$reporte_title = 'REPORTE DE BOLETAS DEPOSITADAS RESUMEN';
     $desde = 'DESDE : ';
     $hasta = 'HASTA :';
     $tipo_recaudacion = $_GET['tipo_recaudacion'];

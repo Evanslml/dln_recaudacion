@@ -7,7 +7,7 @@
     function load(page){
       $("#loader").fadeIn('slow');
       $.ajax({
-        url:'./public/user/ajax/Usuarios?action=ajax&page='+page,
+        url:'./public/user/ajax/Usuarios.php?action=ajax&page='+page,
          beforeSend: function(objeto){
          $('#loader').html('<img src="./view/bootstrap-default/img/ajax-loader.gif"> Cargando...');
         },

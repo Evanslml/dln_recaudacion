@@ -62,7 +62,7 @@
             break;
             break;
     }
-    $_Report03 = Reportes::ReporteRecIngresos($tipo_recaudacion,$tipo_nivel,$establecimiento,$distrito,$date1,$date2);
+    $_Report03 = Reportes::ReporteRegistroRec($tipo_recaudacion,$tipo_nivel,$establecimiento,$distrito,$date1,$date2);
     //var_dump($_Report01);
     /*Estilos*/
     $center = array(
