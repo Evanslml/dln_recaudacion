@@ -1,7 +1,7 @@
 <style type="text/css">
 
 table { vertical-align: top; }
-tr    { vertical-align: top; font-size: 9px}
+tr    { vertical-align: top; font-size: 6.5px}
 td    { vertical-align: top; }
 .midnight-blue{
 	background:#2c3e50;
@@ -38,7 +38,7 @@ table.page_footer {width: 100%; border: none; background-color: white; padding: 
 .tbl_detalle td, .tbl_total td{padding: 2px;}
 </style>
 
-<page backtop="15mm" backbottom="15mm" backleft="15mm" backright="15mm" style="font-size: 12pt; font-family: arial" >
+<page backtop="1mm" backbottom="1mm" backleft="15mm" backright="15mm" style="font-size: 12pt; font-family: arial" >
         <page_footer>
         <table class="page_footer">
             <tr>
@@ -60,11 +60,11 @@ table.page_footer {width: 100%; border: none; background-color: white; padding: 
     <table class="tbl_detalle" cellspacing="0" style="width: 100%; text-align: left; font-size: 12pt;">
 		
 		<tr>
-			<td style="width: 10%"><b>Nº</b></td>
+			<td style="width: 4%"><b>Nº</b></td>
 			<td style="width: 10%"><b>CLASIFICADOR</b></td>
-			<td style="width: 60%"><b>DESCRIPCIÓN</b></td>
-      <td style="width: 10%"><b>CANTIDAD</b></td>
-			<td style="width: 10%"><b>MONTO</b></td>
+			<td style="width: 70%"><b>DESCRIPCIÓN</b></td>
+      <td style="width: 8%"><b>CANTIDAD</b></td>
+			<td style="width: 8%"><b>MONTO</b></td>
     </tr>
 
 			<?php 
@@ -76,8 +76,19 @@ table.page_footer {width: 100%; border: none; background-color: white; padding: 
               $CLASIFICADOR= $value[0];
               $DESCRIPCION= $value[1];
               $CANTIDAD= $value[2];
+              $LCLAS_ID= $value[4];
+              $LCLAS_PADRE= $value[5];
               $MONTO= 'S/. '.number_format($value[3], 2, '.', '');
 
+              if($LCLAS_PADRE == 0){
+              echo '<tr>';
+                  echo '<td><b>',$id,'</b></td>';
+                  echo '<td style="text-align:center;"><b>',$CLASIFICADOR,'</b></td>';
+                  echo '<td style="text-align:center;"><b>',$DESCRIPCION,'</b></td>';
+                  echo '<td>',$CANTIDAD,'</td>';
+                  echo '<td>',$MONTO,'</td>';
+              echo '</tr>';
+              }else{            
               echo '<tr>';
                   echo '<td>',$id,'</td>';
                   echo '<td>',$CLASIFICADOR,'</td>';
@@ -85,11 +96,13 @@ table.page_footer {width: 100%; border: none; background-color: white; padding: 
                   echo '<td>',$CANTIDAD,'</td>';
                   echo '<td>',$MONTO,'</td>';
               echo '</tr>';
-            }//FOREACH
+              }
+
+        }//FOREACH
         
-        }else{
+  }else{
         	echo '<tr><td colspan="4"><p>No se encontraron resultados en la busqueda</p></td></tr>';
-        }
+  }
 
 			?>
     </table>

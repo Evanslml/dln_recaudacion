@@ -7,6 +7,13 @@ require_once 'public/overall/header.php';
 <?php include 'public/overall/menu-header.php'; ?>
 <?php include 'public/overall/menu-aside.php'; ?>
  
+<?php
+/*
+$salt = substr ('jbsb01@hotmail.com', 0, 2);
+$clave_crypt = crypt('06855009', $salt);
+var_dump($clave_crypt);*/
+?>
+
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">

@@ -26,7 +26,7 @@ require_once 'public/overall/header.php';
             <div class="panel-tools">
               <div class="button exportar_excel"><a href="#"><i class="fa fa-file-excel-o"></i><span>Excel</span></a></div>
               <div class="button exportar_pdf"><a href="#"><i class="fa fa-file-pdf-o"></i><span>PDF</span></a></div>
-              <div class="button "><a href="./index.php"><i class="fa fa-times"></i><span>Cancelar</span></a></div>
+              <div class="button "><a href="./"><i class="fa fa-times"></i><span>Cancelar</span></a></div>
             </div>
 
           </div>

@@ -173,11 +173,10 @@ class Reportes
 				break;
 		}
 
-	    $sql = $db->query("SELECT F.LCLAS_ALIAS,F.LCLAS_NOMBRE,SUM(E.CANTIDAD) CANTIDAD,SUM(E.MONTO) MONTO
-		FROM(
-		SELECT LRECAU_ID,MIN(LRECAU_FECHA) FECHA_MIN,MAX(LRECAU_FECHA) FECHA_MAX FROM lrecaudacion_deposito
-		GROUP BY LRECAU_ID
-		)A
+	    $sql = $db->query("
+		SELECT 
+		F.LCLAS_ALIAS,F.LCLAS_NOMBRE,SUM(E.CANTIDAD) CANTIDAD,SUM(E.MONTO) MONTO,F.LCLAS_ID,F.LCLAS_PADRE,D.LRECTIP_ID
+		FROM lrecaudacion A
 		INNER JOIN nestablecimiento B
 		ON SUBSTRING(A.LRECAU_ID,11,5) = B.NESTA_RENAES
 		INNER JOIN ndistrito C
@@ -189,9 +188,10 @@ class Reportes
 		INNER JOIN lclasificador F
 		ON F.LCLAS_ID = E.IDITEM
 		WHERE F.LCLAS_ESTADO='1'
-		AND (A.FECHA_MIN >='$fi' OR A.FECHA_MAX <= '$ff')
+		AND ( A.LRECAU_FECREC BETWEEN '$fi' AND '$ff')
 		$tipo_recaudacion"."$nivel_recaudacion
-		GROUP BY F.LCLAS_ALIAS,F.LCLAS_NOMBRE
+		GROUP BY F.LCLAS_ID,F.LCLAS_ALIAS,F.LCLAS_NOMBRE,F.LCLAS_PADRE,D.LRECTIP_ID
+		ORDER BY F.LCLAS_ID*1
 		");
 	    if($sql->num_rows > 0) {
 	      while($d = $sql->fetch_array()) {
