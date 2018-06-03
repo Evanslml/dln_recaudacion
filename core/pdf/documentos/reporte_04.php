@@ -39,12 +39,18 @@
     }
 
     $query04 = Reportes::ReporteRecIngresos($tipo_recaudacion,$tipo_nivel,$establecimiento,$distrito,$date1,$date2);
+    //$query05 = Reportes::ReporteRecIngresos_Sum($tipo_recaudacion,$tipo_nivel,$establecimiento,$distrito,$date1,$date2);
     //var_dump($title[0]);
     //var_dump($query04);
 
 	require_once(dirname(__FILE__).'/../html2pdf.class.php');
 
-	//var_dump($query04);
+/*
+    $sum1 = $query05[1][1];
+    $sum2 = $query05[1][2];
+    $sum3 = $query05[1][3];
+    $sum4 = $query05[1][4];
+*/
 
     // get the HTML
      ob_start();
