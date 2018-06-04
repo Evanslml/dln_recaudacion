@@ -132,7 +132,8 @@
           var pageexc01='./core/excel/report_01.php?'+parametros;
           var pageexc02='./core/excel/report_02.php?'+parametros;
           var pageexc03='./core/excel/report_03.php?'+parametros;
-          //var pageexc04='./core/excel/report_04.php?'+parametros;
+          var pageexc04='./core/excel/report_04.php?'+parametros;
+          
           var pagepdf01='./core/pdf/documentos/reporte_01.php?'+parametros;
           var pagepdf02='./core/pdf/documentos/reporte_02.php?'+parametros;
           var pagepdf03='./core/pdf/documentos/reporte_03.php?'+parametros;
@@ -207,8 +208,27 @@
               break;
 
               case '04':
-              console.log("en proceso");
+              $.ajax({
+                        url: pageexc04,
+                        beforeSend: function(datos){
+                           $("#resultados").html('<div class="alert alert-warning" role="alert">\
+                           <button type="button" class="close" data-dismiss="alert">&times;</button>\
+                           <strong>En Proceso!</strong> \
+                           Cargando...</div>');
+                          $(".loading").show();
+                          },
+                        success: function(datos){
+                          window.location = pageexc04;
+                          }
+                    }).done(function(){
+                     $(".loading").hide();
+                     $("#resultados").html('<div class="alert alert-success" role="alert">\
+                     <button type="button" class="close" data-dismiss="alert">&times;</button>\
+                     <strong>Completo!</strong> \
+                     Su descarga se realizó con éxito</div>');
+                    });
               break;
+              
             }
           }else if(in_data=='pdf'){ //if PDF
             switch(tipo_reporte){

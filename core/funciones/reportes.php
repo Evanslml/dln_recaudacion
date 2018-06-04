@@ -253,7 +253,6 @@ class Reportes
 				ORDER BY F.LCLAS_ID
 		)X
 		GROUP BY LCLAS_ALIAS,CODIGO_A,DETALLE_A,CODIGO_B,DETALLE_B,CODIGO_C,DETALLE_C,DETALLE_D,DETALLE_PADRE
-
 		");
 	    if($sql->num_rows > 0) {
 	      while($d = $sql->fetch_array()) {

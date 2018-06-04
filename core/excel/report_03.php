@@ -16,7 +16,7 @@
 
     $now = new DateTime();
     $h=$now->format('Y-m-d');
-    $file='Reporte_Recibos_Ingresos_'.$h.'.xlsx';
+    $file='Reporte_Registro_Recaudacion_'.$h.'.xlsx';
     $header='&L&BFecha de consulta: '.$h;
     $footer='&L&B@DirisLimaNorte - http://app1.dirislimanorte.gob.pe/recaudacion';
     $desde = 'DESDE : ';
@@ -25,13 +25,13 @@
 
     switch ($tipo_recaudacion) {
         case '00':
-            $reporte_title = 'REPORTE DE RECIBOS DE INGRESOS - TODOS';
+            $reporte_title = 'REPORTE DE REGISTRO DE RECAUDACION - TODOS';
             break;
         case '01':
-            $reporte_title = 'REPORTE DE RECIBOS DE INGRESOS - SISMED';
+            $reporte_title = 'REPORTE DE REGISTRO DE RECAUDACION - SISMED';
             break;
         case '02':
-            $reporte_title = 'REPORTE DE RECIBOS DE INGRESOS - R.D.R';
+            $reporte_title = 'REPORTE DE REGISTRO DE RECAUDACION - R.D.R';
             break;
     }
     
