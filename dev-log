@@ -1,3 +1,35 @@
+
+/*---------------------------------------------------------------------------------------------------*/
+--04/06/2018
+/*---------------------------------------------------------------------------------------------------*/
+- REPORTE RECIBOS POR INGRESOS EL TITULO SOLO DEBE DE DECIR (RECIBOS DE INGRESOS)
+- EN RECIBOS DE INGRESOS DEBE DE HABER UN CUADRO PARA INGRESAR EL PLIEGO
+- LA POSICION EN DEPOSITOS DE VOUCHER Y EN LOS REPORTES DE LIQUIDACION DIARIA EL ORDE DEBE SER RDR ANTES DE FARMACIA
+- EN REPORTE DE BOLETAS DEPOSITAAS DIARIAS AGREGAR FECHA DE RECAUDACION
+- REVISAR EL REPORTE DE C.S EL PROGRESO SALE DUPLICADO
+- AGREGAR LA OPCION ELIMINAR AUNQUE YA HAYA HECHO EL DEPOSITO
+- HACER UN TEST EN LA EDICION DE USUARIO , NO CAMBIA EL ESTABLECMIENTO
+. AGREGAR 0005 "CENTRO DE ALIMENTACION Y NUTRICION N° 2 RIMAC"
+
+/*---------------------------------------------------------------------------------------------------*/
+--19/04/2018
+/*---------------------------------------------------------------------------------------------------*/
+
+--TODAS LAS RECAUDACIONES MONTOS SEPARADOS
+IMPRIMIR REPORTES PARA CEJERO
+REPORTE DETERMINDAO(POR DEPOSITO) Y RECAUDADO
+MOSTRAR EL TOTAL EN EL FORMATO QUE SE INGRESA
+
+PENDIENTE:
+CASO QUE UN DIA NO HAYA RECAUDACION
+
+
+---CAJERO ACCESO A REPORTE
+---IMPRESION 1 PAGINA
+---SUMA SEPARADA AL GUARDA
+--- REPORTE DE LIQUIDACION DIARIA ACCESO AL CAJERO
+--- REPORTE DE INGRESOS (SE ACUMULAN CLASIFICADORESS)
+
 /*---------------------------------------------------------------------------------------------------*/
 --dev manual
 /*---------------------------------------------------------------------------------------------------*/
@@ -21,24 +53,3 @@ Database
 7.- Public/index/index.php_____ Hace la busqueda si esta logueado o no, en el core jala la funcion user() en la variable $_usuario
 
 
-19/04/2018
-
-
-
---TODAS LAS RECAUDACIONES MONTOS SEPARADOS
-IMPRIMIR REPORTES PARA CEJERO
-REPORTE DETERMINDAO(POR DEPOSITO) Y RECAUDADO
-MOSTRAR EL TOTAL EN EL FORMATO QUE SE INGRESA
-
-
-PENDIENTE:
-CASO QUE UN DIA NO HAYA RECAUDACION
-
-
-
-
----CAJERO ACCESO A REPORTE
----IMPRESION 1 PAGINA
----SUMA SEPARADA AL GUARDA
---- REPORTE DE LIQUIDACION DIARIA ACCESO AL CAJERO
---- REPORTE DE INGRESOS (SE ACUMULAN CLASIFICADORESS)
