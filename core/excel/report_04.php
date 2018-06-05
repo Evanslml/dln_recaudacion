@@ -25,13 +25,13 @@
 
     switch ($tipo_recaudacion) {
         case '00':
-            $reporte_title = 'REPORTE DE RECIBOS DE INGRESOS - TODOS';
+            $reporte_title = 'RECIBOS DE INGRESOS - TODOS';
             break;
         case '01':
-            $reporte_title = 'REPORTE DE RECIBOS DE INGRESOS - SISMED';
+            $reporte_title = 'RECIBOS DE INGRESOS - SISMED';
             break;
         case '02':
-            $reporte_title = 'REPORTE DE RECIBOS DE INGRESOS - R.D.R';
+            $reporte_title = 'RECIBOS DE INGRESOS - R.D.R';
             break;
     }
     

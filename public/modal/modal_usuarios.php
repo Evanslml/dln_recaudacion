@@ -31,7 +31,7 @@
 				  <div class="form-group">
 					<label for="mod_nombre" class="col-sm-3 control-label">DNI</label>
 					<div class="col-sm-8">
-					  <input type="text" class="form-control" id="mod_dni" name="mod_dni" oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');">
+					  <input type="text" class="form-control" id="mod_dni" name="mod_dni" >
 					</div>
 				  </div>
 				  <div class="form-group">
@@ -159,7 +159,7 @@
 				  <div class="form-group">
 					<label for="mod_nombre" class="col-sm-3 control-label">DNI</label>
 					<div class="col-sm-8">
-					  <input type="text" class="form-control" id="new_dni" name="new_dni" oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');">
+					  <input type="text" class="form-control" id="new_dni" name="new_dni">
 					</div>
 				  </div>
 				  <div class="form-group">

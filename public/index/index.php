@@ -9,9 +9,10 @@ require_once 'public/overall/header.php';
  
 <?php
 /*
-$salt = substr ('jbsb01@hotmail.com', 0, 2);
-$clave_crypt = crypt('06855009', $salt);
-var_dump($clave_crypt);*/
+$salt = substr ('rafaelrios_24@hotmail.com', 0, 2);
+$clave_crypt = crypt('08038147', $salt);
+var_dump($clave_crypt);
+*/
 ?>
 
 

@@ -7,7 +7,7 @@
    }
    else { 
 
-   	$reporte_title = 'REPORTE DE RECIBO DE INGRESOS';
+   	$reporte_title = 'RECIBO DE INGRESOS';
     $desde = 'DESDE : ';
     $hasta = 'HASTA :';
     $tipo_recaudacion = $_GET['tipo_recaudacion'];
