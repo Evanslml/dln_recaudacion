@@ -144,6 +144,9 @@ require_once('../../../core/core.php');
                     <?php
                     foreach ($query as $key => $value) {
 
+                        $FECHA = $value[3];
+                        $FECHA = date("d-m-Y", strtotime($FECHA));
+
                         if($value[9]=='1'){
                         echo '<tr style="background:#dff0d8;color:#000 !important">';
                         } else{
@@ -151,7 +154,7 @@ require_once('../../../core/core.php');
                         }
                         echo '<td>',$value[0],'</td>'; //ID
                         echo '<td>',$value[10],'</td>'; //
-                        echo '<td>',$value[3],'</td>'; //Fecha
+                        echo '<td>',$FECHA,'</td>'; //Fecha
                         
                         if($value[4]=='01'){
                         echo '<td>SISMED</td>'; //Fecha
@@ -163,7 +166,10 @@ require_once('../../../core/core.php');
                         echo '<td>',$value[7],'</td>'; 
                         echo '<td style="padding: 8px 15px;"> S/. <span class="pull-right">',$value[8],'</span></td>'; 
                         echo '<td>';
-                        echo '<a href="#" class="btn btn-default btn-accion" title="Imprimir formulario" onclick="imprimir(',$value[0],');"><i class="fa fa-print"></i></a>'; //
+                        echo '<a href="#" class="btn btn-default btn-accion" title="Imprimir formulario" onclick="imprimir(',$value[0],');"><i class="fa fa-print"></i></a>'; //IMPRIMIR FORMULARIO
+                        if(($perf_id=='01')||($perf_id=='02')){
+                        echo '<a href="#" class="btn btn-default btn-accion" title="Eliminar formulario" onclick="eliminar(',$value[0],');"><i class="fa fa-trash"></i></a>'; //ELIMINAR FORMULARIO
+                        }
                         if( (($value[9]=='0') && ($perf_id=='01')) || (($value[9]=='0') && ($perf_id=='02')) ) {
                         echo '<form id="EditarFormulario" action="./editarformato" method="post" style="display: inline-block;">
                          <input type="hidden" name="Idformulario" value="',$value[0],'" />

@@ -60,12 +60,13 @@ table.page_footer {width: 100%; border: none; background-color: white; padding: 
     <table class="tbl_detalle" cellspacing="0" style="width: 100%; text-align: left; font-size: 12pt;">
 		
 		<tr>
-			<td style="width: 10%"><b>TIPO</b></td>
-			<td style="width: 10%"><b>RENAES</b></td>
-			<td style="width: 50%"><b>ESTABLECIMIENTO</b></td>
-			<td style="width: 10%"><b>VOUCHER</b></td>
-			<td style="width: 10%"><b>IMPORTE</b></td>
-			<td style="width: 10%"><b>FECHA</b></td>
+			<td style="width: 10%"><b><?php echo $title[0]?></b></td>
+			<td style="width: 10%"><b><?php echo $title[1]?></b></td>
+			<td style="width: 10%"><b><?php echo $title[2]?></b></td>
+			<td style="width: 40%"><b><?php echo $title[3]?></b></td>
+			<td style="width: 10%"><b><?php echo $title[4]?></b></td>
+      <td style="width: 10%"><b><?php echo $title[5]?></b></td>
+			<td style="width: 10%"><b><?php echo $title[6]?></b></td>
         </tr>
 
 			<?php 
@@ -75,13 +76,20 @@ table.page_footer {width: 100%; border: none; background-color: white; padding: 
 
               $id= $key + 1;
               $TIPO= $value[0];
+              $IdFormulario= $value[1];
               $RENAES= $value[2];
               $ESTABLECIMIENTO= $value[3];
               $VOUCHER= $value[4];
               $IMPORTE= $value[6];
               $FECHA= $value[5];
+              $FECHA = date("d-m-Y", strtotime($FECHA));
+
+              $anio=substr($IdFormulario,4,2);
+              $mes=substr($IdFormulario,6,2);
+              $dia=substr($IdFormulario,8,2);
 
               echo '<tr>';
+                  echo '<td>',$dia,'-',$mes,'-',$anio,'</td>';
                   echo '<td>',$TIPO,'</td>';
                   echo '<td>',$RENAES,'</td>';
                   echo '<td>',$ESTABLECIMIENTO,'</td>';

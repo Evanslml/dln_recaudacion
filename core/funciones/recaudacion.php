@@ -116,7 +116,7 @@ class Recaudacion
       ON A.NESTA_RENAES = B.NESTA_RENAES
       WHERE A.NESTA_RENAES='$e'
       AND (A.LRECAU_FECREC BETWEEN '$fi' AND '$ff')
-      ORDER BY A.LRECAU_FECREC DESC,A.LRECTIP_ID 
+      ORDER BY A.LRECAU_FECREC DESC,A.LRECTIP_ID DESC
       LIMIT $offset,$per_page
       ;");
 
@@ -339,6 +339,12 @@ class RecaudacionVoucher extends Recaudacion
     
     $db->close();
   }
+
+  public function EliminarRecaudacion_Deposito (){
+      $db = new Conexion();
+      $sql1 = $db->query("DELETE FROM lrecaudacion_deposito WHERE LRECAU_ID='$this->lrcau_id';");
+      $db->close();
+  } 
 
 
 }

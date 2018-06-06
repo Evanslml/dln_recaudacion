@@ -234,6 +234,56 @@
       VentanaCentrada('./core/pdf/documentos/ver_formulario.php?id_formulario='+id_formulario,'Formulario','','1024','768','true');
     }   
 
+
+    function eliminar(parametro){
+      event.preventDefault();
+      $(".loading").show();
+      
+      var str = zeroFill(parametro,15);
+      var dia = str.substring(8,10);
+      var mes = str.substring(6,8);
+      var anio = str.substring(4,6);
+      var array = new Array();
+      array.push(str);
+
+       swal({
+                    html:true,
+                    title: "<h4>Atención!!!</h4>",
+                    text: "<span>Se van a eliminar los datos de recaudaciòn y depósito del <b>"+dia+"/"+mes+"/"+anio+"</b></span>",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#dd4b39",
+                    confirmButtonText: "Sí, eliminar!",
+                    cancelButtonText: "Cancelar",
+                    closeOnConfirm: false,
+                    closeOnCancel: false
+                  },
+                  function(inputValue){
+                    //Use the "Strict Equality Comparison" to accept the user's input "false" as string)
+                    if (inputValue===false) {
+                      swal.close();
+                      $(".loading img").hide();
+                    } else {
+                      swal.close();
+                      $.ajax({
+                          type: 'POST',
+                          url: './public/user/ajax/EliminarFormulario.php?action=eliminar',
+                          data: { 'data1':JSON.stringify(array) } ,
+                          success: function (response) {
+                              setTimeout(function(){
+                                    location.reload();
+                              },1500); 
+                              //$(".loading img").hide();
+                              //console.log(response);
+                          },
+                          error: function () {
+                              alert("error");
+                          }
+                      }); 
+
+                    }
+            });
+    }
 /*
     function VentanaCentrada(theURL,winName,features, myWidth, myHeight, isCenter) { //v3.0
       if(window.screen)if(isCenter)if(isCenter=="true"){

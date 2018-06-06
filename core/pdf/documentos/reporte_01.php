@@ -20,7 +20,7 @@
     $date1 = date("Y-m-d", strtotime($date1)); 
     $date2 = date($_GET['date2']);
     $date2 = date("Y-m-d", strtotime($date2)); 
-    $title = array('Tipo','Renipres','Establecimiento','Voucher','Importe','Fecha Deposito');
+    $title = array('Fecha Recaudación','Tipo','Renipres','Establecimiento','Voucher','Importe','Fecha Deposito');
     switch ($tipo_nivel) {
         case '01':
             $lbl_nivel ='NIVEL';

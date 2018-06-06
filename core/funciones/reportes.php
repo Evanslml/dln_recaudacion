@@ -99,7 +99,7 @@ class Reportes
 		ON SUBSTRING(A.LRECAU_ID,3,2)=D.LRECTIP_ID
 		WHERE (A.LRECAU_FECHA BETWEEN '$fi' AND '$ff')
 		$tipo_recaudacion"."$nivel_recaudacion
-		ORDER BY B.NESTA_RENAES,A.LRECAU_FECHA DESC
+		ORDER BY B.NESTA_RENAES,A.LRECAU_FECHA DESC,LRECAU_ID DESC
 		");
 	    if($sql->num_rows > 0) {
 	      while($d = $sql->fetch_array()) {

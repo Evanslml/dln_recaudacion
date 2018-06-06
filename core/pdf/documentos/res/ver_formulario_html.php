@@ -174,19 +174,19 @@ table.page_footer {width: 100%; border: none; background-color: white; padding: 
 				<td style="width: 34%"></td>
 			</tr>
 			<tr>
-				<td style="padding-top: 2px">MEDICAMENTOS</td>
-				<td style="padding-top: 2px;padding-left: 5px"><?php echo $SISMED_BOLINI.' '.$SISMED_BOLFIN;?></td>
-				<td style="padding-top: 2px;padding-left: 5px"><?php echo $voucher_sismed?></td>
-				<td style="padding-top: 2px;padding-left: 5px"><?php echo $SISMED_CANT;?></td>
-				<td style="padding-top: 2px;padding-left: 5px"><?php echo $SISMED_MONTO;?></td>
-				<td style="height: 15px;text-align: center;" rowspan="2"><br><hr>RESPONSABLE DE CAJA</td>
-			</tr>
-			<tr>
-				<td style="padding-top: 2px;padding-left: 5px">R.D.R</td>
+				<td style="padding-top: 2px">R.D.R</td>
 				<td style="padding-top: 2px;padding-left: 5px"><?php echo $RDR_BOLINI.' '.$RDR_BOLFIN;?></td>
 				<td style="padding-top: 2px;padding-left: 5px"><?php echo $voucher_rdr;?></td>
 				<td style="padding-top: 2px;padding-left: 5px"><?php echo $RDR_CANT;?></td>
 				<td style="padding-top: 2px;padding-left: 5px"><?php echo $RDR_MONTO;?></td>
+				<td style="height: 15px;text-align: center;" rowspan="2"><br><hr>RESPONSABLE DE CAJA</td>
+			</tr>
+			<tr>
+				<td style="padding-top: 2px;padding-left: 5px">MEDICAMENTOS</td>
+				<td style="padding-top: 2px;padding-left: 5px"><?php echo $SISMED_BOLINI.' '.$SISMED_BOLFIN;?></td>
+				<td style="padding-top: 2px;padding-left: 5px"><?php echo $voucher_sismed?></td>
+				<td style="padding-top: 2px;padding-left: 5px"><?php echo $SISMED_CANT;?></td>
+				<td style="padding-top: 2px;padding-left: 5px"><?php echo $SISMED_MONTO;?></td>
 			</tr>
 			<tr>
 				<td colspan="5"></td>
