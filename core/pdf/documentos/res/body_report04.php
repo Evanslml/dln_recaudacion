@@ -57,7 +57,14 @@ table.page_footer {width: 100%; border: none; background-color: white; padding: 
     
  <?php 
     if (!empty($query04)){ ?>
-
+    
+    <table class="tbl_detalle" cellspacing="0" style="width: 100%; text-align: left; font-size: 12pt;padding-bottom: 10px">
+      <tr>
+        <td style="width: 10%;height: 15px">Número de Pliego</td>
+        <td style="width: 10%;height: 15px"></td>
+      </tr>
+    </table>
+    
     <table class="tbl_detalle" cellspacing="0" style="width: 100%; text-align: left; font-size: 12pt;">
 			<tr>
 			<td style="width: 10%" rowspan="2"><b><?php echo $title[0]?></b></td>
@@ -166,6 +173,11 @@ table.page_footer {width: 100%; border: none; background-color: white; padding: 
         
 
 			?>
+
+      <tr>
+        <td colspan="5" style="text-align: center;">TOTAL</td>
+        <td><b><?php echo $SUMA;?></b></td>
+      </tr>
     </table>
     
 
