@@ -1,12 +1,19 @@
 
+
+
+
+/*---------------------------------------------------------------------------------------------------*/
+--07/06/2018
+/*---------------------------------------------------------------------------------------------------*/
+
+- REVISAR EL REPORTE DE C.S EL PROGRESO SALE DUPLICADO (LISTO)
+- EN RECIBOS DE INGRESOS DEBE DE HABER UN CUADRO PARA INGRESAR EL PLIEGO(LISTO)
+- AGREGAR TOTAL EN LA PARTE INFERIOR EN EL RECIBO DE INGRESOS (LISTO)
+
 /*---------------------------------------------------------------------------------------------------*/
 --04/06/2018
 /*---------------------------------------------------------------------------------------------------*/
 
-- EN RECIBOS DE INGRESOS DEBE DE HABER UN CUADRO PARA INGRESAR EL PLIEGO
-- REVISAR EL REPORTE DE C.S EL PROGRESO SALE DUPLICADO
-- AGREGAR TOTAL EN LA PARTE INFERIOR EN EL RECIBO DE INGRESOS (LISTO)
-X
 - REPORTE RECIBOS POR INGRESOS EL TITULO SOLO DEBE DE DECIR (RECIBOS DE INGRESOS) (LISTO)
 - LA POSICION EN DEPOSITOS DE VOUCHER Y EN LOS REPORTES DE LIQUIDACION DIARIA EL ORDE DEBE SER RDR ANTES DE FARMACIA(LISTO)
 - EN REPORTE DE BOLETAS DEPOSITAAS DIARIAS AGREGAR FECHA DE RECAUDACION (LISTO)
