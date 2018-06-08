@@ -32,7 +32,7 @@
     $date1 = date("Y-m-d", strtotime($date1)); 
     $date2 = date($_GET['date2']);
     $date2 = date("Y-m-d", strtotime($date2)); 
-    $title = array('Tipo','Renipres','Establecimiento','Voucher','Importe','Fecha Deposito');
+    $title = array('F. Rec.','Tipo','Renipres','Establecimiento','Voucher','Importe','F. Dep.');
 
     switch ($tipo_nivel) {
         case '01':
@@ -148,6 +148,8 @@
     $objPHPExcel->getActiveSheet()->getStyle('E6')->applyFromArray($borders_center);
     $objPHPExcel->getActiveSheet()->setCellValue('F6', $title[5]);
     $objPHPExcel->getActiveSheet()->getStyle('F6')->applyFromArray($borders_center);
+    $objPHPExcel->getActiveSheet()->setCellValue('G6', $title[6]);
+    $objPHPExcel->getActiveSheet()->getStyle('G6')->applyFromArray($borders_center);
 
 
     if(!empty($_Report01)){
@@ -155,18 +157,26 @@
         foreach ($_Report01 as $key => $value) {
         $n=$key;
         $i=$key+7;
+        $IdFormulario= $value[1];
+        $anio=substr($IdFormulario,4,2);
+        $mes=substr($IdFormulario,6,2);
+        $dia=substr($IdFormulario,8,2);
+        $Fecha_recaudacion = $dia.'-'.$mes.'-'.$anio;
         $celdaA='A'.$i;
         $celdaB='B'.$i;
         $celdaC='C'.$i;
         $celdaD='D'.$i;
         $celdaE='E'.$i;
         $celdaF='F'.$i;
-        $objPHPExcel->getActiveSheet()->setCellValue($celdaA, $_Report01[$n][0]);
-        $objPHPExcel->getActiveSheet()->setCellValue($celdaB, $_Report01[$n][9]);
-        $objPHPExcel->getActiveSheet()->setCellValue($celdaC, $_Report01[$n][3]);
-        $objPHPExcel->getActiveSheet()->setCellValue($celdaD, $_Report01[$n][4]);
-        $objPHPExcel->getActiveSheet()->setCellValue($celdaE, $_Report01[$n][6]);
-        $objPHPExcel->getActiveSheet()->setCellValue($celdaF, $_Report01[$n][5]);
+        $celdaG='G'.$i;
+
+        $objPHPExcel->getActiveSheet()->setCellValue($celdaA, $Fecha_recaudacion);
+        $objPHPExcel->getActiveSheet()->setCellValue($celdaB, $_Report01[$n][0]);
+        $objPHPExcel->getActiveSheet()->setCellValue($celdaC, $_Report01[$n][9]);
+        $objPHPExcel->getActiveSheet()->setCellValue($celdaD, $_Report01[$n][3]);
+        $objPHPExcel->getActiveSheet()->setCellValue($celdaE, $_Report01[$n][4]);
+        $objPHPExcel->getActiveSheet()->setCellValue($celdaF, $_Report01[$n][6]);
+        $objPHPExcel->getActiveSheet()->setCellValue($celdaG, $_Report01[$n][5]);
 
         $objPHPExcel->getActiveSheet()->getStyle($celdaA)->applyFromArray($borders_center);
         $objPHPExcel->getActiveSheet()->getStyle($celdaB)->applyFromArray($borders_center);
@@ -174,6 +184,7 @@
         $objPHPExcel->getActiveSheet()->getStyle($celdaD)->applyFromArray($borders_center);
         $objPHPExcel->getActiveSheet()->getStyle($celdaE)->applyFromArray($borders_center);
         $objPHPExcel->getActiveSheet()->getStyle($celdaF)->applyFromArray($borders_center);
+        $objPHPExcel->getActiveSheet()->getStyle($celdaG)->applyFromArray($borders_center);
         }
     }else{
         $objPHPExcel->getActiveSheet()->setCellValue('A7', 'No se encontraron resultados para la bùsqueda');
@@ -185,9 +196,9 @@
     $objPHPExcel->getActiveSheet() ->setTitle('Reportes');
     //
     $objPHPExcel->getDefaultStyle()->applyFromArray($body);
-    $objPHPExcel->getActiveSheet()->getStyle("A4:F4")->applyFromArray($center);
-    $objPHPExcel->getActiveSheet()->getStyle("A4:F4")->applyFromArray($titulo);
-    $objPHPExcel->getActiveSheet()->getStyle("A6:F6")->applyFromArray($cabecera);
+    $objPHPExcel->getActiveSheet()->getStyle("A4:G4")->applyFromArray($center);
+    $objPHPExcel->getActiveSheet()->getStyle("A4:G4")->applyFromArray($titulo);
+    $objPHPExcel->getActiveSheet()->getStyle("A6:G6")->applyFromArray($cabecera);
 
     $objPHPExcel->getActiveSheet()->setCellValue('A4', $reporte_title);
     $objPHPExcel->getActiveSheet()->setCellValue('D1', $desde);
@@ -204,12 +215,13 @@
     $objPHPExcel->getActiveSheet()->getStyle("D2:F2")->applyFromArray($center);
     $objPHPExcel->getActiveSheet()->getStyle("D3:F3")->applyFromArray($center);
     //Dimension
-    $objPHPExcel->getActiveSheet()->getColumnDimension("A")->setWidth(11.5); //70
-    $objPHPExcel->getActiveSheet()->getColumnDimension("B")->setWidth(11.5); //70
-    $objPHPExcel->getActiveSheet()->getColumnDimension("C")->setWidth(35); //210
-    $objPHPExcel->getActiveSheet()->getColumnDimension("D")->setWidth(11.5); //70
-    $objPHPExcel->getActiveSheet()->getColumnDimension("E")->setWidth(11.5); //70
-    $objPHPExcel->getActiveSheet()->getColumnDimension("F")->setWidth(17.5); //105
+    $objPHPExcel->getActiveSheet()->getColumnDimension("A")->setWidth(11); //70
+    $objPHPExcel->getActiveSheet()->getColumnDimension("B")->setWidth(11); //70
+    $objPHPExcel->getActiveSheet()->getColumnDimension("C")->setWidth(11.5); //210
+    $objPHPExcel->getActiveSheet()->getColumnDimension("D")->setWidth(35); //70
+    $objPHPExcel->getActiveSheet()->getColumnDimension("E")->setWidth(10); //70
+    $objPHPExcel->getActiveSheet()->getColumnDimension("F")->setWidth(10); //105
+    $objPHPExcel->getActiveSheet()->getColumnDimension("G")->setWidth(10); //105
     //Orientation and Paper Size:
     $objPHPExcel->getActiveSheet() ->getPageSetup() ->setOrientation(PHPExcel_Worksheet_PageSetup::ORIENTATION_PORTRAIT); //PORTRAIT _ LANDSCAPE
     $objPHPExcel->getActiveSheet() ->getPageSetup() ->setPaperSize(PHPExcel_Worksheet_PageSetup::PAPERSIZE_A4);

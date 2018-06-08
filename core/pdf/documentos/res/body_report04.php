@@ -206,8 +206,8 @@ table.page_footer {width: 100%; border: none; background-color: white; padding: 
         <td>8501.02</td>
         <td>11</td>
         <td>11</td>
-        <td>6</td>
-        <td>45</td>
+        <td></td>
+        <td></td>
         <td></td>
         <td></td>
         <td></td>
@@ -243,14 +243,14 @@ table.page_footer {width: 100%; border: none; background-color: white; padding: 
           <td colspan="5" rowspan="3" style="text-align: center;"><br><br><br><hr>RECEPCIONISTA DEL DEPOSITO</td>
         </tr>
         <tr>
-          <td>1102</td>
+          <td>1201</td>
           <td></td>
           <td>1201.03</td>
           <td></td>
           <td><?php echo $SUBTOTAL1;?></td>
         </tr>
         <tr>
-          <td></td>
+          <td>1202</td>
           <td></td>
           <td>1201.98</td>
           <td></td>

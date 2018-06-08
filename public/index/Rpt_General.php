@@ -35,8 +35,12 @@ require_once 'public/overall/header.php';
 
             <div class="panel-uno">
 <?php 
-//var_dump($_ListaTipoRec);
- $perf_id =$_usuario[$_SESSION['sesion_id']]['MPERF_ID'];
+
+$establecimiento = $_ListaUsuario[$_SESSION['sesion_id']]['NEST_NOMBRE'];
+$renaes = $_ListaUsuario[$_SESSION['sesion_id']]['NESTA_RENAES'];
+//var_dump($establecimiento);
+//var_dump($renaes);
+$perf_id =$_usuario[$_SESSION['sesion_id']]['MPERF_ID'];
  //var_dump($perf_id);
 ?>
               <form class="form-horizontal form-label-left">
@@ -56,7 +60,7 @@ require_once 'public/overall/header.php';
                 <?php } else{ ?>
                   <select class="form-control" name="cbx_tipo_reporte" id="cbx_tipo_reporte" required="">
                     <option value="0">Seleccionar Estrategia</option>
-                    <option value="3">REPORTE DE REGISTRO DE RECAUDACIÓN</option>
+                    <option value="03">REPORTE DE REGISTRO DE RECAUDACIÓN</option>
                   </select>
                 <?php  } ?>
 			          
@@ -81,12 +85,20 @@ require_once 'public/overall/header.php';
 		          <div class="form-group">
 		            <label class="control-label col-md-3 col-sm-3 col-xs-12 lbl_tipo_nivel">Nivel de Reporte</label>
 		            <div class="col-md-6 col-sm-6 col-xs-12">
+                  <?php if(($perf_id =='01') || ($perf_id=='02')) { ?>
 		              <select class="form-control" name="cbx_tipo_nivel" id="cbx_tipo_nivel" required="">
 		                <option value="0">Seleccione el tipo</option>
 		                <option value="01">Reporte a Nivel de Diris</option>
 		                <option value="02">Reporte a Nivel de Distrito</option>
 		                <option value="03">Reporte a Nivel de Establecimiento</option>
 		              </select>
+                  <?php } else{ ?>
+                  <select class="form-control" name="cbx_tipo_nivel" id="cbx_tipo_nivel" required="">
+                    <option value="0">Seleccione el tipo</option>
+                    <option value="03">Reporte a Nivel de Establecimiento</option>
+                  </select>
+                  <?php } ?>
+
 		            </div>
 		          </div>
 
@@ -108,6 +120,7 @@ require_once 'public/overall/header.php';
               <div class="form-group" id="form-establecimientos">
 		            <label class="control-label col-md-3 col-sm-3 col-xs-12 lbl_establecimiento">Establecimientos</label>
 		            <div class="col-md-6 col-sm-6 col-xs-12">
+                  <?php if(($perf_id =='01') || ($perf_id=='02')) { ?>
 		                <select class="form-control" name="cbx_establecimiento" id="cbx_establecimiento" required="">
 		                <option value="0">Seleccionar Establecimiento</option>
                          <?php
@@ -116,6 +129,12 @@ require_once 'public/overall/header.php';
                             }  
                           ?>
                     </select>
+                    <?php } else{ ?>
+                    <select class="form-control" name="cbx_establecimiento" id="cbx_establecimiento" required="">
+                      <option value="0">Seleccionar Establecimiento</option>
+                      <option value="<?php echo $renaes?>"><?php echo $establecimiento;?></option>
+                    </select>
+                    <?php } ?>
 		            </div>
 		          </div>
 

@@ -95,7 +95,7 @@ var_dump($clave_crypt);
               <p class="text-muted"> 00-068-371872 </p> 
               <hr>
               <strong><i class="fa fa-caret-square-o-right"></i> Manual de usuario</strong>
-              <p>Puedes descargar el manual de Usurio haciendo <a href="#"> click Aquí </a></p>
+              <p>Puedes descargar el manual de Usurio haciendo <a href="./view/manual_recaudacion.pdf" download> click Aquí </a></p>
               <hr>
               <!--<strong><i class="fa fa-pencil margin-r-5"></i> Habilidades</strong>
  

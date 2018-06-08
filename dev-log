@@ -10,13 +10,18 @@ SELECT IDS FROM TEMPORAL2
 
 -- SELECT * FROM LRECAUDACION_DEPOSITO
 
+/*---------------------------------------------------------------------------------------------------*/
+--08/06/2018
+/*---------------------------------------------------------------------------------------------------*/
 
+- MANUAL DE USUARIO (LISTO)
+- REPORTE POR ESTABLECIMIENTO ()
 
 /*---------------------------------------------------------------------------------------------------*/
 --07/06/2018
 /*---------------------------------------------------------------------------------------------------*/
 
-- REVISAR EL REPORTE DE C.S EL PROGRESO SALE DUPLICADO (LISTO)
+- CORREGIR LOS DUPLICADOS EN ALGUNOS ESTABLECIMIENTOS DEL CENTRO DE SALUD DE LA DIRIS LN(LISTO)
 - EN RECIBOS DE INGRESOS DEBE DE HABER UN CUADRO PARA INGRESAR EL PLIEGO(LISTO)
 - AGREGAR TOTAL EN LA PARTE INFERIOR EN EL RECIBO DE INGRESOS (LISTO)
 
