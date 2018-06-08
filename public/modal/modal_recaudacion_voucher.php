@@ -42,7 +42,7 @@
 			    </div>
 	      </div>
 	      <div class="modal-footer">
-	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+	        <button id="btn_cancel" type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
 	        <button id="btn_submit" type="submit" class="btn btn-primary">Aceptar</button>
 	        
 	        </form>

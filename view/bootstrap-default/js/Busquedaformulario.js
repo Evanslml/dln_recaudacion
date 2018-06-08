@@ -53,9 +53,14 @@
 
 //BTN save modal
 //--------------------------------------------------------------------------
+          $("#btn_submit").click(function(event) {
+            $('#btn_submit').attr("disabled", false);
+             event.preventDefault();
+           });
+
           $("#btn_submit").click(function(event){
-            event.preventDefault();
-            
+            $('#btn_submit').attr("disabled", true);
+
             var id = $("#mod_idForm").val();
             var montototal = $("#mod_monto").val();
             var nFilas = $("#TextBoxContainer tr").length;
@@ -75,6 +80,7 @@
                       <button type="button" class="close" data-dismiss="alert">&times;</button>\
                       <strong>Error!</strong> \
                       Debe Ingresar el número de operación del voucher en la fila'+ i +'</div>');
+                    $('#btn_submit').attr("disabled", false);
                     return false;
                   }
                   var fechas = $("#TextBoxContainer tr:nth-child("+i+") td input#fecha").val();
@@ -83,6 +89,7 @@
                       <button type="button" class="close" data-dismiss="alert">&times;</button>\
                       <strong>Error!</strong> \
                       Debe Ingresar la fecha del depósito del voucher en la fila '+ i +'</div>');
+                    $('#btn_submit').attr("disabled", false);
                     return false;
                   }
                   var montos = (Number($("#TextBoxContainer tr:nth-child("+i+") td input#price").unmask())/100).toFixed(2);
@@ -91,6 +98,7 @@
                       <button type="button" class="close" data-dismiss="alert">&times;</button>\
                       <strong>Error!</strong> \
                       Debe Ingresar un monto en la fila '+ i +'</div>');
+                    $('#btn_submit').attr("disabled", false);
                     return false;
                   }
                   
@@ -129,6 +137,7 @@
                       <button type="button" class="close" data-dismiss="alert">&times;</button>\
                       <strong>Error!</strong> \
                       El monto total debe de ser S/. '+ montototal +'</div>');
+                      $('#btn_submit').attr("disabled", false);
               return false;
             } else{
               $("#mensaje").html('<div class="alert alert-success" role="alert">\
@@ -141,9 +150,10 @@
                       url: './public/user/ajax/AllFormularios.php?action=json',
                       data: { 'data1':JSON.stringify(array) } ,
                       success: function (response) {
+                          //$('#btn_submit').attr("disabled", false);
                           setTimeout(function(){
                                 location.reload();
-                          },1500); 
+                          },500); 
                           console.log(response);
                       },
                       error: function () {
@@ -153,6 +163,8 @@
                   
 
             }
+
+            event.preventDefault();
 
             
 
