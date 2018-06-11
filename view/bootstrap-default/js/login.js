@@ -21,12 +21,12 @@ function goLogin() {
     } else if(connect.readyState != 4) {
       result = '<div class="alert alert-form alert-warning text-xs-center">';
       result += '<span>Procesando...';
-      result += '<strong> espere porfavor....   </strong> <img src="http://172.16.20.19:8080/dln_recaudacion/view/bootstrap-default/img/ajax-loader.gif"> </span>';
+      result += '<strong> espere porfavor....   </strong> <img src="http://192.168.43.150:8080/dln_recaudacion/view/bootstrap-default/img/ajax-loader.gif"> </span>';
       result += '</div>';
       __('_AJAX_LOGIN_').innerHTML = result;
     }
   }
-  connect.open('POST','http://172.16.20.19:8080/dln_recaudacion/ajax.php?mode=login',true);
+  connect.open('POST','http://192.168.43.150:8080/dln_recaudacion/ajax.php?mode=login',true);
   connect.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
   connect.send(form);
 }

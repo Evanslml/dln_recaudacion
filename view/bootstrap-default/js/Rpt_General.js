@@ -138,6 +138,7 @@
           var pagepdf02='./core/pdf/documentos/reporte_02.php?'+parametros;
           var pagepdf03='./core/pdf/documentos/reporte_03.php?'+parametros;
           var pagepdf04='./core/pdf/documentos/reporte_04.php?'+parametros;
+          var pagepdf05='./core/pdf/documentos/reporte_05.php?'+parametros;
 
           if(in_data=='excel'){
             switch(tipo_reporte){
@@ -243,6 +244,9 @@
               break;
               case '04':
               VentanaCentrada(pagepdf04,'Formulario','','1024','768','true');
+              break;
+              case '05':
+              VentanaCentrada(pagepdf05,'Formulario','','1024','1024','true');
               break;
             }
           } //else PDF

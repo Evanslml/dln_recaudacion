@@ -346,5 +346,33 @@ class RecaudacionVoucher extends Recaudacion
       $db->close();
   } 
 
+  public function IngresoPlanillon(){
+      $db = new Conexion();
+
+//      $sql1 = $db->prepare("CALL Actualizar_reporte(?,?)");
+//      $x= "2018";
+//      $y= "06";
+//      $sql1->bind_param("ii",$x,$y);
+//      $sql1->execute();
+//
+//      if ($sql1->execute()) {
+//         echo 'OK';
+//      }else{
+//         echo "Falló la llamada: (" . $sql1->errno . ") " . $sql1->error;
+//      }
+
+      
+      $sql1 = $db->query("
+        
+      INSERT INTO reporte_planillon (AÑO, MES, DIA, NESTA_RENAES, NEST_NOMBRE, MONTO_TOTAL, MONTO_RDR, MONTO_SISMED, MONTO1, MONTO2, MONTO3, MONTO4, MONTO5, MONTO6, MONTO7, MONTO8, MONTO9, MONTO10, MONTO11, MONTO12, MONTO13, MONTO14, MONTO15, MONTO16, MONTO17, MONTO18, MONTO19, MONTO20, MONTO21, MONTO22, MONTO23, MONTO24, MONTO25, MONTO26, MONTO27, MONTO28, MONTO29)
+      VALUES('2018', '01','1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1');
+
+      ");
+
+      
+
+      $db->close();
+  }
+
 
 }

@@ -43,7 +43,6 @@ require_once('../../../core/core.php');
 
             }else if(($key +3) %3 == 0){
                 $fechas[] = $val;
-
             }else if(($key+2) %3 == 0){
                 $montos[] = $val;
 
@@ -53,6 +52,19 @@ require_once('../../../core/core.php');
         }
         
         //echo $vouchers[1];
+        var_dump($fechas);
+
+        $i=0;
+        $menor=$fechas[$i];
+        $mayor=$fechas[$i];  
+        $cantfehas = count($fechas);
+
+        while($i<=$cantfehas){
+            if($menor>$fechas[$i]){ $menor=$fechas[$i]; }
+            $i=$i+1;
+        }
+
+        var_dump($menor);
 
         $now = new DateTime();
         $h=$now->format('Y-m-d H:i:s');
@@ -63,10 +75,11 @@ require_once('../../../core/core.php');
             $f = date("Y-m-d", strtotime($e));
             $new= 'IngresoVoucher' . $n;
             $new = new RecaudacionVoucher($id,$vouchers[$n],$f,$montos[$n],1,$h,$id_usuario);
-            $new->IngresoVocuherRecaudacion();
+            //$new->IngresoVocuherRecaudacion();
+            $new->IngresoPlanillon();
         }
 
-        var_dump($new);
+        //var_dump($new);
         
 
     }
