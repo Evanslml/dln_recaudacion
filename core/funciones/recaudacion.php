@@ -324,6 +324,7 @@ class RecaudacionVoucher extends Recaudacion
 
   public function IngresoVocuherRecaudacion (){
     $db = new Conexion();
+    /*
     $sql1 = $db->query("INSERT INTO lrecaudacion_deposito (LRECAU_ID,LRECAU_VOUCHER,LRECAU_FECHA,LRECAU_MONTO,LRECAU_ESTADO,FECHA_DEPOSITO,MUSU_ID)
       VALUES(
       '$this->lrcau_id',
@@ -336,7 +337,27 @@ class RecaudacionVoucher extends Recaudacion
       );");
 
     $sql2 = $db->query("UPDATE lrecaudacion SET LRECAU_ESTADO='1' WHERE LRECAU_ID= '$this->lrcau_id' ;");
+    */
+
+    //$sql3 = $db->query("SELECT * FROM reporte_planillon WHERE LRECAU_ID= substr('$this->lrcau_id',4,11);");
+
+    $sub= substr($this->lrcau_id,4,11);
+    $sql3 = $db->query("SELECT * FROM reporte_planillon WHERE CONCAT(SUBSTRING(AÑO,3,2),MES,DIA,NESTA_RENAES)= '$sub';");
+    $count= $db->rows($sql3);
+
+    //echo $count;
+    echo $sub.'<br>';
     
+    if($count==0){
+      echo 'No existe registros';
+    }else{
+      echo 'Si existe registros';
+    }
+
+
+
+
+
     $db->close();
   }
 
@@ -349,28 +370,18 @@ class RecaudacionVoucher extends Recaudacion
   public function IngresoPlanillon(){
       $db = new Conexion();
 
-//      $sql1 = $db->prepare("CALL Actualizar_reporte(?,?)");
-//      $x= "2018";
-//      $y= "06";
-//      $sql1->bind_param("ii",$x,$y);
-//      $sql1->execute();
-//
-//      if ($sql1->execute()) {
-//         echo 'OK';
-//      }else{
-//         echo "Falló la llamada: (" . $sql1->errno . ") " . $sql1->error;
-//      }
-
-      
-      $sql1 = $db->query("
-        
-      INSERT INTO reporte_planillon (AÑO, MES, DIA, NESTA_RENAES, NEST_NOMBRE, MONTO_TOTAL, MONTO_RDR, MONTO_SISMED, MONTO1, MONTO2, MONTO3, MONTO4, MONTO5, MONTO6, MONTO7, MONTO8, MONTO9, MONTO10, MONTO11, MONTO12, MONTO13, MONTO14, MONTO15, MONTO16, MONTO17, MONTO18, MONTO19, MONTO20, MONTO21, MONTO22, MONTO23, MONTO24, MONTO25, MONTO26, MONTO27, MONTO28, MONTO29)
-      VALUES('2018', '01','1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1');
-
-      ");
-
-      
-
+/*
+      $x= 2018;
+      $y= 6;
+      $sql1 = $db->prepare('CALL Actualizar_reporte(?,?)');
+      $sql1->bind_param("ii",$x,$y);
+      $status = $sql1->execute();
+      if ($status) {
+         echo 'Se guardó satisfactoriamente';
+      } else {
+         echo 'Hubo un error en el guardado';
+      }  
+*/
       $db->close();
   }
 

@@ -19,7 +19,11 @@ require_once 'public/overall/header.php';
     <section class="content">
       <div id="resultados"></div>
       <div class="row">
-
+<?php
+/*$var='123456789';
+echo $var.'<br>';
+echo substr($var, 1,2);*/
+?>
         <div class="panel panel-primary panel-head"> 
           <div class="panel-heading"> 
             <h3 class="panel-title">Lista de registros de recaudacion de <?php echo $_ListaUsuario[$_SESSION['sesion_id']]['NEST_NOMBRE']?></h3> 

@@ -20,11 +20,12 @@
     <ul class="sidebar-menu">
       <li class="header">MENU OPCIONES</li>
       <?php 
-        //var_dump($_permiso);
+       
+       // var_dump($_permiso);
+
 
         foreach ($_permiso as $key => $value) {
-            
-
+          
             if($value[5]=='0'){
 
               echo "<li>";
@@ -46,8 +47,6 @@
               echo "</li>";
             }
 
-
-            
         }
 
       ?>

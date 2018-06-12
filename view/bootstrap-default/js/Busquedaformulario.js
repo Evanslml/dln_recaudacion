@@ -156,7 +156,7 @@
                           },500); */
                           console.log(response);
                       },
-                      error: function () {
+                     error: function () {
                           alert("error");
                       }
                   }); 
