@@ -151,9 +151,9 @@
                       data: { 'data1':JSON.stringify(array) } ,
                       success: function (response) {
                           //$('#btn_submit').attr("disabled", false);
-                          /*setTimeout(function(){
+                          setTimeout(function(){
                                 location.reload();
-                          },500); */
+                          },500); 
                           console.log(response);
                       },
                      error: function () {

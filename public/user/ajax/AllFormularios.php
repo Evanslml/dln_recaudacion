@@ -84,9 +84,9 @@ require_once('../../../core/core.php');
             $f = date("Y-m-d", strtotime($e));
             $new= 'IngresoVoucher' . $n;
             $new = new RecaudacionVoucher($id,$vouchers[$n],$f,$montos[$n],1,$h,$id_usuario);
-            //$new->IngresoVocuherRecaudacion();
-            RecaudacionVoucher::IngresoPlanillon($menor,$mayor,$id);
+            $new->IngresoVocuherRecaudacion();
         }
+        RecaudacionVoucher::IngresoPlanillon($menor,$mayor,$id);
 
         //var_dump($new);
         

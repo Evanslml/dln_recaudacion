@@ -33,6 +33,10 @@ if(strtolower($_SERVER['REQUEST_METHOD']) != 'post'){
         $RecaudacionVoucher01->EliminarRecaudacion_Deposito();
         $RecaudacionVoucher02->EliminarRecaudacion_Deposito();
 
+        $RecaudacionVoucher01->EliminarPlanillon();        
+        $RecaudacionVoucher02->EliminarPlanillon();        
+
+
     }
 
 

@@ -324,7 +324,7 @@ class RecaudacionVoucher extends Recaudacion
 
   public function IngresoVocuherRecaudacion (){
     $db = new Conexion();
-    /*
+    
     $sql1 = $db->query("INSERT INTO lrecaudacion_deposito (LRECAU_ID,LRECAU_VOUCHER,LRECAU_FECHA,LRECAU_MONTO,LRECAU_ESTADO,FECHA_DEPOSITO,MUSU_ID)
       VALUES(
       '$this->lrcau_id',
@@ -337,9 +337,8 @@ class RecaudacionVoucher extends Recaudacion
       );");
 
     $sql2 = $db->query("UPDATE lrecaudacion SET LRECAU_ESTADO='1' WHERE LRECAU_ID= '$this->lrcau_id' ;");
-    */
-
-    //$sql3 = $db->query("SELECT * FROM reporte_planillon WHERE LRECAU_ID= substr('$this->lrcau_id',4,11);");
+    
+    $sql3 = $db->query("SELECT * FROM reporte_planillon WHERE LRECAU_ID= substr('$this->lrcau_id',4,11);");
     $db->close();
   }
 
@@ -349,22 +348,36 @@ class RecaudacionVoucher extends Recaudacion
       $db->close();
   } 
 
+  public function EliminarPlanillon(){
+      $db = new Conexion();
+      $sql1 = $db->query("DELETE FROM reporte_planillon WHERE LRECAU_ID='$this->lrcau_id';");
+      $db->close();
+  }
   public static function IngresoPlanillon($min,$max,$lrecau_id){
       $db = new Conexion();
 
 
     $sub= substr($lrecau_id,4,11);
+    $tip= substr($lrecau_id,2,2);
+    $año= substr($lrecau_id,4,2);
+    $mes= substr($lrecau_id,6,2);
+    $dia= substr($lrecau_id,8,2);
+    $est= substr($lrecau_id,10,5);
+
+    echo $lrecau_id.'<br>';
+    echo $tip.'<br>';
     echo $sub.'<br>';
     echo $min.'<br>';
     echo $max.'<br>';
-    $sql3 = $db->query("SELECT * FROM reporte_planillon WHERE CONCAT(SUBSTRING(AÑO,3,2),MES,DIA,NESTA_RENAES)= '$sub';");
+    
+    $sql3 = $db->query("SELECT * FROM reporte_planillon WHERE LRECAU_ID= '$lrecau_id';");
     $count= $db->rows($sql3);
    
     if($count==0){
 
       $sql4=$db->query("
-         INSERT INTO reporte_planillon (FECHA_MIN,FECHA_MAX,AÑO, MES, DIA, NESTA_RENAES, NEST_NOMBRE, MONTO_TOTAL, MONTO_RDR, MONTO_SISMED, MONTO1, MONTO2, MONTO3, MONTO4, MONTO5, MONTO6, MONTO7, MONTO8, MONTO9, MONTO10, MONTO11, MONTO12, MONTO13, MONTO14, MONTO15, MONTO16, MONTO17, MONTO18, MONTO19, MONTO20, MONTO21, MONTO22, MONTO23, MONTO24, MONTO25, MONTO26, MONTO27, MONTO28, MONTO29,fecha_proceso) 
-         SELECT '$min','$max', CONCAT('20',SUBSTRING(IDS,5,2))AÑO,SUBSTRING(IDS,7,2)MES, SUBSTRING(IDS,9,2) DIA, SUBSTRING(IDS,11,5) RENAES,D.NEST_NOMBRE,
+         INSERT INTO reporte_planillon (FECHA_MIN,FECHA_MAX,LRECAU_ID,LRECTIP_ID,LAÑO_ID, MES, DIA, NESTA_RENAES, NEST_NOMBRE, MONTO_TOTAL, MONTO_RDR, MONTO_SISMED, MONTO1, MONTO2, MONTO3, MONTO4, MONTO5, MONTO6, MONTO7, MONTO8, MONTO9, MONTO10, MONTO11, MONTO12, MONTO13, MONTO14, MONTO15, MONTO16, MONTO17, MONTO18, MONTO19, MONTO20, MONTO21, MONTO22, MONTO23, MONTO24, MONTO25, MONTO26, MONTO27, MONTO28, MONTO29,fecha_proceso) 
+         SELECT '$min','$max','$lrecau_id','$tip','$año','$mes','$dia','$est',D.NEST_NOMBRE,
          (MONTO1+MONTO3+MONTO5+MONTO7+MONTO26+MONTO71+MONTO73) 'MONTOTOTAL',  (MONTO1+MONTO5+MONTO7+MONTO26+MONTO71+MONTO73) 'MONTORDR', MONTO3 'MONTOSISMED',
          (MONTO2+MONTO4+MONTO6)'1201_0301',MONTO2 '1_3_14_11',MONTO4 '1_3_16_14',MONTO6 '1_3_19_12',
           MONTO7 '1201_0302',MONTO8 '1_3_24_12', (MONTO9+MONTO10+MONTO11+MONTO12) '1_3_24_13', (MONTO13+MONTO14+MONTO15+MONTO16+MONTO17) '1_3_2_14',(MONTO18+MONTO19+MONTO20) '1_3_24_16', MONTO21 '1_3_24_17',(MONTO22+MONTO23+MONTO24+MONTO25) '1_3_24_199',
@@ -459,10 +472,11 @@ class RecaudacionVoucher extends Recaudacion
         INNER JOIN nestablecimiento D
         ON SUBSTRING(C.IDS,11,5)=D.NESTA_RENAES
         ");
-        echo 'No existe registros';
+        echo 'Se guardaro satisfactoriamente';
       } else{
-        echo 'Si existe registros';
+        echo 'Ya existe';
       }
+      
 
 /*
       $x= 2018;

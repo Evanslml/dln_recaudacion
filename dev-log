@@ -8,7 +8,37 @@ DELETE FROM LRECAUDACION_DEPOSITO WHERE IDS IN(
 SELECT IDS FROM TEMPORAL2
 )*/
 
--- SELECT * FROM LRECAUDACION_DEPOSITO
+
+-- SELECT LRECAU_ID,count(*) FROM `lrecaudacion_deposito` group by `LRECAU_ID` having count(*) >1
+
+/*==========================================================================================================================*/
+-- ERROR EN DEPOSITO
+/*==========================================================================================================================*/
+-- SELECT LRECAU_ID,LRECAU_MONTO,count(*) FROM `lrecaudacion_deposito` group by `LRECAU_ID`,`LRECAU_MONTO` having COUNT(*) >1;
+-- ALTER TABLE `lrecaudacion_deposito` ADD `ids` INT NOT NULL AUTO_INCREMENT PRIMARY KEY
+/*
+CREATE TEMPORARY TABLE IF NOT EXISTS IDSREPRETIDAS AS (
+SELECT LRECAU_ID,LRECAU_MONTO,count(*) FROM lrecaudacion_deposito GROUP BY LRECAU_ID,LRECAU_MONTO having count(*)>1
+)
+*/
+/*
+DELETE FROM lrecaudacion_deposito WHERE ids IN(
+	SELECT * FROM (
+		SELECT MIN(ids) FROM lrecaudacion_deposito WHERE LRECAU_ID IN(
+		SELECT LRECAU_ID FROM IDSREPRETIDAS
+		)GROUP BY LRECAU_ID,LRECAU_VOUCHER,LRECAU_MONTO
+	)A
+)
+*/
+-- DROP TABLE IDSREPRETIDAS
+-- ALTER TABLE `lrecaudacion_deposito` DROP COLUMN `ids`
+
+
+/*==========================================================================================================================*/
+-- ERROR EN DETALLE
+/*==========================================================================================================================*/
+-- SELECT LRECAU_ID,COUNT(*) FROM `lrecaudacion_detalle` GROUP BY LRECAU_ID HAVING COUNT(*) NOT IN ('2','73')
+
 
 /*---------------------------------------------------------------------------------------------------*/
 --08/06/2018
