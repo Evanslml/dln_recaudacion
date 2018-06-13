@@ -68,8 +68,9 @@ require_once('../../../core/core.php');
             $i=$i+1;
         }
 
-        
-        //var_dump($menor);
+        $menor =   date("Y-m-d", strtotime($menor));   
+        $mayor =   date("Y-m-d", strtotime($mayor));   
+        // var_dump($menor);
         //var_dump($mayor);
         
 
@@ -83,8 +84,8 @@ require_once('../../../core/core.php');
             $f = date("Y-m-d", strtotime($e));
             $new= 'IngresoVoucher' . $n;
             $new = new RecaudacionVoucher($id,$vouchers[$n],$f,$montos[$n],1,$h,$id_usuario);
-            $new->IngresoVocuherRecaudacion();
-            //$new->IngresoPlanillon();
+            //$new->IngresoVocuherRecaudacion();
+            RecaudacionVoucher::IngresoPlanillon($menor,$mayor,$id);
         }
 
         //var_dump($new);
