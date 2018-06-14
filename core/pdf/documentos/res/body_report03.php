@@ -52,7 +52,7 @@ table.page_footer {width: 100%; border: none; background-color: white; padding: 
             </tr>
         </table>
     </page_footer>
-	<?php include("encabezado_report.php");?>
+	<?php include("encabezado_03.php");?>
     <br>
     
 

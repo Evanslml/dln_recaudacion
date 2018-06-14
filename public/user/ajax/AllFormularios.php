@@ -123,7 +123,7 @@ require_once('../../../core/core.php');
          var_dump($e);
          */
         $page = (isset($_REQUEST['page']) && !empty($_REQUEST['page']))?$_REQUEST['page']:1;
-        $per_page = 10; //how much records you want to show
+        $per_page = 26; //how much records you want to show
         $adjacents  = 4; //gap between pages after number of adjacents
         $offset = ($page - 1) * $per_page;
         //Count the total number of row in your table*/

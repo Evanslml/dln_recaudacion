@@ -94,22 +94,22 @@ table.page_footer {width: 100%; border: none; background-color: white; padding: 
       $SUMA ='S/. '.number_format($SUMA, 2, '.', '');
       $SUBTOTAL1 ='S/. '.number_format($SUBTOTAL1, 2, '.', '');
       $SUBTOTAL2 ='S/. '.number_format($SUBTOTAL2, 2, '.', '');
-      $SUMA1 ='S/. '.number_format($SUMA1, 2, '.', '');
-      $SUMA2 ='S/. '.number_format($SUMA2, 2, '.', '');
-      $SUMA3 ='S/. '.number_format($SUMA3, 2, '.', '');
-      $SUMA4 ='S/. '.number_format($SUMA4, 2, '.', '');
+      $SUMA1 = number_format($SUMA1, 2, '.', '');
+      $SUMA2 = number_format($SUMA2, 2, '.', '');
+      $SUMA3 = number_format($SUMA3, 2, '.', '');
+      $SUMA4 = number_format($SUMA4, 2, '.', '');
 
       ?>
       <tr>
         <td>1201</td>
         <td colspan="3">CTAS POR COBRAR</td>
         <td></td>
-        <td><b><?php echo $SUMA;?></b></td>
+        <td style="text-align:right;"><b><?php echo $SUMA;?></b></td>
       </tr>      
       <tr>
         <td>1201.03</td>
         <td colspan="3">VENTA DE BIENES Y SERVICIOS Y DERECHOS ADMINISTRATIVOS</td>
-        <td><b><?php echo $SUBTOTAL1 ?></b></td>
+        <td style="text-align:right;"><b><?php echo $SUBTOTAL1 ?></b></td>
         <td></td>
       </tr>
 
@@ -122,7 +122,7 @@ table.page_footer {width: 100%; border: none; background-color: white; padding: 
               $LCLAS_NOMBRE= $value[2];
               $LCLAS_PADRE= $value[3];
               $LCLAS_CANTIDAD= $value[4];
-              $LCLAS_MONTO= 'S/. '.$value[5];
+              $LCLAS_MONTO= $value[5];
               //$MONTO= 'S/. '.number_format($value[3], 2, '.', '');
 
               $COD_A=$value[6];
@@ -136,22 +136,22 @@ table.page_footer {width: 100%; border: none; background-color: white; padding: 
               
               if($LCLAS_PADRE=='0'){
                 echo '<td><b>',$COD_C,'</b></td>';
-                echo '<td colspan="2"><b>',$DET_C,'</b></td>';
+                echo '<td colspan="2" style="text-align:center;"><b>',$DET_C,'</b></td>';
                 if($id=='1'){
-                  echo '<td><b>',$SUMA1,'</b></td>';
+                  echo '<td style="text-align:right;"><b>',$SUMA1,'</b></td>';
                   echo '<td></td>';
                   echo '<td></td>';
                 }else if($id=='5'){
-                  echo '<td><b>',$SUMA2,'</b></td>';
+                  echo '<td style="text-align:right;"><b>',$SUMA2,'</b></td>';
                   echo '<td></td>';
                   echo '<td></td>';
                 }else if($id=='12'){
-                  echo '<td><b>',$SUMA3,'</b></td>';
+                  echo '<td style="text-align:right;"><b>',$SUMA3,'</b></td>';
                   echo '<td></td>';
                   echo '<td></td>';
                 }else if($id=='27'){
-                  echo '<td><b>',$SUMA4,'</b></td>';
-                  echo '<td><b>',$SUBTOTAL2,'</b> </td>';
+                  echo '<td style="text-align:right;"><b>',$SUMA4,'</b></td>';
+                  echo '<td style="text-align:right;"><b>',$SUBTOTAL2,'</b> </td>';
                   echo '<td></td>';
                 }else{
                   echo '<td></td>';
@@ -163,7 +163,7 @@ table.page_footer {width: 100%; border: none; background-color: white; padding: 
                 echo '<td></td>';
                 echo '<td>',$LCLAS_ALIAS,'</td>';
                 echo '<td>',$LCLAS_NOMBRE,'</td>';
-                echo '<td>',$LCLAS_MONTO,'</td>';
+                echo '<td style="text-align:right;">',$LCLAS_MONTO,'</td>';
                 echo '<td></td>';
                 echo '<td></td>';
               }
@@ -222,7 +222,7 @@ table.page_footer {width: 100%; border: none; background-color: white; padding: 
     <table class="tbl_detalle" cellspacing="0" style="width: 100%; text-align: left; font-size: 12pt;">
         <tr>
           <td colspan="5">CONTABILIDAD PATRIMONIAL</td>
-          <td colspan="5" rowspan="3" style="width: 50%;text-align: center;"><br><br><br><hr>DIRECTOR DE PRESUPUESTO Y CONTABILIDAD</td>
+          <td colspan="5" rowspan="3" style="width: 50%;text-align: center;"><br><br><br><br><br><br><br><hr>DIRECTOR DE PRESUPUESTO Y CONTABILIDAD</td>
         </tr>
         <tr>
           <td colspan="3" style="width: 30%">CODIGO</td>
@@ -238,23 +238,23 @@ table.page_footer {width: 100%; border: none; background-color: white; padding: 
           <td>1101</td>
           <td>1101.01</td>
           <td></td>
-          <td><?php echo $SUMA;?></td>
+          <td style="text-align:right;"><?php echo $SUMA;?></td>
           <td></td>
-          <td colspan="5" rowspan="3" style="text-align: center;"><br><br><br><hr>RECEPCIONISTA DEL DEPOSITO</td>
+          <td colspan="5" rowspan="3" style="text-align: center;"><br><br><br><br><br><br><br><hr>RECEPCIONISTA DEL DEPOSITO</td>
         </tr>
         <tr>
           <td>1201</td>
           <td></td>
           <td>1201.03</td>
           <td></td>
-          <td><?php echo $SUBTOTAL1;?></td>
+          <td style="text-align:right;"><?php echo $SUBTOTAL1;?></td>
         </tr>
         <tr>
           <td>1202</td>
           <td></td>
           <td>1201.98</td>
           <td></td>
-          <td><?php echo $SUBTOTAL2;?></td>
+          <td style="text-align:right;"><?php echo $SUBTOTAL2;?></td>
         </tr>
         <tr>
           <td></td>
