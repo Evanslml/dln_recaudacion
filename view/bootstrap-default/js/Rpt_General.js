@@ -133,6 +133,7 @@
           var pageexc02='./core/excel/report_02.php?'+parametros;
           var pageexc03='./core/excel/report_03.php?'+parametros;
           var pageexc04='./core/excel/report_04.php?'+parametros;
+          var pageexc05='./core/excel/report_05.php?'+parametros;
           
           var pagepdf01='./core/pdf/documentos/reporte_01.php?'+parametros;
           var pagepdf02='./core/pdf/documentos/reporte_02.php?'+parametros;
@@ -220,6 +221,28 @@
                           },
                         success: function(datos){
                           window.location = pageexc04;
+                          }
+                    }).done(function(){
+                     $(".loading").hide();
+                     $("#resultados").html('<div class="alert alert-success" role="alert">\
+                     <button type="button" class="close" data-dismiss="alert">&times;</button>\
+                     <strong>Completo!</strong> \
+                     Su descarga se realizó con éxito</div>');
+                    });
+              break;
+
+              case '05':
+              $.ajax({
+                        url: pageexc05,
+                        beforeSend: function(datos){
+                           $("#resultados").html('<div class="alert alert-warning" role="alert">\
+                           <button type="button" class="close" data-dismiss="alert">&times;</button>\
+                           <strong>En Proceso!</strong> \
+                           Cargando...</div>');
+                          $(".loading").show();
+                          },
+                        success: function(datos){
+                          window.location = pageexc05;
                           }
                     }).done(function(){
                      $(".loading").hide();

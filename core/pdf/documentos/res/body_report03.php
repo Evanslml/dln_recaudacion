@@ -53,11 +53,8 @@ table.page_footer {width: 100%; border: none; background-color: white; padding: 
         </table>
     </page_footer>
 	<?php include("encabezado_03.php");?>
-    <br>
-    
-
 	
-    <table class="tbl_detalle" cellspacing="0" style="width: 100%; text-align: left; font-size: 12pt;">
+    <table class="tbl_detalle" cellspacing="0" style="width: 100%; text-align: left; font-size: 12pt;margin-top: 10px;">
 		
 		<tr>
 			<td style="width: 4%"><b>Nº</b></td>
@@ -68,8 +65,36 @@ table.page_footer {width: 100%; border: none; background-color: white; padding: 
     </tr>
 
 			<?php 
-		if (!empty($query03)){
 
+    $CANT1 = $query03[0][2];
+    $CANT2 = $query03[2][2];
+    $CANT3 = $query03[4][2];
+    $CANT4 = $query03[6][2];
+    $CANT5 = $query03[25][2];
+    $CANT6 = $query03[70][2];
+    $CANT7 = $query03[72][2];
+
+    $MONTO1 = $query03[0][3];
+    $MONTO2 = $query03[2][3];
+    $MONTO3 = $query03[4][3];
+    $MONTO4 = $query03[6][3];
+    $MONTO5 = $query03[25][3];
+    $MONTO6 = $query03[70][3];
+    $MONTO7 = $query03[72][3];
+
+
+    $CANT_SISMED = $CANT1+$CANT3+$CANT4+$CANT5+$CANT6+$CANT7;
+    $MONTO_SISMED = $MONTO1+$MONTO3+$MONTO4+$MONTO5+$MONTO6+$MONTO7;
+    $CANT_RDR = $CANT2;
+    $MONTO_RDR = $CANT2;
+    $CANT_TOTAL = $CANT_SISMED + $CANT_RDR;
+    $MONTO_TOTAL = $MONTO_SISMED + $MONTO_RDR;
+
+    $MONTO_TOTAL= 'S/. '.number_format($MONTO_TOTAL, 2, '.', '');
+    $MONTO_RDR= 'S/. '.number_format($MONTO_RDR, 2, '.', '');
+    $MONTO_SISMED= 'S/. '.number_format($MONTO_SISMED, 2, '.', '');
+
+		if (!empty($query03)){
 			foreach ($query03 as $key => $value) {
 
               $id= $key + 1;
@@ -99,12 +124,52 @@ table.page_footer {width: 100%; border: none; background-color: white; padding: 
               }
 
         }//FOREACH
-        
-  }else{
-        	echo '<tr><td colspan="4"><p>No se encontraron resultados en la busqueda</p></td></tr>';
-  }
-
-			?>
+  
+  ?>
+  <tr>
+    <td colspan="2"></td>
+    <td style="text-align: center;font-weight: bold">TOTAL</td>
+    <td><?php echo $CANT_TOTAL;?></td>
+    <td><?php echo $MONTO_TOTAL;?></td>
+  </tr>
+  </table>
+      <table class="tbl_total" cellspacing="0" style="width: 100%; text-align: left;margin-top: 5px">
+      <tr>
+        <td style="width: 20%; text-align: center;">SERIE</td>
+        <td style="width: 23%; text-align: center;">CANTIDAD</td>
+        <td style="width: 23%; text-align: center;">MONTO</td>
+        <td style="width: 34%"></td>
+      </tr>
+      <tr>
+        <td style="padding-top: 2px">R.D.R</td>
+        <td style="padding-top: 2px;padding-left: 5px"><?php echo $CANT_SISMED;?></td>
+        <td style="padding-top: 2px;padding-left: 5px"><?php echo $MONTO_SISMED;?></td>
+        <td style="height: 15px;text-align: center;" rowspan="2"><br><hr>RESPONSABLE DE CAJA</td>
+      </tr>
+      <tr>
+        <td style="padding-top: 2px;padding-left: 5px">MEDICAMENTOS</td>
+        <td style="padding-top: 2px;padding-left: 5px"><?php echo $CANT_RDR;?></td>
+        <td style="padding-top: 2px;padding-left: 5px"><?php echo $MONTO_RDR;?></td>
+      </tr>
+      <tr>
+        <td colspan="3"></td>
+        <td style="height: 15px;text-align: center;"><br><hr>RESPONSABLE DEL ESTABLECIMIENTO</td>
+      </tr>
     </table>
+
+
+  <?php    
+  } else
+  {
+  ?>
+  <table>
+  <?php
+    echo '<tr><td><p>No se encontraron resultados en la busqueda</p></td></tr>';
+  ?>
+  </table>
+  <?php
+  }
+  ?>
+  
 
 </page>
