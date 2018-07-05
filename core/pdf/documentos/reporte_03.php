@@ -44,6 +44,8 @@
 
 	//var_dump($query03);
 
+    
+
     // get the HTML
      ob_start();
      include(dirname('__FILE__').'/res/body_report03.php');

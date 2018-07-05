@@ -171,7 +171,8 @@
         $celdaE='E'.$i;
         $celdaF='F'.$i;
         $merge=$celdaC.':'.$celdaE;
-        $monto= 'S/. '.number_format((float)$_Report02[$n][2], 2, '.', '');
+        //$monto= 'S/. '.number_format((float)$_Report02[$n][2], 2, '.', '');
+        $monto= number_format((float)$_Report02[$n][2], 2, '.', '');
 
         $objPHPExcel->getActiveSheet()->setCellValue($celdaA, $m);
         $objPHPExcel->getActiveSheet()->setCellValue($celdaB, $_Report02[$n][0]);

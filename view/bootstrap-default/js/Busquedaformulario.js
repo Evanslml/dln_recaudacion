@@ -348,8 +348,18 @@
 
     function formatdate(){
           $('.inputdate').datepicker({
-          autoclose: true, 
+          /*autoclose: true, 
           todayHighlight: true,
-          format: 'dd-mm-yyyy'
+          format: 'dd-mm-yyyy',
+          minDate: '2018-07-04'*/
+           format: "dd/mm/yyyy",
+          clearBtn: true,
+          language: "es",
+          autoclose: true,
+          todayHighlight: true,
+          toggleActive: true,
+          startDate: '-15d',
+          endDate: '+0d'
+
           })
     }

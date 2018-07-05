@@ -127,11 +127,11 @@
               $("#resultados").html('<div class="alert alert-danger" role="alert"><button type="button" class="close" data-dismiss="alert">&times;</button><strong>Error!</strong>\
               Debe completar las BOLETAS SISMED </div>');
               $(".loading img").hide(); return false;
-          }else if(parseInt(bolinirdr) >= parseInt(bolfinrdr)){
+          }else if(parseInt(bolinirdr) > parseInt(bolfinrdr)){
               $("#resultados").html('<div class="alert alert-danger" role="alert"><button type="button" class="close" data-dismiss="alert">&times;</button><strong>Error!</strong>\
               Debe ingresar las boletas RDR en forma Ascendente </div>');
               $(".loading img").hide(); return false;
-          }else if(parseInt(bolinisismed) >= parseInt(bolfinsismed)){
+          }else if(parseInt(bolinisismed) > parseInt(bolfinsismed)){
               $("#resultados").html('<div class="alert alert-danger" role="alert"><button type="button" class="close" data-dismiss="alert">&times;</button><strong>Error!</strong>\
               Debe ingresar las boletas SISMED en forma Ascendente </div>');
               $(".loading img").hide(); return false;
