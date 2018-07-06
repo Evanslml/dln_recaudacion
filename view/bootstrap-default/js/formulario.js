@@ -19,7 +19,9 @@
         $("#datepicker").datepicker({ 
           autoclose: true, 
           todayHighlight: true,
-          format: 'dd-mm-yyyy'
+          format: 'dd-mm-yyyy',
+          startDate: '-15d',
+          endDate: '+0d',
         }).datepicker('update', new Date());
 
 

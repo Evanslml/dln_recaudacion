@@ -14,7 +14,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Theme style -->
   <!--<link rel="stylesheet" href="<?php echo URL_VIEW; ?>bootstrap-default/css/estilo.min.css">-->
-  <link rel="stylesheet" href="<?php echo URL_VIEW; ?>bootstrap-default/css/estilo.css">
+  <link rel="stylesheet" href="<?php echo URL_VIEW; ?>bootstrap-default/css/estilo.css?v=<?php echo time();?>">
   <!-- iCheck -->
   <link rel="stylesheet" href="<?php echo URL_VIEW; ?>bootstrap-default/css/icheck/square/green.css">
   <!--Estilo -->
@@ -22,7 +22,7 @@
   <!-- jQuery 2.2.3 -->
   <script src="<?php echo URL_VIEW; ?>bootstrap-default/js/jquery-2.2.3.min.js"></script>
   <!--custom-->
-  <script src="<?php echo URL_VIEW; ?>bootstrap-default/js/custom.js"></script>
+  <script src="<?php echo URL_VIEW; ?>bootstrap-default/js/custom.js?v=<?php echo time();?>"></script>
   <!--Sweet-Alert-->
   <link rel="stylesheet" href="<?php echo URL_VIEW; ?>sweet-alert/sweetalert.css">
 
@@ -39,21 +39,21 @@
         ?>
         <link rel="stylesheet" href="<?php echo URL_VIEW; ?>bootstrap-datepicker/1.3.0/css/datepicker.css">
         <script src="view/jquery-price-format/jquery.priceformat.min.js"></script>
-        <script src="<?php echo URL_VIEW; ?>bootstrap-default/js/formulario.js"></script>
+        <script src="<?php echo URL_VIEW; ?>bootstrap-default/js/formulario.js?v=<?php echo time();?>"></script>
         <?php
         break;
         
         case 'reportegeneral':
         ?>
         <link rel="stylesheet" href="<?php echo URL_VIEW; ?>bootstrap-datepicker/1.3.0/css/datepicker.css">
-        <script src="<?php echo URL_VIEW; ?>bootstrap-default/js/Rpt_General.js"></script>
+        <script src="<?php echo URL_VIEW; ?>bootstrap-default/js/Rpt_General.js?v=<?php echo time();?>"></script>
         <?php
         break;          
 
         case 'estadisticas':
         ?>
         <link rel="stylesheet" href="<?php echo URL_VIEW; ?>bootstrap-datepicker/1.3.0/css/datepicker.css">
-        <script src="<?php echo URL_VIEW; ?>bootstrap-default/js/Rpt_Estadisticas.js"></script>
+        <script src="<?php echo URL_VIEW; ?>bootstrap-default/js/Rpt_Estadisticas.js?v=<?php echo time();?>"></script>
         <?php
         break;        
 

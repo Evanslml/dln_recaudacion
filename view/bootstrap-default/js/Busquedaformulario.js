@@ -191,7 +191,7 @@
       function GetDynamicTextBox(a,b,c) {
         
         return '<td><input id="voucher" name = "voucher" type="text" placeholder = "' + a + '" class="form-control" /></td>' + 
-        '<td><script> formatdate(); </script><input id="fecha" name="fecha" type="text" placeholder= "' + b + '" class="form-control inputdate" /></td>' +
+        '<td><script> formatdate(); </script><input id="fecha" name="fecha" type="text" placeholder= "' + b + '" class="form-control inputdate" readonly /></td>' +
         '<td><script> formatprice(); </script><input id="price" type="text" name="type-price" class="type-price form-control" value="'+ c +'" /></td>' + 
         '<td><button type="button" class="btn btn-danger remove"><i class="glyphicon glyphicon-remove-sign"></i></button></td>';
     }
@@ -348,18 +348,10 @@
 
     function formatdate(){
           $('.inputdate').datepicker({
-          /*autoclose: true, 
+          autoclose: true, 
           todayHighlight: true,
           format: 'dd-mm-yyyy',
-          minDate: '2018-07-04'*/
-           format: "dd/mm/yyyy",
-          clearBtn: true,
-          language: "es",
-          autoclose: true,
-          todayHighlight: true,
-          toggleActive: true,
           startDate: '-15d',
-          endDate: '+0d'
-
+          endDate: '0d'          
           })
     }

@@ -1,4 +1,5 @@
 #https://emiliocobos.net/router-en-php/
+#https://es.stackoverflow.com/questions/63716/como-evitar-el-cach%C3%A9-de-los-archivos-css-y-js
 <IfModule mod_rewrite.c>    
     #Options +FollowSymLinks
     RewriteEngine On
@@ -11,3 +12,11 @@
 
     RewriteRule ^(.*)$ index.php?view=$1 [QSA,L]
 </IfModule>
+
+<FilesMatch "\.(?i:gif|jpe?g|png|ico|css|js|swf)$">
+
+<IfModule mod_headers.c>
+    Header set Cache-Control "max-age=172800, public, must-revalidate"
+  </IfModule>
+
+</FilesMatch>

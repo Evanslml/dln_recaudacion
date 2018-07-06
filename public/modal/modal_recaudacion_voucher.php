@@ -29,7 +29,7 @@
 			    </thead>
 			    <tbody id="TextBoxContainer">
 			    	<td><input type="text" id="voucher" name="voucher" class="form-control" placeholder="Ingrese N° Voucher"></td>
-			      	<td><input type="text" id="fecha" name="fecha" class="form-control inputdate" placeholder="dd-mm-YYYY" readonly></td>
+			      	<td><input type="text" id="fecha" name="fecha" class="form-control inputdate" placeholder="<?php echo date('d-m-Y');;?>" readonly></td>
 			      	<td><input type="text" id="price" name="type-price" class="type-price form-control" placeholder="Ingrese el monto" value="000"></td>
 			    </tbody>
 			    <tfoot>
@@ -44,7 +44,6 @@
 	      <div class="modal-footer">
 	        <button id="btn_cancel" type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
 	        <button id="btn_submit" type="submit" class="btn btn-primary">Aceptar</button>
-	        
 	        </form>
 
 	      </div>
