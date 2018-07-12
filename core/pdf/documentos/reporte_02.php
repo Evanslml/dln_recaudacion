@@ -8,8 +8,8 @@
    else { 
 
    	$reporte_title = 'REPORTE DE BOLETAS DEPOSITADAS RESUMEN';
-    $desde = 'DESDE : ';
-    $hasta = 'HASTA :';
+    $desde = 'F. DEPOSITO DESDE : ';
+    $hasta = 'F. DEPOSITO HASTA :';
     $tipo_recaudacion = $_GET['tipo_recaudacion'];
     $tipo_nivel = $_GET['tipo_nivel'];
     $distrito = $_GET['distrito'];

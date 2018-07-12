@@ -21,7 +21,7 @@
           todayHighlight: true,
           format: 'dd-mm-yyyy',
           startDate: '-15d',
-          endDate: '+0d',
+          endDate: '+1d',
         }).datepicker('update', new Date());
 
 

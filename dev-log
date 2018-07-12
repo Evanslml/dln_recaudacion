@@ -141,3 +141,79 @@ ALTER TABLE `lrecaudacion_detalle` DROP COLUMN `ids`
 010218061905791
 010218062505746
 */
+
+
+/*==========================================================================================================================*/
+-- COMPARAR MONTOS POR MES DEPOSITADOS EN DEPOSITO Y DETALLES
+/*==========================================================================================================================*/
+
+SELECT A.MONTO,A.COD,B.NEST_NOMBRE FROM(
+SELECT SUM(LRECAU_MONTO) MONTO,SUBSTR(LRECAU_ID,11,5) COD FROM 
+`lrecaudacion_deposito` WHERE 
+(`LRECAU_FECHA` BETWEEN '2018-06-01' AND '2018-06-30' ) GROUP BY SUBSTR(LRECAU_ID,11,5)
+)A 
+INNER JOIN nestablecimiento B
+on A.COD=B.NESTA_RENAES
+
+
+SELECT A.MONTO,A.COD,B.NEST_NOMBRE FROM (
+SELECT SUBSTR(A.LRECAU_ID,11,5) COD,SUM(MONTO) MONTO FROM `lrecaudacion_deposito` A
+INNER JOIN 	lrecaudacion_detalle B
+ON A.LRECAU_ID=B.LRECAU_ID
+WHERE 
+(`LRECAU_FECHA` BETWEEN '2018-06-01' AND '2018-06-30')
+AND B.IDITEM IN ('1','3','5','7','26','71','73')
+GROUP BY SUBSTR(A.LRECAU_ID,11,5)
+)A INNER JOIN nestablecimiento B
+on A.COD=B.NESTA_RENAES
+
+/*==========================================================================================================================*/
+-- COMPARAR DETALLES MONTOS POR DIAS DEPOSITADOS EN DEPOSITO Y DETALLES
+/*==========================================================================================================================*/
+
+SELECT A.LRECAU_ID,A.MONTO,A.COD,B.NEST_NOMBRE FROM (
+SELECT A.LRECAU_ID,SUBSTR(A.LRECAU_ID,11,5) COD,SUM(MONTO) MONTO FROM `lrecaudacion_deposito` A
+INNER JOIN 	lrecaudacion_detalle B
+ON A.LRECAU_ID=B.LRECAU_ID
+WHERE  SUBSTR(A.LRECAU_ID,11,5)='00000' AND
+(`LRECAU_FECHA` BETWEEN '2018-06-01' AND '2018-06-30')
+AND B.IDITEM IN ('1','3','5','7','26','71','73')
+GROUP BY A.LRECAU_ID
+)A INNER JOIN nestablecimiento B
+on A.COD=B.NESTA_RENAES
+
+
+
+SELECT A.LRECAU_ID,A.MONTO,A.COD,B.NEST_NOMBRE FROM(
+SELECT LRECAU_ID,SUM(LRECAU_MONTO) MONTO,SUBSTR(LRECAU_ID,11,5) COD FROM 
+`lrecaudacion_deposito` WHERE 
+SUBSTR(LRECAU_ID,11,5)='00000' AND
+(`LRECAU_FECHA` BETWEEN '2018-06-01' AND '2018-06-30' ) GROUP BY LRECAU_ID
+)A 
+INNER JOIN nestablecimiento B
+on A.COD=B.NESTA_RENAES
+
+
+
+/*==========================================================================================================================*/
+-- COMPARAR DETALLES MONTOS POR DIA DEPOSITADOS EN DEPOSITO Y DETALLES
+/*==========================================================================================================================*/
+
+
+
+
+SELECT LRECAU_ID,LRECAU_MONTO MONTO,SUBSTR(LRECAU_ID,11,5) COD FROM 
+`lrecaudacion_deposito` WHERE 
+LRECAU_ID LIKE '%18062205640' AND
+(`LRECAU_FECHA` BETWEEN '2018-06-01' AND '2018-06-30' ) 
+
+
+
+
+
+SELECT A.LRECAU_ID,SUBSTR(A.LRECAU_ID,11,5) COD, MONTO, B.IDITEM FROM `lrecaudacion_deposito` A
+INNER JOIN 	lrecaudacion_detalle B
+ON A.LRECAU_ID=B.LRECAU_ID
+WHERE  A.LRECAU_ID LIKE '%010218062205640'
+AND B.IDITEM IN ('1','3','5','7','26','71','73')
+

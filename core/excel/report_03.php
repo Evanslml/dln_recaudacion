@@ -19,8 +19,8 @@
     $file='Reporte_Registro_Recaudacion_'.$h.'.xlsx';
     $header='&L&BFecha de consulta: '.$h;
     $footer='&L&B@DirisLimaNorte - http://app1.dirislimanorte.gob.pe/recaudacion';
-    $desde = 'DESDE : ';
-    $hasta = 'HASTA :';
+    $desde = 'F. RECAU. DESDE : ';
+    $hasta = 'F. RECAU. HASTA :';
     $tipo_recaudacion = $_GET['tipo_recaudacion'];
 
     switch ($tipo_recaudacion) {

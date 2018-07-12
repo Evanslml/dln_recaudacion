@@ -20,8 +20,8 @@
     $header='&L&BFecha de consulta: '.$h;
     $footer='&L&B@DirisLimaNorte - http://app1.dirislimanorte.gob.pe/recaudacion';
     $reporte_title = 'REPORTE DE BOLETAS DEPOSITADAS DIARIAS';
-    $desde = 'DESDE : ';
-    $hasta = 'HASTA :';
+    $desde = 'F. DEPOSITO DESDE : ';
+    $hasta = 'F. DEPOSITO HASTA :';
     $tipo_recaudacion = $_GET['tipo_recaudacion'];
     $tipo_nivel = $_GET['tipo_nivel'];
     $distrito = $_GET['distrito'];

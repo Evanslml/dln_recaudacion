@@ -8,8 +8,8 @@
    else { 
 
    	$reporte_title = 'REPORTE DE REGISTRO DE RECAUDACIÓN';
-    $desde = 'DESDE : ';
-    $hasta = 'HASTA :';
+    $desde = 'F. REC. DESDE : ';
+    $hasta = 'F. REC. HASTA :';
     $tipo_recaudacion = $_GET['tipo_recaudacion'];
     $tipo_nivel = $_GET['tipo_nivel'];
     $distrito = $_GET['distrito'];

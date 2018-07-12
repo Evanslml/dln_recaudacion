@@ -99,7 +99,7 @@ class Reportes
 		ON SUBSTRING(A.LRECAU_ID,3,2)=D.LRECTIP_ID
 		WHERE (A.LRECAU_FECHA BETWEEN '$fi' AND '$ff')
 		$tipo_recaudacion"."$nivel_recaudacion
-		ORDER BY B.NESTA_RENAES,A.LRECAU_FECHA DESC,LRECAU_ID DESC
+		ORDER BY B.NESTA_RENAES,LRECAU_ID DESC,A.LRECAU_FECHA DESC
 		");
 	    if($sql->num_rows > 0) {
 	      while($d = $sql->fetch_array()) {
@@ -247,7 +247,7 @@ class Reportes
 				INNER JOIN lclasificador F
 				ON F.LCLAS_ID = E.IDITEM
 				WHERE F.LCLAS_ESTADO='1' AND F.DETALLE_PADRE IS NOT NULL
-				AND (A.FECHA_MIN >='$fi' AND A.FECHA_MAX <= '$ff')
+				AND (A.FECHA_MIN >='$fi' AND A.FECHA_MIN <= '$ff') /*CHANGE FECHA MAX*/
 				$tipo_recaudacion"."$nivel_recaudacion
 				GROUP BY F.LCLAS_ID,F.LCLAS_ALIAS,F.DETALLE_PADRE,F.LCLAS_NOMBRE,F.CODIGO_A,F.DETALLE_A,F.CODIGO_B,F.DETALLE_B,F.CODIGO_C,F.DETALLE_C,F.DETALLE_D
 				ORDER BY F.LCLAS_ID
@@ -310,7 +310,7 @@ class Reportes
 						INNER JOIN lclasificador F
 						ON F.LCLAS_ID = E.IDITEM
 						WHERE F.LCLAS_ESTADO='1' AND F.DETALLE_PADRE IS NOT NULL
-						AND (A.FECHA_MIN >='$fi' AND A.FECHA_MAX <= '$ff')
+						AND (A.FECHA_MIN >='$fi' AND A.FECHA_MIN <= '$ff')
 						$tipo_recaudacion"."$nivel_recaudacion
 						GROUP BY F.LCLAS_ID,F.LCLAS_ALIAS,F.DETALLE_PADRE,F.LCLAS_NOMBRE,F.CODIGO_A,F.DETALLE_A,F.CODIGO_B,F.DETALLE_B,F.CODIGO_C,F.DETALLE_C,F.DETALLE_D
 						ORDER BY F.LCLAS_ID
