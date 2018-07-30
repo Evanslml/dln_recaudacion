@@ -125,6 +125,29 @@ var_dump($clave_crypt);
           </div>
           <!-- /.box -->
  
+        </div>        
+
+        <div class="col-md-6">
+          <!-- About Me Box -->
+          <div class="box box-primary">
+            <div class="box-header with-border">
+              <h3 class="box-title">Comunicado</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <h4><strong>REUNION RECAUDACIÓN WEB</strong></h4>
+              <p style="text-align: justify">Es de estricta responsabilidad de la <strong>CAJA RECAUDACION</strong> del ingreso diario en el sistema de recaudacion WEB, los depositos realizados en el banco de la Nacion e informes diarios de las recaudaciones, cuyo seguimiento y cumplimiento de la misma será responsabilidad de la Oficina de Tesorería-Coordinación de Recaudación de la Diris Lima Norte, por consiguiente es necesario la participación del responsable de <strong>CAJA RECAUDACION</strong> de su establecimiento de Salud en el <strong style="background: yellow">taller de capacitación del Sistema de Recaudación WEB</strong>, para más información <a href="<?php echo URL_VIEW.'reunion_recaudacion.pdf'?>" target="blank">click aqui</a></p>
+              <hr>
+              
+              <h4><strong>VENTAJAS DE LA RECAUDACIÓN WEB</strong></h4>
+              <p>Comparativo del sistema de Recaudación Tradicional con Sistema de Recaudación Web, <a href="<?php echo URL_VIEW.'oficia_de_tesoreria.pdf'?>" target="blank">click aqui</a> para mas informacón</p>
+              <hr>
+
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+ 
         </div>
  
       </div><!--row-->

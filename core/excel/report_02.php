@@ -16,7 +16,7 @@
 
     $now = new DateTime();
     $h=$now->format('Y-m-d');
-    $file='Boleta_Depositada_Resumen_'.$h.'.xlsx';
+    $file='Boleta_Depositada_Resumen_'.$h.'.xls';
     $header='&L&BFecha de consulta: '.$h;
     $footer='&L&B@DirisLimaNorte - http://app1.dirislimanorte.gob.pe/recaudacion';
     $desde = 'F. DEPOSITO DESDE : ';
@@ -246,11 +246,26 @@
                          ->setDescription("Reporte desde la aplicación Recaudacion DirisLimaNorte")
                          ->setKeywords("office 2007 openxml php")
                          ->setCategory("Reportes");
-    header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-    header('Content-Disposition: attachment;filename="'.$file.'"');
-    header('Cache-Control: max-age=0');
-    $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
-    $objWriter->save('php://output');
+/*    header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');*/
+/*    header('Content-Disposition: attachment;filename="'.$file.'"');*/
+/*    header('Cache-Control: max-age=0');*/
+/*    $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');*/
+/*    $objWriter->save('php://output');*/
 
+// Redirect output to a client’s web browser (Excel5)
+header('Content-Type: application/vnd.ms-excel');
+header('Content-Disposition: attachment;filename="'.$file.'"');
+header('Cache-Control: max-age=0');
+// If you're serving to IE 9, then the following may be needed
+header('Cache-Control: max-age=1');
 
+// If you're serving to IE over SSL, then the following may be needed
+header ('Expires: Mon, 26 Jul 1997 05:00:00 GMT'); // Date in the past
+header ('Last-Modified: '.gmdate('D, d M Y H:i:s').' GMT'); // always modified
+header ('Cache-Control: cache, must-revalidate'); // HTTP/1.1
+header ('Pragma: public'); // HTTP/1.0
+
+$objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel5');
+$objWriter->save('php://output');
+exit;
 }
