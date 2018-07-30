@@ -18,7 +18,7 @@
     $h=$now->format('Y-m-d');
     $file='Reporte_Consolidado_Informacion_'.$h.'.xls';
     $header='&L&BFecha de consulta: '.$h;
-    $footer='&L&B@DirisLimaNorte - http://app1.dirislimanorte.gob.pe:82';
+    $footer='&L&B@DirisLimaNorte - http://app1.dirislimanorte.gob.pe/recaudacion';
     $desde = 'DESDE : ';
     $hasta = 'HASTA :';
     $tipo_recaudacion = $_GET['tipo_recaudacion'];
@@ -45,33 +45,40 @@
     $date2 = date($_GET['date2']);
     $date2 = date("Y-m-d", strtotime($date2)); 
     $title = array(
-        'RENAES',
-        'ESTABLECIMIENTO',
-        'TOTAL GENERAL',
-        'ALIMENTOS Y BEBIDAS 1.3.1.4.1.1',
-        'VTA. DE BASES PARA LICITACION PUBLICA,CONCURSO PUBLICO Y OTROS 1.3.19.12',
-        'AUTORIZACION, INSPECCION Y CONTROL SANITARIO 1.3.24.12',
-        'EXAMEN MEDICO 1.3.24.13',
-        'CERTIFICADOS 1.3.24.14',
-        'CARNETS Y/O TARJETAS DE ATENCION 1.3.24.16',
-        'CONTROL CANINO 1.3.24.17',
-        'OTROS DERECHOS ADMINISTRATIVOS DE SALUD 1.3.24.199',
-        'ATENCION MEDICA 1.3.34.11',
-        'ATENCION DENTAL 1.3.34.12',
-        'EXAMEN PSICOLOGICO Y/O PSIQUIATRICA 1.3.34.13',
-        'SERVICIO DE EMERGENCIA 1.3.34.14',
-        'CIRUGIA 1.3.34.15',
-        'HOSPITALIZACION 1.3.34.16',
-        'SERVICIO DE TOPICO 1.3.34.17',
-        'OTROS SERVICIOS MEDICOS - ASISTENC.  1.3.34.199',
-        'EXAMENES DE LABORATORIO 1.3.34.21',
-        'ELECTROCARDIOGRAMA 1.3.34.23',
-        'DIAGNOSTICO POR IMÁGENES 1.3.34.24',
-        'FISIOTERAPIA 1.3.34.31',
-        'OTROS SERVICIOS DE SALUD 1.3.34.399',
-        'SERVICIOS FUNERARIOS Y CEMENTERIOS 1.3.39.216',
-        'MULTAS A ESTABLECIMIENTOS, FARMACIAS Y OTROS 1.5.21.62',
-        'OTRAS MULTAS 1.5.21.62');
+        'Renaes',
+        'Establecimiento',
+        'Total General',
+        'Total RDR',
+        'Total Sismed',
+        'VENTA DE BIENES',
+        'ALIMENTOS Y BEBIDAS',
+        'FARMACIA',
+        'VTA. DE BASES PARA LICITACION PUBLICA,CONCURSO PUBLICO Y OTROS',
+        'DERECHOS Y TASAS ADMINISTRATIVOS',
+        'AUTORIZACION, INSPECCION Y CONTROL SANITARIO',
+        'EXAMEN MEDICO',
+        'CERTIFICADOS',
+        'CARNETS Y/O TARJETAS DE ATENCION',
+        'CONTROL CANINO',
+        'OTROS DERECHOS ADMINISTRATIVOS DE SALUD',
+        'VENTA DE SERVICIOS',
+        'ATENCION MEDICA',
+        'ATENCION DENTAL',
+        'EXAMEN PSICOLOGICO Y/O PSIQUIATRICA',
+        'SERVICIO DE EMERGENCIA',
+        'CIRUGIA',
+        'HOSPITALIZACION',
+        'SERVICIO DE TOPICO',
+        'OTROS SERVICIOS MEDICOS - ASISTENC.',
+        'EXAMENES DE LABORATORIO',
+        'ELECTROCARDIOGRAMA',
+        'DIAGNOSTICO POR IMÁGENES',
+        'FISIOTERAPIA',
+        'OTROS SERVICIOS DE SALUD',
+        'SERVICIOS FUNERARIOS Y CEMENTERIOS',
+        'CUENTAS POR COBRAR DIVERSAS',
+        'MULTAS A ESTABLECIMIENTOS, FARMACIAS Y OTROS',
+        'OTRAS MULTAS');
 
     switch ($tipo_nivel) {
         case '01':
@@ -111,7 +118,7 @@
         'font'  => array(
             'bold'  => true,
             'color' => array('rgb' => '008080'),
-            'size'  => 9,
+            'size'  => 11,
             'name'  => 'Calibri'
         ),
         'alignment' => array(
@@ -202,9 +209,15 @@
     $objPHPExcel->getActiveSheet()->setCellValue('Y6', $title[24]);
     $objPHPExcel->getActiveSheet()->setCellValue('Z6', $title[25]);
     $objPHPExcel->getActiveSheet()->setCellValue('AA6', $title[26]);
+    $objPHPExcel->getActiveSheet()->setCellValue('AB6', $title[27]);
+    $objPHPExcel->getActiveSheet()->setCellValue('AC6', $title[28]);
+    $objPHPExcel->getActiveSheet()->setCellValue('AD6', $title[29]);
+    $objPHPExcel->getActiveSheet()->setCellValue('AE6', $title[30]);
+    $objPHPExcel->getActiveSheet()->setCellValue('AF6', $title[31]);
+    $objPHPExcel->getActiveSheet()->setCellValue('AG6', $title[32]);
+    $objPHPExcel->getActiveSheet()->setCellValue('AH6', $title[33]);
 
-
-    $objPHPExcel->getActiveSheet()->getStyle('A6:AA6')->applyFromArray($borders_center);    
+    $objPHPExcel->getActiveSheet()->getStyle('A6:AH6')->applyFromArray($borders_center);    
     
 
     if(!empty($_Report05)){
@@ -253,30 +266,38 @@
           $COD_A = $value[0];
           $COD_B = $value[1];
           $COD_C = $value[2];
-          $COD_D = $value[6];
-          $COD_E = $value[8];
-          $COD_F = $value[10];
-          $COD_G = $value[11];
-          $COD_H = $value[12];
-          $COD_I = $value[13];
-          $COD_J = $value[14];
-          $COD_K = $value[15];
-          $COD_L = $value[17];
-          $COD_M = $value[18];
-          $COD_N = $value[19];
-          $COD_O = $value[20];
-          $COD_P = $value[21];
-          $COD_Q = $value[22];
-          $COD_R = $value[23];
-          $COD_S = $value[24];
-          $COD_T = $value[25];
-          $COD_U = $value[26];
-          $COD_V = $value[27];
-          $COD_W = $value[28];
-          $COD_X = $value[29];
-          $COD_Y = $value[30];
-          $COD_Z = $value[32];
-          $COD_AA = $value[33];
+          $COD_D = $value[3];
+          $COD_E = $value[4];
+          $COD_F = $value[5];
+          $COD_G = $value[6];
+          $COD_H = $value[7];
+          $COD_I = $value[8];
+          $COD_J = $value[9];
+          $COD_K = $value[10];
+          $COD_L = $value[11];
+          $COD_M = $value[12];
+          $COD_N = $value[13];
+          $COD_O = $value[14];
+          $COD_P = $value[15];
+          $COD_Q = $value[16];
+          $COD_R = $value[17];
+          $COD_S = $value[18];
+          $COD_T = $value[19];
+          $COD_U = $value[20];
+          $COD_V = $value[21];
+          $COD_W = $value[22];
+          $COD_X = $value[23];
+          $COD_Y = $value[24];
+          $COD_Z = $value[25];
+          $COD_AA = $value[26];
+          $COD_AB = $value[27];
+          $COD_AC = $value[28];
+          $COD_AD = $value[29];
+          $COD_AE = $value[30];
+          $COD_AF = $value[31];
+          $COD_AG = $value[32];
+          $COD_AH = $value[33];
+
           
           $celdaA='A'.$i;
           $celdaB='B'.$i;
@@ -305,6 +326,13 @@
           $celdaY='Y'.$i;
           $celdaZ='Z'.$i;
           $celdaAA='AA'.$i;
+          $celdaAB='AB'.$i;
+          $celdaAC='AC'.$i;
+          $celdaAD='AD'.$i;
+          $celdaAE='AE'.$i;
+          $celdaAF='AF'.$i;
+          $celdaAG='AG'.$i;
+          $celdaAH='AH'.$i;
 
         $objPHPExcel->getActiveSheet()->setCellValue($celdaA, $COD_A);
         $objPHPExcel->getActiveSheet()->setCellValue($celdaB, $COD_B);
@@ -333,6 +361,13 @@
         $objPHPExcel->getActiveSheet()->setCellValue($celdaY, $COD_Y);
         $objPHPExcel->getActiveSheet()->setCellValue($celdaZ, $COD_Z);
         $objPHPExcel->getActiveSheet()->setCellValue($celdaAA, $COD_AA);
+        $objPHPExcel->getActiveSheet()->setCellValue($celdaAB, $COD_AB);
+        $objPHPExcel->getActiveSheet()->setCellValue($celdaAC, $COD_AC);
+        $objPHPExcel->getActiveSheet()->setCellValue($celdaAD, $COD_AD);
+        $objPHPExcel->getActiveSheet()->setCellValue($celdaAE, $COD_AE);
+        $objPHPExcel->getActiveSheet()->setCellValue($celdaAF, $COD_AF);
+        $objPHPExcel->getActiveSheet()->setCellValue($celdaAG, $COD_AG);
+        $objPHPExcel->getActiveSheet()->setCellValue($celdaAH, $COD_AH);
 
         $objPHPExcel->getActiveSheet()->getStyle($celdaA)->applyFromArray($borders_center);
         $objPHPExcel->getActiveSheet()->getStyle($celdaB)->applyFromArray($borders_center);
@@ -361,6 +396,14 @@
         $objPHPExcel->getActiveSheet()->getStyle($celdaY)->applyFromArray($borders_center);
         $objPHPExcel->getActiveSheet()->getStyle($celdaZ)->applyFromArray($borders_center);
         $objPHPExcel->getActiveSheet()->getStyle($celdaAA)->applyFromArray($borders_center);
+        $objPHPExcel->getActiveSheet()->getStyle($celdaAB)->applyFromArray($borders_center);
+        $objPHPExcel->getActiveSheet()->getStyle($celdaAC)->applyFromArray($borders_center);
+        $objPHPExcel->getActiveSheet()->getStyle($celdaAD)->applyFromArray($borders_center);
+        $objPHPExcel->getActiveSheet()->getStyle($celdaAE)->applyFromArray($borders_center);
+        $objPHPExcel->getActiveSheet()->getStyle($celdaAF)->applyFromArray($borders_center);
+        $objPHPExcel->getActiveSheet()->getStyle($celdaAG)->applyFromArray($borders_center);
+        $objPHPExcel->getActiveSheet()->getStyle($celdaAH)->applyFromArray($borders_center);
+
 
         }
     }else{
@@ -373,9 +416,9 @@
     $objPHPExcel->getActiveSheet() ->setTitle('Reportes');
     //
     $objPHPExcel->getDefaultStyle()->applyFromArray($body);
-    $objPHPExcel->getActiveSheet()->getStyle("A4:AA6")->applyFromArray($center);
-    $objPHPExcel->getActiveSheet()->getStyle("A4:AA6")->applyFromArray($titulo);
-    $objPHPExcel->getActiveSheet()->getStyle("A6:AA6")->applyFromArray($cabecera);
+    $objPHPExcel->getActiveSheet()->getStyle("A4:AH6")->applyFromArray($center);
+    $objPHPExcel->getActiveSheet()->getStyle("A4:AH6")->applyFromArray($titulo);
+    $objPHPExcel->getActiveSheet()->getStyle("A6:AH6")->applyFromArray($cabecera);
 
     $objPHPExcel->getActiveSheet()->setCellValue('A4', $reporte_title);
     $objPHPExcel->getActiveSheet()->setCellValue('D1', $desde);
@@ -393,9 +436,6 @@
     $objPHPExcel->getActiveSheet()->getStyle("D3:F3")->applyFromArray($center);
     //Dimension
 
-    //Ajustar texto
-    $objPHPExcel->getActiveSheet()->getStyle('A6:AA6')
-    ->getAlignment()->setWrapText(true); 
 
     $objPHPExcel->getActiveSheet()->getColumnDimension("A")->setWidth(20);
     $objPHPExcel->getActiveSheet()->getColumnDimension("B")->setWidth(20);
@@ -424,6 +464,13 @@
     $objPHPExcel->getActiveSheet()->getColumnDimension("Y")->setWidth(20);
     $objPHPExcel->getActiveSheet()->getColumnDimension("Z")->setWidth(20);
     $objPHPExcel->getActiveSheet()->getColumnDimension("AA")->setWidth(20);
+    $objPHPExcel->getActiveSheet()->getColumnDimension("AB")->setWidth(20);
+    $objPHPExcel->getActiveSheet()->getColumnDimension("AC")->setWidth(20);
+    $objPHPExcel->getActiveSheet()->getColumnDimension("AD")->setWidth(20);
+    $objPHPExcel->getActiveSheet()->getColumnDimension("AE")->setWidth(20);
+    $objPHPExcel->getActiveSheet()->getColumnDimension("AF")->setWidth(20);
+    $objPHPExcel->getActiveSheet()->getColumnDimension("AG")->setWidth(20);
+    $objPHPExcel->getActiveSheet()->getColumnDimension("AH")->setWidth(20);
 
 
 

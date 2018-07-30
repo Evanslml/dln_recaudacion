@@ -18,7 +18,7 @@
     $h=$now->format('Y-m-d');
     $file='Boleta_Depositada_Diaria_'.$h.'.xls';
     $header='&L&BFecha de consulta: '.$h;
-    $footer='&L&B@DirisLimaNorte - http://app1.dirislimanorte.gob.pe/recaudacion';
+    $footer='&L&B@DirisLimaNorte - http://app1.dirislimanorte.gob.pe:82';
     $reporte_title = 'REPORTE DE BOLETAS DEPOSITADAS DIARIAS';
     $desde = 'F. DEPOSITO DESDE : ';
     $hasta = 'F. DEPOSITO HASTA :';

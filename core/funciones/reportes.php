@@ -189,8 +189,15 @@ class Reportes
 		ON A.LRECAU_ID=E.LRECAU_ID
 		INNER JOIN lclasificador F
 		ON F.LCLAS_ID = E.IDITEM
+		/***************************************************/
+		INNER JOIN lrecaudacion_deposito G
+		ON A.LRECAU_ID=G.LRECAU_ID
+		/***************************************************/
 		WHERE F.LCLAS_ESTADO='1'
-		AND ( A.LRECAU_FECREC BETWEEN '$fi' AND '$ff')
+		/***************************************************/
+		/*AND ( A.LRECAU_FECREC BETWEEN '$fi' AND '$ff')*/
+		/***************************************************/
+		AND ( G.LRECAU_FECHA BETWEEN '$fi' AND '$ff')
 		$tipo_recaudacion"."$nivel_recaudacion
 		GROUP BY F.LCLAS_ID,F.LCLAS_ALIAS,F.LCLAS_NOMBRE,F.LCLAS_PADRE,D.LRECTIP_ID
 		ORDER BY F.LCLAS_ID*1

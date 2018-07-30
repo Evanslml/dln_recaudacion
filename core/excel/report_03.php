@@ -18,7 +18,7 @@
     $h=$now->format('Y-m-d');
     $file='Reporte_Registro_Recaudacion_'.$h.'.xls';
     $header='&L&BFecha de consulta: '.$h;
-    $footer='&L&B@DirisLimaNorte - http://app1.dirislimanorte.gob.pe/recaudacion';
+    $footer='&L&B@DirisLimaNorte - http://app1.dirislimanorte.gob.pe:82';
     $desde = 'F. RECAU. DESDE : ';
     $hasta = 'F. RECAU. HASTA :';
     $tipo_recaudacion = $_GET['tipo_recaudacion'];

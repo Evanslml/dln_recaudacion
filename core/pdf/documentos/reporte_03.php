@@ -7,9 +7,9 @@
    }
    else { 
 
-   	$reporte_title = 'REPORTE DE REGISTRO DE RECAUDACIÓN';
-    $desde = 'F. REC. DESDE : ';
-    $hasta = 'F. REC. HASTA :';
+   	$reporte_title = 'REPORTE DE REGISTRO DE RECAUDACIÓN POR DEPOSITO';
+    $desde = 'F. DEP. DESDE : ';
+    $hasta = 'F. DEP. HASTA :';
     $tipo_recaudacion = $_GET['tipo_recaudacion'];
     $tipo_nivel = $_GET['tipo_nivel'];
     $distrito = $_GET['distrito'];

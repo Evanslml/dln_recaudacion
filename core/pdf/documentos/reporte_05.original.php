@@ -8,7 +8,7 @@
    else { 
 
    	$reporte_title = 'CONSOLIDADO DE RECAUDACIÓN POR DEPÓSITO';
-    $desde = 'DESDE :';
+    $desde = 'DESDE : ';
     $hasta = 'HASTA :';
     $tipo_recaudacion = $_GET['tipo_recaudacion'];
     $tipo_nivel = $_GET['tipo_nivel'];
@@ -21,33 +21,40 @@
     $date2 = date($_GET['date2']);
     $date2 = date("Y-m-d", strtotime($date2)); 
     $title = array(
-        'RENAES',
-        'ESTABLECIMIENTO',
-        'TOTAL GENERAL',
-        'ALIMENTOS Y BEBIDAS 1.3.1.4.1.1',
-        'VTA. DE BASES PARA LICITACION PUBLICA,CONC<br>URSO PUBLICO Y OTROS 1.3.19.12',
-        'AUTORIZACION, INSPECCION Y CONTROL SANITARIO 1.3.24.12',
-        'EXAMEN MEDICO 1.3.24.13',
-        'CERTIFICADOS 1.3.24.14',
-        'CARNETS Y/O TARJETAS DE ATENCION 1.3.24.16',
-        'CONTROL CANINO 1.3.24.17',
-        'OTROS DERECHOS ADMINISTRA<br>TIVOS DE SALUD 1.3.24.199',
-        'ATENCION MEDICA 1.3.34.11',
-        'ATENCION DENTAL 1.3.34.12',
-        'EXAMEN PSICOLOGICO Y/O PSIQUIATRICA 1.3.34.13',
-        'SERVICIO DE EMERGENCIA 1.3.34.14',
-        'CIRUGIA 1.3.34.15',
-        'HOSPITALIZA<br>CION 1.3.34.16',
-        'SERVICIO DE TOPICO 1.3.34.17',
-        'OTROS SERVICIOS MEDICOS - ASISTENC.  1.3.34.199',
-        'EXAMENES DE LABORATORIO 1.3.34.21',
-        'ELECTROCARD<br>IOGRAMA 1.3.34.23',
-        'DIAGNOSTICO POR IMÁGENES 1.3.34.24',
-        'FISIOTERAPIA 1.3.34.31',
-        'OTROS SERVICIOS DE SALUD 1.3.34.399',
-        'SERVICIOS FUNERARIOS Y CEMENTERIOS 1.3.39.216',
-        'MULTAS A ESTABLECIMI<br>ENTOS, FARMACIAS Y OTROS 1.5.21.62',
-        'OTRAS MULTAS 1.5.21.62'
+        'Renaes',
+        'Establecimiento',
+        'Total General',
+        'Total RDR',
+        'Total Sismed',
+        'VENTA DE BIENES',
+        'ALIMENT<br>OS Y BEBIDAS',
+        'FARMA<br>CIA',
+        'VTA. DE BASES PARA LICITACI<br>ON PUBLICA,<br>CONCUR<br>SO PUBLICO Y OTROS',
+        'DERECH<br>OS Y TASAS ADMINIS<br>TRATIV<br>OS',
+        'AUTORI<br>ZACION, <br>INSPEC<br>CION Y CONTR<br>OL SANITA<br>RIO',
+        'EXAM<br>EN MEDICO',
+        'CERTIFI<br>CADOS',
+        'CARNETS Y/O TARJET<br>AS DE ATENCI<br>ON',
+        'CONTROL CANINO',
+        'OTROS DERECH<br>OS ADMINIS<br>TRATIV<br>OS DE SALUD',
+        'VENTA DE SERVICI<br>OS',
+        'ATENCI<br>ON MEDICA',
+        'ATENCI<br>ON DENTAL',
+        'EXAMEN PSICOLO<br>GICO Y/O PSIQUIA<br>TRICA',
+        'SERVIC<br>IO DE EMER<br>GENCIA',
+        'CIRUGIA',
+        'HOSPITA<br>LIZACION',
+        'SERVICIO DE TOPICO',
+        'OTROS SERVICI<br>OS MEDICOS - ASISTENC.',
+        'EXAMEN<br>ES DE LABORA<br>TORIO',
+        'ELECTRO<br>CARDIO<br>GRAMA',
+        'DIAGNOS<br>TICO POR IMÁGE<br>NES',
+        'FISIOTE<br>RAPIA',
+        'OTROS SERVICI<br>OS DE SALUD',
+        'SERVICI<br>OS FUNERA<br>RIOS Y CEMEN<br>TERIOS',
+        'CUENTAS POR COBRAR DIVERS<br>AS',
+        'MULTAS A ESTABLE<br>CIMIEN<br>TOS, FARMA<br>CIAS Y OTROS',
+        'OTRAS MULTAS'
     );
 
     switch ($tipo_nivel) {
