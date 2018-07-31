@@ -19,8 +19,8 @@
     $file='Reporte_Registro_Recaudacion_'.$h.'.xls';
     $header='&L&BFecha de consulta: '.$h;
     $footer='&L&B@DirisLimaNorte - http://app1.dirislimanorte.gob.pe:82';
-    $desde = 'F. RECAU. DESDE : ';
-    $hasta = 'F. RECAU. HASTA :';
+    $desde = 'F. DEP. DESDE : ';
+    $hasta = 'F. DEP. HASTA :';
     $tipo_recaudacion = $_GET['tipo_recaudacion'];
 
     switch ($tipo_recaudacion) {
@@ -173,7 +173,7 @@
         $celdaE='E'.$i;
         $celdaF='F'.$i;
         $merge=$celdaC.':'.$celdaD;
-        $monto= 'S/. '.number_format((float)$_Report03[$n][3], 2, '.', '');
+        $monto= number_format((float)$_Report03[$n][3], 2, '.', '');
 
         $objPHPExcel->getActiveSheet()->setCellValue($celdaA, $m);
         $objPHPExcel->getActiveSheet()->setCellValue($celdaB, $_Report03[$n][0]);

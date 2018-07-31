@@ -157,7 +157,8 @@ class Reportes
 	    return $data;
 	}
 
-//R03
+//R03 
+/*	
 	Public static function ReporteRegistroRec($t,$n,$e,$d,$fi,$ff){
 		$db = new Conexion();
 
@@ -189,15 +190,8 @@ class Reportes
 		ON A.LRECAU_ID=E.LRECAU_ID
 		INNER JOIN lclasificador F
 		ON F.LCLAS_ID = E.IDITEM
-		/***************************************************/
-		INNER JOIN lrecaudacion_deposito G
-		ON A.LRECAU_ID=G.LRECAU_ID
-		/***************************************************/
 		WHERE F.LCLAS_ESTADO='1'
-		/***************************************************/
-		/*AND ( A.LRECAU_FECREC BETWEEN '$fi' AND '$ff')*/
-		/***************************************************/
-		AND ( G.LRECAU_FECHA BETWEEN '$fi' AND '$ff')
+		AND ( A.LRECAU_FECREC BETWEEN '$fi' AND '$ff')
 		$tipo_recaudacion"."$nivel_recaudacion
 		GROUP BY F.LCLAS_ID,F.LCLAS_ALIAS,F.LCLAS_NOMBRE,F.LCLAS_PADRE,D.LRECTIP_ID
 		ORDER BY F.LCLAS_ID*1
@@ -214,8 +208,64 @@ class Reportes
 	   
 	    return $data;
 	}
+*/
 
-//04 A
+	Public static function ReporteRegistroRec($t,$n,$e,$d,$fi,$ff){
+		$db = new Conexion();
+
+		if($t=='00'){$tipo_recaudacion='';}else{$tipo_recaudacion=" AND SUBSTRING(A.LRECAU_ID,3,2)='$t' ";}
+		
+		switch ($n) {
+			case '02':
+				$nivel_recaudacion=" AND C.NDIST_ID='$d' ";
+				break;
+			case '03':
+				$nivel_recaudacion=" AND SUBSTRING(A.LRECAU_ID,11,5) ='$e' ";
+				break;
+			default:
+				$nivel_recaudacion='';
+				break;
+		}
+
+	    $sql = $db->query("
+	    		SELECT F.LCLAS_ALIAS,F.LCLAS_NOMBRE,SUM(E.CANTIDAD) CANTIDAD,SUM(E.MONTO) MONTO,F.LCLAS_ID,F.LCLAS_PADRE,D.LRECTIP_ID
+				FROM(
+				SELECT LRECAU_ID,MIN(LRECAU_FECHA) FECHA_MIN,MAX(LRECAU_FECHA) FECHA_MAX FROM lrecaudacion_deposito
+				GROUP BY LRECAU_ID
+				)A
+				INNER JOIN nestablecimiento B
+				ON SUBSTRING(A.LRECAU_ID,11,5) = B.NESTA_RENAES
+				INNER JOIN ndistrito C
+				ON B.NDIST_ID = C.NDIST_ID
+				INNER JOIN lrecaudacion_tipo D
+				ON SUBSTRING(A.LRECAU_ID,3,2)=D.LRECTIP_ID
+				INNER JOIN lrecaudacion_detalle E
+				ON A.LRECAU_ID=E.LRECAU_ID
+				INNER JOIN lclasificador F
+				ON F.LCLAS_ID = E.IDITEM
+				WHERE F.LCLAS_ESTADO='1'
+				AND (A.FECHA_MIN >='$fi' AND A.FECHA_MAX <= '$ff') /*CHANGE FECHA MAX*/
+				$tipo_recaudacion"."$nivel_recaudacion
+				GROUP BY F.LCLAS_ID,F.LCLAS_ALIAS,F.DETALLE_PADRE,F.LCLAS_NOMBRE,F.CODIGO_A,F.DETALLE_A,F.CODIGO_B,F.DETALLE_B,F.CODIGO_C,F.DETALLE_C,F.DETALLE_D
+				ORDER BY F.LCLAS_ID
+		");
+	    if($sql->num_rows > 0) {
+	      while($d = $sql->fetch_array()) {
+	        $data[] = $d;
+	      }
+	    } else {
+	      $data = false;
+	    }
+	    $sql->free();
+	    $db->close();
+	   
+	    return $data;
+	}
+
+
+
+
+//04 A CUERPO
 	Public static function ReporteRecIngresos($t,$n,$e,$d,$fi,$ff){
 		$db = new Conexion();
 
@@ -275,7 +325,7 @@ class Reportes
 	}
 
 
-//04 B
+//04 B CABECERA
 	Public static function ReporteRecIngresos_Sum($t,$n,$e,$d,$fi,$ff){
 		$db = new Conexion();
 
